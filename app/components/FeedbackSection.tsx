@@ -23,7 +23,9 @@ export default function FeedbackSection() {
   const [loading, setLoading] = useState(false);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
   ) => {
     setFormState({ ...formState, [e.target.name]: e.target.value });
   };
@@ -31,7 +33,6 @@ export default function FeedbackSection() {
   const handleSubmit = async () => {
     if (!formState.name || !formState.ward || !formState.message) return;
     setLoading(true);
-    // Simulate submission — wire up to your backend later
     await new Promise((r) => setTimeout(r, 1200));
     setLoading(false);
     setSubmitted(true);
@@ -69,7 +70,6 @@ export default function FeedbackSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            {/* Label */}
             <div className="flex items-center gap-3">
               <div className="w-8 h-0.5 bg-[#d4a017]" />
               <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#d4a017]">
@@ -77,7 +77,6 @@ export default function FeedbackSection() {
               </span>
             </div>
 
-            {/* Heading */}
             <h2
               className="font-playfair font-bold text-white leading-tight"
               style={{ fontSize: "clamp(28px, 4vw, 44px)" }}
@@ -85,23 +84,19 @@ export default function FeedbackSection() {
               Tell Brian What Matters to You
             </h2>
 
-            {/* Description */}
             <p className="text-gray-400 text-base md:text-lg leading-relaxed">
               A good leader listens before he acts. Brian wants to hear directly
               from the people of Mumias West — your concerns, your hopes, and
               the issues that matter most to your family and your ward.
             </p>
 
-            {/* Divider */}
             <div className="w-12 h-0.5 bg-[#d4a017]" />
 
-            {/* Promise */}
             <p className="text-gray-500 text-sm leading-relaxed italic">
               "Every message will be read. Your voice will shape the manifesto
               and the priorities of this campaign."
             </p>
 
-            {/* Ward count */}
             <div className="flex items-center gap-4 pt-2">
               {["6", "Wards", "·", "One", "Voice"].map((word, i) => (
                 <span
@@ -128,13 +123,12 @@ export default function FeedbackSection() {
             transition={{ duration: 0.7, delay: 0.2 }}
           >
             {submitted ? (
-              // Success state
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-10 flex flex-col items-center gap-5 text-center">
-                <CheckCircle className="w-14 h-14 text-[#d4a017]" />
-                <h3 className="font-playfair font-bold text-white text-2xl">
+              <div className="bg-white rounded-2xl p-10 flex flex-col items-center gap-5 text-center">
+                <CheckCircle className="w-14 h-14 text-[#0d2b14]" />
+                <h3 className="font-playfair font-bold text-[#0d2b14] text-2xl">
                   Thank You!
                 </h3>
-                <p className="text-gray-400 text-base leading-relaxed">
+                <p className="text-gray-500 text-base leading-relaxed">
                   Your message has been received. Brian and his team appreciate
                   you taking the time to share what matters to you.
                 </p>
@@ -149,12 +143,11 @@ export default function FeedbackSection() {
                 </button>
               </div>
             ) : (
-              // Form
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-8 flex flex-col gap-5">
+              <div className="bg-white rounded-2xl p-8 flex flex-col gap-5">
 
                 {/* Name */}
                 <div className="flex flex-col gap-2">
-                  <label className="text-gray-300 text-sm font-semibold">
+                  <label className="text-[#0d2b14] text-sm font-bold">
                     Your Name
                   </label>
                   <input
@@ -163,21 +156,21 @@ export default function FeedbackSection() {
                     value={formState.name}
                     onChange={handleChange}
                     placeholder="e.g. John Barasa"
-                    className="w-full bg-white/10 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 text-sm focus:outline-none focus:border-[#d4a017] transition-colors"
+                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-800 placeholder-gray-400 text-sm focus:outline-none focus:border-[#d4a017] transition-colors"
                   />
                 </div>
 
                 {/* Ward */}
                 <div className="flex flex-col gap-2">
-                  <label className="text-gray-300 text-sm font-semibold">
+                  <label className="text-[#0d2b14] text-sm font-bold">
                     Your Ward
                   </label>
                   <select
                     name="ward"
                     value={formState.ward}
                     onChange={handleChange}
-                    className="w-full bg-white/10 border border-white/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#d4a017] transition-colors appearance-none"
-                    style={{ color: formState.ward ? "white" : "#6b7280" }}
+                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#d4a017] transition-colors appearance-none"
+                    style={{ color: formState.ward ? "#1f2937" : "#9ca3af" }}
                   >
                     <option value="" disabled>
                       Select your ward
@@ -186,7 +179,7 @@ export default function FeedbackSection() {
                       <option
                         key={ward}
                         value={ward}
-                        className="bg-[#0d2b14] text-white"
+                        className="text-gray-800"
                       >
                         {ward}
                       </option>
@@ -196,8 +189,8 @@ export default function FeedbackSection() {
 
                 {/* Message */}
                 <div className="flex flex-col gap-2">
-                  <label className="text-gray-300 text-sm font-semibold">
-                    What matters most to you in Mumias West?
+                  <label className="text-[#0d2b14] text-sm font-bold">
+                    Message
                   </label>
                   <textarea
                     name="message"
@@ -205,7 +198,7 @@ export default function FeedbackSection() {
                     onChange={handleChange}
                     placeholder="Share your thoughts, concerns, or hopes for our constituency..."
                     rows={5}
-                    className="w-full bg-white/10 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 text-sm focus:outline-none focus:border-[#d4a017] transition-colors resize-none"
+                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-800 placeholder-gray-400 text-sm focus:outline-none focus:border-[#d4a017] transition-colors resize-none"
                   />
                 </div>
 
@@ -218,7 +211,7 @@ export default function FeedbackSection() {
                     !formState.ward ||
                     !formState.message
                   }
-                  className="w-full py-4 rounded-xl font-bold flex items-center justify-center gap-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed hover:brightness-110"
+                  className="w-full py-4 rounded-xl font-bold flex items-center justify-center gap-2 transition-all disabled:opacity-40 disabled:cursor-not-allowed hover:brightness-110"
                   style={{ background: "#d4a017", color: "#0d2b14" }}
                 >
                   {loading ? (
@@ -231,7 +224,7 @@ export default function FeedbackSection() {
                   )}
                 </button>
 
-                <p className="text-gray-600 text-xs text-center">
+                <p className="text-gray-400 text-xs text-center">
                   Your message goes directly to the campaign team.
                 </p>
               </div>
