@@ -6,8 +6,13 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useLocale } from "next-intl";
 import { motion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+// import { ChevronDown } from "lucide-react";
 import Image from "next/image";
+import MissionStatement from "../components/MissionStatement";
+import AboutPreview from "../components/AboutPreview";
+import ManifestoHighlights from "../components/ManifestoHighlights";
+import FeedbackSection from "../components/FeedbackSection";
+import RecentNews from "../components/RecentNews";
 
 export default function HomePage() {
   const t = useTranslations();
@@ -36,7 +41,7 @@ export default function HomePage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative min-h-screen overflow-hidden bg-[#0d2b14]">
+      <section className="relative min-h-screen md:max-h-[900px] overflow-hidden bg-[#0d2b14]">
 
         {/* Background Photo */}
         <div className="absolute inset-0 z-0">
@@ -46,7 +51,7 @@ export default function HomePage() {
             fill
             priority
             className="object-cover md:translate-x-[15%]"
-            style={{ objectPosition: "center 10%" }}
+            style={{ objectPosition: "10% 7%" }}
           />
           {/* Desktop gradient */}
           <div
@@ -76,7 +81,7 @@ export default function HomePage() {
         />
 
         {/* Content */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-8 md:px-16 md:flex md:items-center md:min-h-screen">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-8 md:px-16 md:flex md:items-center md:min-h-screen md:max-h-[900px]">
           <motion.div
             className="w-full max-w-2xl flex flex-col gap-4 md:gap-6 mt-[85%] md:mt-0 pb-12 md:pb-0"
             variants={containerVariants}
@@ -101,8 +106,8 @@ export default function HomePage() {
             {/* Name */}
             <motion.h1
               variants={itemVariants}
-              className="font-playfair font-bold text-white leading-tight"
-              style={{ fontSize: "clamp(32px, 6vw, 70px)" }}
+              className="font-playfair font-bold text-white leading-tight text-center md:text-left "
+              style={{ fontSize: "clamp(22px, 6vw, 60px)" }}
             >
               Hon. Brian Omondi
             </motion.h1>
@@ -155,71 +160,23 @@ export default function HomePage() {
         </div>
 
         {/* Scroll indicator */}
-        <motion.div
+        {/* <motion.div
           className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
           variants={scrollArrowVariants}
           animate="animate"
         >
           <ChevronDown className="w-7 h-7 text-white/50" />
-        </motion.div>
+        </motion.div> */}
       </section>
 
-      {/* Stats Bar */}
-      <section className="py-8 md:py-12 bg-[#0d2b14] text-white">
-        <div className="container">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-            {[
-              { value: "6", label: "Wards to Serve" },
-              { value: "12K+", label: "Supporters" },
-              { value: "15+", label: "Community Projects" },
-              { value: "2027", label: "Election Year" },
-            ].map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                className="text-center"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-              >
-                <p className="text-3xl md:text-4xl font-playfair font-bold mb-2 text-[#d4a017]">
-                  {stat.value}
-                </p>
-                <p className="text-sm md:text-base text-gray-400">{stat.label}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
+      {/* Mission Statement Section  */}
+      <MissionStatement/>
+    
       {/* About Preview */}
-      <section id="about" className="py-12 md:py-16 bg-gray-50">
-        <div className="container">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="max-w-3xl mx-auto text-center"
-          >
-            <h2 className="text-4xl md:text-5xl font-playfair font-bold mb-6 text-campaign-green">
-              {t("about.title")}
-            </h2>
-            <p className="text-lg font-source-sans text-gray-700 mb-6">
-              {t("about.bio")}
-            </p>
-            <p className="text-gray-600 font-source-sans mb-8">
-              {t("about.vision")}
-            </p>
-            <Link
-              href={`/${locale}/about`}
-              className="inline-block px-8 py-3 bg-campaign-green text-white rounded-lg font-source-sans font-semibold hover:bg-opacity-90 transition"
-            >
-              {t("nav.about")}
-            </Link>
-          </motion.div>
-        </div>
-      </section>
+      <AboutPreview />
+      <ManifestoHighlights />
+      <RecentNews />
+      <FeedbackSection/>
     </div>
   );
 }

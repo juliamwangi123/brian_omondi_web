@@ -2,12 +2,12 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { useLocale} from "next-intl";
+// import { useLocale} from "next-intl";
 import { Menu, X } from "lucide-react";
 
 export default function Navbar({ locale }: { locale: string }) {
   // const t = useTranslations();
-  const currentLocale = useLocale();
+  // const currentLocale = useLocale();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -25,10 +25,9 @@ export default function Navbar({ locale }: { locale: string }) {
     { href: `/${locale}/manifesto`, label: "Manifesto" },
     { href: `/${locale}/news`, label: "News" },
     { href: `/${locale}/gallery`, label: "Gallery" },
-    { href: `/${locale}/volunteer`, label: "Volunteer" },
   ];
 
-  const otherLocale = currentLocale === "en" ? "sw" : "en";
+  // const otherLocale = currentLocale === "en" ? "sw" : "en";
 
   return (
     <nav
@@ -64,26 +63,8 @@ export default function Navbar({ locale }: { locale: string }) {
 
         {/* Right side */}
         <div className="flex items-center gap-4">
-          <button
-            onClick={() => {
-              const newPath = window.location.pathname.replace(
-                `/${currentLocale}`,
-                `/${otherLocale}`
-              );
-              window.location.href = newPath || `/${otherLocale}`;
-            }}
-            className="text-sm font-bold text-white/70 hover:text-[#d4a017] transition border border-white/20 rounded-full px-3 py-1"
-          >
-            {otherLocale.toUpperCase()}
-          </button>
+         
 
-          <Link
-            href={`/${locale}/donate`}
-            className="hidden sm:inline-block px-4 py-2 rounded-lg font-semibold text-sm transition-all hover:brightness-110"
-            style={{ background: "#d4a017", color: "#0d2b14" }}
-          >
-            Donate Now
-          </Link>
 
           {/* Mobile Menu Button */}
           <button onClick={toggleMenu} className="md:hidden text-white">
