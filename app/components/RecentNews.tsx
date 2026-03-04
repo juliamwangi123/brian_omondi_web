@@ -10,6 +10,7 @@ const news = [
     image: "/images/pic6.jpg",
     category: "Campaign News",
     date: "February 12, 2026",
+    slug: "campaign-launch",
     title: "Brian Omondi Launches Official 2027 Campaign in Mumias West",
     excerpt:
       "Hundreds of supporters gathered as Brian officially declared his candidacy, pledging to transform all six wards.",
@@ -18,6 +19,7 @@ const news = [
     image: "/images/pic4.jpg",
     category: "Community",
     date: "January 28, 2026",
+    slug: "community-meetings",
     title: "Community Meetings Held Across All Six Wards",
     excerpt:
       "Brian met with residents to listen and understand the pressing needs of each ward ahead of his manifesto launch.",
@@ -26,6 +28,7 @@ const news = [
     image: "/images/pic7.jpg",
     category: "Announcement",
     date: "January 10, 2026",
+    slug: "youth-forum",
     title: "Youth Empowerment Forum Draws Hundreds in Mumias",
     excerpt:
       "A packed forum saw Brian outline his vision for youth jobs, vocational training, and chama support for women.",
@@ -76,36 +79,40 @@ export default function RecentNews() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
             >
-              {/* Image */}
-              <div className="relative h-48">
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  fill
-                  className="object-cover object-top"
-                />
-                {/* Category pill */}
-                <div className="absolute top-3 left-3">
-                  <span
-                    className="px-3 py-1 rounded-full text-xs font-bold"
-                    style={{ background: "#d4a017", color: "#0d2b14" }}
-                  >
-                    {item.category}
-                  </span>
+              {/* Image — clicking it also goes to article */}
+              <Link href={`/${locale}/news/${item.slug}`}>
+                <div className="relative h-48 cursor-pointer">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-cover object-top"
+                  />
+                  {/* Category pill */}
+                  <div className="absolute top-3 left-3">
+                    <span
+                      className="px-3 py-1 rounded-full text-xs font-bold"
+                      style={{ background: "#d4a017", color: "#0d2b14" }}
+                    >
+                      {item.category}
+                    </span>
+                  </div>
                 </div>
-              </div>
+              </Link>
 
               {/* Content */}
               <div className="p-6 flex flex-col gap-3">
                 <p className="text-gray-400 text-xs">{item.date}</p>
-                <h3 className="font-playfair font-bold text-[#0d2b14] text-lg leading-snug">
-                  {item.title}
-                </h3>
+                <Link href={`/${locale}/news/${item.slug}`}>
+                  <h3 className="font-playfair font-bold text-[#0d2b14] text-lg leading-snug hover:text-[#d4a017] transition-colors cursor-pointer">
+                    {item.title}
+                  </h3>
+                </Link>
                 <p className="text-gray-500 text-sm leading-relaxed">
                   {item.excerpt}
                 </p>
                 <Link
-                  href={`/${locale}/news`}
+                  href={`/${locale}/news/${item.slug}`}
                   className="text-[#d4a017] text-sm font-bold hover:underline mt-1"
                 >
                   Read More →

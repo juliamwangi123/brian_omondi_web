@@ -21,7 +21,7 @@ export default function Navbar({ locale }: { locale: string }) {
 
   const navLinks = [
     { href: `/${locale}`, label: "Home" },
-    { href: `/${locale}/about`, label: "About" },
+    // { href: `/${locale}/about`, label: "About" },
     { href: `/${locale}/manifesto`, label: "Manifesto" },
     { href: `/${locale}/news`, label: "News" },
     { href: `/${locale}/gallery`, label: "Gallery" },

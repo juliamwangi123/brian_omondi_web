@@ -74,16 +74,7 @@ export default function AboutPreview() {
             {/* Divider */}
             <div className="w-12 h-0.5 bg-[#d4a017]" />
 
-            {/* Button */}
-            <div>
-              <Link
-                href={`/${locale}/about`}
-                className="inline-block px-8 py-3.5 rounded-xl font-bold transition-all hover:brightness-110"
-                style={{ background: "#d4a017", color: "#0d2b14" }}
-              >
-                Read His Full Story
-              </Link>
-            </div>
+          
           </motion.div>
         </div>
       </div>

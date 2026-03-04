@@ -3,75 +3,222 @@
 export const dynamic = "force-dynamic";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
+import { useLocale } from "next-intl";
+import { Calendar, ArrowRight } from "lucide-react";
+
+const newsItems = [
+  {
+    image: "/images/pic3.jpg",
+    category: "Campaign News",
+    date: "February 12, 2025",
+    title: "Brian Omondi Launches Official 2027 Campaign in Mumias West",
+    excerpt:
+      "Hundreds of supporters gathered as Brian officially declared his candidacy, pledging to transform all six wards of Mumias West Constituency.",
+    slug: "campaign-launch",
+  },
+  {
+    image: "/images/pic4.jpg",
+    category: "Community",
+    date: "January 28, 2025",
+    title: "Community Meetings Held Across All Six Wards",
+    excerpt:
+      "Brian met with residents across every ward to listen and understand the pressing needs of each community ahead of his manifesto launch.",
+    slug: "community-meetings",
+  },
+  {
+    image: "/images/pic7.jpg",
+    category: "Announcement",
+    date: "January 10, 2025",
+    title: "Youth Empowerment Forum Draws Hundreds in Mumias",
+    excerpt:
+      "A packed forum saw Brian outline his vision for youth jobs, vocational training centres, and chama support for women entrepreneurs.",
+    slug: "youth-forum",
+  },
+  {
+    image: "/images/pic2.jpg",
+    category: "Manifesto",
+    date: "December 15, 2024",
+    title: "Agriculture Roadmap Unveiled for Mumias West Farmers",
+    excerpt:
+      "Brian presented a detailed plan to support local farmers with subsidised fertiliser, irrigation access, and partnerships to revive the sugar industry.",
+    slug: "agriculture-roadmap",
+  },
+  {
+    image: "/images/pic6.jpg",
+    category: "Infrastructure",
+    date: "November 30, 2024",
+    title: "Roads, Water and Electrification — Brian's Infrastructure Promise",
+    excerpt:
+      "A comprehensive infrastructure agenda covering tarmacking of key roads, clean water access, and rural electrification was shared with constituents.",
+    slug: "infrastructure-promise",
+  },
+];
 
 export default function NewsPage() {
-  const newsItems = [
-    {
-      title: "Campaign Launch Exceeds Expectations",
-      date: "March 2026",
-      content: "1000+ supporters joined us at the launch event in Mumias town",
-      image: "Breaking ground with community support",
-    },
-    {
-      title: "Education Initiative Approved",
-      date: "February 2026",
-      content:
-        "Bursary program set to support 500 needy students across all wards",
-      image: "Supporting students' futures",
-    },
-    {
-      title: "Community Meets Candidate",
-      date: "January 2026",
-      content:
-        "Town hall meetings held in all 6 wards to hear from constituents",
-      image: "Direct engagement with people",
-    },
-  ];
+  const locale = useLocale();
+
+  const [featured, ...rest] = newsItems;
 
   return (
-    <div>
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-campaign-green to-campaign-gold text-white py-20">
-        <div className="container">
-          <motion.h1
+    <div className="bg-gray-50 min-h-screen">
+
+      {/* Hero Banner */}
+      <section className="relative bg-[#0d2b14] py-20 md:py-28 overflow-hidden">
+        {/* Grain texture */}
+        <div
+          className="absolute inset-0 opacity-[0.04] pointer-events-none"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' seed='2' /%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+            backgroundSize: "200px 200px",
+          }}
+        />
+        {/* Radial glow */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse at center, rgba(212,160,23,0.08) 0%, transparent 70%)",
+          }}
+        />
+        <div className="relative z-10 max-w-7xl mx-auto px-8 md:px-16 text-center">
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-5xl md:text-6xl font-playfair font-bold text-center"
+            className="flex flex-col items-center gap-4"
           >
-            Latest News
-          </motion.h1>
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-0.5 bg-[#d4a017]" />
+              <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#d4a017]">
+                Campaign Updates
+              </span>
+              <div className="w-8 h-0.5 bg-[#d4a017]" />
+            </div>
+            <h1
+              className="font-playfair font-bold text-white"
+              style={{ fontSize: "clamp(36px, 5vw, 60px)" }}
+            >
+              From the Campaign Trail
+            </h1>
+            <p className="text-gray-400 max-w-xl text-base md:text-lg">
+              Stay up to date with Brian's journey across Mumias West.
+            </p>
+          </motion.div>
         </div>
       </section>
 
-      {/* News Articles */}
-      <section className="py-16 bg-white">
-        <div className="container max-w-3xl">
-          <div className="space-y-8">
-            {newsItems.map((item, index) => (
-              <motion.article
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="border-b border-gray-200 pb-8 last:border-b-0"
+      {/* Featured Article */}
+      <section className="max-w-7xl mx-auto px-8 md:px-16 py-16">
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 gap-0 rounded-2xl overflow-hidden shadow-lg bg-white"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
+          {/* Image */}
+          <div className="relative h-64 md:h-auto min-h-[300px]">
+            <Image
+              src={featured.image}
+              alt={featured.title}
+              fill
+              className="object-cover object-top"
+            />
+            <div className="absolute top-4 left-4">
+              <span
+                className="px-3 py-1 rounded-full text-xs font-bold"
+                style={{ background: "#d4a017", color: "#0d2b14" }}
               >
-                <time className="text-sm font-source-sans text-campaign-gold font-semibold">
-                  {item.date}
-                </time>
-                <h2 className="text-3xl font-playfair font-bold my-3 text-campaign-green">
-                  {item.title}
-                </h2>
-                <p className="text-gray-600 font-source-sans mb-4">
-                  {item.content}
-                </p>
-                <div className="bg-gray-100 px-4 py-8 rounded-lg text-center text-gray-500 font-source-sans">
-                  [Image: {item.image}]
-                </div>
-              </motion.article>
-            ))}
+                {featured.category}
+              </span>
+            </div>
+            {/* Featured label */}
+            <div className="absolute bottom-4 left-4">
+              <span className="px-3 py-1 rounded-full text-xs font-bold bg-[#0d2b14] text-white">
+                Featured
+              </span>
+            </div>
           </div>
+
+          {/* Content */}
+          <div className="p-8 md:p-10 flex flex-col justify-center gap-4">
+            <div className="flex items-center gap-2 text-gray-400 text-xs">
+              <Calendar className="w-3.5 h-3.5" />
+              <span>{featured.date}</span>
+            </div>
+            <h2
+              className="font-playfair font-bold text-[#0d2b14] leading-tight"
+              style={{ fontSize: "clamp(22px, 3vw, 32px)" }}
+            >
+              {featured.title}
+            </h2>
+            <p className="text-gray-500 text-base leading-relaxed">
+              {featured.excerpt}
+            </p>
+            <div className="w-12 h-0.5 bg-[#d4a017]" />
+            <Link
+              href={`/${locale}/news/${featured.slug}`}
+              className="inline-flex items-center gap-2 font-bold text-[#0d2b14] hover:text-[#d4a017] transition-colors text-sm"
+            >
+              Read Full Story <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Rest of Articles */}
+      <section className="max-w-7xl mx-auto px-8 md:px-16 pb-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {rest.map((item, i) => (
+            <motion.div
+              key={item.slug}
+              className="bg-white rounded-2xl overflow-hidden shadow-md hover:-translate-y-1 transition-all duration-300"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+            >
+              {/* Image */}
+              <div className="relative h-48">
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  className="object-cover object-top"
+                />
+                <div className="absolute top-3 left-3">
+                  <span
+                    className="px-3 py-1 rounded-full text-xs font-bold"
+                    style={{ background: "#d4a017", color: "#0d2b14" }}
+                  >
+                    {item.category}
+                  </span>
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="p-6 flex flex-col gap-3">
+                <div className="flex items-center gap-2 text-gray-400 text-xs">
+                  <Calendar className="w-3.5 h-3.5" />
+                  <span>{item.date}</span>
+                </div>
+                <h3 className="font-playfair font-bold text-[#0d2b14] text-lg leading-snug">
+                  {item.title}
+                </h3>
+                <p className="text-gray-500 text-sm leading-relaxed">
+                  {item.excerpt}
+                </p>
+                <Link
+                  href={`/${locale}/news/${item.slug}`}
+                  className="inline-flex items-center gap-1 text-[#d4a017] text-sm font-bold hover:underline mt-1"
+                >
+                  Read More <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </section>
     </div>
