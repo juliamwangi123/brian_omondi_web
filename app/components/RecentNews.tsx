@@ -4,36 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useLocale } from "next-intl";
-
-const news = [
-  {
-    image: "/images/pic6.jpg",
-    category: "Campaign News",
-    date: "February 12, 2026",
-    slug: "campaign-launch",
-    title: "Brian Omondi Launches Official 2027 Campaign in Mumias West",
-    excerpt:
-      "Hundreds of supporters gathered as Brian officially declared his candidacy, pledging to transform all six wards.",
-  },
-  {
-    image: "/images/pic4.jpg",
-    category: "Community",
-    date: "January 28, 2026",
-    slug: "community-meetings",
-    title: "Community Meetings Held Across All Six Wards",
-    excerpt:
-      "Brian met with residents to listen and understand the pressing needs of each ward ahead of his manifesto launch.",
-  },
-  {
-    image: "/images/pic7.jpg",
-    category: "Announcement",
-    date: "January 10, 2026",
-    slug: "youth-forum",
-    title: "Youth Empowerment Forum Draws Hundreds in Mumias",
-    excerpt:
-      "A packed forum saw Brian outline his vision for youth jobs, vocational training, and chama support for women.",
-  },
-];
+import { newsItems } from "@/data/newsItems";
 
 export default function RecentNews() {
   const locale = useLocale();
@@ -70,7 +41,7 @@ export default function RecentNews() {
 
         {/* Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {news.map((item, i) => (
+          {newsItems.slice(0, 3).map((item, i) => (
             <motion.div
               key={item.title}
               className="bg-white rounded-2xl overflow-hidden shadow-md hover:-translate-y-1 transition-all duration-300"

@@ -2,26 +2,15 @@
 
 import Link from "next/link";
 import { useLocale } from "next-intl";
-import { Facebook, Twitter, Instagram, Youtube, Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin } from "lucide-react";
+import { getNavLinks } from "@/data/navLinks";
+import { socialLinks } from "@/data/socialLinks";
 
 export default function Footer() {
   const locale = useLocale();
 
-  const navLinks = [
-    { href: `/${locale}`, label: "Home" },
-    // { href: `/${locale}/about`, label: "About" },
-    { href: `/${locale}/manifesto`, label: "Manifesto" },
-    { href: `/${locale}/news`, label: "News" },
-    { href: `/${locale}/gallery`, label: "Gallery" },
-  
-  ];
-
-  const socials = [
-    { icon: Facebook, href: "https://www.facebook.com/brian.omondi0", label: "Facebook" },
-    { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Instagram, href: "#", label: "Instagram" },
-    { icon: Youtube, href: "#", label: "YouTube" },
-  ];
+  const navLinks = getNavLinks(locale);
+  const socials = socialLinks;
 
   return (
     <footer className="bg-[#080f09] text-white">

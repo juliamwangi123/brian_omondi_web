@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 // import { useLocale} from "next-intl";
 import { Menu, X } from "lucide-react";
+import { getNavLinks } from "@/data/navLinks";
 
 export default function Navbar({ locale }: { locale: string }) {
   // const t = useTranslations();
@@ -19,13 +20,7 @@ export default function Navbar({ locale }: { locale: string }) {
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
-  const navLinks = [
-    { href: `/${locale}`, label: "Home" },
-    // { href: `/${locale}/about`, label: "About" },
-    { href: `/${locale}/manifesto`, label: "Manifesto" },
-    { href: `/${locale}/news`, label: "News" },
-    { href: `/${locale}/gallery`, label: "Gallery" },
-  ];
+  const navLinks = getNavLinks(locale);
 
   // const otherLocale = currentLocale === "en" ? "sw" : "en";
 

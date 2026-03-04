@@ -3,15 +3,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Send, CheckCircle } from "lucide-react";
-
-const wards = [
-  "Lusheya/Lubinu Ward",
-  "East Wanga Ward",
-  "Marama Central Ward",
-  "Marama East Ward",
-  "Marama North Ward",
-  "Marama West Ward",
-];
+import { wards } from "@/data/wards";
 
 export default function FeedbackSection() {
   const [formState, setFormState] = useState({

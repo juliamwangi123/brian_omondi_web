@@ -3,40 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useLocale } from "next-intl";
-import { Wheat, GraduationCap, HeartPulse, Users, Hammer } from "lucide-react";
-
-const pillars = [
-  {
-    icon: Wheat,
-    title: "Agriculture",
-    description:
-      "Subsidised fertiliser, modern irrigation, and direct support for sugarcane and maize farmers across all six wards.",
-  },
-  {
-    icon: GraduationCap,
-    title: "Education",
-    description:
-      "Bursary funds for needy students, modern classrooms, and free sanitary towels for girls in every school.",
-  },
-  {
-    icon: HeartPulse,
-    title: "Health",
-    description:
-      "Upgrading Mumias Sub-County Hospital, mobile clinic outreach, and maternal health support.",
-  },
-  {
-    icon: Hammer,
-    title: "Infrastructure",
-    description:
-      "Tarmacking key roads, clean water projects, and rural electrification across Mumias West.",
-  },
-  {
-    icon: Users,
-    title: "Youth & Women",
-    description:
-      "Youth empowerment funds, women's chama support, and vocational training centres.",
-  },
-];
+import { manifestoPillars } from "@/data/manifestoPillars";
 
 export default function ManifestoHighlights() {
   const locale = useLocale();
@@ -73,7 +40,7 @@ export default function ManifestoHighlights() {
 
         {/* Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {pillars.map((pillar, i) => {
+          {manifestoPillars.map((pillar, i) => {
             const Icon = pillar.icon;
             return (
               <motion.div
