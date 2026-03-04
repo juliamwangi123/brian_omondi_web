@@ -1,0 +1,100 @@
+{
+  "nav": {
+    "home": "Nyumbani",
+    "about": "Kuhusu",
+    "manifesto": "Manifesto",
+    "news": "Habari",
+    "gallery": "Picha",
+    "volunteer": "Jitokeze",
+    "donate": "Changia"
+  },
+  "hero": {
+    "title": "Hon. Brian Omondi",
+    "subtitle": "Mgombea MP Mumias West 2027",
+    "tagline": "Mwana wa Ardhi, Mtumishi wa Watu",
+    "cta": "Jifunze Zaidi"
+  },
+  "about": {
+    "title": "Kuhusu Brian Omondi",
+    "bio": "Mwana wa Mumias West, aspiring MP, committed to serving the people with integrity, action, and results.",
+    "vision": "Mumias West yenye mafanikio ambapo kila raia ana ufahamu wa elimu, huduma za afya, na fursa za kiuchumi."
+  },
+  "manifesto": {
+    "title": "Manifesto Yetu",
+    "agriculture": {
+      "title": "Kilimo",
+      "points": [
+        "Programu za soko la sabuni kwa wakulima wote",
+        "Mifumo ya kumimina kwa wakulima wa sukari na mahindi",
+        "Ushirikiano moja kwa moja na kufa kwa Kampuni ya Sukari ya Mumias"
+      ]
+    },
+    "education": {
+      "title": "Elimu",
+      "points": [
+        "Fedha za masomo kwa wanafunzi wenye haja katika kila kata",
+        "Kujenga darasa ja sasa",
+        "Taulo za kina cha bure kwa wasichana"
+      ]
+    },
+    "health": {
+      "title": "Afya",
+      "points": [
+        "Kuboreshe Hospitali ya Kimro ya Mumias West",
+        "Kliniki mobili kwa kila janda",
+        "Msaada wa afya ya wazazi"
+      ]
+    },
+    "infrastructure": {
+      "title": "Miundombinu",
+      "points": [
+        "Kuza barabara za makuu katika Mumias West",
+        "Mradi wa maji safi kwa kila kijiju",
+        "Uendelezo wa umeme kwa kijiji"
+      ]
+    },
+    "youth": {
+      "title": "Vijana na Wanawake",
+      "points": [
+        "Fedha za uongezaji wa vijana na mafunzo ya kujifunza",
+        "Msaada wa chama cha wanawake",
+        "Mifumo ya elimu ya ufundi katika kila kata"
+      ]
+    }
+  },
+  "stats": {
+    "wards": "Kata 6",
+    "experience": "Miaka 15+",
+    "volunteers": "Wajitokezi 500+",
+    "commitment": "Jitokeze Kamili"
+  },
+  "donate": {
+    "title": "Sambaza Kampeni Yetu",
+    "subtitle": "Kila mchango unasaidia sisi kufikia watu zaidi na kutoa matokeo",
+    "tiers": {
+      "100": "KES 100",
+      "500": "KES 500",
+      "1000": "KES 1,000",
+      "2500": "KES 2,500"
+    },
+    "custom": "Kiasi Kinachobadilika",
+    "phone": "Nambari ya Simu (07XXXXXXXX)",
+    "name": "Jina Lako (Hiari)",
+    "donate_button": "Changia kupitia M-Pesa",
+    "pending": "Kujibu jitokeze...",
+    "success": "Asante kwa msaada wako!",
+    "error": "Kosa limetokea. Tafadhali jaribu tena."
+  },
+  "contact": {
+    "title": "Wasiliana Nasi",
+    "subtitle": "Una maswali au unataka kujitokeza? Wasiliana nasi",
+    "email": "Barua Pepe",
+    "phone": "Simu",
+    "message": "Ujumbe",
+    "send": "Tuma Ujumbe"
+  },
+  "footer": {
+    "disclaimer": "Idhini na Hon. Brian Omondi, Mgombea MP Mumias West 2027",
+    "copyright": "Haki zote zimehifadhiwa"
+  }
+}
