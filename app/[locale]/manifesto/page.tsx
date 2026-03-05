@@ -43,7 +43,7 @@ export default function ManifestoPage() {
               className="font-playfair font-bold text-white"
               style={{ fontSize: "clamp(36px, 5vw, 60px)" }}
             >
-              Brian's Manifesto
+               Brian&apos;s Manifesto
             </h1>
             <p className="text-gray-400 max-w-xl text-base md:text-lg">
               Five pillars. Six wards. One vision for a transformed Mumias West.

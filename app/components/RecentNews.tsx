@@ -35,7 +35,7 @@ export default function RecentNews() {
             From the Campaign Trail
           </h2>
           <p className="text-gray-500 max-w-xl mx-auto text-base md:text-lg">
-            Stay up to date with Brian's journey across Mumias West.
+            Stay up to date with  Brian&apos;s journey across Mumias West.
           </p>
         </motion.div>
 

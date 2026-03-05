@@ -2,7 +2,7 @@
 
 export const dynamic = "force-dynamic";
 
-import { useTranslations } from "next-intl";
+// import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useLocale } from "next-intl";
 import { motion } from "framer-motion";
@@ -15,7 +15,7 @@ import FeedbackSection from "../components/FeedbackSection";
 import RecentNews from "../components/RecentNews";
 
 export default function HomePage() {
-  const t = useTranslations();
+  // const t = useTranslations();
   const locale = useLocale();
 
   const containerVariants = {
@@ -31,12 +31,12 @@ export default function HomePage() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   };
 
-  const scrollArrowVariants = {
-    animate: {
-      y: [0, 8, 0],
-      transition: { duration: 2, repeat: Infinity },
-    },
-  };
+  // const scrollArrowVariants = {
+  //   animate: {
+  //     y: [0, 8, 0],
+  //     transition: { duration: 2, repeat: Infinity },
+  //   },
+  // };
 
   return (
     <div>
@@ -153,7 +153,7 @@ export default function HomePage() {
                 className="w-full md:w-auto px-8 py-3.5 rounded-xl font-bold transition-all hover:bg-white/10 text-center"
                 style={{ border: "2px solid #d4a017", color: "#d4a017", fontSize: "clamp(13px, 3vw, 16px)" }}
               >
-                Read His Manifesto
+                Read My Manifesto
               </Link>
             </motion.div>
           </motion.div>

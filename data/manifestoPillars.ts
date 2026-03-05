@@ -7,7 +7,7 @@ export const manifestoPillars = [
     title: "Agriculture",
     subtitle: "Feeding Mumias West, Empowering Our Farmers",
     description:
-      "Agriculture is the lifeblood of Mumias West. Brian's plan puts farmers first — from the smallholder growing maize to the sugarcane farmer waiting for fair pay.",
+      "Agriculture is the lifeblood of Mumias West.  Brian&apos;s plan puts farmers first — from the smallholder growing maize to the sugarcane farmer waiting for fair pay.",
     points: [
       "Subsidised fertiliser programme to reduce input costs for maize and sugarcane farmers",
       "Modern irrigation infrastructure to reduce dependence on rainfall",
@@ -39,7 +39,7 @@ export const manifestoPillars = [
     title: "Health",
     subtitle: "Quality Healthcare Within Reach of Every Family",
     description:
-      "Every family in Mumias West deserves access to quality healthcare without travelling long distances or paying beyond their means. Brian's health agenda puts people before politics.",
+      "Every family in Mumias West deserves access to quality healthcare without travelling long distances or paying beyond their means.  Brian&apos;s health agenda puts people before politics.",
     points: [
       "Upgrade Mumias Sub-County Hospital with modern equipment and staffing",
       "Mobile clinic programme to reach remote areas across all six wards",
@@ -55,7 +55,7 @@ export const manifestoPillars = [
     title: "Infrastructure",
     subtitle: "Building the Roads, Water and Power Mumias West Deserves",
     description:
-      "Infrastructure is the foundation of development. You cannot build a hospital people cannot reach or a school with no electricity. Brian's infrastructure agenda is practical and urgent.",
+      "Infrastructure is the foundation of development. You cannot build a hospital people cannot reach or a school with no electricity.  Brian&apos;s infrastructure agenda is practical and urgent.",
     points: [
       "Tarmacking of key feeder roads connecting farming communities to markets",
       "Grading and maintenance of all murram roads across six wards",
@@ -71,7 +71,7 @@ export const manifestoPillars = [
     title: "Youth & Women",
     subtitle: "Unlocking the Potential of Our People",
     description:
-      "The youth and women of Mumias West are not a problem to be managed — they are the solution the constituency has been waiting for. Brian's plan gives them the tools to lead.",
+      "The youth and women of Mumias West are not a problem to be managed — they are the solution the constituency has been waiting for.  Brian&apos;s plan gives them the tools to lead.",
     points: [
       "Youth empowerment fund to support business startups across the constituency",
       "Vocational training centres offering skills in carpentry, tailoring, ICT and agribusiness",

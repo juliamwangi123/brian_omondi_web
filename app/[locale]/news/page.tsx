@@ -56,7 +56,7 @@ export default function NewsPage() {
               From the Campaign Trail
             </h1>
             <p className="text-gray-400 max-w-xl text-base md:text-lg">
-              Stay up to date with Brian's journey across Mumias West.
+              Stay up to date with  Brian&apos;s journey across Mumias West.
             </p>
           </motion.div>
         </div>

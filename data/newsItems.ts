@@ -39,7 +39,7 @@ export const newsItems = [
     image: "/images/pic6.jpg",
     category: "Infrastructure",
     date: "November 30, 2025",
-    title: "Roads, Water and Electrification — Brian's Infrastructure Promise",
+    title: "Roads, Water and Electrification —  Brian&apos;s Infrastructure Promise",
     excerpt:
       "A comprehensive infrastructure agenda covering tarmacking of key roads, clean water access, and rural electrification was shared with constituents.",
     slug: "infrastructure-promise",
