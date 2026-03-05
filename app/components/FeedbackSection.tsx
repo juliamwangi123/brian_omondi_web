@@ -85,9 +85,9 @@ export default function FeedbackSection() {
             <div className="w-12 h-0.5 bg-[#d4a017]" />
 
             <p className="text-gray-500 text-sm leading-relaxed italic">
-              "Every message will be read. Your voice will shape the manifesto
-              and the priorities of this campaign."
-            </p>
+  &ldquo;Every message will be read. Your voice will shape the manifesto
+  and the priorities of this campaign.&rdquo;
+</p>
 
             <div className="flex items-center gap-4 pt-2">
               {["6", "Wards", "·", "One", "Voice"].map((word, i) => (

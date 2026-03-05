@@ -21,10 +21,10 @@ export default function MissionStatement() {
           transition={{ duration: 0.8 }}
         >
           <div className="relative">
-            <div className="absolute -top-8 -left-4 font-playfair text-[#d4a017] pointer-events-none select-none"
-              style={{ fontSize: "160px", opacity: 0.08, lineHeight: 1 }}>
-              "
-            </div>
+          <div className="absolute -top-8 -left-4 font-playfair text-[#d4a017] pointer-events-none select-none"
+  style={{ fontSize: "160px", opacity: 0.08, lineHeight: 1 }}>
+  &ldquo;
+</div>
             <div className="relative z-10">
               <p
                 className="font-playfair font-bold text-white leading-tight mb-2"
