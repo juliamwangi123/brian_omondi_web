@@ -2,13 +2,10 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-// import { useLocale} from "next-intl";
 import { Menu, X } from "lucide-react";
 import { getNavLinks } from "@/data/navLinks";
 
-export default function Navbar({ locale }: { locale: string }) {
-  // const t = useTranslations();
-  // const currentLocale = useLocale();
+export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -20,9 +17,7 @@ export default function Navbar({ locale }: { locale: string }) {
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
-  const navLinks = getNavLinks(locale);
-
-  // const otherLocale = currentLocale === "en" ? "sw" : "en";
+  const navLinks = getNavLinks();
 
   return (
     <nav
@@ -34,7 +29,7 @@ export default function Navbar({ locale }: { locale: string }) {
     >
       <div className="max-w-7xl mx-auto px-6 md:px-16 flex justify-between items-center py-4">
         {/* Logo */}
-        <Link href={`/${locale}`} className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2">
           <div className="w-10 h-10 bg-[#d4a017] rounded-full flex items-center justify-center">
             <span className="text-[#0d2b14] font-playfair font-bold text-lg">B</span>
           </div>
@@ -83,7 +78,7 @@ export default function Navbar({ locale }: { locale: string }) {
               </Link>
             ))}
             <Link
-              href={`/${locale}/donate`}
+              href="/donate"
               className="px-4 py-3 rounded-lg font-semibold text-center transition-all hover:brightness-110"
               style={{ background: "#d4a017", color: "#0d2b14" }}
               onClick={() => setIsOpen(false)}

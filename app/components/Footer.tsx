@@ -1,15 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { useLocale } from "next-intl";
 import { Phone, Mail, MapPin } from "lucide-react";
 import { getNavLinks } from "@/data/navLinks";
 import { socialLinks } from "@/data/socialLinks";
 
 export default function Footer() {
-  const locale = useLocale();
-
-  const navLinks = getNavLinks(locale);
+  const navLinks = getNavLinks();
   const socials = socialLinks;
 
   return (

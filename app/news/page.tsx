@@ -5,13 +5,10 @@ export const dynamic = "force-dynamic";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useLocale } from "next-intl";
 import { Calendar, ArrowRight } from "lucide-react";
 import { newsItems } from "@/data/newsItems";
 
 export default function NewsPage() {
-  const locale = useLocale();
-
   const [featured, ...rest] = newsItems;
 
   return (
@@ -112,7 +109,7 @@ export default function NewsPage() {
             </p>
             <div className="w-12 h-0.5 bg-[#d4a017]" />
             <Link
-              href={`/${locale}/news/${featured.slug}`}
+              href={`/news/${featured.slug}`}
               className="inline-flex items-center gap-2 font-bold text-[#0d2b14] hover:text-[#d4a017] transition-colors text-sm"
             >
               Read Full Story <ArrowRight className="w-4 h-4" />
@@ -121,29 +118,29 @@ export default function NewsPage() {
         </motion.div>
       </section>
 
-      {/* Rest of Articles */}
-      <section className="max-w-7xl mx-auto px-8 md:px-16 pb-24">
+      {/* News Grid */}
+      <section className="max-w-7xl mx-auto px-8 md:px-16 pb-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {rest.map((item, i) => (
+          {rest.map((item, index) => (
             <motion.div
               key={item.slug}
-              className="bg-white rounded-2xl overflow-hidden shadow-md hover:-translate-y-1 transition-all duration-300"
+              className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all group"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               {/* Image */}
-              <div className="relative h-48">
+              <div className="relative h-48 overflow-hidden bg-gray-200">
                 <Image
                   src={item.image}
                   alt={item.title}
                   fill
-                  className="object-cover object-top"
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute top-3 left-3">
                   <span
-                    className="px-3 py-1 rounded-full text-xs font-bold"
+                    className="px-2 py-1 rounded text-xs font-bold"
                     style={{ background: "#d4a017", color: "#0d2b14" }}
                   >
                     {item.category}
@@ -157,17 +154,17 @@ export default function NewsPage() {
                   <Calendar className="w-3.5 h-3.5" />
                   <span>{item.date}</span>
                 </div>
-                <h3 className="font-playfair font-bold text-[#0d2b14] text-lg leading-snug">
-                  {item.title}
+                <h3 className="font-playfair font-bold text-[#0d2b14] text-lg leading-snug hover:text-[#d4a017] transition-colors cursor-pointer">
+                  <Link href={`/news/${item.slug}`}>{item.title}</Link>
                 </h3>
                 <p className="text-gray-500 text-sm leading-relaxed">
                   {item.excerpt}
                 </p>
                 <Link
-                  href={`/${locale}/news/${item.slug}`}
-                  className="inline-flex items-center gap-1 text-[#d4a017] text-sm font-bold hover:underline mt-1"
+                  href={`/news/${item.slug}`}
+                  className="text-[#d4a017] text-sm font-bold hover:underline mt-1"
                 >
-                  Read More <ArrowRight className="w-3.5 h-3.5" />
+                  Read More →
                 </Link>
               </div>
             </motion.div>

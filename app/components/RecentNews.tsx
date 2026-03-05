@@ -3,11 +3,9 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useLocale } from "next-intl";
 import { newsItems } from "@/data/newsItems";
 
 export default function RecentNews() {
-  const locale = useLocale();
 
   return (
     <section className="py-16 md:py-24 bg-gray-50">
@@ -51,7 +49,7 @@ export default function RecentNews() {
               transition={{ duration: 0.5, delay: i * 0.1 }}
             >
               {/* Image — clicking it also goes to article */}
-              <Link href={`/${locale}/news/${item.slug}`}>
+              <Link href={`/news/${item.slug}`}>
                 <div className="relative h-48 cursor-pointer">
                   <Image
                     src={item.image}
@@ -74,7 +72,7 @@ export default function RecentNews() {
               {/* Content */}
               <div className="p-6 flex flex-col gap-3">
                 <p className="text-gray-400 text-xs">{item.date}</p>
-                <Link href={`/${locale}/news/${item.slug}`}>
+                <Link href={`/news/${item.slug}`}>
                   <h3 className="font-playfair font-bold text-[#0d2b14] text-lg leading-snug hover:text-[#d4a017] transition-colors cursor-pointer">
                     {item.title}
                   </h3>
@@ -83,7 +81,7 @@ export default function RecentNews() {
                   {item.excerpt}
                 </p>
                 <Link
-                  href={`/${locale}/news/${item.slug}`}
+                  href={`/news/${item.slug}`}
                   className="text-[#d4a017] text-sm font-bold hover:underline mt-1"
                 >
                   Read More →
@@ -102,7 +100,7 @@ export default function RecentNews() {
           transition={{ duration: 0.6, delay: 0.3 }}
         >
           <Link
-            href={`/${locale}/news`}
+            href="/news"
             className="inline-block px-8 py-3.5 rounded-xl font-bold transition-all hover:bg-[#0d2b14] hover:text-white"
             style={{ border: "2px solid #0d2b14", color: "#0d2b14" }}
           >

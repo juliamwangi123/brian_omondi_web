@@ -7,7 +7,7 @@ This document outlines the centralization of hardcoded data into a dedicated `da
 ### 1. **data/navLinks.ts**
 Contains navigation links used across multiple components.
 - **Used in:** `Navbar.tsx`, `Footer.tsx`
-- **Function:** `getNavLinks(locale: string)` - returns locale-specific navigation links
+- **Function:** `getNavLinks()` - returns navigation links
 - **Links:** Home, Manifesto, News, Gallery
 
 ### 2. **data/socialLinks.ts**
@@ -23,7 +23,7 @@ Contains list of all six wards in Mumias West.
 
 ### 4. **data/manifestoPillars.ts**
 Contains comprehensive manifesto data with full pillar details.
-- **Used in:** `ManifestoHighlights.tsx`, `app/[locale]/manifesto/page.tsx`
+- **Used in:** `ManifestoHighlights.tsx`
 - **Data includes:**
   - Icon (lucide-react component)
   - Number (01-05)
@@ -35,7 +35,7 @@ Contains comprehensive manifesto data with full pillar details.
 
 ### 5. **data/newsItems.ts**
 Contains all news/campaign articles.
-- **Used in:** `RecentNews.tsx`, `app/[locale]/news/page.tsx`
+- **Used in:** `RecentNews.tsx`
 - **Data includes:**
   - Image path
   - Category
@@ -43,7 +43,7 @@ Contains all news/campaign articles.
   - Slug (for routing)
   - Title
   - Excerpt
-- **Note:** RecentNews shows first 3 items, News page shows all 5
+- **Note:** RecentNews shows first 3 items
 
 ## Updated Components
 
@@ -54,8 +54,6 @@ Contains all news/campaign articles.
 | `ManifestoHighlights.tsx` | Imports `manifestoPillars`, uses in mapping | manifestoPillars.ts |
 | `RecentNews.tsx` | Imports `newsItems`, displays first 3 | newsItems.ts |
 | `FeedbackSection.tsx` | Imports `wards` | wards.ts |
-| `app/[locale]/manifesto/page.tsx` | Imports `manifestoPillars`, uses twice (quicklinks + display) | manifestoPillars.ts |
-| `app/[locale]/news/page.tsx` | Imports `newsItems` | newsItems.ts |
 
 ## Benefits
 
@@ -70,5 +68,4 @@ Contains all news/campaign articles.
 - All imports use `@/data/` path alias
 - Navigation links are generated dynamically with locale parameter
 - Icon components are imported directly in data files (Lucide React)
-- No breaking changes to component interfaces
 - All components maintain their original functionality and styling

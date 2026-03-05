@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 export default function AboutPreview() {
-  // const locale = useLocale();
 
   return (
     <section id="about" className="py-16 md:py-24 bg-gray-50">

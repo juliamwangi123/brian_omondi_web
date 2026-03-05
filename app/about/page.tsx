@@ -2,13 +2,10 @@
 
 export const dynamic = "force-dynamic";
 
-import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { Heart, Target, Users, Award } from "lucide-react";
 
 export default function AboutPage() {
-  const t = useTranslations("about");
-
   const values = [
     {
       icon: Heart,
@@ -44,47 +41,34 @@ export default function AboutPage() {
             className="text-center"
           >
             <h1 className="text-5xl md:text-6xl font-playfair font-bold mb-6">
-              {t("title")}
+              About Brian Omondi
             </h1>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Bio Section */}
-      <section className="py-16 bg-white">
-        <div className="container max-w-3xl">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="space-y-8"
-          >
-            <div className="text-center">
-              <p className="text-xl font-source-sans text-gray-700 leading-relaxed mb-6">
-                {t("bio")}
-              </p>
-              <p className="text-lg font-source-sans text-gray-600 leading-relaxed">
-                {t("vision")}
-              </p>
-            </div>
+            <p className="text-xl text-white/80 max-w-2xl mx-auto">
+              Son of Mumias West, committed to transforming our community through integrity, action, and results
+            </p>
           </motion.div>
         </div>
       </section>
 
       {/* Values Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-20 bg-gray-50">
         <div className="container">
-          <motion.h2
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-playfair font-bold text-center mb-12 text-campaign-green"
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
           >
-            Our Core Values
-          </motion.h2>
+            <h2 className="text-4xl font-playfair font-bold text-campaign-green mb-4">
+              Core Values
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              These principles guide every decision and action
+            </p>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value, index) => {
               const IconComponent = value.icon;
               return (
@@ -93,10 +77,10 @@ export default function AboutPage() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition"
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="bg-white rounded-xl p-8 text-center shadow-sm hover:shadow-md transition-shadow"
                 >
-                  <IconComponent className="w-12 h-12 text-campaign-gold mb-4" />
+                  <IconComponent className="w-12 h-12 text-campaign-gold mb-4 mx-auto" />
                   <h3 className="text-xl font-playfair font-bold mb-3 text-campaign-green">
                     {value.title}
                   </h3>

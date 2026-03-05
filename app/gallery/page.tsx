@@ -30,26 +30,25 @@ export default function GalleryPage() {
       {/* Gallery Grid */}
       <section className="py-16 bg-white">
         <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {galleries.map((item, index) => (
               <motion.div
                 key={item.id}
-                initial={{ opacity: 0, scale: 0.95 }}
+                initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: (index % 6) * 0.1 }}
-                className="bg-gray-200 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition h-80 flex flex-col justify-center items-center"
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                className="group relative overflow-hidden rounded-xl aspect-square bg-gray-200 cursor-pointer"
               >
-                <div className="w-full h-full bg-gradient-to-br from-campaign-green to-campaign-gold flex flex-col items-center justify-center text-white">
-                  <div className="text-center">
-                    <p className="text-sm font-source-sans opacity-75 mb-2">
-                      {item.category}
-                    </p>
-                    <p className="font-playfair text-lg font-bold">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#0d2b14] to-[#d4a017] opacity-0 group-hover:opacity-80 transition-opacity duration-300 flex items-center justify-center">
+                  <div className="text-center text-white">
+                    <h3 className="font-playfair font-bold text-xl mb-2">
                       {item.title}
-                    </p>
+                    </h3>
+                    <p className="text-sm">{item.category}</p>
                   </div>
                 </div>
+                <div className="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400" />
               </motion.div>
             ))}
           </div>

@@ -2,11 +2,9 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { useLocale } from "next-intl";
 import { manifestoPillars } from "@/data/manifestoPillars";
 
 export default function ManifestoHighlights() {
-  const locale = useLocale();
 
   return (
     <section className="py-16 md:py-24 bg-white">
@@ -79,7 +77,7 @@ export default function ManifestoHighlights() {
               Read the full manifesto to see every commitment in detail.
             </p>
             <Link
-              href={`/${locale}/manifesto`}
+              href="/manifesto"
               className="px-6 py-3 rounded-xl font-bold transition-all hover:brightness-110 text-sm"
               style={{ background: "#d4a017", color: "#0d2b14" }}
             >

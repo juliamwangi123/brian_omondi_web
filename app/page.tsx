@@ -2,22 +2,16 @@
 
 export const dynamic = "force-dynamic";
 
-// import { useTranslations } from "next-intl";
 import Link from "next/link";
-import { useLocale } from "next-intl";
 import { motion } from "framer-motion";
-// import { ChevronDown } from "lucide-react";
 import Image from "next/image";
-import MissionStatement from "../components/MissionStatement";
-import AboutPreview from "../components/AboutPreview";
-import ManifestoHighlights from "../components/ManifestoHighlights";
-import FeedbackSection from "../components/FeedbackSection";
-import RecentNews from "../components/RecentNews";
+import MissionStatement from "./components/MissionStatement";
+import AboutPreview from "./components/AboutPreview";
+import ManifestoHighlights from "./components/ManifestoHighlights";
+import FeedbackSection from "./components/FeedbackSection";
+import RecentNews from "./components/RecentNews";
 
 export default function HomePage() {
-  // const t = useTranslations();
-  const locale = useLocale();
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -31,13 +25,6 @@ export default function HomePage() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   };
 
-  // const scrollArrowVariants = {
-  //   animate: {
-  //     y: [0, 8, 0],
-  //     transition: { duration: 2, repeat: Infinity },
-  //   },
-  // };
-
   return (
     <div>
       {/* Hero Section */}
@@ -47,29 +34,21 @@ export default function HomePage() {
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/pic6.jpg"
-            alt="Hon. Brian Omondi - Mumias West MP Aspirant 2027"
+            alt="Brian Omondi campaign hero"
             fill
+            className="object-cover object-center"
             priority
-            className="object-cover md:translate-x-[15%]"
-            style={{ objectPosition: "10% 7%" }}
-          />
-          {/* Desktop gradient */}
-          <div
-            className="absolute inset-0 hidden md:block"
-            style={{
-              background:
-                "linear-gradient(to right, rgba(0,0,0,0.88) 30%, rgba(0,0,0,0.3) 55%, rgba(0,0,0,0.05) 100%)",
-            }}
-          />
-          {/* Mobile gradient */}
-          <div
-            className="absolute inset-0 md:hidden"
-            style={{
-              background:
-                "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 30%, rgba(13,43,20,0.85) 50%, rgba(13,43,20,0.98) 100%)",
-            }}
           />
         </div>
+
+        {/* Gradient overlay */}
+        <div
+          className="absolute inset-0 z-[1]"
+          style={{
+            background:
+              "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 30%, rgba(13,43,20,0.85) 50%, rgba(13,43,20,0.98) 100%)",
+          }}
+        />
 
         {/* Grain texture */}
         <div
@@ -103,31 +82,16 @@ export default function HomePage() {
               </span>
             </motion.div>
 
-            {/* Name */}
+            {/* Main headline */}
             <motion.h1
               variants={itemVariants}
-              className="font-playfair font-bold text-white leading-tight text-center md:text-left "
-              style={{ fontSize: "clamp(22px, 6vw, 60px)" }}
-            >
-              Hon. Brian Omondi
-            </motion.h1>
-
-            {/* Tagline */}
-            <motion.p
-              variants={itemVariants}
-              className="font-playfair italic text-[#d4a017]"
-              style={{ fontSize: "clamp(16px, 2.5vw, 28px)" }}
+              className="font-playfair font-bold text-white leading-tight"
+              style={{ fontSize: "clamp(32px, 6vw, 68px)" }}
             >
               Son of the Soil, Servant of the People
-            </motion.p>
+            </motion.h1>
 
-            {/* Gold divider — desktop only */}
-            <motion.div
-              variants={itemVariants}
-              className="w-16 h-0.5 bg-[#d4a017] hidden md:block"
-            />
-
-            {/* Bio — desktop only */}
+            {/* Subtitle paragraph */}
             <motion.p
               variants={itemVariants}
               className="text-gray-300 text-base md:text-lg leading-relaxed max-w-lg hidden md:block"
@@ -142,14 +106,14 @@ export default function HomePage() {
               className="flex flex-col sm:flex-row gap-3 pt-1 w-full md:w-auto"
             >
               <Link
-                href={`/${locale}#about`}
+                href="#about"
                 className="w-full md:w-auto px-8 py-3.5 rounded-xl font-bold transition-all hover:brightness-110 text-center"
                 style={{ background: "#d4a017", color: "#0d2b14", fontSize: "clamp(13px, 3vw, 16px)" }}
               >
                 Join the Movement
               </Link>
               <Link
-                href={`/${locale}/manifesto`}
+                href="/manifesto"
                 className="w-full md:w-auto px-8 py-3.5 rounded-xl font-bold transition-all hover:bg-white/10 text-center"
                 style={{ border: "2px solid #d4a017", color: "#d4a017", fontSize: "clamp(13px, 3vw, 16px)" }}
               >
@@ -158,15 +122,6 @@ export default function HomePage() {
             </motion.div>
           </motion.div>
         </div>
-
-        {/* Scroll indicator */}
-        {/* <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
-          variants={scrollArrowVariants}
-          animate="animate"
-        >
-          <ChevronDown className="w-7 h-7 text-white/50" />
-        </motion.div> */}
       </section>
 
       {/* Mission Statement Section  */}
