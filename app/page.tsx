@@ -1,10 +1,9 @@
 "use client";
 
-export const dynamic = "force-dynamic";
-
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { ChevronDown } from "lucide-react";
 import MissionStatement from "./components/MissionStatement";
 import AboutPreview from "./components/AboutPreview";
 import ManifestoHighlights from "./components/ManifestoHighlights";
@@ -25,6 +24,13 @@ export default function HomePage() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   };
 
+  const scrollArrowVariants = {
+    animate: {
+      y: [0, 8, 0],
+      transition: { duration: 2, repeat: Infinity },
+    },
+  };
+
   return (
     <div>
       {/* Hero Section */}
@@ -34,21 +40,29 @@ export default function HomePage() {
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/pic6.jpg"
-            alt="Brian Omondi campaign hero"
+            alt="Hon. Brian Omondi - Mumias West MP Aspirant 2027"
             fill
-            className="object-cover object-center"
             priority
+            className="object-cover md:translate-x-[15%]"
+            style={{ objectPosition: "center 10%" }}
+          />
+          {/* Desktop gradient */}
+          <div
+            className="absolute inset-0 hidden md:block"
+            style={{
+              background:
+                "linear-gradient(to right, rgba(0,0,0,0.88) 30%, rgba(0,0,0,0.3) 55%, rgba(0,0,0,0.05) 100%)",
+            }}
+          />
+          {/* Mobile gradient */}
+          <div
+            className="absolute inset-0 md:hidden"
+            style={{
+              background:
+                "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 30%, rgba(13,43,20,0.85) 50%, rgba(13,43,20,0.98) 100%)",
+            }}
           />
         </div>
-
-        {/* Gradient overlay */}
-        <div
-          className="absolute inset-0 z-[1]"
-          style={{
-            background:
-              "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 30%, rgba(13,43,20,0.85) 50%, rgba(13,43,20,0.98) 100%)",
-          }}
-        />
 
         {/* Grain texture */}
         <div
@@ -82,16 +96,31 @@ export default function HomePage() {
               </span>
             </motion.div>
 
-            {/* Main headline */}
+            {/* Name */}
             <motion.h1
               variants={itemVariants}
               className="font-playfair font-bold text-white leading-tight"
-              style={{ fontSize: "clamp(32px, 6vw, 68px)" }}
+              style={{ fontSize: "clamp(22px, 6vw, 60px)" }}
             >
-              Son of the Soil, Servant of the People
+              Hon. Brian Omondi
             </motion.h1>
 
-            {/* Subtitle paragraph */}
+            {/* Tagline */}
+            <motion.p
+              variants={itemVariants}
+              className="font-playfair italic text-[#d4a017]"
+              style={{ fontSize: "clamp(16px, 2.5vw, 28px)" }}
+            >
+              Son of the Soil, Servant of the People
+            </motion.p>
+
+            {/* Gold divider — desktop only */}
+            <motion.div
+              variants={itemVariants}
+              className="w-16 h-0.5 bg-[#d4a017] hidden md:block"
+            />
+
+            {/* Bio — desktop only */}
             <motion.p
               variants={itemVariants}
               className="text-gray-300 text-base md:text-lg leading-relaxed max-w-lg hidden md:block"
@@ -122,16 +151,31 @@ export default function HomePage() {
             </motion.div>
           </motion.div>
         </div>
+
+        {/* Scroll indicator */}
+        <motion.div
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
+          variants={scrollArrowVariants}
+          animate="animate"
+        >
+          <ChevronDown className="w-7 h-7 text-white/50" />
+        </motion.div>
       </section>
 
-      {/* Mission Statement Section  */}
-      <MissionStatement/>
-    
+      {/* Mission Statement */}
+      <MissionStatement />
+
       {/* About Preview */}
       <AboutPreview />
+
+      {/* Manifesto Highlights */}
       <ManifestoHighlights />
+
+      {/* Recent News */}
       <RecentNews />
-      <FeedbackSection/>
+
+      {/* Feedback */}
+      <FeedbackSection />
     </div>
   );
 }
