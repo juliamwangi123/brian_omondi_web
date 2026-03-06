@@ -44,7 +44,7 @@ export default function HomePage() {
             fill
             priority
             className="object-cover md:translate-x-[15%]"
-            style={{ objectPosition: "center 10%" }}
+            style={{ objectPosition: "center 8%" }}
           />
           {/* Desktop gradient */}
           <div
