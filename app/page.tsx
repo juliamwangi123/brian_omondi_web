@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { ChevronDown } from "lucide-react";
 import MissionStatement from "./components/MissionStatement";
 import AboutPreview from "./components/AboutPreview";
 import ManifestoHighlights from "./components/ManifestoHighlights";
@@ -24,12 +23,7 @@ export default function HomePage() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   };
 
-  const scrollArrowVariants = {
-    animate: {
-      y: [0, 8, 0],
-      transition: { duration: 2, repeat: Infinity },
-    },
-  };
+
 
   return (
     <div>
@@ -153,13 +147,7 @@ export default function HomePage() {
         </div>
 
         {/* Scroll indicator */}
-        <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
-          variants={scrollArrowVariants}
-          animate="animate"
-        >
-          <ChevronDown className="w-7 h-7 text-white/50" />
-        </motion.div>
+\        
       </section>
 
       {/* Mission Statement */}
