@@ -67,7 +67,7 @@ export default function NewsPage() {
           transition={{ duration: 0.7 }}
         >
           {/* Image */}
-          <div className="relative h-64 md:h-auto min-h-[300px]">
+          <div className="relative h-64 md:h-auto md:min-h-[400px] overflow-hidden">
             <Image
               src={featured.image}
               alt={featured.title}
@@ -129,12 +129,12 @@ export default function NewsPage() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               {/* Image */}
-              <div className="relative h-48 overflow-hidden bg-gray-200">
+              <div className="relative w-full aspect-[4/3] overflow-hidden bg-gray-200">
                 <Image
                   src={item.image}
                   alt={item.title}
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="object-cover object-top group-hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute top-3 left-3">
                   <span
