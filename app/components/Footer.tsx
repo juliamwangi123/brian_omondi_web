@@ -91,7 +91,7 @@ export default function Footer() {
                   href="tel:+254700000000"
                   className="text-gray-400 text-sm hover:text-[#d4a017] transition-colors"
                 >
-                  +254 700 000 000
+                  +254 719 215 215
                 </a>
               </li>
               <li className="flex items-center gap-3">
@@ -110,8 +110,8 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className="border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-8 md:px-16 py-5 flex flex-col sm:flex-row justify-between items-center gap-3">
-          <p className="text-gray-600 text-xs">
+        <div className="max-w-7xl mx-auto px-8 md:px-16 py-5 flex  justify-center items-center ">
+          <p className="text-gray-600 text-xs ">
             © 2027 Brian Omondi. All rights reserved.
           </p>
          

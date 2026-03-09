@@ -17,7 +17,7 @@ Contains social media platform links.
 - **Note:** Imports lucide-react icons directly
 
 ### 3. **data/wards.ts**
-Contains list of all six wards in Mumias West.
+Contains list of all four wards in Mumias West.
 - **Used in:** `FeedbackSection.tsx`
 - **Wards:** Lusheya/Lubinu, East Wanga, Marama Central, Marama East, Marama North, Marama West
 

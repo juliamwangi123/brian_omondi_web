@@ -13,7 +13,7 @@ const newsItems = [
     date: "February 12, 2025",
     title: "Brian Omondi Launches Official 2027 Campaign in Mumias West",
     excerpt:
-      "Hundreds of supporters gathered as Brian officially declared his candidacy, pledging to transform all six wards of Mumias West Constituency.",
+      "Hundreds of supporters gathered as Brian officially declared his candidacy, pledging to transform all four wards of Mumias West Constituency.",
     slug: "campaign-launch",
     content: `
       The campaign is officially on. We packed the grounds at Mumias High School last Friday with supporters from all across the constituency. People came expecting a rally—we gave them something more: a real conversation about where we go from here.
@@ -24,7 +24,7 @@ const newsItems = [
 
       That resonates. Because I do live them. My family farms. I know what it means when the rains fail and there's no support system. I know what it feels like when your child finishes school and can't find work in their own community. I know what it's like when the road to the hospital takes three hours instead of thirty minutes.
 
-      The manifesto Brian has built isn't theory. It's built on conversations from all six wards. Five pillars. Agriculture, education, health, infrastructure, and youth & women empowerment. Every single one is a response to what real people told us they need.
+      The manifesto Brian has built isn't theory. It's built on conversations from all four wards. Five pillars. Agriculture, education, health, infrastructure, and youth & women empowerment. Every single one is a response to what real people told us they need.
 
       Elections are about choices. You can choose more of the same. Or you can choose someone who will show up, listen, and deliver results. That's what this campaign is about.
 
@@ -35,12 +35,12 @@ const newsItems = [
     image: "/images/pic4.jpg",
     category: "Community Visit",
     date: "January 28, 2025",
-    title: "Listening Tour Across All Six Wards Reveals Real Priorities",
+    title: "Listening Tour Across All Four Wards Reveals Real Priorities",
     excerpt:
       "Over 50 community meetings in Mumias West revealed agriculture, education, and health as top concerns. Full manifesto based directly on citizen input.",
     slug: "listening-tour",
     content: `
-      We spent the last six weeks in every corner of Mumias West. Not campaigning. Listening.
+      We spent the last four weeks in every corner of Mumias West. Not campaigning. Listening.
 
       Fifty-three community meetings. Over a thousand conversations. And the priorities were crystal clear. Not what politicians think people should need. What people actually told us they need.
 
@@ -114,7 +114,7 @@ const newsItems = [
 
       No one should lose a mother because the nearest hospital is three hours away.
 
-      Healthcare for all six wards. That's non-negotiable.
+      Healthcare for all four wards. That's non-negotiable.
     `,
   },
 ];

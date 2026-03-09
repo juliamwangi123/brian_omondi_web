@@ -27,16 +27,16 @@ export default function MissionStatement() {
 </div>
             <div className="relative z-10">
               <p
-                className="font-playfair font-bold text-white leading-tight mb-2"
-                style={{ fontSize: "clamp(24px, 4vw, 44px)" }}
+                className="font-playfair font-bold text-white leading-tight mb-2 whitespace-nowrap"
+                style={{ fontSize: "clamp(20px, 4vw, 40px)" }}
               >
-                Mumias West deserves
+                Mumias West deserves  better.
               </p>
               <p
                 className="font-playfair italic text-[#d4a017] leading-tight"
                 style={{ fontSize: "clamp(24px, 4vw, 44px)" }}
               >
-                better. I will deliver it.
+                I will deliver it.
               </p>
             </div>
           </div>

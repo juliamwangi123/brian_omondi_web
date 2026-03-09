@@ -120,7 +120,7 @@ export default function HomePage() {
               className="text-gray-300 text-base md:text-lg leading-relaxed max-w-lg hidden md:block"
             >
               Dedicated to transforming Mumias West through integrity, real
-              action, and results that every family in all six wards will feel.
+              action, and results that every family in all four wards will feel.
             </motion.p>
 
             {/* Buttons */}

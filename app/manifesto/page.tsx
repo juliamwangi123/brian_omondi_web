@@ -44,7 +44,7 @@ export default function ManifestoPage() {
                Brian&apos;s Manifesto
             </h1>
             <p className="text-gray-400 max-w-xl text-base md:text-lg">
-              Five pillars. Six wards. One vision for a transformed Mumias West.
+              Five pillars. Four wards. One vision for a transformed Mumias West.
             </p>
             {/* Quick links */}
             <div className="flex flex-wrap justify-center gap-3 mt-4">

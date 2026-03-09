@@ -90,7 +90,7 @@ export default function FeedbackSection() {
 </p>
 
             <div className="flex items-center gap-4 pt-2">
-              {["6", "Wards", "·", "One", "Voice"].map((word, i) => (
+              {["4", "Wards", "·", "One", "Voice"].map((word, i) => (
                 <span
                   key={i}
                   className={

@@ -6,14 +6,14 @@ export const newsItems = [
     slug: "campaign-launch",
     title: "Brian Omondi Launches Official 2027 Campaign in Mumias West",
     excerpt:
-      "Hundreds of supporters gathered as Brian officially declared his candidacy, pledging to transform all six wards.",
+      "Hundreds of supporters gathered as Brian officially declared his candidacy, pledging to transform all four wards.",
   },
   {
     image: "/images/pic4.jpg",
     category: "Community",
     date: "January 28, 2026",
     slug: "community-meetings",
-    title: "Community Meetings Held Across All Six Wards",
+    title: "Community Meetings Held Across All Four Wards",
     excerpt:
       "Brian met with residents to listen and understand the pressing needs of each ward ahead of his manifesto launch.",
   },
@@ -39,7 +39,7 @@ export const newsItems = [
     image: "/images/pic6.jpg",
     category: "Infrastructure",
     date: "November 30, 2025",
-    title: "Roads, Water and Electrification —  Brian&apos;s Infrastructure Promise",
+    title: "Roads, Water and Electrification — Brian's Infrastructure Promise",
     excerpt:
       "A comprehensive infrastructure agenda covering tarmacking of key roads, clean water access, and rural electrification was shared with constituents.",
     slug: "infrastructure-promise",

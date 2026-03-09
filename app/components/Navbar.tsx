@@ -77,14 +77,14 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <Link
+            {/* <Link
               href="/donate"
               className="px-4 py-3 rounded-lg font-semibold text-center transition-all hover:brightness-110"
               style={{ background: "#d4a017", color: "#0d2b14" }}
               onClick={() => setIsOpen(false)}
             >
               Donate Now
-            </Link>
+            </Link> */}
           </div>
         </div>
       )}
