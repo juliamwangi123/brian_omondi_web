@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 
+
+
 const galleries = [
   { id: 1, title: "Sunday Worship with the Community", category: "Community", src: "/images/church1.jpg" },
   { id: 2, title: "Morning Devotion",                  category: "Community", src: "/images/church2.jpg" },
