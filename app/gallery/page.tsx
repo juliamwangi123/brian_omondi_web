@@ -11,7 +11,6 @@ const galleries = [
   { id: 5, title: "Meeting the People – Ward Outreach",category: "Campaign",  src: "/images/gall7.jpg" },
   { id: 6, title: "Grassroots Greetings – Mumias West",category: "Campaign",  src: "/images/gall8.jpg" },
 ];
-
 export default function GalleryPage() {
   return (
     <div className="bg-white min-h-screen">
