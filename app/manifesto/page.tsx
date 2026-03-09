@@ -44,7 +44,7 @@ export default function ManifestoPage() {
                Brian&apos;s Manifesto
             </h1>
             <p className="text-gray-400 max-w-xl text-base md:text-lg">
-              Five pillars. Four wards. One vision for a transformed Mumias West.
+              Eight pillars. Four wards. One vision for a transformed Mumias West.
             </p>
             {/* Quick links */}
             <div className="flex flex-wrap justify-center gap-3 mt-4">
@@ -116,7 +116,7 @@ export default function ManifestoPage() {
                 </p>
               </div>
 
-              {/* Right — points */}
+              {/* Right — points + closing */}
               <div className={`flex flex-col gap-0 ${isEven ? "md:border-l border-[#d4a017]/20 md:pl-16" : "md:border-r border-[#d4a017]/20 md:pr-16 md:order-first"}`}>
                 {pillar.points.map((point, j) => (
                   <motion.div
@@ -135,6 +135,18 @@ export default function ManifestoPage() {
                     </span>
                   </motion.div>
                 ))}
+
+                {pillar.closing && (
+                  <motion.p
+                    className="mt-6 font-playfair italic text-[#0d2b14]/70 text-base leading-relaxed border-l-2 border-[#d4a017] pl-4"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: pillar.points.length * 0.07 }}
+                  >
+                    {pillar.closing}
+                  </motion.p>
+                )}
               </div>
             </motion.div>
           );
@@ -165,10 +177,8 @@ export default function ManifestoPage() {
               This is a Promise, Not a Poster
             </h2>
             <p className="text-gray-400 max-w-xl text-base md:text-lg leading-relaxed">
-              Every point in this manifesto is a commitment Brian intends to
-              means.
+              Every point in this manifesto is a commitment Brian intends to keep.
             </p>
-            
           </motion.div>
         </div>
       </section>

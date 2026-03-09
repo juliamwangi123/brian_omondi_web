@@ -27,6 +27,8 @@ export const manifestoPillars = [
       "Support modern farming training and extension services to improve productivity",
       "Encourage youth participation in agribusiness to create jobs and transform agriculture",
     ],
+    closing:
+      "A thriving agricultural sector means food security, better incomes and a stronger Mumias West for generations to come.",
   },
   {
     icon: GraduationCap,
@@ -45,6 +47,8 @@ export const manifestoPillars = [
       "Promote digital learning and ICT infrastructure in schools",
       "Support strengthening of technical and vocational training institutions (TVETs) to prepare youth for employment",
     ],
+    closing:
+      "Every child in Mumias West deserves a quality education that opens doors to a better future.",
   },
   {
     icon: Briefcase,
@@ -63,6 +67,8 @@ export const manifestoPillars = [
       "Encourage private sector investment that creates jobs for local youth",
       "Establish programmes that help youth transition from education to employment or business",
     ],
+    closing:
+      "Investing in our youth is investing in the future of Mumias West.",
   },
   {
     icon: ShieldCheck,
@@ -81,6 +87,8 @@ export const manifestoPillars = [
       "Work with local administration to strengthen coordination between residents and security agencies",
       "Promote youth engagement programmes that reduce crime and create positive opportunities",
     ],
+    closing:
+      "A secure Mumias West is a productive Mumias West, where families feel safe and businesses can thrive.",
   },
   {
     icon: Hammer,
@@ -99,6 +107,8 @@ export const manifestoPillars = [
       "Support development of infrastructure that attracts investment and jobs",
       "Improve transport connectivity between villages, markets and schools",
     ],
+    closing:
+      "Good infrastructure is the foundation of development, connecting our people to opportunity and our produce to markets.",
   },
   {
     icon: Store,
@@ -116,6 +126,8 @@ export const manifestoPillars = [
       "Support business training programmes to equip entrepreneurs with financial management and marketing skills",
       "Promote value addition enterprises especially in agriculture such as maize milling, dairy processing and sugarcane by-products",
     ],
+    closing:
+      "By strengthening small businesses and entrepreneurship, we can create sustainable jobs and improve household incomes across the constituency.",
   },
   {
     icon: Leaf,
@@ -133,6 +145,8 @@ export const manifestoPillars = [
       "Encourage development of green energy solutions such as solar lighting in public spaces and institutions",
       "Promote community participation in keeping markets, schools and public areas clean",
     ],
+    closing:
+      "Protecting our environment ensures a healthier future for our children and supports sustainable agriculture.",
   },
   {
     icon: HeartHandshake,
@@ -150,5 +164,7 @@ export const manifestoPillars = [
       "Work with partners to expand community health outreach programmes that reach underserved populations",
       "Encourage inclusive development so that every ward and every community benefits from national government programmes",
     ],
+    closing:
+      "A compassionate and inclusive society ensures dignity, opportunity and hope for all.",
   },
 ];
