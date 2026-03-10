@@ -1,6 +1,6 @@
 export const wards = [
-"Musanda Ward",
-"Etenje Ward",
-"Mumias Central Ward",
-"Mumias North Ward"
-];
+  { value: 'musanda', label: 'Musanda Ward' },
+  { value: 'etenje', label: 'Etenje Ward' },
+  { value: 'mumias_central', label: 'Mumias Central Ward' },
+  { value: 'mumias_north', label: 'Mumias North Ward' },
+]

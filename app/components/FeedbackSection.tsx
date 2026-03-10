@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { Send, CheckCircle } from "lucide-react";
 import { wards } from "@/data/wards";
+import { useFeedbackSubmit } from "../lib/hooks/useFeedback";
 
 export default function FeedbackSection() {
   const [formState, setFormState] = useState({
@@ -12,22 +13,25 @@ export default function FeedbackSection() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const { submitFeedback, isPending, isError } = useFeedbackSubmit();
 
-  const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >
-  ) => {
-    setFormState({ ...formState, [e.target.name]: e.target.value });
-  };
+const handleChange = (
+  e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+) => {
+  setFormState({ ...formState, [e.target.name]: e.target.value });
+};
 
-  const handleSubmit = async () => {
+  const handleSubmit = () => {
     if (!formState.name || !formState.ward || !formState.message) return;
-    setLoading(true);
-    await new Promise((r) => setTimeout(r, 1200));
-    setLoading(false);
-    setSubmitted(true);
+
+    submitFeedback(formState, {
+      onSuccess: () => {
+        setSubmitted(true);
+      },
+      onError: (error) => {
+      throw error
+      },
+    });
   };
 
   return (
@@ -85,9 +89,9 @@ export default function FeedbackSection() {
             <div className="w-12 h-0.5 bg-[#d4a017]" />
 
             <p className="text-gray-500 text-sm leading-relaxed italic">
-  &ldquo;Every message will be read. Your voice will shape the manifesto
-  and the priorities of this campaign.&rdquo;
-</p>
+              &ldquo;Every message will be read. Your voice will shape the manifesto
+              and the priorities of this campaign.&rdquo;
+            </p>
 
             <div className="flex items-center gap-4 pt-2">
               {["4", "Wards", "·", "One", "Voice"].map((word, i) => (
@@ -168,12 +172,8 @@ export default function FeedbackSection() {
                       Select your ward
                     </option>
                     {wards.map((ward) => (
-                      <option
-                        key={ward}
-                        value={ward}
-                        className="text-gray-800"
-                      >
-                        {ward}
+                      <option key={ward.value} value={ward.value} className="text-gray-800">
+                        {ward.label}
                       </option>
                     ))}
                   </select>
@@ -194,11 +194,18 @@ export default function FeedbackSection() {
                   />
                 </div>
 
+                {/* Error message */}
+                {isError && (
+                  <p className="text-red-500 text-xs text-center">
+                    Something went wrong. Please try again.
+                  </p>
+                )}
+
                 {/* Submit */}
                 <button
                   onClick={handleSubmit}
                   disabled={
-                    loading ||
+                    isPending ||
                     !formState.name ||
                     !formState.ward ||
                     !formState.message
@@ -206,7 +213,7 @@ export default function FeedbackSection() {
                   className="w-full py-4 rounded-xl font-bold flex items-center justify-center gap-2 transition-all disabled:opacity-40 disabled:cursor-not-allowed hover:brightness-110"
                   style={{ background: "#d4a017", color: "#0d2b14" }}
                 >
-                  {loading ? (
+                  {isPending ? (
                     <span className="animate-pulse">Sending...</span>
                   ) : (
                     <>

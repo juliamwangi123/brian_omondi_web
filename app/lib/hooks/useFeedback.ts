@@ -2,18 +2,22 @@ import { useMutation } from "@tanstack/react-query";
 import api from "./axios";
 
 
+interface FeedbackFormData {
+  name: string;
+  ward: string;
+  message: string;
+}
+
 export const useFeedbackSubmit = () => {
-    const mutation =  useMutation({
+    const mutation =  useMutation<void, Error, FeedbackFormData>({
         mutationFn: (formData)  => api.post('/feedback/', formData),
         onSuccess: () => {
-          return
         },
-
         onError: (error) => {
+            console.error("Error submitting feedback:", error);
             throw error
         }
     }
-
     )
 
     return {

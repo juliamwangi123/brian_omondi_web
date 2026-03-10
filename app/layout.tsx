@@ -1,12 +1,9 @@
-'use client'
-
 import type { Metadata } from "next";
 import { Playfair_Display, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { useState } from 'react'
+import Providers from "./provider";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -60,8 +57,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const [queryClient] = useState(() => new QueryClient())
-
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -95,7 +90,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#1a5c2a" />
       </head>
       <body className={`${playfair.variable} ${sourceSans.variable}`}>
-        <QueryClientProvider client={queryClient}>
+        <Providers>
           <div className="flex flex-col min-h-screen">
             <Navbar />
             <main className="flex-grow">
@@ -103,7 +98,7 @@ export default function RootLayout({
             </main>
             <Footer />
           </div>
-        </QueryClientProvider>
+        </Providers>
       </body>
     </html>
   );
