@@ -21,7 +21,7 @@ export default function ManifestoHighlights() {
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="w-8 h-0.5 bg-[#d4a017]" />
             <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#d4a017]">
-              His Vision
+              My Vision
             </span>
             <div className="w-8 h-0.5 bg-[#d4a017]" />
           </div>
@@ -32,7 +32,7 @@ export default function ManifestoHighlights() {
             What Brian Stands For
           </h2>
           <p className="text-gray-500 max-w-xl mx-auto text-base md:text-lg">
-            Five pillars that will guide every decision made for Mumias West.
+            Eight pillars that will guide every decision made for Mumias West.
           </p>
         </motion.div>
 
