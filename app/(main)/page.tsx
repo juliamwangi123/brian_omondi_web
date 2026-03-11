@@ -3,11 +3,11 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import MissionStatement from "./components/MissionStatement";
-import AboutPreview from "./components/AboutPreview";
-import ManifestoHighlights from "./components/ManifestoHighlights";
-import FeedbackSection from "./components/FeedbackSection";
-import RecentNews from "./components/RecentNews";
+import MissionStatement from "../components/MissionStatement";
+import AboutPreview from "../components/AboutPreview";
+import ManifestoHighlights from "../components/ManifestoHighlights";
+import RecentNews from "../components/RecentNews";
+import FeedbackSection from "../components/FeedbackSection";
 
 export default function HomePage() {
   const containerVariants = {
@@ -151,16 +151,16 @@ export default function HomePage() {
       </section>
 
       {/* Mission Statement */}
-      <MissionStatement />
+      <MissionStatement/>
 
       {/* About Preview */}
       <AboutPreview />
 
       {/* Manifesto Highlights */}
-      <ManifestoHighlights />
+      <ManifestoHighlights/>
 
       {/* Recent News */}
-      <RecentNews />
+      <RecentNews/>
 
       {/* Feedback */}
       <FeedbackSection />

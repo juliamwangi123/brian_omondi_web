@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
 import Providers from "./provider";
 
 const playfair = Playfair_Display({
@@ -91,13 +89,7 @@ export default function RootLayout({
       </head>
       <body className={`${playfair.variable} ${sourceSans.variable}`}>
         <Providers>
-          <div className="flex flex-col min-h-screen">
-            <Navbar />
-            <main className="flex-grow">
-              {children}
-            </main>
-            <Footer />
-          </div>
+          {children}
         </Providers>
       </body>
     </html>
