@@ -85,3 +85,10 @@ h1, h2, h3, h4, h5, h6 {
     --sidebar-ring: 0 0% 63.9%;
   }
 }
+.tiptap p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: #9ca3af;
+  pointer-events: none;
+  height: 0;
+}
