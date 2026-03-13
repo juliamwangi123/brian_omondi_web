@@ -1,16 +1,17 @@
 import AdminNavbar from "../components/AdminNavbar";
 import TiptapEditor from "../components/TiptapEditor";
+import RecentPosts from "../components/RecentPosts";
 
 export default function ContentPage() {
   return (
     <div className="flex flex-col flex-1">
       <AdminNavbar title="Content" />
-      <div className="p-8 max-w-4xl">
-        <div className="bg-white rounded-2xl border border-gray-200 p-6 flex flex-col gap-6">
-         
-          <div className="h-px bg-gray-100" />
+      <div className="flex gap-6 p-8">
+        <div className="flex-1 min-w-0">
           <TiptapEditor />
-          
+        </div>
+        <div className="w-72 flex-shrink-0">
+          <RecentPosts />
         </div>
       </div>
     </div>
