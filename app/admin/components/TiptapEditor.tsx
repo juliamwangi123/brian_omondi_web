@@ -11,10 +11,10 @@ import { TextStyle } from '@tiptap/extension-text-style'
 import {
   Bold, Italic, Underline as UnderlineIcon, Heading2, Heading3,
   List, ListOrdered, Quote, AlignLeft, AlignCenter, AlignRight,
-  AlignJustify, Link as LinkIcon, ImageIcon, Upload, Send, FileText, Minus
+  AlignJustify, Link as LinkIcon, ImageIcon, Upload, Send, FileText, Minus, CheckCircle, AlertCircle, Loader2
 } from "lucide-react";
 import { useState } from "react";
-
+import { useNewsContent } from "@/app/lib/hooks/useNewsContent";
 
 interface PostData {
   title: string;
@@ -24,7 +24,6 @@ interface PostData {
   hero_image: File | null;
   content: string;
 }
-
 
 const CATEGORIES = [
   { value: "campaign", label: "Campaign News" },
@@ -39,6 +38,8 @@ export default function TiptapEditor() {
   const [postData, setPostData] = useState<PostData>({
     title: "", excerpt: "", category: "", slug: "", hero_image: null, content: "",
   });
+
+  const { mutate: submitNewsContent, isPending, isSuccess, isError } = useNewsContent();
 
   const editor = useEditor({
     extensions: [
@@ -69,20 +70,15 @@ export default function TiptapEditor() {
   };
 
   const handleSubmit = (status: "published" | "draft") => {
-    const formData = new FormData();
-    formData.append('title', postData.title);
-    formData.append('slug', postData.slug);
-    formData.append('excerpt', postData.excerpt);
-    formData.append('category', postData.category);
-    formData.append('content', postData.content);
-    formData.append('status', status);
-
-    if (postData.hero_image) {
-      formData.append('hero_image', postData.hero_image);
+    submitNewsContent({ ...postData, status },
+    {
+    onSuccess: () => {
+      setPostData({
+        title: "", excerpt: "", category: "", slug: "", hero_image: null, content: "",
+      });
+      editor?.commands.clearContent();
     }
-
-    console.log("Submitting FormData");
-    // TODO: api.post('/news/', formData)
+  })
   };
 
   const addLink = () => {
@@ -129,6 +125,22 @@ export default function TiptapEditor() {
     <div className="flex gap-8 p-8 w-full" style={{ background: "#f9fafb", minHeight: "calc(100vh - 64px)" }}>
 
       <div className="flex-1 flex flex-col gap-5 min-w-0">
+
+        {/* Success banner */}
+        {isSuccess && (
+          <div className="flex items-center gap-3 bg-emerald-50 border border-emerald-200 rounded-xl px-4 py-3">
+            <CheckCircle size={16} className="text-emerald-500 flex-shrink-0" />
+            <span className="text-sm text-emerald-700 font-medium">Post saved successfully!</span>
+          </div>
+        )}
+
+        {/* Error banner */}
+        {isError && (
+          <div className="flex items-center gap-3 bg-red-50 border border-red-200 rounded-xl px-4 py-3">
+            <AlertCircle size={16} className="text-red-500 flex-shrink-0" />
+            <span className="text-sm text-red-700 font-medium">Something went wrong. Please try again.</span>
+          </div>
+        )}
 
         <div className="bg-white rounded-2xl border border-gray-100 px-8 py-6 shadow-sm">
           <input
@@ -246,18 +258,20 @@ export default function TiptapEditor() {
         <div className="mt-auto flex flex-col gap-2 pt-2">
           <button
             onClick={() => handleSubmit("published")}
-            className="w-full py-3 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-all hover:brightness-110"
+            disabled={isPending}
+            className="w-full py-3 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-all hover:brightness-110 disabled:opacity-60 disabled:cursor-not-allowed"
             style={{ background: "#0d2b14", color: "#d4a017" }}
           >
-            <Send size={14} />
-            Publish Post
+            {isPending ? <Loader2 size={14} className="animate-spin" /> : <Send size={14} />}
+            {isPending ? "Saving..." : "Publish Post"}
           </button>
           <button
             onClick={() => handleSubmit("draft")}
-            className="w-full py-3 rounded-xl font-bold text-sm flex items-center justify-center gap-2 border border-gray-200 text-gray-400 hover:border-gray-300 transition-all"
+            disabled={isPending}
+            className="w-full py-3 rounded-xl font-bold text-sm flex items-center justify-center gap-2 border border-gray-200 text-gray-400 hover:border-gray-300 transition-all disabled:opacity-60 disabled:cursor-not-allowed"
           >
-            <FileText size={14} />
-            Save as Draft
+            {isPending ? <Loader2 size={14} className="animate-spin" /> : <FileText size={14} />}
+            {isPending ? "Saving..." : "Save as Draft"}
           </button>
         </div>
       </div>
