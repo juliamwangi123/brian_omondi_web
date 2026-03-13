@@ -25,6 +25,15 @@ interface PostData {
   content: string;
 }
 
+interface FormErrors {
+  title?: string;
+  excerpt?: string;
+  category?: string;
+  slug?: string;
+  hero_image?: string;
+  content?: string;
+}
+
 const CATEGORIES = [
   { value: "campaign", label: "Campaign News" },
   { value: "manifesto", label: "Manifesto" },
@@ -38,6 +47,8 @@ export default function TiptapEditor() {
   const [postData, setPostData] = useState<PostData>({
     title: "", excerpt: "", category: "", slug: "", hero_image: null, content: "",
   });
+
+  const [errors, setErrors] = useState<FormErrors>({});
 
   const { mutate: submitNewsContent, isPending, isSuccess, isError } = useNewsContent();
 
@@ -60,6 +71,7 @@ export default function TiptapEditor() {
     },
     onUpdate: ({ editor }) => {
       setPostData((prev) => ({ ...prev, content: editor.getHTML() }));
+      setErrors((prev) => ({ ...prev, content: undefined }));
     },
   });
 
@@ -67,18 +79,47 @@ export default function TiptapEditor() {
     const title = e.target.value;
     const slug = title.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
     setPostData((prev) => ({ ...prev, title, slug }));
+    setErrors((prev) => ({ ...prev, title: undefined, slug: undefined }));
+  };
+
+  const validate = (): boolean => {
+    const newErrors: FormErrors = {};
+
+    if (!postData.title.trim())
+      newErrors.title = "Post title is required.";
+
+    if (!postData.excerpt.trim())
+      newErrors.excerpt = "Excerpt is required.";
+
+    if (!postData.category)
+      newErrors.category = "Please select a category.";
+
+    if (!postData.slug.trim())
+      newErrors.slug = "Slug is required.";
+
+    if (!postData.hero_image)
+      newErrors.hero_image = "Cover image is required.";
+
+    const plainText = editor?.getText().trim();
+    if (!plainText)
+      newErrors.content = "Post content cannot be empty.";
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = (status: "published" | "draft") => {
-    submitNewsContent({ ...postData, status },
-    {
-    onSuccess: () => {
-      setPostData({
-        title: "", excerpt: "", category: "", slug: "", hero_image: null, content: "",
-      });
-      editor?.commands.clearContent();
-    }
-  })
+    if (!validate()) return;
+
+    submitNewsContent({ ...postData, status }, {
+      onSuccess: () => {
+        setPostData({
+          title: "", excerpt: "", category: "", slug: "", hero_image: null, content: "",
+        });
+        setErrors({});
+        editor?.commands.clearContent();
+      }
+    });
   };
 
   const addLink = () => {
@@ -126,7 +167,6 @@ export default function TiptapEditor() {
 
       <div className="flex-1 flex flex-col gap-5 min-w-0">
 
-        {/* Success banner */}
         {isSuccess && (
           <div className="flex items-center gap-3 bg-emerald-50 border border-emerald-200 rounded-xl px-4 py-3">
             <CheckCircle size={16} className="text-emerald-500 flex-shrink-0" />
@@ -134,14 +174,14 @@ export default function TiptapEditor() {
           </div>
         )}
 
-        {/* Error banner */}
         {isError && (
           <div className="flex items-center gap-3 bg-red-50 border border-red-200 rounded-xl px-4 py-3">
             <AlertCircle size={16} className="text-red-500 flex-shrink-0" />
-            <span className="text-sm text-red-700 font-medium">Something went wrong. Please try again.</span>
+            <span className="text-sm text-red-700 font-medium">Failed to save post. Please try again.</span>
           </div>
         )}
 
+        {/* Title + Excerpt */}
         <div className="bg-white rounded-2xl border border-gray-100 px-8 py-6 shadow-sm">
           <input
             type="text"
@@ -151,19 +191,34 @@ export default function TiptapEditor() {
             className="w-full outline-none border-none text-3xl font-bold placeholder-gray-200 bg-transparent"
             style={{ fontFamily: "Georgia, serif", color: "#0d2b14" }}
           />
+          {errors.title && (
+            <p className="text-xs text-red-500 mt-1 flex items-center gap-1">
+              <AlertCircle size={12} /> {errors.title}
+            </p>
+          )}
+
           <div className="mt-4 pt-4 border-t border-gray-100">
             <label className="text-xs font-bold tracking-widest uppercase text-gray-300 block mb-2">Excerpt</label>
             <textarea
               placeholder="A short 1–2 sentence summary shown on the news listing page..."
               value={postData.excerpt}
-              onChange={(e) => setPostData((prev) => ({ ...prev, excerpt: e.target.value }))}
+              onChange={(e) => {
+                setPostData((prev) => ({ ...prev, excerpt: e.target.value }));
+                setErrors((prev) => ({ ...prev, excerpt: undefined }));
+              }}
               rows={2}
               className="w-full text-sm text-gray-500 outline-none border-none resize-none placeholder-gray-300 bg-transparent leading-relaxed"
             />
+            {errors.excerpt && (
+              <p className="text-xs text-red-500 mt-1 flex items-center gap-1">
+                <AlertCircle size={12} /> {errors.excerpt}
+              </p>
+            )}
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden flex-1">
+        {/* Editor */}
+        <div className={`bg-white rounded-2xl border shadow-sm overflow-hidden flex-1 ${errors.content ? "border-red-300" : "border-gray-100"}`}>
           <div className="flex items-center flex-wrap gap-0.5 px-4 py-2.5 border-b border-gray-100 bg-gray-50/80">
             {toolbarGroups.map((group, groupIndex) => (
               <div key={groupIndex} className="flex items-center gap-0.5">
@@ -188,16 +243,22 @@ export default function TiptapEditor() {
               </div>
             ))}
           </div>
-
           <div className="px-8 py-6">
             <EditorContent editor={editor} />
           </div>
+          {errors.content && (
+            <p className="text-xs text-red-500 px-8 pb-4 flex items-center gap-1">
+              <AlertCircle size={12} /> {errors.content}
+            </p>
+          )}
         </div>
       </div>
 
+      {/* Right sidebar */}
       <div className="flex flex-col gap-4" style={{ width: 260, flexShrink: 0 }}>
 
-        <div className="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm">
+        {/* Cover Image */}
+        <div className={`bg-white rounded-2xl border p-5 shadow-sm ${errors.hero_image ? "border-red-300" : "border-gray-100"}`}>
           <p className="text-xs font-bold tracking-widest uppercase text-gray-400 mb-3">Cover Image</p>
           <div
             className="border-2 border-dashed border-gray-200 rounded-xl p-5 flex flex-col items-center gap-2 cursor-pointer transition-all hover:border-[#d4a017] hover:bg-[#faf7f0] group"
@@ -215,7 +276,10 @@ export default function TiptapEditor() {
             className="hidden"
             onChange={(e) => {
               const file = e.target.files?.[0];
-              if (file) setPostData((prev) => ({ ...prev, hero_image: file }));
+              if (file) {
+                setPostData((prev) => ({ ...prev, hero_image: file }));
+                setErrors((prev) => ({ ...prev, hero_image: undefined }));
+              }
             }}
           />
           {postData.hero_image && (
@@ -224,13 +288,22 @@ export default function TiptapEditor() {
               <span className="text-xs text-emerald-700 truncate">{postData.hero_image.name}</span>
             </div>
           )}
+          {errors.hero_image && (
+            <p className="text-xs text-red-500 mt-2 flex items-center gap-1">
+              <AlertCircle size={12} /> {errors.hero_image}
+            </p>
+          )}
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm">
+        {/* Category */}
+        <div className={`bg-white rounded-2xl border p-5 shadow-sm ${errors.category ? "border-red-300" : "border-gray-100"}`}>
           <p className="text-xs font-bold tracking-widest uppercase text-gray-400 mb-3">Category</p>
           <select
             value={postData.category}
-            onChange={(e) => setPostData((prev) => ({ ...prev, category: e.target.value }))}
+            onChange={(e) => {
+              setPostData((prev) => ({ ...prev, category: e.target.value }));
+              setErrors((prev) => ({ ...prev, category: undefined }));
+            }}
             className="w-full border border-gray-100 rounded-xl px-3 py-2.5 text-sm outline-none bg-gray-50 transition-colors focus:border-[#d4a017]"
             style={{ color: postData.category ? "#0d2b14" : "#9ca3af" }}
           >
@@ -239,22 +312,37 @@ export default function TiptapEditor() {
               <option key={c.value} value={c.value}>{c.label}</option>
             ))}
           </select>
+          {errors.category && (
+            <p className="text-xs text-red-500 mt-2 flex items-center gap-1">
+              <AlertCircle size={12} /> {errors.category}
+            </p>
+          )}
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm">
+        {/* Slug */}
+        <div className={`bg-white rounded-2xl border p-5 shadow-sm ${errors.slug ? "border-red-300" : "border-gray-100"}`}>
           <p className="text-xs font-bold tracking-widest uppercase text-gray-400 mb-3">URL Slug</p>
           <input
             type="text"
             value={postData.slug}
-            onChange={(e) => setPostData((prev) => ({ ...prev, slug: e.target.value }))}
+            onChange={(e) => {
+              setPostData((prev) => ({ ...prev, slug: e.target.value }));
+              setErrors((prev) => ({ ...prev, slug: undefined }));
+            }}
             placeholder="post-url-slug"
             className="w-full border border-gray-100 rounded-xl px-3 py-2.5 text-sm outline-none bg-gray-50 focus:border-[#d4a017] transition-colors"
           />
           <p className="text-xs text-gray-400 mt-2 break-all leading-relaxed">
             /news/<span className="text-[#d4a017] font-medium">{postData.slug || "post-slug"}</span>
           </p>
+          {errors.slug && (
+            <p className="text-xs text-red-500 mt-1 flex items-center gap-1">
+              <AlertCircle size={12} /> {errors.slug}
+            </p>
+          )}
         </div>
 
+        {/* Actions */}
         <div className="mt-auto flex flex-col gap-2 pt-2">
           <button
             onClick={() => handleSubmit("published")}

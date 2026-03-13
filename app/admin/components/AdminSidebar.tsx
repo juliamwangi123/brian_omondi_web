@@ -23,7 +23,7 @@ import { usePathname } from "next/navigation";
 const navItems = [
   { icon: LayoutDashboard, label: "Dashboard", href: "/admin" },
   { icon: MessageSquare, label: "Feedback", href: "/admin/feedback" },
-  { icon: FileText, label: "Content", href: "/admin/content" },
+  { icon: FileText, label: "News", href: "/admin/news" },
   { icon: Image, label: "Gallery", href: "/admin/gallery" },
   { icon: BarChart2, label: "Analytics", href: "/admin/analytics" },
 ];
