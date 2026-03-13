@@ -263,7 +263,7 @@ export default function TiptapEditor() {
             style={{ background: "#0d2b14", color: "#d4a017" }}
           >
             {isPending ? <Loader2 size={14} className="animate-spin" /> : <Send size={14} />}
-            {isPending ? "Saving..." : "Publish Post"}
+            {isPending ? "Publishing..." : "Publish Post"}
           </button>
           <button
             onClick={() => handleSubmit("draft")}
