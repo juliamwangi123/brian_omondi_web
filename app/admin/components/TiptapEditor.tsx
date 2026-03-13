@@ -15,20 +15,29 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 
+
 interface PostData {
   title: string;
   excerpt: string;
   category: string;
   slug: string;
-  image: string;
+  hero_image: File | null;
   content: string;
 }
 
-const CATEGORIES = ["Campaign News", "Manifesto", "Community", "Events", "Press Release"];
+
+const CATEGORIES = [
+  { value: "campaign", label: "Campaign News" },
+  { value: "manifesto", label: "Manifesto" },
+  { value: "community", label: "Community" },
+  { value: "events", label: "Events" },
+  { value: "press_release", label: "Press Release" },
+  { value: "general", label: "General" },
+]
 
 export default function TiptapEditor() {
   const [postData, setPostData] = useState<PostData>({
-    title: "", excerpt: "", category: "", slug: "", image: "", content: "",
+    title: "", excerpt: "", category: "", slug: "", hero_image: null, content: "",
   });
 
   const editor = useEditor({
@@ -60,8 +69,20 @@ export default function TiptapEditor() {
   };
 
   const handleSubmit = (status: "published" | "draft") => {
-    const payload = { ...postData, status, date: new Date().toISOString() };
-    console.log("Submitting:", payload);
+    const formData = new FormData();
+    formData.append('title', postData.title);
+    formData.append('slug', postData.slug);
+    formData.append('excerpt', postData.excerpt);
+    formData.append('category', postData.category);
+    formData.append('content', postData.content);
+    formData.append('status', status);
+
+    if (postData.hero_image) {
+      formData.append('hero_image', postData.hero_image);
+    }
+
+    console.log("Submitting FormData");
+    // TODO: api.post('/news/', formData)
   };
 
   const addLink = () => {
@@ -77,32 +98,27 @@ export default function TiptapEditor() {
   if (!editor) return null;
 
   const toolbarGroups = [
-    // Text style
     [
       { icon: Bold, action: () => editor.chain().focus().toggleBold().run(), label: "Bold", active: editor.isActive("bold") },
       { icon: Italic, action: () => editor.chain().focus().toggleItalic().run(), label: "Italic", active: editor.isActive("italic") },
       { icon: UnderlineIcon, action: () => editor.chain().focus().toggleUnderline().run(), label: "Underline", active: editor.isActive("underline") },
     ],
-    // Headings
     [
       { icon: Heading2, action: () => editor.chain().focus().toggleHeading({ level: 2 }).run(), label: "Heading 2", active: editor.isActive("heading", { level: 2 }) },
       { icon: Heading3, action: () => editor.chain().focus().toggleHeading({ level: 3 }).run(), label: "Heading 3", active: editor.isActive("heading", { level: 3 }) },
     ],
-    // Lists
     [
       { icon: List, action: () => editor.chain().focus().toggleBulletList().run(), label: "Bullet List", active: editor.isActive("bulletList") },
       { icon: ListOrdered, action: () => editor.chain().focus().toggleOrderedList().run(), label: "Ordered List", active: editor.isActive("orderedList") },
       { icon: Quote, action: () => editor.chain().focus().toggleBlockquote().run(), label: "Blockquote", active: editor.isActive("blockquote") },
       { icon: Minus, action: () => editor.chain().focus().setHorizontalRule().run(), label: "Divider", active: false },
     ],
-    // Alignment
     [
       { icon: AlignLeft, action: () => editor.chain().focus().setTextAlign("left").run(), label: "Align Left", active: editor.isActive({ textAlign: "left" }) },
       { icon: AlignCenter, action: () => editor.chain().focus().setTextAlign("center").run(), label: "Align Center", active: editor.isActive({ textAlign: "center" }) },
       { icon: AlignRight, action: () => editor.chain().focus().setTextAlign("right").run(), label: "Align Right", active: editor.isActive({ textAlign: "right" }) },
       { icon: AlignJustify, action: () => editor.chain().focus().setTextAlign("justify").run(), label: "Justify", active: editor.isActive({ textAlign: "justify" }) },
     ],
-    // Insert
     [
       { icon: LinkIcon, action: addLink, label: "Add Link", active: editor.isActive("link") },
       { icon: ImageIcon, action: addImage, label: "Add Image", active: false },
@@ -112,10 +128,8 @@ export default function TiptapEditor() {
   return (
     <div className="flex gap-8 p-8 w-full" style={{ background: "#f9fafb", minHeight: "calc(100vh - 64px)" }}>
 
-      {/* LEFT — Writing area */}
       <div className="flex-1 flex flex-col gap-5 min-w-0">
 
-        {/* Title + Excerpt */}
         <div className="bg-white rounded-2xl border border-gray-100 px-8 py-6 shadow-sm">
           <input
             type="text"
@@ -137,9 +151,7 @@ export default function TiptapEditor() {
           </div>
         </div>
 
-        {/* Editor */}
         <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden flex-1">
-          {/* Toolbar */}
           <div className="flex items-center flex-wrap gap-0.5 px-4 py-2.5 border-b border-gray-100 bg-gray-50/80">
             {toolbarGroups.map((group, groupIndex) => (
               <div key={groupIndex} className="flex items-center gap-0.5">
@@ -147,7 +159,10 @@ export default function TiptapEditor() {
                 {group.map(({ icon: Icon, action, label, active }) => (
                   <button
                     key={label}
-                    onClick={action}
+                    onMouseDown={(e) => {
+                      e.preventDefault();
+                      action();
+                    }}
                     title={label}
                     className="p-2 rounded-lg transition-all hover:bg-gray-100"
                     style={{
@@ -162,17 +177,14 @@ export default function TiptapEditor() {
             ))}
           </div>
 
-          {/* Writing surface */}
           <div className="px-8 py-6">
             <EditorContent editor={editor} />
           </div>
         </div>
       </div>
 
-      {/* RIGHT — Metadata */}
       <div className="flex flex-col gap-4" style={{ width: 260, flexShrink: 0 }}>
 
-        {/* Cover Image */}
         <div className="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm">
           <p className="text-xs font-bold tracking-widest uppercase text-gray-400 mb-3">Cover Image</p>
           <div
@@ -184,21 +196,24 @@ export default function TiptapEditor() {
             </div>
             <span className="text-xs text-gray-400 text-center leading-relaxed">JPG, PNG or WEBP</span>
           </div>
-          <input id="image-upload" type="file" accept="image/*" className="hidden"
+          <input
+            id="image-upload"
+            type="file"
+            accept="image/*"
+            className="hidden"
             onChange={(e) => {
               const file = e.target.files?.[0];
-              if (file) setPostData((prev) => ({ ...prev, image: file.name }));
+              if (file) setPostData((prev) => ({ ...prev, hero_image: file }));
             }}
           />
-          {postData.image && (
+          {postData.hero_image && (
             <div className="mt-2 flex items-center gap-2 bg-emerald-50 rounded-lg px-3 py-2">
               <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 flex-shrink-0" />
-              <span className="text-xs text-emerald-700 truncate">{postData.image}</span>
+              <span className="text-xs text-emerald-700 truncate">{postData.hero_image.name}</span>
             </div>
           )}
         </div>
 
-        {/* Category */}
         <div className="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm">
           <p className="text-xs font-bold tracking-widest uppercase text-gray-400 mb-3">Category</p>
           <select
@@ -208,11 +223,12 @@ export default function TiptapEditor() {
             style={{ color: postData.category ? "#0d2b14" : "#9ca3af" }}
           >
             <option value="" disabled>Select category</option>
-            {CATEGORIES.map((c) => <option key={c} value={c}>{c}</option>)}
+            {CATEGORIES.map((c) => (
+              <option key={c.value} value={c.value}>{c.label}</option>
+            ))}
           </select>
         </div>
 
-        {/* Slug */}
         <div className="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm">
           <p className="text-xs font-bold tracking-widest uppercase text-gray-400 mb-3">URL Slug</p>
           <input
@@ -227,7 +243,6 @@ export default function TiptapEditor() {
           </p>
         </div>
 
-        {/* Actions */}
         <div className="mt-auto flex flex-col gap-2 pt-2">
           <button
             onClick={() => handleSubmit("published")}
