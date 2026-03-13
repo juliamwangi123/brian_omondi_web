@@ -3,6 +3,7 @@ import { Eye, Pencil, Trash2 } from "lucide-react";
 import ConfirmDialog from "./ConfirmDialog";
 import ViewPostModal from "./ViewPostModal";
 import { useDeleteNews } from "@/app/lib/hooks/useDeleteNews";
+import { useRouter } from "next/navigation";
 
 interface NewsPost {
   id: number;
@@ -33,6 +34,7 @@ export default function NewsTable({ posts }: NewsTableProps) {
   const { mutate: deletePost, isPending } = useDeleteNews();
   const [selectedPost, setSelectedPost] = useState<NewsPost | null>(null);
   const [viewPost, setViewPost] = useState<NewsPost | null>(null);
+  const router = useRouter();
 
   const handleDeleteConfirm = () => {
     if (!selectedPost) return;
@@ -96,6 +98,7 @@ export default function NewsTable({ posts }: NewsTableProps) {
                     </button>
                     <button
                       title="Edit"
+                      onClick={() => router.push(`/admin/content?id=${post.id}`)}
                       className="w-7 h-7 rounded-lg border border-gray-200 flex items-center justify-center text-gray-400 hover:text-gray-700 hover:bg-gray-100 transition-all"
                     >
                       <Pencil size={13} />

@@ -8,13 +8,17 @@ import Underline from "@tiptap/extension-underline";
 import Link from "@tiptap/extension-link";
 import Image from "@tiptap/extension-image";
 import { TextStyle } from '@tiptap/extension-text-style'
+import { useRouter } from "next/navigation";
 import {
   Bold, Italic, Underline as UnderlineIcon, Heading2, Heading3,
   List, ListOrdered, Quote, AlignLeft, AlignCenter, AlignRight,
-  AlignJustify, Link as LinkIcon, ImageIcon, Upload, Send, FileText, Minus, CheckCircle, AlertCircle, Loader2
+  AlignJustify, Link as LinkIcon, Upload, Send, FileText, Minus, CheckCircle, AlertCircle, Loader2
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
+import { useQueryClient } from "@tanstack/react-query";
 import { useNewsContent } from "@/app/lib/hooks/useNewsContent";
+import { useUpdateNews } from "@/app/lib/hooks/useUpdateNews";
 
 interface PostData {
   title: string;
@@ -34,6 +38,18 @@ interface FormErrors {
   content?: string;
 }
 
+interface NewsPost {
+  id: number;
+  title: string;
+  slug: string;
+  category: string;
+  status: "published" | "draft";
+  created_at: string;
+  excerpt: string;
+  content: string;
+  hero_image_url: string;
+}
+
 const CATEGORIES = [
   { value: "campaign", label: "Campaign News" },
   { value: "manifesto", label: "Manifesto" },
@@ -47,10 +63,22 @@ export default function TiptapEditor() {
   const [postData, setPostData] = useState<PostData>({
     title: "", excerpt: "", category: "", slug: "", hero_image: null, content: "",
   });
-
   const [errors, setErrors] = useState<FormErrors>({});
 
+  const searchParams = useSearchParams();
+  const postId = searchParams.get("id") ? Number(searchParams.get("id")) : null;
+  const isEditMode = !!postId;
+
+  const queryClient = useQueryClient();
+  const cachedPost = postId
+    ? queryClient
+        .getQueriesData<{ results: NewsPost[] }>({ queryKey: ["news"] })
+        .flatMap(([, data]) => data?.results ?? [])
+        .find((post) => post.id === postId) ?? null
+    : null;
+
   const { mutate: submitNewsContent, isPending, isSuccess, isError } = useNewsContent();
+  const { mutate: updateNewsContent, isPending: isUpdating, isSuccess: isUpdateSuccess, isError: isUpdateError } = useUpdateNews();
 
   const editor = useEditor({
     extensions: [
@@ -75,6 +103,21 @@ export default function TiptapEditor() {
     },
   });
 
+  useEffect(() => {
+    if (cachedPost && isEditMode && editor) {
+      setPostData({
+        title: cachedPost.title,
+        excerpt: cachedPost.excerpt,
+        category: cachedPost.category,
+        slug: cachedPost.slug,
+        hero_image: null,
+        content: cachedPost.content,
+      });
+      editor.commands.setContent(cachedPost.content);
+    }
+  }, [cachedPost, isEditMode, editor]);
+  const router = useRouter();
+
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const title = e.target.value;
     const slug = title.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
@@ -97,7 +140,7 @@ export default function TiptapEditor() {
     if (!postData.slug.trim())
       newErrors.slug = "Slug is required.";
 
-    if (!postData.hero_image)
+    if (!isEditMode && !postData.hero_image)
       newErrors.hero_image = "Cover image is required.";
 
     const plainText = editor?.getText().trim();
@@ -111,15 +154,26 @@ export default function TiptapEditor() {
   const handleSubmit = (status: "published" | "draft") => {
     if (!validate()) return;
 
-    submitNewsContent({ ...postData, status }, {
-      onSuccess: () => {
-        setPostData({
-          title: "", excerpt: "", category: "", slug: "", hero_image: null, content: "",
-        });
-        setErrors({});
-        editor?.commands.clearContent();
-      }
-    });
+    if (isEditMode && postId) {
+      updateNewsContent({ ...postData, id: postId, status }, {
+        onSuccess: () => {
+          setErrors({});
+          router.push("/admin/news");
+        },
+      });
+    } else {
+      submitNewsContent({ ...postData, status }, {
+        onSuccess: () => {
+          setPostData({
+            title: "", excerpt: "", category: "", slug: "", hero_image: null, content: "",
+          });
+          setErrors({});
+          editor?.commands.clearContent();
+
+          
+        },
+      });
+    }
   };
 
   const addLink = () => {
@@ -127,12 +181,9 @@ export default function TiptapEditor() {
     if (url) editor?.chain().focus().setLink({ href: url }).run();
   };
 
-  const addImage = () => {
-    const url = window.prompt("Enter image URL:");
-    if (url) editor?.chain().focus().setImage({ src: url }).run();
-  };
-
   if (!editor) return null;
+
+  const isBusy = isPending || isUpdating;
 
   const toolbarGroups = [
     [
@@ -158,7 +209,6 @@ export default function TiptapEditor() {
     ],
     [
       { icon: LinkIcon, action: addLink, label: "Add Link", active: editor.isActive("link") },
-      { icon: ImageIcon, action: addImage, label: "Add Image", active: false },
     ],
   ];
 
@@ -167,14 +217,16 @@ export default function TiptapEditor() {
 
       <div className="flex-1 flex flex-col gap-5 min-w-0">
 
-        {isSuccess && (
+        {(isSuccess || isUpdateSuccess) && (
           <div className="flex items-center gap-3 bg-emerald-50 border border-emerald-200 rounded-xl px-4 py-3">
             <CheckCircle size={16} className="text-emerald-500 flex-shrink-0" />
-            <span className="text-sm text-emerald-700 font-medium">Post saved successfully!</span>
+            <span className="text-sm text-emerald-700 font-medium">
+              {isEditMode ? "Post updated successfully!" : "Post saved successfully!"}
+            </span>
           </div>
         )}
 
-        {isError && (
+        {(isError || isUpdateError) && (
           <div className="flex items-center gap-3 bg-red-50 border border-red-200 rounded-xl px-4 py-3">
             <AlertCircle size={16} className="text-red-500 flex-shrink-0" />
             <span className="text-sm text-red-700 font-medium">Failed to save post. Please try again.</span>
@@ -260,6 +312,18 @@ export default function TiptapEditor() {
         {/* Cover Image */}
         <div className={`bg-white rounded-2xl border p-5 shadow-sm ${errors.hero_image ? "border-red-300" : "border-gray-100"}`}>
           <p className="text-xs font-bold tracking-widest uppercase text-gray-400 mb-3">Cover Image</p>
+
+          {isEditMode && cachedPost?.hero_image_url && !postData.hero_image && (
+            <div className="mb-3 rounded-xl overflow-hidden border border-gray-100">
+              <img
+                src={cachedPost.hero_image_url}
+                alt="Current cover"
+                className="w-full h-28 object-cover"
+              />
+              <p className="text-xs text-gray-400 px-3 py-1.5">Current image — upload new to replace</p>
+            </div>
+          )}
+
           <div
             className="border-2 border-dashed border-gray-200 rounded-xl p-5 flex flex-col items-center gap-2 cursor-pointer transition-all hover:border-[#d4a017] hover:bg-[#faf7f0] group"
             onClick={() => document.getElementById("image-upload")?.click()}
@@ -346,20 +410,20 @@ export default function TiptapEditor() {
         <div className="mt-auto flex flex-col gap-2 pt-2">
           <button
             onClick={() => handleSubmit("published")}
-            disabled={isPending}
+            disabled={isBusy}
             className="w-full py-3 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-all hover:brightness-110 disabled:opacity-60 disabled:cursor-not-allowed"
             style={{ background: "#0d2b14", color: "#d4a017" }}
           >
-            {isPending ? <Loader2 size={14} className="animate-spin" /> : <Send size={14} />}
-            {isPending ? "Publishing..." : "Publish Post"}
+            {isBusy ? <Loader2 size={14} className="animate-spin" /> : <Send size={14} />}
+            {isBusy ? "Saving..." : isEditMode ? "Update Post" : "Publish Post"}
           </button>
           <button
             onClick={() => handleSubmit("draft")}
-            disabled={isPending}
+            disabled={isBusy}
             className="w-full py-3 rounded-xl font-bold text-sm flex items-center justify-center gap-2 border border-gray-200 text-gray-400 hover:border-gray-300 transition-all disabled:opacity-60 disabled:cursor-not-allowed"
           >
-            {isPending ? <Loader2 size={14} className="animate-spin" /> : <FileText size={14} />}
-            {isPending ? "Saving..." : "Save as Draft"}
+            {isBusy ? <Loader2 size={14} className="animate-spin" /> : <FileText size={14} />}
+            {isBusy ? "Saving..." : isEditMode ? "Save Changes" : "Save as Draft"}
           </button>
         </div>
       </div>
