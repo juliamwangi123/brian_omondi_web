@@ -1,18 +1,23 @@
 import { useQuery } from "@tanstack/react-query";
 import api from "./axios";
 
+interface NewsPost {
+  id: number;
+  title: string;
+  slug: string;
+  category: string;
+  status: "published" | "draft";
+  created_at: string;
+  excerpt: string;
+  content: string;
+  hero_image_url: string;
+}
+
 interface NewsResponse {
   count: number;
   next: string | null;
   previous: string | null;
-  results: {
-    id: number;
-    title: string;
-    slug: string;
-    category: string;
-    status: "published" | "draft";
-    created_at: string;
-  }[];
+  results: NewsPost[];
 }
 
 export const useNews = (page: number = 1) => {
