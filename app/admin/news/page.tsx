@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import AdminNavbar from "../components/AdminNavbar";
 import NewsTable from "../components/NewsTable";
 import { useNews } from "@/app/lib/hooks/useNews";
+import NewsTableSkeleton from "../components/NewsTableSkeleton";
 
 type FilterStatus = "all" | "published" | "draft";
 
@@ -55,7 +56,7 @@ export default function NewsPage() {
         </div>
 
         {isLoading ? (
-          <p className="text-sm text-gray-400">Loading posts...</p>
+          <NewsTableSkeleton />
         ) : filtered.length === 0 ? (
           <p className="text-sm text-gray-400">No posts found.</p>
         ) : (
