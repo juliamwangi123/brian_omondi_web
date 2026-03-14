@@ -1,31 +1,34 @@
-import { useMutation } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import api from "../axios";
 
-
-interface FeedbackFormData {
+interface Feedback {
+  id: number;
   name: string;
   ward: string;
   message: string;
+  sentiment: "positive" | "neutral" | "negative";
+  created_at: string;
 }
 
-export const useFeedbackSubmit = () => {
-    const mutation =  useMutation<void, Error, FeedbackFormData>({
-        mutationFn: (formData)  => api.post('/feedback/', formData),
-        onSuccess: () => {
+interface FeedbackResponse {
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: Feedback[];
+}
+
+export const useFeedback = (page: number = 1, sentiment?: string) => {
+  return useQuery<FeedbackResponse>({
+    queryKey: ["feedback", page, sentiment],
+    queryFn: async () => {
+      const response = await api.get("/feedback/", {
+        params: {
+          page,
+          ...(sentiment && sentiment !== "all" && { sentiment }),
         },
-        onError: (error) => {
-            console.error("Error submitting feedback:", error);
-            throw error
-        }
-    }
-    )
-
-    return {
-    submitFeedback: mutation.mutate,
-    isPending: mutation.isPending,
-    isSuccess: mutation.isSuccess,
-    isError: mutation.isError,
-
-    }
-
-}
+      });
+      return response.data;
+    },
+    staleTime: 1000 * 60 * 2,
+  });
+};

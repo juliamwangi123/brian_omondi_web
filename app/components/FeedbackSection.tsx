@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { Send, CheckCircle } from "lucide-react";
 import { wards } from "@/data/wards";
-import { useFeedbackSubmit } from "../lib/hooks/useFeedback";
+import { useFeedbackSubmit } from "../lib/hooks/useFeedbackPost";
 
 export default function FeedbackSection() {
   const [formState, setFormState] = useState({
