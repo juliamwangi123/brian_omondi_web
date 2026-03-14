@@ -20,11 +20,16 @@ interface NewsResponse {
   results: NewsPost[];
 }
 
-export const useNews = (page: number = 1) => {
+export const useNews = (page: number = 1, status?: string) => {
   return useQuery<NewsResponse>({
-    queryKey: ["news", page],
+    queryKey: ["news", page, status],
     queryFn: async () => {
-      const response = await api.get("/news/", { params: { page } });
+      const response = await api.get("/news/", {
+        params: {
+          page,
+          ...(status && { status }),
+        },
+      });
       return response.data;
     },
     staleTime: 1000 * 60 * 2,

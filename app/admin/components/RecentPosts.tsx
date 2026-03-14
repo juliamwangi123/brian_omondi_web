@@ -10,14 +10,25 @@ interface NewsPost {
   status: "published" | "draft";
 }
 
-export default function RecentPosts() {
+interface RecentPostsProps {
+  dashboard?: boolean;
+}
+
+export default function RecentPosts({ dashboard = false }: RecentPostsProps) {
   const { data, isLoading } = useNews();
 
   return (
     <div className="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm">
-      <p className="text-xs font-bold tracking-widest uppercase text-gray-400 mb-3">
-        Recent Posts
-      </p>
+      <div className="flex items-center justify-between mb-3">
+        <p className="text-xs font-bold tracking-widest uppercase text-gray-400">
+          Recent Posts
+        </p>
+        {dashboard && (
+          <a href="/admin/news" className="text-xs font-bold" style={{ color: "#d4a017" }}>
+            View all →
+          </a>
+        )}
+      </div>
 
       {isLoading ? (
         <p className="text-xs text-gray-400">Loading...</p>
