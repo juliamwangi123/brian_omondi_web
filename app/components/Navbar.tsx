@@ -68,7 +68,7 @@ export default function Navbar({ className} : { className?: string  }) {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-[#0d2b14] border-t border-white/10">
+        <div className="md:hidden bg-[#0a1560] border-t border-white/10">
           <div className="px-6 py-4 flex flex-col gap-4">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;

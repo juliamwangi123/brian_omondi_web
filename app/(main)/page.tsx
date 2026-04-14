@@ -42,11 +42,9 @@ export default function HomePage() {
             alt="Hon. Brian Omondi - Mumias West MP Aspirant 2027"
             fill
             priority
-            className="object-cover"
+            className="object-cover md:[transform:translateX(15%)_perspective(1500px)_rotateY(180deg)_rotateX(1deg)]"
             style={{
-              objectPosition: "center 10%",
-              transform:
-                "translateX(15%) perspective(1500px) rotateY(180deg) rotateX(1deg)",
+              objectPosition: "center 15%",
               transformOrigin: "center",
             }}
           />
@@ -82,7 +80,7 @@ export default function HomePage() {
         {/* Content */}
         <div className="relative z-10 w-full h-full max-w-7xl mx-auto px-8 md:px-16 md:flex md:items-center md:min-h-screen">
           <motion.div
-            className="w-full max-w-2xl flex flex-col gap-4 md:gap-6 mt-[85%] md:mt-0 pb-12 md:pb-0"
+            className="w-full max-w-2xl flex flex-col gap-4 md:gap-6 mt-[85%] md:mt-0 pb-12 md:pb-0 text-center md:text-left"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
@@ -91,7 +89,7 @@ export default function HomePage() {
             <motion.h1
               variants={itemVariants}
               className="font-bold font-poppins text-white leading-tight tracking-tight"
-              style={{ fontSize: "clamp(28px, 6vw, 64px)" }}
+              style={{ fontSize: "clamp(38px, 6vw, 64px)" }}
             >
               Hon. Brian Omondi
             </motion.h1>
@@ -99,8 +97,8 @@ export default function HomePage() {
             {/* Tagline */}
             <motion.p
               variants={itemVariants}
-              className="italic text-white/90 font-normal tracking-wider max-w-lg"
-              style={{ fontSize: "clamp(16px, 2vw, 22px)" }}
+              className="italic text-white/90 font-normal tracking-wider max-w-lg mx-auto md:mx-0"
+              style={{ fontSize: "clamp(18px, 2vw, 22px)" }}
             >
               &ldquo;Son of the Soil, Servant of the People&rdquo;
             </motion.p>
@@ -108,14 +106,14 @@ export default function HomePage() {
             {/* Divider */}
             <motion.div
               variants={itemVariants}
-              className="w-16 bg-[#0a1560] h-[3px]"
+              className="w-16 bg-[#0a1560] h-[3px] mx-auto md:mx-0"
             />
 
             {/* Bottom Statement */}
             <motion.p
               variants={itemVariants}
-              className="italic text-white/90 font-normal tracking-wider max-w-lg"
-              style={{ fontSize: "clamp(16px, 2vw, 22px)" }}
+              className="italic text-white/90 font-normal tracking-wider max-w-lg mx-auto md:mx-0"
+              style={{ fontSize: "clamp(18px, 2vw, 22px)" }}
             >
               Mumias West deserves better. <br />
               I will deliver it
