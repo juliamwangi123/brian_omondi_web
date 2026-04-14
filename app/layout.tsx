@@ -20,35 +20,59 @@ const sourceSans = Source_Sans_3({
 export const metadata: Metadata = {
   title: "Brian Omondi - Mumias West MP 2027 | Son of the Soil",
   description: "Son of the Soil, Servant of the People. Campaign website for Hon. Brian Omondi, Mumias West MP Aspirant 2027. Vote for integrity, action, and results.",
-  keywords: ["Brian Omondi", "Mumias West MP 2027", "Mumias West aspirant 2027", "Kenya elections", "MP candidate"],
-  authors: [{ name: "Brian Omondi" }],
+  keywords: ["Brian Omondi", "Mumias West MP 2027", "Mumias West aspirant 2027", "Kenya elections", "MP candidate", "politics", "leadership"],
+  authors: [{ name: "Brian Omondi Campaign Team" }],
+  creator: "Brian Omondi Campaign",
+  publisher: "Brian Omondi Campaign",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
-    title: "Brian Omondi - Mumias West MP 2027",
-    description: "Son of the Soil, Servant of the People",
-    url: "https://brianomondi.ke",
+    title: "Brian Omondi - Mumias West MP 2027 | Son of the Soil",
+    description: "Son of the Soil, Servant of the People. Join the movement for integrity, action, and results in Mumias West.",
+    url: "/",
     siteName: "Brian Omondi Campaign",
     images: [
       {
-        url: "https://brianomondi.ke/og-image.jpg",
+        url: "/images/pic6.jpg",
         width: 1200,
         height: 630,
-        alt: "Brian Omondi - Mumias West MP Aspirant",
+        alt: "Hon. Brian Omondi - Mumias West MP Aspirant 2027",
+        type: "image/jpeg",
       },
     ],
+    locale: "en_KE",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Brian Omondi - Mumias West MP 2027",
-    description: "Son of the Soil, Servant of the People",
+    title: "Brian Omondi - Mumias West MP 2027 | Son of the Soil",
+    description: "Son of the Soil, Servant of the People. Join the movement for integrity, action, and results in Mumias West.",
+    images: ["/images/pic6.jpg"],
+    creator: "@brianomondi",
+    site: "@brianomondi",
   },
   robots: {
     index: true,
     follow: true,
+    nocache: true,
     googleBot: {
       index: true,
       follow: true,
+      noimageindex: false,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
+  },
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION,
   },
 };
 
