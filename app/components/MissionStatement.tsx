@@ -9,7 +9,7 @@ export default function MissionStatement() {
       <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x-2 divide-white/40">
         {/* Left Panel — Join the Movement */}
         <motion.div
-          className="bg-[#0a1560] flex flex-col items-center justify-center text-center px-12 py-5 gap-6 mr-1"
+          className="bg-[#0a1560] flex flex-col items-center justify-center text-center px-12 py-5 gap-6 mr-0 md:mr-1 mb-1 md:mb-0"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -31,7 +31,7 @@ export default function MissionStatement() {
 
         {/* Right Panel — Read My Manifesto */}
         <motion.div
-          className="bg-[#0a1560] flex flex-col items-center justify-center text-center px-12 py-5 gap-6 ml-1"
+          className="bg-[#0a1560] flex flex-col items-center justify-center text-center px-12 py-5 gap-6 mr-0 md:ml-1"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
