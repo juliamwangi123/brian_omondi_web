@@ -26,15 +26,15 @@ export default function HomePage() {
     <div>
       {/* Hero Section */}
       <section
-        className="relative min-h-screen overflow-hidden mt-0 mb-0 h-[80vh]"
-        style={{ backgroundColor: "#0d0d0d", backgroundImage: "linear-gradient(to right, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.4) 50%, transparent 100%)" }}
+        className="relative min-h-screen overflow-hidden mt-0 mb-0"
+        style={{ backgroundColor: "#0d0d0d", backgroundImage: "linear-gradient(to right, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.15) 50%, transparent 100%)" }}
       >
         {/* Background Photo */}
         <div 
           className="absolute inset-x-0 top-0 -bottom-8 z-0" 
           style={{ 
             perspective: "1500px",
-            background: "linear-gradient(to right, rgba(0,0,0,0.95) 25%, rgba(0,0,0,0.5) 40%, transparent 70%)"
+            background: "linear-gradient(to right, rgba(0,0,0,0.95) 25%, rgba(0,0,0,0.2) 40%, transparent 65%)"
           }}
         >
           <Image
@@ -56,7 +56,7 @@ export default function HomePage() {
             className="absolute inset-0 hidden md:block"
             style={{
               background:
-                "linear-gradient(to right, rgba(0,0,0,0.92) 25%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.05) 100%)",
+                "linear-gradient(to right, rgba(0,0,0,0.92) 25%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0) 100%)",
             }}
           />
 
@@ -90,7 +90,7 @@ export default function HomePage() {
             {/* Name */}
             <motion.h1
               variants={itemVariants}
-              className="font-semibold font-poppins text-white leading-tight tracking-tight"
+              className="font-bold font-poppins text-white leading-tight tracking-tight"
               style={{ fontSize: "clamp(28px, 6vw, 64px)" }}
             >
               Hon. Brian Omondi
@@ -108,7 +108,7 @@ export default function HomePage() {
             {/* Divider */}
             <motion.div
               variants={itemVariants}
-              className="w-16 bg-[#000073] h-[3px]"
+              className="w-16 bg-[#0a1560] h-[3px]"
             />
 
             {/* Bottom Statement */}

@@ -82,7 +82,7 @@ const handleChange = (
 
             <p className="text-gray-400 text-base md:text-lg leading-relaxed">
               A good leader listens before he acts. Brian wants to hear directly
-              from the people of Mumias West — your concerns, your hopes, and
+              from the people of Mumias West, your concerns, your hopes, and
               the issues that matter most to your family and your ward.
             </p>
 

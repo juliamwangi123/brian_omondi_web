@@ -14,7 +14,7 @@ const SECTIONS = [
     title: "On the",
     titleEm: "Ground",
     desc: "Politics lives in the handshake, the shared cup of chai, the early morning baraza. These are the moments that matter — not the speeches, but the listening.",
-    quote: "This constituency does not need promises. It needs presence — a leader who shows up before the cameras and stays after they leave.",
+    quote: "This constituency does not need promises. It needs presence ",
     quoteAttr: "Brian Omondi — Mumias West Town Hall, 2026",
     layout: "cinema",
   },
@@ -78,8 +78,8 @@ function Lightbox({ src, title, category, onClose }: {
     >
       <button
         onClick={onClose}
-        className="absolute top-8 right-10 text-xs font-bold tracking-[0.2em] uppercase border px-4 py-2 transition-all hover:border-[#c9a44a] hover:text-[#c9a44a]"
-        style={{ borderColor: "rgba(201,164,74,0.3)", color: "rgba(240,233,214,0.5)", fontFamily: "'Barlow Condensed', sans-serif" }}
+        className="absolute top-8 right-10 text-xs font-bold tracking-[0.2em] uppercase border px-4 py-2 transition-all hover:border-[#8fb3ff] hover:text-[#8fb3ff]"
+        style={{ borderColor: "rgba(143,179,255,0.3)", color: "rgba(248,250,252,0.75)", fontFamily: "'Barlow Condensed', sans-serif" }}
       >
         ✕ Close
       </button>
@@ -95,10 +95,10 @@ function Lightbox({ src, title, category, onClose }: {
         />
       </div>
       <div className="mt-6 text-center">
-        <p className="text-xs font-bold tracking-[0.25em] uppercase mb-1" style={{ color: "#c9a44a", fontFamily: "'Barlow Condensed', sans-serif" }}>
+        <p className="text-xs font-bold tracking-[0.25em] uppercase mb-1" style={{ color: "#8fb3ff", fontFamily: "'Barlow Condensed', sans-serif" }}>
           {category}
         </p>
-        <p className="text-sm font-light" style={{ color: "rgba(240,233,214,0.6)" }}>{title}</p>
+        <p className="text-sm font-light" style={{ color: "rgba(248,250,252,0.75)" }}>{title}</p>
       </div>
     </div>
   );
@@ -110,7 +110,7 @@ function PhotoCard({ item, onOpen, style = {} }: {
   return (
     <div
       className="relative overflow-hidden cursor-pointer group"
-      style={{ background: "#1a3d1e", ...style }}
+      style={{ background: "#07102b", ...style }}
       onClick={onOpen}
     >
       <Image
@@ -122,18 +122,18 @@ function PhotoCard({ item, onOpen, style = {} }: {
       />
       <div
         className="absolute inset-0 transition-opacity duration-300 group-hover:opacity-0"
-        style={{ background: "linear-gradient(to top, rgba(10,26,12,0.5) 0%, transparent 60%)" }}
+        style={{ background: "linear-gradient(to top, rgba(3,7,35,0.65) 0%, transparent 60%)" }}
       />
       <div
         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-        style={{ background: "linear-gradient(to top, rgba(10,26,12,0.92) 0%, rgba(10,26,12,0.2) 50%, transparent 100%)" }}
+        style={{ background: "linear-gradient(to top, rgba(3,7,35,0.92) 0%, rgba(3,7,35,0.2) 50%, transparent 100%)" }}
       />
-      <div className="absolute bottom-0 left-0 h-[2px] w-0 group-hover:w-full transition-all duration-500 z-10" style={{ background: "#c9a44a" }} />
+      <div className="absolute bottom-0 left-0 h-[2px] w-0 group-hover:w-full transition-all duration-500 z-10" style={{ background: "#8fb3ff" }} />
       <div className="absolute bottom-0 left-0 right-0 p-5 z-10 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-        <p className="text-xs font-bold tracking-[0.22em] uppercase mb-1" style={{ color: "#c9a44a", fontFamily: "'Barlow Condensed', sans-serif" }}>
+        <p className="text-xs font-bold tracking-[0.22em] uppercase mb-1" style={{ color: "#8fb3ff", fontFamily: "'Barlow Condensed', sans-serif" }}>
           {item.category}
         </p>
-        <p className="text-sm font-light leading-snug" style={{ color: "#f0e9d6" }}>{item.title}</p>
+        <p className="text-sm font-light leading-snug" style={{ color: "#f8fafc" }}>{item.title}</p>
       </div>
     </div>
   );
@@ -143,9 +143,9 @@ function PhotoCardSkeleton({ style = {} }: { style?: React.CSSProperties }) {
   return (
     <div
       className="relative overflow-hidden"
-      style={{ background: "#1a3d1e", ...style }}
+      style={{ background: "#07102b", ...style }}
     >
-      <div className="absolute inset-0 animate-pulse" style={{ background: "linear-gradient(90deg, #1a3d1e 25%, #243d25 50%, #1a3d1e 75%)", backgroundSize: "200% 100%", animation: "shimmer 1.5s infinite" }} />
+      <div className="absolute inset-0 animate-pulse" style={{ background: "linear-gradient(90deg, #07102b 25%, #12204f 50%, #07102b 75%)", backgroundSize: "200% 100%", animation: "shimmer 1.5s infinite" }} />
     </div>
   );
 }
@@ -207,14 +207,14 @@ function ViewAllButton({ category, total, onNavigate }: {
   if (total <= PREVIEW_COUNT) return null;
 
   return (
-    <div className="flex items-center justify-between mt-8 pt-8" style={{ borderTop: "1px solid rgba(201,164,74,0.1)" }}>
-      <p style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "0.72rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(201,164,74,0.4)" }}>
+    <div className="flex items-center justify-between mt-8 pt-8" style={{ borderTop: "1px solid rgba(143,179,255,0.12)" }}>
+      <p style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "0.72rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(143,179,255,0.45)" }}>
         Showing 6 of {total} photographs
       </p>
       <button
         onClick={onNavigate}
         className="flex items-center gap-3 px-6 py-3 transition-all group"
-        style={{ border: "1px solid rgba(201,164,74,0.25)", background: "transparent", color: "#c9a44a" }}
+        style={{ border: "1px solid rgba(143,179,255,0.22)", background: "transparent", color: "#8fb3ff" }}
       >
         <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "0.75rem", fontWeight: 500, letterSpacing: "0.18em", textTransform: "uppercase" }}>
           View all {total} photos
@@ -247,7 +247,7 @@ export default function GalleryPage() {
 
   return (
     <div
-      style={{ background: "#0a1a0c", color: "#f0e9d6", fontFamily: "'Barlow', sans-serif", fontWeight: 300 }}
+      style={{ background: "#050923", color: "#f8fafc", fontFamily: "'Barlow', sans-serif", fontWeight: 300 }}
       className="min-h-screen overflow-x-hidden"
     >
       {/* Grain overlay */}
@@ -261,26 +261,26 @@ export default function GalleryPage() {
       {/* Hero */}
       <section
         className="relative flex flex-col justify-end overflow-hidden"
-        style={{ minHeight: "72vh", background: "#0a1a0c", paddingTop: "8rem", paddingBottom: "5rem" }}
+        style={{ minHeight: "72vh", background: "#0a1560", paddingTop: "8rem", paddingBottom: "5rem" }}
       >
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 30% 60%, rgba(201,164,74,0.07) 0%, transparent 65%)" }} />
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 30% 60%, rgba(143,179,255,0.08) 0%, transparent 65%)" }} />
         <div
           className="absolute right-12 top-1/2 -translate-y-1/2 select-none hidden md:block"
-          style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(200px, 28vw, 340px)", fontWeight: 900, color: "rgba(201,164,74,0.04)", lineHeight: 1, letterSpacing: "-0.05em" }}
+          style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(200px, 28vw, 340px)", fontWeight: 900, color: "rgba(143,179,255,0.04)", lineHeight: 1, letterSpacing: "-0.05em" }}
         >
           MV
         </div>
         <div
           className="absolute left-12 top-0 bottom-0 w-px hidden md:block"
-          style={{ background: "linear-gradient(to bottom, transparent, rgba(201,164,74,0.2) 40%, rgba(201,164,74,0.2) 60%, transparent)" }}
+          style={{ background: "linear-gradient(to bottom, transparent, rgba(143,179,255,0.2) 40%, rgba(143,179,255,0.2) 60%, transparent)" }}
         />
         <div className="absolute top-8 left-0 right-0 flex items-center justify-between px-8 md:px-16" style={{ paddingTop: "1rem" }}>
-          <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "0.68rem", fontWeight: 500, letterSpacing: "0.35em", textTransform: "uppercase", color: "rgba(201,164,74,0.45)" }}>
+          <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "0.68rem", fontWeight: 500, letterSpacing: "0.35em", textTransform: "uppercase", color: "rgba(143,179,255,0.45)" }}>
             Mumias West · 2027
           </div>
           <div className="flex items-center gap-3">
-            <div style={{ width: 40, height: 1, background: "rgba(201,164,74,0.25)" }} />
-            <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "0.68rem", fontWeight: 500, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(201,164,74,0.45)" }}>
+            <div style={{ width: 40, height: 1, background: "rgba(143,179,255,0.25)" }} />
+            <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "0.68rem", fontWeight: 500, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(143,179,255,0.45)" }}>
               Visual Record
             </span>
           </div>
@@ -291,25 +291,25 @@ export default function GalleryPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="flex items-center gap-4 mb-6" style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "0.72rem", fontWeight: 500, letterSpacing: "0.32em", textTransform: "uppercase", color: "#c9a44a" }}>
-            <span style={{ display: "inline-block", width: "2.5rem", height: 1, background: "#c9a44a" }} />
+          <div className="flex items-center gap-4 mb-6" style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "0.72rem", fontWeight: 500, letterSpacing: "0.32em", textTransform: "uppercase", color: "#8fb3ff" }}>
+            <span style={{ display: "inline-block", width: "2.5rem", height: 1, background: "#8fb3ff" }} />
             Gallery · On the Ground
           </div>
-          <h1 className="font-bold leading-[0.9] mb-8" style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(3.5rem, 8vw, 7rem)", color: "#f0e9d6", maxWidth: "16ch" }}>
+          <h1 className="font-bold leading-[0.9] mb-8" style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(3.5rem, 8vw, 7rem)", color: "#f8fafc", maxWidth: "16ch" }}>
             A People&apos;s<br />
-            <em style={{ fontStyle: "italic", color: "#e8cc84" }}>Journey</em>
+            <em style={{ fontStyle: "italic", color: "#bfceff" }}>Journey</em>
           </h1>
-          <p className="leading-relaxed" style={{ fontSize: "0.95rem", color: "#c4b896", maxWidth: "38rem", borderLeft: "1px solid rgba(201,164,74,0.25)", paddingLeft: "1.2rem" }}>
-            Every photograph is a promise. Every face, a reason to fight for this constituency. From the wards of Musanda to the markets of Mumias Central — this is Brian Omondi&apos;s campaign, told in pictures.
+          <p className="leading-relaxed" style={{ fontSize: "0.95rem", color: "#dbeafe", maxWidth: "38rem", borderLeft: "1px solid rgba(143,179,255,0.25)", paddingLeft: "1.2rem" }}>
+            Every photograph is a promise. Every face, a reason to fight for this constituency. From the wards of Musanda to the markets of Mumias Central, this is Brian Omondi&apos;s campaign, told in pictures.
           </p>
         </motion.div>
       </section>
 
       {/* Ticker */}
-      <div style={{ overflow: "hidden", borderTop: "1px solid rgba(201,164,74,0.12)", borderBottom: "1px solid rgba(201,164,74,0.12)", padding: "0.85rem 0", background: "rgba(201,164,74,0.03)" }}>
+      <div style={{ overflow: "hidden", borderTop: "1px solid rgba(143,179,255,0.12)", borderBottom: "1px solid rgba(143,179,255,0.12)", padding: "0.85rem 0", background: "rgba(143,179,255,0.03)" }}>
         <div className="flex" style={{ animation: "ticker 40s linear infinite", whiteSpace: "nowrap" }}>
           {[...TICKER_ITEMS, ...TICKER_ITEMS].map((item, i) => (
-            <span key={i} style={{ flexShrink: 0, fontFamily: "'Barlow Condensed', sans-serif", fontSize: "0.7rem", fontWeight: 500, letterSpacing: "0.25em", textTransform: "uppercase", color: "rgba(201,164,74,0.45)", padding: "0 3rem" }}>
+            <span key={i} style={{ flexShrink: 0, fontFamily: "'Barlow Condensed', sans-serif", fontSize: "0.7rem", fontWeight: 500, letterSpacing: "0.25em", textTransform: "uppercase", color: "rgba(143,179,255,0.45)", padding: "0 3rem" }}>
               ◆&nbsp;&nbsp;{item}
             </span>
           ))}
@@ -320,19 +320,19 @@ export default function GalleryPage() {
       <div
         ref={railRef}
         className="sticky top-0 z-50 flex items-stretch overflow-x-auto"
-        style={{ background: "rgba(10,26,12,0.97)", backdropFilter: "blur(16px)", borderBottom: "1px solid rgba(201,164,74,0.12)", scrollbarWidth: "none" }}
+        style={{ background: "rgba(2,10,34,0.97)", backdropFilter: "blur(16px)", borderBottom: "1px solid rgba(143,179,255,0.12)", scrollbarWidth: "none" }}
       >
         {SECTIONS.map((s, i) => (
           <div key={s.id} className="flex items-stretch">
-            {i > 0 && <div style={{ width: 1, background: "rgba(201,164,74,0.1)", margin: "0.5rem 0" }} />}
+            {i > 0 && <div style={{ width: 1, background: "rgba(143,179,255,0.1)", margin: "0.5rem 0" }} />}
             <button
               onClick={() => switchSection(s.id)}
               className="relative flex-shrink-0 px-8 py-4 border-none cursor-pointer transition-colors duration-200"
-              style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "0.78rem", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", background: "none", color: activeSection === s.id ? "#c9a44a" : "rgba(196,184,150,0.55)", whiteSpace: "nowrap" }}
+              style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "0.78rem", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", background: "none", color: activeSection === s.id ? "#8fb3ff" : "rgba(203,220,255,0.55)", whiteSpace: "nowrap" }}
             >
               {s.label}
               {activeSection === s.id && (
-                <motion.span layoutId="rail-indicator" className="absolute bottom-0 left-4 right-4 h-[2px]" style={{ background: "#c9a44a" }} />
+                <motion.span layoutId="rail-indicator" className="absolute bottom-0 left-4 right-4 h-[2px]" style={{ background: "#8fb3ff" }} />
               )}
             </button>
           </div>
@@ -350,15 +350,15 @@ export default function GalleryPage() {
         {/* Section Header */}
         <div className="grid gap-8 pb-14" style={{ gridTemplateColumns: "1fr 1fr", alignItems: "end" }}>
           <div>
-            <p className="mb-3" style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "0.68rem", fontWeight: 500, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(201,164,74,0.5)" }}>
+            <p className="mb-3" style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "0.68rem", fontWeight: 500, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(143,179,255,0.5)" }}>
               {currentSection.number}
             </p>
-            <h2 className="font-bold leading-[1.0]" style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2.5rem, 4vw, 4rem)", color: "#f0e9d6" }}>
+            <h2 className="font-bold leading-[1.0]" style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2.5rem, 4vw, 4rem)", color: "#f8fafc" }}>
               {currentSection.title}<br />
-              <em style={{ fontStyle: "italic", color: "#e8cc84" }}>{currentSection.titleEm}</em>
+              <em style={{ fontStyle: "italic", color: "#bfceff" }}>{currentSection.titleEm}</em>
             </h2>
           </div>
-          <p className="leading-relaxed self-end" style={{ fontSize: "0.9rem", color: "#c4b896", lineHeight: 1.85, borderLeft: "1px solid rgba(201,164,74,0.2)", paddingLeft: "1.5rem" }}>
+          <p className="leading-relaxed self-end" style={{ fontSize: "0.9rem", color: "#dbeafe", lineHeight: 1.85, borderLeft: "1px solid rgba(143,179,255,0.2)", paddingLeft: "1.5rem" }}>
             {currentSection.desc}
           </p>
         </div>
@@ -366,7 +366,7 @@ export default function GalleryPage() {
         {/* Empty state */}
         {!isLoading && allItems.length === 0 && (
           <div className="flex items-center justify-center py-20">
-            <p style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "0.78rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(201,164,74,0.3)" }}>
+            <p style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "0.78rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(143,179,255,0.3)" }}>
               No photographs yet in this category
             </p>
           </div>
@@ -392,17 +392,17 @@ export default function GalleryPage() {
         {/* Quote */}
         <div
           className="grid gap-12 items-center py-20 mt-16"
-          style={{ gridTemplateColumns: "auto 1fr", borderTop: "1px solid rgba(201,164,74,0.08)", borderBottom: "1px solid rgba(201,164,74,0.08)" }}
+          style={{ gridTemplateColumns: "auto 1fr", borderTop: "1px solid rgba(143,179,255,0.08)", borderBottom: "1px solid rgba(143,179,255,0.08)" }}
         >
-          <div className="hidden md:block select-none leading-[0.7]" style={{ fontFamily: "'Playfair Display', serif", fontSize: "8rem", fontWeight: 900, color: "rgba(201,164,74,0.15)" }}>
+          <div className="hidden md:block select-none leading-[0.7]" style={{ fontFamily: "'Playfair Display', serif", fontSize: "8rem", fontWeight: 900, color: "rgba(143,179,255,0.15)" }}>
             &ldquo;
           </div>
           <div>
-            <p className="leading-relaxed" style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.3rem, 2.5vw, 2rem)", fontWeight: 400, fontStyle: "italic", color: "#f0e9d6" }}>
+            <p className="leading-relaxed" style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.3rem, 2.5vw, 2rem)", fontWeight: 400, fontStyle: "italic", color: "#f8fafc" }}>
               {currentSection.quote}
             </p>
-            <div className="flex items-center gap-4 mt-6" style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "0.68rem", letterSpacing: "0.25em", textTransform: "uppercase", color: "rgba(201,164,74,0.5)" }}>
-              <span style={{ display: "block", width: "2rem", height: 1, background: "rgba(201,164,74,0.3)" }} />
+            <div className="flex items-center gap-4 mt-6" style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "0.68rem", letterSpacing: "0.25em", textTransform: "uppercase", color: "rgba(143,179,255,0.5)" }}>
+              <span style={{ display: "block", width: "2rem", height: 1, background: "rgba(143,179,255,0.3)" }} />
               {currentSection.quoteAttr}
             </div>
           </div>
@@ -410,8 +410,8 @@ export default function GalleryPage() {
       </motion.div>
 
       {/* CTA */}
-      <section className="relative py-28 text-center overflow-hidden" style={{ background: "#060f07", borderTop: "1px solid rgba(201,164,74,0.08)" }}>
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at center, rgba(201,164,74,0.05) 0%, transparent 65%)" }} />
+      <section className="relative py-28 text-center overflow-hidden" style={{ background: "#0a1560", borderTop: "1px solid rgba(143,179,255,0.08)" }}>
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at center, rgba(143,179,255,0.05) 0%, transparent 65%)" }} />
         <motion.div
           className="relative z-10 max-w-xl mx-auto px-8"
           initial={{ opacity: 0, y: 20 }}
@@ -419,20 +419,20 @@ export default function GalleryPage() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="flex items-center justify-center gap-4 mb-6" style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "0.68rem", fontWeight: 500, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(201,164,74,0.45)" }}>
-            <span style={{ width: 32, height: 1, background: "rgba(201,164,74,0.3)", display: "block" }} />
+          <div className="flex items-center justify-center gap-4 mb-6" style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "0.68rem", fontWeight: 500, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(143,179,255,0.45)" }}>
+            <span style={{ width: 32, height: 1, background: "rgba(143,179,255,0.3)", display: "block" }} />
             Social Media
-            <span style={{ width: 32, height: 1, background: "rgba(201,164,74,0.3)", display: "block" }} />
+            <span style={{ width: 32, height: 1, background: "rgba(143,179,255,0.3)", display: "block" }} />
           </div>
-          <h2 className="font-bold mb-4" style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2rem, 4vw, 3.2rem)", color: "#f0e9d6" }}>
-            Follow the <em style={{ fontStyle: "italic", color: "#e8cc84" }}>Journey</em>
+          <h2 className="font-bold mb-4" style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2rem, 4vw, 3.2rem)", color: "#f8fafc" }}>
+            Follow the <em style={{ fontStyle: "italic", color: "#bfceff" }}>Journey</em>
           </h2>
-          <p className="mb-10 leading-relaxed" style={{ fontSize: "0.9rem", color: "#c4b896" }}>
+          <p className="mb-10 leading-relaxed" style={{ fontSize: "0.9rem", color: "#dbeafe" }}>
             More moments from Mumias West on social media.
           </p>
           <div className="flex items-center justify-center gap-3 flex-wrap">
             {["Facebook", "Instagram", "X / Twitter"].map((s) => (
-              <button key={s} className="px-7 py-3 transition-all hover:bg-[rgba(201,164,74,0.1)]" style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "0.75rem", fontWeight: 500, letterSpacing: "0.18em", textTransform: "uppercase", border: "1px solid rgba(201,164,74,0.2)", background: "transparent", color: "#c9a44a", borderRadius: 2 }}>
+              <button key={s} className="px-7 py-3 transition-all hover:bg-[rgba(143,179,255,0.1)]" style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "0.75rem", fontWeight: 500, letterSpacing: "0.18em", textTransform: "uppercase", border: "1px solid rgba(143,179,255,0.2)", background: "transparent", color: "#8fb3ff", borderRadius: 2 }}>
                 {s}
               </button>
             ))}

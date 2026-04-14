@@ -54,7 +54,7 @@ export default function AboutPreview() {
 
             {/* Bio */}
             <p className="text-gray-700 text-base md:text-lg leading-relaxed">
-              Brian Omondi is a passionate advocate for the people of Mumias West. With a deep understanding of the challenges facing the constituency — from agriculture to education, health to infrastructure — he is committed to bringing real, measurable change to every ward.
+              Brian Omondi is a passionate advocate for the people of Mumias West. With a deep understanding of the challenges facing the constituency, from agriculture to education, health to infrastructure, he is committed to bringing real, measurable change to every ward.
             </p>
 
             <p className="text-gray-700 text-base leading-relaxed">

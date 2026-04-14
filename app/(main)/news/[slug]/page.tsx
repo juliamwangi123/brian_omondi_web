@@ -130,12 +130,12 @@ export default function NewsDetailPage() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-center">
-          <h1 className="font-playfair font-bold text-[#0d2b14] text-3xl mb-4">
+          <h1 className="font-playfair font-bold text-[#0a1560] text-3xl mb-4">
             Article not found
           </h1>
           <Link
             href="/news"
-            className="text-[#d4a017] font-bold hover:underline"
+            className="text-[#cbdcff] font-bold hover:underline"
           >
             ← Back to News
           </Link>
@@ -147,8 +147,8 @@ export default function NewsDetailPage() {
   return (
     <div className="bg-gray-50 min-h-screen">
 
-      {/* Hero Banner — solid green, no image */}
-      <section className="relative bg-[#0d2b14] py-16 md:py-20 overflow-hidden">
+      {/* Hero Banner — solid blue, no image */}
+      <section className="relative bg-[#0a1560] py-16 md:py-20 overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.04] pointer-events-none"
           style={{
@@ -160,7 +160,7 @@ export default function NewsDetailPage() {
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "radial-gradient(ellipse at center, rgba(212,160,23,0.08) 0%, transparent 70%)",
+              "radial-gradient(ellipse at center, rgba(147,197,253,0.12) 0%, transparent 70%)",
           }}
         />
 
@@ -184,7 +184,7 @@ export default function NewsDetailPage() {
             <div className="flex items-center gap-3 flex-wrap">
               <span
                 className="px-3 py-1 rounded-full text-xs font-bold"
-                style={{ background: "#d4a017", color: "#0d2b14" }}
+                style={{ background: "rgba(255,255,255,0.12)", color: "#cbdcff" }}
               >
                 {article.category}
               </span>
@@ -238,19 +238,19 @@ export default function NewsDetailPage() {
 
           <div className="border-t-2 border-gray-200 mt-12 pt-8">
             <p className="text-sm text-gray-500">
-              Posted on {article.date} in <span className="text-[#d4a017] font-semibold">{article.category}</span>
+              Posted on {article.date} in <span className="text-[#cbdcff] font-semibold">{article.category}</span>
             </p>
           </div>
         </motion.div>
       </section>
 
       {/* CTA Section */}
-      <section className="relative bg-[#0d2b14] py-16 md:py-20 overflow-hidden">
+      <section className="relative bg-[#0a1560] py-16 md:py-20 overflow-hidden">
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "radial-gradient(ellipse at center, rgba(212,160,23,0.08) 0%, transparent 70%)",
+              "radial-gradient(ellipse at center, rgba(147,197,253,0.12) 0%, transparent 70%)",
           }}
         />
         <div className="relative z-10 max-w-7xl mx-auto px-8 md:px-16">
@@ -273,7 +273,7 @@ export default function NewsDetailPage() {
               <Link
                 href="/manifesto"
                 className="w-full py-3 rounded-xl font-bold text-center text-sm transition-all hover:brightness-110"
-                style={{ background: "#d4a017", color: "#0d2b14" }}
+                style={{ background: "rgba(255,255,255,0.15)", color: "#ffffff" }}
               >
                 Read the Manifesto
               </Link>
@@ -281,7 +281,7 @@ export default function NewsDetailPage() {
 
             {/* Related articles */}
             <div className="flex flex-col gap-4">
-              <h4 className="font-playfair font-bold text-[#0d2b14] text-lg">
+              <h4 className="font-playfair font-bold text-[#0a1560] text-lg">
                 More Updates
               </h4>
               {related.map((item) => (
@@ -299,7 +299,7 @@ export default function NewsDetailPage() {
                     />
                   </div>
                   <div className="flex flex-col gap-1 justify-center">
-                    <p className="font-semibold text-white group-hover:text-[#d4a017] transition-colors text-sm leading-tight">
+                    <p className="font-semibold text-white group-hover:text-[#cbdcff] transition-colors text-sm leading-tight">
                       {item.title}
                     </p>
                     <p className="text-gray-400 text-xs">{item.date}</p>

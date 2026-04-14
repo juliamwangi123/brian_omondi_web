@@ -13,7 +13,7 @@ export default function NewsPage() {
     <div className="bg-gray-50 min-h-screen">
 
       {/* Hero Banner */}
-      <section className="relative bg-[#0d2b14] py-20 md:py-28 overflow-hidden">
+      <section className="relative bg-[#0a1560] py-20 md:py-28 overflow-hidden">
         {/* Grain texture */}
         <div
           className="absolute inset-0 opacity-[0.04] pointer-events-none"
@@ -27,7 +27,7 @@ export default function NewsPage() {
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "radial-gradient(ellipse at center, rgba(212,160,23,0.08) 0%, transparent 70%)",
+              "radial-gradient(ellipse at center, rgba(255,255,255,0.05) 0%, transparent 70%)",
           }}
         />
         <div className="relative z-10 max-w-7xl mx-auto px-8 md:px-16 text-center">
@@ -38,11 +38,11 @@ export default function NewsPage() {
             className="flex flex-col items-center gap-4"
           >
             <div className="flex items-center gap-3">
-              <div className="w-8 h-0.5 bg-[#d4a017]" />
-              <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#d4a017]">
+              <div className="w-8 h-0.5 bg-white/40" />
+              <span className="text-xs font-bold tracking-[0.2em] uppercase text-white/60">
                 Campaign Updates
               </span>
-              <div className="w-8 h-0.5 bg-[#d4a017]" />
+              <div className="w-8 h-0.5 bg-white/40" />
             </div>
             <h1
               className="font-playfair font-bold text-white"
@@ -50,8 +50,8 @@ export default function NewsPage() {
             >
               From the Campaign Trail
             </h1>
-            <p className="text-gray-400 max-w-xl text-base md:text-lg">
-              Stay up to date with  Brian&apos;s journey across Mumias West.
+            <p className="text-blue-200/70 max-w-xl text-base md:text-lg">
+              Stay up to date with Brian&apos;s journey across Mumias West.
             </p>
           </motion.div>
         </div>
@@ -76,15 +76,14 @@ export default function NewsPage() {
             />
             <div className="absolute top-4 left-4">
               <span
-                className="px-3 py-1 rounded-full text-xs font-bold"
-                style={{ background: "#d4a017", color: "#0d2b14" }}
+                className="px-3 py-1 rounded-full text-xs font-bold bg-[#0a1560] text-white"
               >
                 {featured.category}
               </span>
             </div>
             {/* Featured label */}
             <div className="absolute bottom-4 left-4">
-              <span className="px-3 py-1 rounded-full text-xs font-bold bg-[#0d2b14] text-white">
+              <span className="px-3 py-1 rounded-full text-xs font-bold bg-white text-[#0a1560]">
                 Featured
               </span>
             </div>
@@ -97,7 +96,7 @@ export default function NewsPage() {
               <span>{featured.date}</span>
             </div>
             <h2
-              className="font-playfair font-bold text-[#0d2b14] leading-tight"
+              className="font-playfair font-bold text-[#0a1560] leading-tight"
               style={{ fontSize: "clamp(22px, 3vw, 32px)" }}
             >
               {featured.title}
@@ -105,10 +104,10 @@ export default function NewsPage() {
             <p className="text-gray-500 text-base leading-relaxed">
               {featured.excerpt}
             </p>
-            <div className="w-12 h-0.5 bg-[#d4a017]" />
+            <div className="w-12 h-0.5 bg-[#0a1560]/20" />
             <Link
               href={`/news/${featured.slug}`}
-              className="inline-flex items-center gap-2 font-bold text-[#0d2b14] hover:text-[#d4a017] transition-colors text-sm"
+              className="inline-flex items-center gap-2 font-bold text-[#0a1560] hover:text-[#0a1560]/60 transition-colors text-sm"
             >
               Read Full Story <ArrowRight className="w-4 h-4" />
             </Link>
@@ -138,8 +137,7 @@ export default function NewsPage() {
                 />
                 <div className="absolute top-3 left-3">
                   <span
-                    className="px-2 py-1 rounded text-xs font-bold"
-                    style={{ background: "#d4a017", color: "#0d2b14" }}
+                    className="px-2 py-1 rounded text-xs font-bold bg-[#0a1560] text-white"
                   >
                     {item.category}
                   </span>
@@ -152,7 +150,7 @@ export default function NewsPage() {
                   <Calendar className="w-3.5 h-3.5" />
                   <span>{item.date}</span>
                 </div>
-                <h3 className="font-playfair font-bold text-[#0d2b14] text-lg leading-snug hover:text-[#d4a017] transition-colors cursor-pointer">
+                <h3 className="font-playfair font-bold text-[#0a1560] text-lg leading-snug hover:text-[#0a1560]/60 transition-colors cursor-pointer">
                   <Link href={`/news/${item.slug}`}>{item.title}</Link>
                 </h3>
                 <p className="text-gray-500 text-sm leading-relaxed">
@@ -160,7 +158,7 @@ export default function NewsPage() {
                 </p>
                 <Link
                   href={`/news/${item.slug}`}
-                  className="text-[#d4a017] text-sm font-bold hover:underline mt-1"
+                  className="text-[#0a1560] text-sm font-bold hover:underline mt-1"
                 >
                   Read More →
                 </Link>
