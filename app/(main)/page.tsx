@@ -44,7 +44,7 @@ export default function HomePage() {
             priority
             className="object-cover md:[transform:translateX(15%)_perspective(1500px)_rotateY(180deg)_rotateX(1deg)]"
             style={{
-              objectPosition: "center 15%",
+              objectPosition: "center 8%",
               transformOrigin: "center",
             }}
           />
