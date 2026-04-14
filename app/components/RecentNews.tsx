@@ -20,14 +20,14 @@ export default function RecentNews() {
           transition={{ duration: 0.6 }}
         >
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-8 h-0.5 bg-[#d4a017]" />
-            <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#d4a017]">
+            <div className="w-8 h-0.5 bg-[#0a1560]" />
+            <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#0a1560]">
               Latest Updates
             </span>
-            <div className="w-8 h-0.5 bg-[#d4a017]" />
+            <div className="w-8 h-0.5 bg-[#0a1560]" />
           </div>
           <h2
-            className="font-playfair font-bold text-[#0d2b14] mb-4"
+            className="font-playfair font-bold text-[#0a1560] mb-4"
             style={{ fontSize: "clamp(28px, 4vw, 44px)" }}
           >
             From the Campaign Trail
@@ -61,7 +61,7 @@ export default function RecentNews() {
                   <div className="absolute top-3 left-3">
                     <span
                       className="px-3 py-1 rounded-full text-xs font-bold"
-                      style={{ background: "#d4a017", color: "#0d2b14" }}
+                      style={{ background: "#0a1560", color: "#ffffff" }}
                     >
                       {item.category}
                     </span>
@@ -73,7 +73,7 @@ export default function RecentNews() {
               <div className="p-6 flex flex-col gap-3">
                 <p className="text-gray-400 text-xs">{item.date}</p>
                 <Link href={`/news/${item.slug}`}>
-                  <h3 className="font-playfair font-bold text-[#0d2b14] text-lg leading-snug hover:text-[#d4a017] transition-colors cursor-pointer">
+                  <h3 className="font-playfair font-bold text-[#0a1560] text-lg leading-snug hover:text-[#0a1560]/70 transition-colors cursor-pointer">
                     {item.title}
                   </h3>
                 </Link>
@@ -82,7 +82,7 @@ export default function RecentNews() {
                 </p>
                 <Link
                   href={`/news/${item.slug}`}
-                  className="text-[#d4a017] text-sm font-bold hover:underline mt-1"
+                  className="text-[#0a1560] text-sm font-bold hover:underline mt-1"
                 >
                   Read More →
                 </Link>
@@ -101,8 +101,8 @@ export default function RecentNews() {
         >
           <Link
             href="/news"
-            className="inline-block px-8 py-3.5 rounded-xl font-bold transition-all hover:bg-[#0d2b14] hover:text-white"
-            style={{ border: "2px solid #0d2b14", color: "#0d2b14" }}
+            className="inline-block px-8 py-3.5 rounded-xl font-bold text-white transition-all hover:brightness-110"
+            style={{ background: "#0a1560" }}
           >
             View All News
           </Link>
