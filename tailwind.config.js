@@ -13,6 +13,8 @@ module.exports = {
       fontFamily: {
         'playfair': ['Playfair Display', 'serif'],
         'source-sans': ['Source Sans Pro', 'sans-serif'],
+        'inter': ['var(--font-inter)', 'sans-serif'],
+         poppins: ['Poppins', 'sans-serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',

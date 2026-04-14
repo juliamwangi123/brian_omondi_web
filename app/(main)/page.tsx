@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import MissionStatement from "../components/MissionStatement";
@@ -23,37 +22,50 @@ export default function HomePage() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   };
 
-
-
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative min-h-screen md:max-h-[900px] overflow-hidden bg-[#0d2b14]">
-
+      <section
+        className="relative min-h-screen overflow-hidden mt-0 mb-0 h-[80vh]"
+        style={{ backgroundColor: "#0d0d0d", backgroundImage: "linear-gradient(to right, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.4) 50%, transparent 100%)" }}
+      >
         {/* Background Photo */}
-        <div className="absolute inset-0 z-0">
+        <div 
+          className="absolute inset-x-0 top-0 -bottom-8 z-0" 
+          style={{ 
+            perspective: "1500px",
+            background: "linear-gradient(to right, rgba(0,0,0,0.95) 25%, rgba(0,0,0,0.5) 40%, transparent 70%)"
+          }}
+        >
           <Image
             src="/images/pic6.jpg"
             alt="Hon. Brian Omondi - Mumias West MP Aspirant 2027"
             fill
             priority
-            className="object-cover md:translate-x-[15%]"
-            style={{ objectPosition: "center 8%" }}
+            className="object-cover"
+            style={{
+              objectPosition: "center 10%",
+              transform:
+                "translateX(15%) perspective(1500px) rotateY(180deg) rotateX(1deg)",
+              transformOrigin: "center",
+            }}
           />
+
           {/* Desktop gradient */}
           <div
             className="absolute inset-0 hidden md:block"
             style={{
               background:
-                "linear-gradient(to right, rgba(0,0,0,0.88) 30%, rgba(0,0,0,0.3) 55%, rgba(0,0,0,0.05) 100%)",
+                "linear-gradient(to right, rgba(0,0,0,0.92) 25%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.05) 100%)",
             }}
           />
+
           {/* Mobile gradient */}
           <div
             className="absolute inset-0 md:hidden"
             style={{
               background:
-                "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 30%, rgba(13,43,20,0.85) 50%, rgba(13,43,20,0.98) 100%)",
+                "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0.85) 50%, rgba(0,0,0,0.98) 100%)",
             }}
           />
         </div>
@@ -68,33 +80,18 @@ export default function HomePage() {
         />
 
         {/* Content */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-8 md:px-16 md:flex md:items-center md:min-h-screen md:max-h-[900px]">
+        <div className="relative z-10 w-full h-full max-w-7xl mx-auto px-8 md:px-16 md:flex md:items-center md:min-h-screen">
           <motion.div
             className="w-full max-w-2xl flex flex-col gap-4 md:gap-6 mt-[85%] md:mt-0 pb-12 md:pb-0"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
           >
-            {/* Badge */}
-            <motion.div variants={itemVariants} className="flex items-center gap-2">
-              <motion.div
-                className="w-2 h-2 rounded-full bg-green-400 flex-shrink-0"
-                animate={{ scale: [1, 1.4, 1], opacity: [1, 0.5, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              />
-              <span
-                className="font-semibold tracking-wider uppercase text-green-300 whitespace-nowrap md:whitespace-normal"
-                style={{ fontSize: "clamp(9px, 2.5vw, 14px)" }}
-              >
-                Mumias West Constituency · Kakamega County
-              </span>
-            </motion.div>
-
             {/* Name */}
             <motion.h1
               variants={itemVariants}
-              className="font-playfair font-bold text-white leading-tight"
-              style={{ fontSize: "clamp(22px, 6vw, 60px)" }}
+              className="font-semibold font-poppins text-white leading-tight tracking-tight"
+              style={{ fontSize: "clamp(28px, 6vw, 64px)" }}
             >
               Hon. Brian Omondi
             </motion.h1>
@@ -102,65 +99,42 @@ export default function HomePage() {
             {/* Tagline */}
             <motion.p
               variants={itemVariants}
-              className="font-playfair italic text-[#d4a017]"
-              style={{ fontSize: "clamp(16px, 2.5vw, 28px)" }}
+              className="italic text-white/90 font-normal tracking-wider max-w-lg"
+              style={{ fontSize: "clamp(16px, 2vw, 22px)" }}
             >
-              Son of the Soil, Servant of the People
+              &ldquo;Son of the Soil, Servant of the People&rdquo;
             </motion.p>
 
-            {/* Gold divider — desktop only */}
+            {/* Divider */}
             <motion.div
               variants={itemVariants}
-              className="w-16 h-0.5 bg-[#d4a017] hidden md:block"
+              className="w-16 bg-[#000073] h-[3px]"
             />
 
-            {/* Bio — desktop only */}
+            {/* Bottom Statement */}
             <motion.p
               variants={itemVariants}
-              className="text-gray-300 text-base md:text-lg leading-relaxed max-w-lg hidden md:block"
+              className="italic text-white/90 font-normal tracking-wider max-w-lg"
+              style={{ fontSize: "clamp(16px, 2vw, 22px)" }}
             >
-              Dedicated to transforming Mumias West through integrity, real
-              action, and results that every family in all four wards will feel.
+              Mumias West deserves better. <br />
+              I will deliver it
             </motion.p>
-
-            {/* Buttons */}
-            <motion.div
-              variants={itemVariants}
-              className="flex flex-col sm:flex-row gap-3 pt-1 w-full md:w-auto"
-            >
-              <Link
-                href="#about"
-                className="w-full md:w-auto px-8 py-3.5 rounded-xl font-bold transition-all hover:brightness-110 text-center"
-                style={{ background: "#d4a017", color: "#0d2b14", fontSize: "clamp(13px, 3vw, 16px)" }}
-              >
-                Join the Movement
-              </Link>
-              <Link
-                href="/manifesto"
-                className="w-full md:w-auto px-8 py-3.5 rounded-xl font-bold transition-all hover:bg-white/10 text-center"
-                style={{ border: "2px solid #d4a017", color: "#d4a017", fontSize: "clamp(13px, 3vw, 16px)" }}
-              >
-                Read My Manifesto
-              </Link>
-            </motion.div>
           </motion.div>
         </div>
-
-        {/* Scroll indicator */}
-\        
       </section>
 
       {/* Mission Statement */}
-      <MissionStatement/>
+      <MissionStatement />
 
       {/* About Preview */}
       <AboutPreview />
 
       {/* Manifesto Highlights */}
-      <ManifestoHighlights/>
+      <ManifestoHighlights />
 
       {/* Recent News */}
-      <RecentNews/>
+      <RecentNews />
 
       {/* Feedback */}
       <FeedbackSection />
