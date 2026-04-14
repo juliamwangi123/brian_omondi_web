@@ -10,7 +10,7 @@ export default function Footer() {
   const socials = socialLinks;
 
   return (
-    <footer className="bg-[#080f09] text-white">
+    <footer className="bg-[#2e2e2e] text-white">
 
       {/* Main footer */}
       <div className="max-w-7xl mx-auto px-8 md:px-16 py-16">
@@ -19,8 +19,8 @@ export default function Footer() {
           {/* Brand column */}
           <div className="md:col-span-2 flex flex-col gap-5">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-[#d4a017] rounded-full flex items-center justify-center flex-shrink-0">
-                <span className="text-[#0d2b14] font-playfair font-bold text-lg">B</span>
+              <div className="w-10 h-10 bg-[#0a1560] rounded-full flex items-center justify-center flex-shrink-0">
+                <span className="text-white font-playfair font-bold text-lg">B</span>
               </div>
               <div>
                 <p className="font-playfair font-bold text-white text-lg leading-tight">
@@ -45,7 +45,7 @@ export default function Footer() {
                     key={social.label}
                     href={social.href}
                     aria-label={social.label}
-                    className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-gray-400 hover:border-[#d4a017] hover:text-[#d4a017] transition-all"
+                    className="w-9 h-9 rounded-full bg-[#0a1560] flex items-center justify-center text-white hover:bg-[#0a1560]/80 transition-all"
                   >
                     <Icon className="w-4 h-4" />
                   </a>
@@ -64,7 +64,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 text-sm hover:text-[#d4a017] transition-colors"
+                    className="text-gray-400 text-sm hover:text-white transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -80,25 +80,25 @@ export default function Footer() {
             </h4>
             <ul className="flex flex-col gap-4">
               <li className="flex items-start gap-3">
-                <MapPin className="w-4 h-4 text-[#d4a017] flex-shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 text-gray-400 flex-shrink-0 mt-0.5" />
                 <span className="text-gray-400 text-sm">
                   Mumias West Constituency, Kakamega County, Kenya
                 </span>
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="w-4 h-4 text-[#d4a017] flex-shrink-0" />
+                <Phone className="w-4 h-4 text-gray-400 flex-shrink-0" />
                 <a
                   href="tel:+254700000000"
-                  className="text-gray-400 text-sm hover:text-[#d4a017] transition-colors"
+                  className="text-gray-400 text-sm hover:text-white transition-colors"
                 >
                   +254 719 215 215
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <Mail className="w-4 h-4 text-[#d4a017] flex-shrink-0" />
+                <Mail className="w-4 h-4 text-gray-400 flex-shrink-0" />
                 <a
                   href="mailto:info@brianomondi.co.ke"
-                  className="text-gray-400 text-sm hover:text-[#d4a017] transition-colors"
+                  className="text-gray-400 text-sm hover:text-white transition-colors"
                 >
                   info@brianomondi.co.ke
                 </a>

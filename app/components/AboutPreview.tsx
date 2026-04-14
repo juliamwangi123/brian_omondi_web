@@ -18,19 +18,12 @@ export default function AboutPreview() {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <div className="relative h-[500px] rounded-2xl overflow-hidden border-2 border-[#d4a017]/30">
+            <div className="relative h-[500px] rounded-2xl overflow-hidden border-2 border-[#0a1560]/50">
               <Image
                 src="/images/pic2.jpg"
                 alt="Hon. Brian Omondi - Mumias West MP Aspirant"
                 fill
                 className="object-cover object-top"
-              />
-              {/* Subtle green overlay at bottom */}
-              <div
-                className="absolute bottom-0 left-0 right-0 h-24"
-                style={{
-                  background: "linear-gradient(to top, rgba(13,43,20,0.5), transparent)",
-                }}
               />
             </div>
           </motion.div>
@@ -45,31 +38,31 @@ export default function AboutPreview() {
           >
             {/* Label */}
             <div className="flex items-center gap-3">
-              <div className="w-8 h-0.5 bg-[#d4a017]" />
-              <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#d4a017]">
+              <div className="w-8 h-0.5 bg-[#0a1560]" />
+              <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#0a1560]">
                 About the Candidate
               </span>
             </div>
 
             {/* Heading */}
             <h2
-              className="font-playfair font-bold text-[#0d2b14] leading-tight"
+              className="font-playfair font-bold text-[#0a1560] leading-tight"
               style={{ fontSize: "clamp(28px, 4vw, 44px)" }}
             >
               A Leader Shaped by the People of Mumias West
             </h2>
 
             {/* Bio */}
-            <p className="text-gray-600 text-base md:text-lg leading-relaxed">
+            <p className="text-gray-700 text-base md:text-lg leading-relaxed">
               Brian Omondi is a passionate advocate for the people of Mumias West. With a deep understanding of the challenges facing the constituency — from agriculture to education, health to infrastructure — he is committed to bringing real, measurable change to every ward.
             </p>
 
-            <p className="text-gray-500 text-base leading-relaxed">
+            <p className="text-gray-700 text-base leading-relaxed">
               His campaign is built on three unshakeable pillars: integrity in leadership, decisive action, and results that every family will feel.
             </p>
 
             {/* Divider */}
-            <div className="w-12 h-0.5 bg-[#d4a017]" />
+            <div className="w-12 h-0.5 bg-[#0a1560]" />
 
           
           </motion.div>

@@ -35,14 +35,14 @@ const handleChange = (
   };
 
   return (
-    <section className="relative py-16 md:py-24 bg-[#0d2b14] overflow-hidden">
+    <section className="relative py-16 md:py-24 bg-[#0a1560] overflow-hidden">
 
       {/* Radial glow */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse at center, rgba(212,160,23,0.07) 0%, transparent 70%)",
+            "radial-gradient(ellipse at center, rgba(255,255,255,0.05) 0%, transparent 70%)",
         }}
       />
 
@@ -67,8 +67,8 @@ const handleChange = (
             transition={{ duration: 0.7 }}
           >
             <div className="flex items-center gap-3">
-              <div className="w-8 h-0.5 bg-[#d4a017]" />
-              <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#d4a017]">
+              <div className="w-8 h-0.5 bg-white" />
+              <span className="text-xs font-bold tracking-[0.2em] uppercase text-white">
                 Your Voice Matters
               </span>
             </div>
@@ -86,7 +86,7 @@ const handleChange = (
               the issues that matter most to your family and your ward.
             </p>
 
-            <div className="w-12 h-0.5 bg-[#d4a017]" />
+            <div className="w-12 h-0.5 bg-white" />
 
             <p className="text-gray-500 text-sm leading-relaxed italic">
               &ldquo;Every message will be read. Your voice will shape the manifesto
@@ -99,10 +99,10 @@ const handleChange = (
                   key={i}
                   className={
                     word === "·"
-                      ? "text-[#d4a017]"
+                      ? "text-white"
                       : i === 0
-                      ? "font-playfair font-bold text-[#d4a017] text-2xl"
-                      : "text-gray-400 text-sm font-semibold"
+                      ? "font-playfair font-bold text-white text-2xl"
+                      : "text-white/70 text-sm font-semibold"
                   }
                 >
                   {word}
@@ -120,8 +120,8 @@ const handleChange = (
           >
             {submitted ? (
               <div className="bg-white rounded-2xl p-10 flex flex-col items-center gap-5 text-center">
-                <CheckCircle className="w-14 h-14 text-[#0d2b14]" />
-                <h3 className="font-playfair font-bold text-[#0d2b14] text-2xl">
+                <CheckCircle className="w-14 h-14 text-[#0a1560]" />
+                <h3 className="font-playfair font-bold text-[#0a1560] text-2xl">
                   Thank You!
                 </h3>
                 <p className="text-gray-500 text-base leading-relaxed">
@@ -133,7 +133,7 @@ const handleChange = (
                     setSubmitted(false);
                     setFormState({ name: "", ward: "", message: "" });
                   }}
-                  className="text-[#d4a017] text-sm font-bold hover:underline mt-2"
+                  className="text-[#0a1560] text-sm font-bold hover:underline mt-2"
                 >
                   Send another message
                 </button>
@@ -143,7 +143,7 @@ const handleChange = (
 
                 {/* Name */}
                 <div className="flex flex-col gap-2">
-                  <label className="text-[#0d2b14] text-sm font-bold">
+                  <label className="text-[#0a1560] text-sm font-bold">
                     Your Name
                   </label>
                   <input
@@ -152,20 +152,20 @@ const handleChange = (
                     value={formState.name}
                     onChange={handleChange}
                     placeholder="e.g. John Barasa"
-                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-800 placeholder-gray-400 text-sm focus:outline-none focus:border-[#d4a017] transition-colors"
+                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-800 placeholder-gray-400 text-sm focus:outline-none focus:border-[#0a1560] transition-colors"
                   />
                 </div>
 
                 {/* Ward */}
                 <div className="flex flex-col gap-2">
-                  <label className="text-[#0d2b14] text-sm font-bold">
+                  <label className="text-[#0a1560] text-sm font-bold">
                     Your Ward
                   </label>
                   <select
                     name="ward"
                     value={formState.ward}
                     onChange={handleChange}
-                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#d4a017] transition-colors appearance-none"
+                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#0a1560] transition-colors appearance-none"
                     style={{ color: formState.ward ? "#1f2937" : "#9ca3af" }}
                   >
                     <option value="" disabled>
@@ -181,7 +181,7 @@ const handleChange = (
 
                 {/* Message */}
                 <div className="flex flex-col gap-2">
-                  <label className="text-[#0d2b14] text-sm font-bold">
+                  <label className="text-[#0a1560] text-sm font-bold">
                     Message
                   </label>
                   <textarea
@@ -190,7 +190,7 @@ const handleChange = (
                     onChange={handleChange}
                     placeholder="Share your thoughts, concerns, or hopes for our constituency..."
                     rows={5}
-                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-800 placeholder-gray-400 text-sm focus:outline-none focus:border-[#d4a017] transition-colors resize-none"
+                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-800 placeholder-gray-400 text-sm focus:outline-none focus:border-[#0a1560] transition-colors resize-none"
                   />
                 </div>
 
@@ -211,7 +211,7 @@ const handleChange = (
                     !formState.message
                   }
                   className="w-full py-4 rounded-xl font-bold flex items-center justify-center gap-2 transition-all disabled:opacity-40 disabled:cursor-not-allowed hover:brightness-110"
-                  style={{ background: "#d4a017", color: "#0d2b14" }}
+                  style={{ background: "#0a1560", color: "#ffffff" }}
                 >
                   {isPending ? (
                     <span className="animate-pulse">Sending...</span>
