@@ -37,11 +37,12 @@ export default function AboutPreview() {
             transition={{ duration: 0.7, delay: 0.2 }}
           >
             {/* Label */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center  justify-center  md:justify-start gap-3">
               <div className="w-8 h-0.5 bg-[#0a1560]" />
               <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#0a1560]">
                 About the Candidate
               </span>
+              <div className="w-8 h-0.5 bg-[#0a1560] md:hidden" />
             </div>
 
             {/* Heading */}
