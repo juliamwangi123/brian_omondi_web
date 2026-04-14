@@ -201,7 +201,7 @@ function MagazineLayout({ items, onOpen, isLoading }: { items: GalleryItem[]; on
   );
 }
 
-function ViewAllButton({ category, total, onNavigate }: {
+function ViewAllButton({ total, onNavigate }: {
   category: string; total: number; onNavigate: () => void;
 }) {
   if (total <= PREVIEW_COUNT) return null;
