@@ -26,12 +26,12 @@ export default function HomePage() {
     <div>
       {/* Hero Section */}
       <section
-        className="relative min-h-screen overflow-hidden mt-0 mb-0"
+        className="relative min-h-[85vh] md:min-h-screen overflow-hidden mt-0 mb-0 pt-[env(safe-area-inset-top)]"
         style={{ backgroundColor: "#0d0d0d", backgroundImage: "linear-gradient(to right, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.15) 50%, transparent 100%)" }}
       >
         {/* Background Photo */}
         <div 
-          className="absolute inset-x-0 top-0 -bottom-8 z-0" 
+          className="absolute inset-x-0 top-0 -bottom-8 z-0 -left-[15%] -right-[15%] md:left-0 md:right-0"
           style={{ 
             perspective: "1500px",
             background: "linear-gradient(to right, rgba(0,0,0,0.95) 25%, rgba(0,0,0,0.2) 40%, transparent 65%)"
@@ -42,7 +42,7 @@ export default function HomePage() {
             alt="Hon. Brian Omondi - Mumias West MP Aspirant 2027"
             fill
             priority
-            className="object-cover md:[transform:translateX(15%)_perspective(1500px)_rotateY(180deg)_rotateX(1deg)]"
+            className="object-cover [transform:translateX(0%)_rotateY(180deg)_rotateX(0deg)] md:[transform:translateX(15%)_perspective(1500px)_rotateY(180deg)_rotateX(1deg)]"
             style={{
               objectPosition: "center 8%",
               transformOrigin: "center",
@@ -78,7 +78,7 @@ export default function HomePage() {
         />
 
         {/* Content */}
-        <div className="relative z-10 w-full h-full max-w-7xl mx-auto px-8 md:px-16 md:flex md:items-center md:min-h-screen">
+        <div className="relative z-10 w-full h-full max-w-7xl mx-auto px-8 md:px-16 md:flex md:items-center md:min-h-screen pb-5 md:pb-0">
           <motion.div
             className="w-full max-w-2xl flex flex-col gap-4 md:gap-6 mt-[85%] md:mt-0 pb-12 md:pb-0 text-center md:text-left"
             variants={containerVariants}
