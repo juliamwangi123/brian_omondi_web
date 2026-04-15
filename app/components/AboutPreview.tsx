@@ -23,7 +23,7 @@ export default function AboutPreview() {
                 src="/images/pic2.jpg"
                 alt="Hon. Brian Omondi - Mumias West MP Aspirant"
                 fill
-                className="object-cover object-top"
+                className="object-cover object-top [transform:translateX(0%)_rotateY(180deg)_rotateX(0deg)]"
               />
             </div>
           </motion.div>
