@@ -30,7 +30,7 @@ export default function AboutPage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-campaign-green to-campaign-gold text-white py-20">
+      <section className="bg-[#0a1560] text-white py-20">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -58,7 +58,7 @@ export default function AboutPage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-playfair font-bold text-campaign-green mb-4">
+            <h2 className="text-4xl font-playfair font-bold text-[#0a1560] mb-4">
               Core Values
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -78,8 +78,8 @@ export default function AboutPage() {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="bg-white rounded-xl p-8 text-center shadow-sm hover:shadow-md transition-shadow"
                 >
-                  <IconComponent className="w-12 h-12 text-campaign-gold mb-4 mx-auto" />
-                  <h3 className="text-xl font-playfair font-bold mb-3 text-campaign-green">
+                  <IconComponent className="w-12 h-12 text-[#0a1560] mb-4 mx-auto" />
+                  <h3 className="text-xl font-playfair font-bold mb-3 text-[#0a1560]">
                     {value.title}
                   </h3>
                   <p className="text-gray-600 font-source-sans">
