@@ -26,31 +26,29 @@ export default function HomePage() {
     <div>
       {/* Hero Section */}
       <section
-        className="relative min-h-[85vh] md:min-h-screen overflow-hidden mt-0 mb-0 pt-[env(safe-area-inset-top)]"
+        className="relative min-h-[85vh] md:min-h-screen overflow-hidden"
         style={{ backgroundColor: "#0d0d0d" }}
       >
         {/* Background Photo */}
-        <div 
-          className="absolute inset-0 z-0"
-        >
+        <div className="absolute inset-0 z-0">
           <Image
             src="/images/pic6.jpg"
             alt="Hon. Brian Omondi Mumias West MP Aspirant 2027"
             fill
             priority
-            className="object-cover [transform:rotateY(180deg)] md:[transform:translateX(15%)_rotateY(180deg)]"
+            className="object-cover"
             style={{
               objectPosition: "center 8%",
+              transform: "translateX(17%) scaleX(-1)",
               transformOrigin: "center",
             }}
           />
 
-          {/* Desktop gradient */}
+          {/* Desktop gradient — #0d0d0d matches section bg exactly, seam is invisible */}
           <div
             className="absolute inset-0 hidden md:block"
             style={{
-              background:
-                "linear-gradient(to right, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.93) 30%, rgba(0,0,0,0.15) 58%, rgba(0,0,0,0) 100%)",
+              background: "linear-gradient(to right, #0d0d0d 0%, #0d0d0d 26%, rgba(13,13,13,0.78) 37%, rgba(13,13,13,0.22) 50%, transparent 62%)",
             }}
           />
 
@@ -58,8 +56,7 @@ export default function HomePage() {
           <div
             className="absolute inset-0 md:hidden"
             style={{
-              background:
-                "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0.85) 50%, rgba(0,0,0,0.98) 100%)",
+              background: "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.65) 55%, rgba(0,0,0,0.97) 100%)",
             }}
           />
         </div>
@@ -74,7 +71,7 @@ export default function HomePage() {
         />
 
         {/* Content */}
-        <div className="relative z-10 w-full h-full max-w-7xl mx-auto px-8 md:px-16 md:flex md:items-center md:min-h-screen pb-5 md:pb-0">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-8 md:flex md:items-center md:min-h-screen pb-5 md:pb-0">
           <motion.div
             className="w-full max-w-2xl flex flex-col gap-4 md:gap-6 mt-[85%] md:mt-0 pb-12 md:pb-0 text-center md:text-left"
             variants={containerVariants}
