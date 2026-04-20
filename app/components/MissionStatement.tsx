@@ -15,15 +15,16 @@ export default function MissionStatement() {
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <h2 className="font-playfair font-bold text-white text-2xl md:text-3xl leading-tight">
+          <h2 className="text-white leading-tight" style={{ fontFamily: 'Century_Gothic_Regular', fontSize: '36px' }}>
             Join the Movement
           </h2>
-          <p className="text-white/80 text-base md:text-lg leading-relaxed max-w-xs">
+          <p className="text-white/80 leading-relaxed max-w-xs" style={{ fontFamily: 'Century_Gothic_Regular', fontSize: '27px' }}>
             A Leader Shaped by<br />the People of Mumias West
           </p>
           <Link
             href="/about"
-            className="font-semibold text-white text-sm tracking-wide hover:text-white/70 transition-colors duration-200"
+            className="text-white hover:text-white/70 transition-colors duration-200"
+            style={{ fontFamily: 'Century_Gothic_Bold', fontSize: '21px' }}
           >
             Read More →
           </Link>
@@ -37,15 +38,16 @@ export default function MissionStatement() {
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.15 }}
         >
-          <h2 className="font-playfair font-bold text-white text-2xl md:text-3xl leading-tight">
+          <h2 className="text-white leading-tight" style={{ fontFamily: 'Century_Gothic_Regular', fontSize: '36px' }}>
             Read My Manifesto
           </h2>
-          <p className="text-white/80 text-base md:text-lg leading-relaxed max-w-xs">
+          <p className="text-white/80 leading-relaxed max-w-xs" style={{ fontFamily: 'Century_Gothic_Regular', fontSize: '27px' }}>
             Eight pillars. Four wards.<br />One vision for a transformed Mumias West.
           </p>
           <Link
             href="/manifesto"
-            className="font-semibold text-white text-sm tracking-wide hover:text-white/70 transition-colors duration-200"
+            className="text-white hover:text-white/70 transition-colors duration-200"
+            style={{ fontFamily: 'Century_Gothic_Bold', fontSize: '21px' }}
           >
             Read More →
           </Link>

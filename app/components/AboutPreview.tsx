@@ -21,7 +21,7 @@ export default function AboutPreview() {
             <div className="relative h-[500px] rounded-2xl overflow-hidden border-2 border-[#000073]/50">
               <Image
                 src="/images/pic2.jpg"
-                alt="Hon. Brian Omondi - Mumias West MP Aspirant"
+                alt="Hon. Brian Omondi  Mumias West MP Aspirant"
                 fill
                 className="object-cover object-top [transform:translateX(0%)_rotateY(180deg)_rotateX(0deg)]"
               />
@@ -47,18 +47,18 @@ export default function AboutPreview() {
 
             {/* Heading */}
             <h2
-              className="font-playfair font-bold text-[#000073] leading-tight"
-              style={{ fontSize: "clamp(28px, 4vw, 44px)" }}
+              className="leading-tight"
+              style={{ fontFamily: 'Century_Gothic_Bold', color: '#000073', fontSize: '45px' }}
             >
               A Leader Shaped by the People of Mumias West
             </h2>
 
             {/* Bio */}
-            <p className="text-gray-700 text-base md:text-lg leading-relaxed">
+            <p className="leading-relaxed" style={{ fontFamily: 'Century_Gothic_Regular', color: '#4b5563', fontSize: '24px' }}>
               Brian Omondi is a passionate advocate for the people of Mumias West. With a deep understanding of the challenges facing the constituency, from agriculture to education, health to infrastructure, he is committed to bringing real, measurable change to every ward.
             </p>
 
-            <p className="text-gray-700 text-base leading-relaxed">
+            <p className="leading-relaxed" style={{ fontFamily: 'Century_Gothic_Regular', color: '#4b5563', fontSize: '18px' }}>
               His campaign is built on three unshakeable pillars: integrity in leadership, decisive action, and results that every family will feel.
             </p>
 
