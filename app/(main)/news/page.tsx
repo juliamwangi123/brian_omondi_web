@@ -13,7 +13,7 @@ export default function NewsPage() {
     <div className="bg-gray-50 min-h-screen">
 
       {/* Hero Banner */}
-      <section className="relative bg-[#0a1560] py-20 md:py-28 overflow-hidden">
+      <section className="relative bg-[#000073] py-20 md:py-28 overflow-hidden">
         {/* Grain texture */}
         <div
           className="absolute inset-0 opacity-[0.04] pointer-events-none"
@@ -76,7 +76,7 @@ export default function NewsPage() {
             />
             <div className="absolute top-4 left-4">
               <span
-                className="px-3 py-1 rounded-full text-xs font-bold bg-[#0a1560] text-white"
+                className="px-3 py-1 rounded-full text-xs font-bold bg-[#000073] text-white"
               >
                 {featured.category}
               </span>

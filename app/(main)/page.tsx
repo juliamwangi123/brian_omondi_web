@@ -27,22 +27,18 @@ export default function HomePage() {
       {/* Hero Section */}
       <section
         className="relative min-h-[85vh] md:min-h-screen overflow-hidden mt-0 mb-0 pt-[env(safe-area-inset-top)]"
-        style={{ backgroundColor: "#0d0d0d", backgroundImage: "linear-gradient(to right, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.15) 50%, transparent 100%)" }}
+        style={{ backgroundColor: "#0d0d0d" }}
       >
         {/* Background Photo */}
         <div 
-          className="absolute inset-x-0 top-0 -bottom-8 z-0 -left-[15%] -right-[15%] md:left-0 md:right-0"
-          style={{ 
-            perspective: "1500px",
-            background: "linear-gradient(to right, rgba(0,0,0,0.95) 25%, rgba(0,0,0,0.2) 40%, transparent 65%)"
-          }}
+          className="absolute inset-0 z-0"
         >
           <Image
             src="/images/pic6.jpg"
-            alt="Hon. Brian Omondi - Mumias West MP Aspirant 2027"
+            alt="Hon. Brian Omondi Mumias West MP Aspirant 2027"
             fill
             priority
-            className="object-cover [transform:translateX(0%)_rotateY(180deg)_rotateX(0deg)] md:[transform:translateX(15%)_perspective(1500px)_rotateY(180deg)_rotateX(1deg)]"
+            className="object-cover [transform:rotateY(180deg)] md:[transform:translateX(15%)_rotateY(180deg)]"
             style={{
               objectPosition: "center 8%",
               transformOrigin: "center",
@@ -54,7 +50,7 @@ export default function HomePage() {
             className="absolute inset-0 hidden md:block"
             style={{
               background:
-                "linear-gradient(to right, rgba(0,0,0,0.92) 25%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0) 100%)",
+                "linear-gradient(to right, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.93) 30%, rgba(0,0,0,0.15) 58%, rgba(0,0,0,0) 100%)",
             }}
           />
 
@@ -88,8 +84,12 @@ export default function HomePage() {
             {/* Name */}
             <motion.h1
               variants={itemVariants}
-              className="font-bold font-poppins text-white leading-tight tracking-tight"
-              style={{ fontSize: "clamp(38px, 6vw, 64px)" }}
+              className="font-bold text-white leading-tight tracking-tight"
+              style={{ 
+                fontFamily: 'Century_Gothic_Bold',
+                fontSize: "77px",
+                fontWeight: 700
+              }}
             >
               Hon. Brian Omondi
             </motion.h1>
@@ -97,8 +97,12 @@ export default function HomePage() {
             {/* Tagline */}
             <motion.p
               variants={itemVariants}
-              className="italic text-white/90 font-normal tracking-wider max-w-lg mx-auto md:mx-0"
-              style={{ fontSize: "clamp(18px, 2vw, 22px)" }}
+              className="text-white/90 font-normal tracking-wider max-w-lg mx-auto md:mx-0"
+              style={{ 
+                fontFamily: 'Century_Gothic_Italic',
+                fontSize: "clamp(29px, 2vw, 22px)",
+                fontStyle: "italic"
+              }}
             >
               &ldquo;Son of the Soil, Servant of the People&rdquo;
             </motion.p>
@@ -106,14 +110,18 @@ export default function HomePage() {
             {/* Divider */}
             <motion.div
               variants={itemVariants}
-              className="w-16 bg-[#0a1560] h-[3px] mx-auto md:mx-0"
+              className="w-16 bg-[#000073] h-[3px] mx-auto md:mx-0"
             />
 
             {/* Bottom Statement */}
             <motion.p
               variants={itemVariants}
-              className="italic text-white/90 font-normal tracking-wider max-w-lg mx-auto md:mx-0"
-              style={{ fontSize: "clamp(18px, 2vw, 22px)" }}
+              className="text-white/90 font-normal tracking-wider max-w-lg mx-auto md:mx-0"
+              style={{ 
+                fontFamily: 'Century_Gothic_Italic',
+                fontSize: "clamp(29px, 2vw, 22px)",
+                fontStyle: "italic"
+              }}
             >
               Mumias West deserves better. <br />
               I will deliver it

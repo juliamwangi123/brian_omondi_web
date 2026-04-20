@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { getNavLinks } from "@/data/navLinks";
@@ -24,18 +25,19 @@ export default function Navbar({ className} : { className?: string  }) {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-[#0a1560] shadow-lg" : "bg-transparent"
+        scrolled ? "bg-[#000073] shadow-lg" : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-16 flex justify-between items-center py-4">
+      <div className="max-w-7xl mx-auto px-6 md:px-16 flex justify-between items-center py-4 min-h-[72px]">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
-          <div className="w-10 h-10 bg-[#000073] rounded-full flex items-center justify-center">
-            <span className="text-white font-playfair font-bold text-base">B</span>
-          </div>
-          <span className="font-inter font-semibold text-white hidden sm:inline">
-            Brian Omondi
-          </span>
+        <Link href="/" className="flex items-center flex-shrink-0">
+          <Image
+            src="/images/brian_omondi_logo.png"
+            alt="Brian Omondi Logo"
+            width={68}
+            height={68}
+            className="object-contain"
+          />
         </Link>
 
         {/* Desktop Menu */}
@@ -68,7 +70,7 @@ export default function Navbar({ className} : { className?: string  }) {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-[#0a1560] border-t border-white/10">
+        <div className="md:hidden bg-[#000073] border-t border-white/10">
           <div className="px-6 py-4 flex flex-col gap-4">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;

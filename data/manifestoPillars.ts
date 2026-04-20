@@ -7,32 +7,13 @@ import {
   Store,
   Leaf,
   HeartHandshake,
+  Heart,
 } from "lucide-react";
 
 export const manifestoPillars = [
   {
-    icon: Wheat,
-    number: "01",
-    title: "Agriculture",
-    subtitle: "Reviving Agriculture and Protecting Sugarcane Farmers",
-    description:
-      "Agriculture is the backbone of Mumias West. Our farmers work hard but continue to struggle with delayed payments, expensive farm inputs and unreliable markets. As your Member of Parliament, restoring dignity and income to our farmers will be my top priority.",
-    points: [
-      "Champion the full revival and sustainable management of Mumias Sugar Company to secure reliable markets for sugarcane farmers",
-      "Fight for timely payment of sugarcane farmers and fair pricing for their produce",
-      "Lobby for subsidised fertiliser and quality seeds for farmers across Mumias West",
-      "Promote crop diversification including maize, beans, horticulture, poultry and dairy farming",
-      "Support farmer cooperatives to strengthen bargaining power and market access",
-      "Promote agro-processing and value addition enterprises so farmers earn more from their produce",
-      "Support modern farming training and extension services to improve productivity",
-      "Encourage youth participation in agribusiness to create jobs and transform agriculture",
-    ],
-    closing:
-      "A thriving agricultural sector means food security, better incomes and a stronger Mumias West for generations to come.",
-  },
-  {
     icon: GraduationCap,
-    number: "02",
+    number: "01",
     title: "Education",
     subtitle: "Fair Education Opportunities and Transparent NG-CDF Bursaries",
     description:
@@ -51,8 +32,47 @@ export const manifestoPillars = [
       "Every child in Mumias West deserves a quality education that opens doors to a better future.",
   },
   {
-    icon: Briefcase,
+    icon: Wheat,
+    number: "02",
+    title: "Agriculture",
+    subtitle: "Reviving Agriculture and Protecting Sugarcane Farmers",
+    description:
+      "Agriculture is the backbone of Mumias West. Our farmers work hard but continue to struggle with delayed payments, expensive farm inputs and unreliable markets. As your Member of Parliament, restoring dignity and income to our farmers will be my top priority.",
+    points: [
+      "Champion the full revival and sustainable management of Mumias Sugar Company to secure reliable markets for sugarcane farmers",
+      "Fight for timely payment of sugarcane farmers and fair pricing for their produce",
+      "Lobby for subsidised fertiliser and quality seeds for farmers across Mumias West",
+      "Promote crop diversification including maize, beans, horticulture, poultry and dairy farming",
+      "Support farmer cooperatives to strengthen bargaining power and market access",
+      "Promote agro-processing and value addition enterprises so farmers earn more from their produce",
+      "Support modern farming training and extension services to improve productivity",
+      "Encourage youth participation in agribusiness to create jobs and transform agriculture",
+    ],
+    closing:
+      "A thriving agricultural sector means food security, better incomes and a stronger Mumias West for generations to come.",
+  },
+  {
+    icon: Heart,
     number: "03",
+    title: "Healthcare",
+    subtitle: "Better Healthcare Services",
+    description:
+      "Many residents travel long distances to access quality health services.",
+    points: [
+      "Lobby the national government to upgrade health centers in Mumias West",
+      "Ensure facilities have enough medicine",
+      "Improve maternal health services",
+      "Support ambulance services for emergencies",
+      "Work with partners to organize medical camps",
+      "Support programs for maternal and child health",
+      "Improve community health services",
+    ],
+    closing:
+      "Healthy people mean a strong and productive community.",
+  },
+  {
+    icon: Briefcase,
+    number: "04",
     title: "Youth & Jobs",
     subtitle: "Youth Jobs, Skills and Economic Opportunities",
     description:
@@ -72,7 +92,7 @@ export const manifestoPillars = [
   },
   {
     icon: ShieldCheck,
-    number: "04",
+    number: "05",
     title: "Security",
     subtitle: "Security for Our Markets, Villages and Communities",
     description:
@@ -92,7 +112,7 @@ export const manifestoPillars = [
   },
   {
     icon: Hammer,
-    number: "05",
+    number: "06",
     title: "Infrastructure",
     subtitle: "Roads, Markets and Infrastructure for Economic Growth",
     description:
@@ -112,7 +132,7 @@ export const manifestoPillars = [
   },
   {
     icon: Store,
-    number: "06",
+    number: "07",
     title: "Local Economy",
     subtitle: "Local Economic Development and Support for Small Businesses",
     description:
@@ -131,7 +151,7 @@ export const manifestoPillars = [
   },
   {
     icon: Leaf,
-    number: "07",
+    number: "08",
     title: "Environment",
     subtitle: "Environmental Protection, Sanitation and Climate Resilience",
     description:
@@ -150,7 +170,7 @@ export const manifestoPillars = [
   },
   {
     icon: HeartHandshake,
-    number: "08",
+    number: "09",
     title: "Social Protection",
     subtitle: "Social Protection and Community Welfare",
     description:

@@ -261,7 +261,7 @@ export default function GalleryPage() {
       {/* Hero */}
       <section
         className="relative flex flex-col justify-end overflow-hidden"
-        style={{ minHeight: "72vh", background: "#0a1560", paddingTop: "8rem", paddingBottom: "5rem" }}
+        style={{ minHeight: "72vh", background: "#000073", paddingTop: "8rem", paddingBottom: "5rem" }}
       >
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 30% 60%, rgba(143,179,255,0.08) 0%, transparent 65%)" }} />
         <div
@@ -410,7 +410,7 @@ export default function GalleryPage() {
       </motion.div>
 
       {/* CTA */}
-      <section className="relative py-28 text-center overflow-hidden" style={{ background: "#0a1560", borderTop: "1px solid rgba(143,179,255,0.08)" }}>
+      <section className="relative py-28 text-center overflow-hidden" style={{ background: "#000073", borderTop: "1px solid rgba(143,179,255,0.08)" }}>
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at center, rgba(143,179,255,0.05) 0%, transparent 65%)" }} />
         <motion.div
           className="relative z-10 max-w-xl mx-auto px-8"

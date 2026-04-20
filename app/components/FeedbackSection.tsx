@@ -35,7 +35,7 @@ const handleChange = (
   };
 
   return (
-    <section className="relative py-16 md:py-24 bg-[#0a1560] overflow-hidden">
+    <section className="relative py-16 md:py-24 bg-[#000073] overflow-hidden">
 
       {/* Radial glow */}
       <div
@@ -120,8 +120,8 @@ const handleChange = (
           >
             {submitted ? (
               <div className="bg-white rounded-2xl p-10 flex flex-col items-center gap-5 text-center">
-                <CheckCircle className="w-14 h-14 text-[#0a1560]" />
-                <h3 className="font-playfair font-bold text-[#0a1560] text-2xl">
+                <CheckCircle className="w-14 h-14 text-[#000073]" />
+                <h3 className="font-playfair font-bold text-[#000073] text-2xl">
                   Thank You!
                 </h3>
                 <p className="text-gray-500 text-base leading-relaxed">
@@ -133,7 +133,7 @@ const handleChange = (
                     setSubmitted(false);
                     setFormState({ name: "", ward: "", message: "" });
                   }}
-                  className="text-[#0a1560] text-sm font-bold hover:underline mt-2"
+                  className="text-[#000073] text-sm font-bold hover:underline mt-2"
                 >
                   Send another message
                 </button>
@@ -152,7 +152,7 @@ const handleChange = (
                     value={formState.name}
                     onChange={handleChange}
                     placeholder="e.g. John Barasa"
-                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-800 placeholder-gray-400 text-sm focus:outline-none focus:border-[#0a1560] transition-colors"
+                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-800 placeholder-gray-400 text-sm focus:outline-none focus:border-[#000073] transition-colors"
                   />
                 </div>
 
@@ -165,7 +165,7 @@ const handleChange = (
                     name="ward"
                     value={formState.ward}
                     onChange={handleChange}
-                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#0a1560] transition-colors appearance-none"
+                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#000073] transition-colors appearance-none"
                     style={{ color: formState.ward ? "#1f2937" : "#9ca3af" }}
                   >
                     <option value="" disabled>
@@ -190,7 +190,7 @@ const handleChange = (
                     onChange={handleChange}
                     placeholder="Share your thoughts, concerns, or hopes for our constituency..."
                     rows={5}
-                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-800 placeholder-gray-400 text-sm focus:outline-none focus:border-[#0a1560] transition-colors resize-none"
+                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-800 placeholder-gray-400 text-sm focus:outline-none focus:border-[#000073] transition-colors resize-none"
                   />
                 </div>
 
@@ -211,7 +211,7 @@ const handleChange = (
                     !formState.message
                   }
                   className="w-full py-4 rounded-xl font-bold flex items-center justify-center gap-2 transition-all disabled:opacity-40 disabled:cursor-not-allowed hover:brightness-110"
-                  style={{ background: "#0a1560", color: "#ffffff" }}
+                  style={{ background: "#000073", color: "#ffffff" }}
                 >
                   {isPending ? (
                     <span className="animate-pulse">Sending...</span>

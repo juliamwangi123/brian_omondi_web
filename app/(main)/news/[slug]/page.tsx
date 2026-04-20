@@ -130,7 +130,7 @@ export default function NewsDetailPage() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-center">
-          <h1 className="font-playfair font-bold text-[#0a1560] text-3xl mb-4">
+          <h1 className="font-playfair font-bold text-[#000073] text-3xl mb-4">
             Article not found
           </h1>
           <Link
@@ -148,7 +148,7 @@ export default function NewsDetailPage() {
     <div className="bg-gray-50 min-h-screen">
 
       {/* Hero Banner — solid blue, no image */}
-      <section className="relative bg-[#0a1560] py-16 md:py-20 overflow-hidden">
+      <section className="relative bg-[#000073] py-16 md:py-20 overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.04] pointer-events-none"
           style={{
@@ -281,7 +281,7 @@ export default function NewsDetailPage() {
 
             {/* Related articles */}
             <div className="flex flex-col gap-4">
-              <h4 className="font-playfair font-bold text-[#0a1560] text-lg">
+              <h4 className="font-playfair font-bold text-[#000073] text-lg">
                 More Updates
               </h4>
               {related.map((item) => (

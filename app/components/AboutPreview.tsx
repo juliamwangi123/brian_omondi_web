@@ -18,7 +18,7 @@ export default function AboutPreview() {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <div className="relative h-[500px] rounded-2xl overflow-hidden border-2 border-[#0a1560]/50">
+            <div className="relative h-[500px] rounded-2xl overflow-hidden border-2 border-[#000073]/50">
               <Image
                 src="/images/pic2.jpg"
                 alt="Hon. Brian Omondi - Mumias West MP Aspirant"
@@ -38,16 +38,16 @@ export default function AboutPreview() {
           >
             {/* Label */}
             <div className="flex items-center  justify-center  md:justify-start gap-3">
-              <div className="w-8 h-0.5 bg-[#0a1560]" />
-              <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#0a1560]">
+              <div className="w-8 h-0.5 bg-[#000073]" />
+              <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#000073]">
                 About the Candidate
               </span>
-              <div className="w-8 h-0.5 bg-[#0a1560] md:hidden" />
+              <div className="w-8 h-0.5 bg-[#000073] md:hidden" />
             </div>
 
             {/* Heading */}
             <h2
-              className="font-playfair font-bold text-[#0a1560] leading-tight"
+              className="font-playfair font-bold text-[#000073] leading-tight"
               style={{ fontSize: "clamp(28px, 4vw, 44px)" }}
             >
               A Leader Shaped by the People of Mumias West
@@ -63,7 +63,7 @@ export default function AboutPreview() {
             </p>
 
             {/* Divider */}
-            <div className="w-12 h-0.5 bg-[#0a1560]" />
+            <div className="w-12 h-0.5 bg-[#000073]" />
 
           
           </motion.div>

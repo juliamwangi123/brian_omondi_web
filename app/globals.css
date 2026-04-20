@@ -1,5 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+Pro:wght@400;600;700&display=swap');
 
+@font-face {
+  font-family: 'Century_Gothic_Regular';
+  src: url('/fonts/Century Gothic Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Century_Gothic_Bold';
+  src: url('/fonts/Century Gothic Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Century_Gothic_Italic';
+  src: url('/fonts/century-gothic-italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
