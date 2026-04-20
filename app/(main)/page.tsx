@@ -97,7 +97,7 @@ export default function HomePage() {
             {/* Tagline */}
             <motion.p
               variants={itemVariants}
-              className="text-white/90 font-normal tracking-wider max-w-lg mx-auto md:mx-0"
+              className="text-white/90 font-normal tracking-wider max-w-lg md:max-w-none md:whitespace-nowrap mx-auto md:mx-0"
               style={{ 
                 fontFamily: 'Century_Gothic_Italic',
                 fontSize: "clamp(29px, 2vw, 22px)",
