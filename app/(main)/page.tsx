@@ -38,7 +38,7 @@ export default function HomePage() {
             priority
             className="object-cover"
             style={{
-              objectPosition: "center 8%",
+              objectPosition: "center 7%",
               transform: "translateX(17%) scaleX(-1)",
               transformOrigin: "center",
             }}
@@ -71,7 +71,7 @@ export default function HomePage() {
         />
 
         {/* Content */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-8 md:flex md:items-center md:min-h-screen pb-5 md:pb-0">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-2 md:flex md:items-center md:min-h-screen pb-5 md:pb-0">
           <motion.div
             className="w-full max-w-2xl flex flex-col gap-4 md:gap-6 mt-[85%] md:mt-0 pb-12 md:pb-0 text-center md:text-left"
             variants={containerVariants}

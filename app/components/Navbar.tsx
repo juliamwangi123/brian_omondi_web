@@ -24,24 +24,25 @@ export default function Navbar({ className} : { className?: string  }) {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300  mt-2 ${
         scrolled ? "bg-[#000073] shadow-lg" : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-16 flex justify-between items-center py-4 min-h-[72px]">
+      <div className="max-w-7xl mx-auto px-6 md:px-6 flex justify-between items-center py-4 min-h-[72px]">
         {/* Logo */}
-        <Link href="/" className="flex items-center flex-shrink-0">
+        <Link href="/" className="flex items-center gap-2 flex-shrink-0">
           <Image
             src="/images/brian_omondi_logo.png"
             alt="Brian Omondi Logo"
-            width={68}
-            height={68}
+            width={56}
+            height={52}
             className="object-contain"
           />
+       
         </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-x-16">
+        <div className="hidden md:flex items-center gap-x-10">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
@@ -50,7 +51,7 @@ export default function Navbar({ className} : { className?: string  }) {
                 href={link.href}
                 className={`transition text-base ${className} tracking-wider ${
                   isActive
-                    ? "text-white font-medium"
+                    ? "text-white font-semibold"
                     : "text-white/70 font-normal hover:text-white"
                 }`}
               >
