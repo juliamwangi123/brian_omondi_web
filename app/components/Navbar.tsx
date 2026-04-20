@@ -54,6 +54,7 @@ export default function Navbar({ className} : { className?: string  }) {
                     ? "text-white font-semibold"
                     : "text-white/70 font-normal hover:text-white"
                 }`}
+                style={{ fontFamily: isActive ? 'Century_Gothic_Bold' : 'Century_Gothic_Regular' }}
               >
                 {link.label}
               </Link>
@@ -79,11 +80,12 @@ export default function Navbar({ className} : { className?: string  }) {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`transition py-2 border-b border-white/10 font-inter text-base ${
+                  className={`transition py-2 border-b border-white/10 text-base ${
                     isActive
                       ? "text-white font-black"
                       : "text-white/70 font-extralight hover:text-white"
                   }`}
+                  style={{ fontFamily: isActive ? 'Century_Gothic_Bold' : 'Century_Gothic_Regular' }}
                   onClick={() => setIsOpen(false)}
                 >
                   {link.label}

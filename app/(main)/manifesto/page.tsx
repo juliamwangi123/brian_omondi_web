@@ -38,12 +38,12 @@ export default function ManifestoPage() {
               <div className="w-8 h-0.5 bg-white/40" />
             </div>
             <h1
-              className="font-playfair font-bold text-white"
-              style={{ fontSize: "clamp(36px, 5vw, 60px)" }}
+              className="font-bold text-white"
+              style={{ fontFamily: 'Century_Gothic_Bold', fontSize: "clamp(36px, 5vw, 60px)" }}
             >
               Brian&apos;s Manifesto
             </h1>
-            <p className="text-blue-200/70 max-w-xl text-base md:text-lg">
+            <p className="text-blue-200/70 max-w-xl text-base md:text-lg" style={{ fontFamily: 'Century_Gothic_Regular' }}>
               Eight pillars. Four wards. One vision for a transformed Mumias West.
             </p>
             {/* Quick links */}
@@ -53,6 +53,7 @@ export default function ManifestoPage() {
                   key={pillar.title}
                   href={`#${pillar.title.toLowerCase().replace(" & ", "-")}`}
                   className="px-4 py-2 rounded-full text-xs font-bold border border-white/20 text-white/60 hover:border-white/60 hover:text-white transition-all"
+                  style={{ fontFamily: 'Century_Gothic_Regular' }}
                 >
                   {pillar.number} {pillar.title}
                 </a>
@@ -72,7 +73,7 @@ export default function ManifestoPage() {
             <motion.div
               key={pillar.title}
               id={pillar.title.toLowerCase().replace(" & ", "-")}
-              className="relative grid grid-cols-1 md:grid-cols-2 gap-0 border-t border-[#000073]/15 py-16 md:py-20"
+              className="relative grid grid-cols-1 md:grid-cols-2 gap-0 border-t border-[#000073] py-16 md:py-20"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -80,8 +81,8 @@ export default function ManifestoPage() {
             >
               {/* Decorative pillar number */}
               <div
-                className="absolute top-8 right-0 font-playfair font-bold text-[#000073] pointer-events-none select-none hidden md:block"
-                style={{ fontSize: "140px", opacity: 0.04, lineHeight: 1 }}
+                className="absolute top-8 right-0 font-bold text-[#000073] pointer-events-none select-none hidden md:block"
+                style={{ fontFamily: 'Century_Gothic_Bold', fontSize: "140px", opacity: 0.04, lineHeight: 1 }}
               >
                 {pillar.number}
               </div>
@@ -93,31 +94,31 @@ export default function ManifestoPage() {
                     <Icon className="w-7 h-7 text-white" />
                   </div>
                   <div>
-                    <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#000073]/50">
+                    <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#000073]" style={{ fontFamily: 'Century_Gothic_Bold' }}>
                       Pillar {pillar.number}
                     </p>
                     <h2
-                      className="font-playfair font-bold text-[#000073] leading-tight"
-                      style={{ fontSize: "clamp(22px, 3vw, 34px)" }}
+                      className="font-bold text-[#000073] leading-tight"
+                      style={{ fontFamily: 'Century_Gothic_Bold', fontSize: "clamp(22px, 3vw, 34px)" }}
                     >
                       {pillar.title}
                     </h2>
                   </div>
                 </div>
 
-                <p className="font-playfair italic text-[#000073]/70 text-base">
+                <p className="italic text-[#000073] text-base" style={{ fontFamily: 'Century_Gothic_Italic' }}>
                   {pillar.subtitle}
                 </p>
 
-                <div className="w-10 h-0.5 bg-[#000073]/20" />
+                <div className="w-10 h-0.5 bg-[#000073]" />
 
-                <p className="text-gray-500 text-base leading-relaxed">
+                <p className="text-gray-500 text-base leading-relaxed" style={{ fontFamily: 'Century_Gothic_Regular' }}>
                   {pillar.description}
                 </p>
               </div>
 
               {/* Right — points + closing */}
-              <div className={`flex flex-col gap-0 ${isEven ? "md:border-l border-[#000073]/15 md:pl-16" : "md:border-r border-[#000073]/15 md:pr-16 md:order-first"}`}>
+              <div className={`flex flex-col gap-0 ${isEven ? "md:border-l border-[#000073] md:pl-16" : "md:border-r border-[#000073] md:pr-16 md:order-first"}`}>
                 {pillar.points.map((point, j) => (
                   <motion.div
                     key={j}
@@ -127,10 +128,10 @@ export default function ManifestoPage() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: j * 0.07 }}
                   >
-                    <span className="text-[#000073]/40 font-playfair font-bold text-lg flex-shrink-0 mt-0.5">
+                    <span className="text-[#000073] font-bold text-lg flex-shrink-0 mt-0.5" style={{ fontFamily: 'Century_Gothic_Bold' }}>
                       —
                     </span>
-                    <span className="text-gray-700 text-base leading-relaxed">
+                    <span className="text-gray-700 text-base leading-relaxed" style={{ fontFamily: 'Century_Gothic_Regular' }}>
                       {point}
                     </span>
                   </motion.div>
@@ -138,7 +139,8 @@ export default function ManifestoPage() {
 
                 {pillar.closing && (
                   <motion.p
-                    className="mt-6 font-playfair italic text-[#000073]/70 text-base leading-relaxed border-l-2 border-[#000073]/30 pl-4"
+                    className="mt-6 italic text-[#000073] text-base leading-relaxed border-l-2 border-[#000073] pl-4"
+                    style={{ fontFamily: 'Century_Gothic_Italic' }}
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
@@ -171,12 +173,12 @@ export default function ManifestoPage() {
             transition={{ duration: 0.6 }}
           >
             <h2
-              className="font-playfair font-bold text-white"
-              style={{ fontSize: "clamp(26px, 4vw, 44px)" }}
+              className="font-bold text-white"
+              style={{ fontFamily: 'Century_Gothic_Bold', fontSize: "clamp(26px, 4vw, 44px)" }}
             >
               This is a Promise, Not a Poster
             </h2>
-            <p className="text-blue-200/60 max-w-xl text-base md:text-lg leading-relaxed">
+            <p className="text-blue-200/60 max-w-xl text-base md:text-lg leading-relaxed" style={{ fontFamily: 'Century_Gothic_Regular' }}>
               Every point in this manifesto is a commitment Brian intends to keep.
             </p>
           </motion.div>

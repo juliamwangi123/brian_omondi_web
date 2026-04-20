@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function AboutPreview() {
 
   return (
-    <section id="about" className="py-16 md:py-24 bg-gray-50">
+    <section id="about" className="py-16 md:py-12 bg-gray-50">
       <div className="max-w-7xl mx-auto px-8 md:px-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
 

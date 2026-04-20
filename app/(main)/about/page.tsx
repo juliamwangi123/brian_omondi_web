@@ -38,10 +38,10 @@ export default function AboutPage() {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <h1 className="text-5xl md:text-6xl font-playfair font-bold mb-6">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6" style={{ fontFamily: 'Century_Gothic_Bold' }}>
               About Brian Omondi
             </h1>
-            <p className="text-xl text-white/80 max-w-2xl mx-auto">
+            <p className="text-xl text-white/80 max-w-2xl mx-auto" style={{ fontFamily: 'Century_Gothic_Regular' }}>
               Son of Mumias West, committed to transforming our community through integrity, action, and results
             </p>
           </motion.div>
@@ -58,10 +58,10 @@ export default function AboutPage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-playfair font-bold text-[#000073] mb-4">
+            <h2 className="text-4xl font-bold text-[#000073] mb-4" style={{ fontFamily: 'Century_Gothic_Bold' }}>
               Core Values
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto" style={{ fontFamily: 'Century_Gothic_Regular' }}>
               These principles guide every decision and action
             </p>
           </motion.div>
@@ -79,10 +79,10 @@ export default function AboutPage() {
                   className="bg-white rounded-xl p-8 text-center shadow-sm hover:shadow-md transition-shadow"
                 >
                   <IconComponent className="w-12 h-12 text-[#000073] mb-4 mx-auto" />
-                  <h3 className="text-xl font-playfair font-bold mb-3 text-[#000073]">
+                  <h3 className="text-xl font-bold mb-3 text-[#000073]" style={{ fontFamily: 'Century_Gothic_Bold' }}>
                     {value.title}
                   </h3>
-                  <p className="text-gray-600 font-source-sans">
+                  <p className="text-gray-600" style={{ fontFamily: 'Century_Gothic_Regular' }}>
                     {value.description}
                   </p>
                 </motion.div>

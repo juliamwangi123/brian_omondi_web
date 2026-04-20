@@ -47,12 +47,12 @@ export default function NewsPage() {
               <div className="w-8 h-0.5 bg-white/40" />
             </div>
             <h1
-              className="font-playfair font-bold text-white"
-              style={{ fontSize: "clamp(36px, 5vw, 60px)" }}
+              className="font-bold text-white"
+              style={{ fontFamily: 'Century_Gothic_Bold', fontSize: "clamp(36px, 5vw, 60px)" }}
             >
               From the Campaign Trail
             </h1>
-            <p className="text-blue-200/70 max-w-xl text-base md:text-lg">
+            <p className="text-blue-200/70 max-w-xl text-base md:text-lg" style={{ fontFamily: 'Century_Gothic_Regular' }}>
               Stay up to date with Brian&apos;s journey across Mumias West.
             </p>
           </motion.div>
@@ -70,8 +70,7 @@ export default function NewsPage() {
       {!isLoading && posts.length === 0 && (
         <div className="flex flex-col items-center justify-center py-32 gap-4 text-gray-400">
           <Newspaper className="w-16 h-16 opacity-30" />
-          <p className="text-xl font-semibold text-gray-500">No articles yet</p>
-          <p className="text-base text-gray-400">Check back soon for updates from the campaign trail.</p>
+          <p className="text-xl font-semibold text-gray-500" style={{ fontFamily: 'Century_Gothic_Bold' }}>No articles yet</p>
         </div>
       )}
 
@@ -110,12 +109,12 @@ export default function NewsPage() {
                   <Calendar className="w-3.5 h-3.5" />
                   <span>{new Date(featured.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
                 </div>
-                <h2 className="font-playfair font-bold text-[#000073] leading-tight" style={{ fontSize: "clamp(22px, 3vw, 32px)" }}>
+                <h2 className="font-bold text-[#000073] leading-tight" style={{ fontFamily: 'Century_Gothic_Bold', fontSize: "clamp(22px, 3vw, 32px)" }}>
                   {featured.title}
                 </h2>
-                <p className="text-gray-500 text-base leading-relaxed">{featured.excerpt}</p>
+                <p className="text-gray-500 text-base leading-relaxed" style={{ fontFamily: 'Century_Gothic_Regular' }}>{featured.excerpt}</p>
                 <div className="w-12 h-0.5 bg-[#000073]/20" />
-                <Link href={`/news/${featured.slug}`} className="inline-flex items-center gap-2 font-bold text-[#000073] hover:text-[#000073]/60 transition-colors text-sm">
+                <Link href={`/news/${featured.slug}`} className="inline-flex items-center gap-2 font-bold text-[#000073] hover:text-[#000073]/60 transition-colors text-sm" style={{ fontFamily: 'Century_Gothic_Bold' }}>
                   Read Full Story <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
@@ -151,11 +150,11 @@ export default function NewsPage() {
                         <Calendar className="w-3.5 h-3.5" />
                         <span>{new Date(item.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
                       </div>
-                      <h3 className="font-playfair font-bold text-[#000073] text-lg leading-snug hover:text-[#000073]/60 transition-colors cursor-pointer">
+                      <h3 className="font-bold text-[#000073] text-lg leading-snug hover:text-[#000073]/60 transition-colors cursor-pointer" style={{ fontFamily: 'Century_Gothic_Bold' }}>
                         <Link href={`/news/${item.slug}`}>{item.title}</Link>
                       </h3>
-                      <p className="text-gray-500 text-sm leading-relaxed">{item.excerpt}</p>
-                      <Link href={`/news/${item.slug}`} className="text-[#000073] text-sm font-bold hover:underline mt-1">Read More →</Link>
+                      <p className="text-gray-500 text-sm leading-relaxed" style={{ fontFamily: 'Century_Gothic_Regular' }}>{item.excerpt}</p>
+                      <Link href={`/news/${item.slug}`} className="text-[#000073] text-sm font-bold hover:underline mt-1" style={{ fontFamily: 'Century_Gothic_Bold' }}>Read More →</Link>
                     </div>
                   </motion.div>
                 ))}

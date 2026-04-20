@@ -36,10 +36,9 @@ export default function HomePage() {
             alt="Hon. Brian Omondi Mumias West MP Aspirant 2027"
             fill
             priority
-            className="object-cover"
+            className="object-cover [transform:scaleX(-1)] md:[transform:translateX(17%)_scaleX(-1)]"
             style={{
               objectPosition: "center 7%",
-              transform: "translateX(17%) scaleX(-1)",
               transformOrigin: "center",
             }}
           />
@@ -107,7 +106,7 @@ export default function HomePage() {
             {/* Divider */}
             <motion.div
               variants={itemVariants}
-              className="w-16 bg-[#000073] h-[3px] mx-auto md:mx-0"
+              className="w-16 bg-[#000073] h-[4px] mx-auto md:mx-0"
             />
 
             {/* Bottom Statement */}
