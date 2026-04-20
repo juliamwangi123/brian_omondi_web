@@ -143,7 +143,7 @@ const handleChange = (
 
                 {/* Name */}
                 <div className="flex flex-col gap-2">
-                  <label className="text-[#0a1560] text-sm font-bold">
+                  <label className="text-[#000073] text-sm font-bold">
                     Your Name
                   </label>
                   <input
@@ -158,7 +158,7 @@ const handleChange = (
 
                 {/* Ward */}
                 <div className="flex flex-col gap-2">
-                  <label className="text-[#0a1560] text-sm font-bold">
+                  <label className="text-[#000073] text-sm font-bold">
                     Your Ward
                   </label>
                   <select
@@ -181,7 +181,7 @@ const handleChange = (
 
                 {/* Message */}
                 <div className="flex flex-col gap-2">
-                  <label className="text-[#0a1560] text-sm font-bold">
+                  <label className="text-[#000073] text-sm font-bold">
                     Message
                   </label>
                   <textarea

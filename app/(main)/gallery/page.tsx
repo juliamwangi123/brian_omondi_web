@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { useGallery } from "@/app/lib/hooks/useGallery";
+import { socialLinks } from "@/data/socialLinks";
 
 const SECTIONS = [
   {
@@ -431,10 +432,10 @@ export default function GalleryPage() {
             More moments from Mumias West on social media.
           </p>
           <div className="flex items-center justify-center gap-3 flex-wrap">
-            {["Facebook", "Instagram", "X / Twitter"].map((s) => (
-              <button key={s} className="px-7 py-3 transition-all hover:bg-[rgba(143,179,255,0.1)]" style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "0.75rem", fontWeight: 500, letterSpacing: "0.18em", textTransform: "uppercase", border: "1px solid rgba(143,179,255,0.2)", background: "transparent", color: "#8fb3ff", borderRadius: 2 }}>
-                {s}
-              </button>
+            {socialLinks.map((social) => (
+              <a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer" className="px-7 py-3 transition-all hover:bg-[rgba(143,179,255,0.1)]" style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "0.75rem", fontWeight: 500, letterSpacing: "0.18em", textTransform: "uppercase", border: "1px solid rgba(143,179,255,0.2)", background: "transparent", color: "#8fb3ff", borderRadius: 2 }}>
+                {social.label}
+              </a>
             ))}
           </div>
         </motion.div>

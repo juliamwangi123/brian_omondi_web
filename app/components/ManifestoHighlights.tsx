@@ -19,14 +19,14 @@ export default function ManifestoHighlights() {
           transition={{ duration: 0.6 }}
         >
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-8 h-0.5 bg-[#0a1560]" />
-            <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#0a1560]">
+            <div className="w-8 h-0.5 bg-[#000073]" />
+            <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#000073]">
               My Vision
             </span>
-            <div className="w-8 h-0.5 bg-[#0a1560]" />
+            <div className="w-8 h-0.5 bg-[#000073]" />
           </div>
           <h2
-            className="font-playfair font-bold text-[#0a1560] mb-4"
+            className="font-playfair font-bold text-[#000073] mb-4"
             style={{ fontSize: "clamp(28px, 4vw, 44px)" }}
           >
             What Brian Stands For
@@ -49,10 +49,10 @@ export default function ManifestoHighlights() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
               >
-                <div className="w-12 h-12 rounded-xl bg-[#0a1560] flex items-center justify-center mb-4">
+                <div className="w-12 h-12 rounded-xl bg-[#000073] flex items-center justify-center mb-4">
                   <Icon className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="font-playfair font-bold text-[#0a1560] text-xl mb-2">
+                <h3 className="font-playfair font-bold text-[#000073] text-xl mb-2">
                   {pillar.title}
                 </h3>
                 <p className="text-gray-500 text-sm leading-relaxed">
@@ -64,13 +64,13 @@ export default function ManifestoHighlights() {
 
           {/* Read Full Manifesto card — fills the 6th slot in the grid */}
           <motion.div
-            className="rounded-2xl p-6 flex flex-col items-center justify-center text-center gap-4 border-2 border-dashed border-[#0a1560]/40 hover:-translate-y-1 transition-all duration-300"
+            className="rounded-2xl p-6 flex flex-col items-center justify-center text-center gap-4 border-2 border-dashed border-[#000073]/40 hover:-translate-y-1 transition-all duration-300"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.5 }}
           >
-            <p className="font-playfair font-bold text-[#0a1560] text-lg">
+            <p className="font-playfair font-bold text-[#000073] text-lg">
               There is more to the vision
             </p>
             <p className="text-gray-400 text-sm">
@@ -79,7 +79,7 @@ export default function ManifestoHighlights() {
             <Link
               href="/manifesto"
               className="px-6 py-3 rounded-xl font-bold transition-all hover:brightness-110 text-sm"
-              style={{ background: "#0a1560", color: "#ffffff" }}
+              style={{ background: "#000073", color: "#ffffff" }}
             >
               Read Full Manifesto
             </Link>

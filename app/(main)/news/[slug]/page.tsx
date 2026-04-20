@@ -245,7 +245,7 @@ export default function NewsDetailPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative bg-[#0a1560] py-16 md:py-20 overflow-hidden">
+      <section className="relative bg-[#000073] py-16 md:py-20 overflow-hidden">
         <div
           className="absolute inset-0 pointer-events-none"
           style={{

@@ -19,7 +19,7 @@ export default function Footer() {
           {/* Brand column */}
           <div className="md:col-span-2 flex flex-col gap-5">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-[#0a1560] rounded-full flex items-center justify-center flex-shrink-0">
+              <div className="w-10 h-10 bg-[#000073] rounded-full flex items-center justify-center flex-shrink-0">
                 <span className="text-white font-playfair font-bold text-lg">B</span>
               </div>
               <div>
@@ -45,7 +45,7 @@ export default function Footer() {
                     key={social.label}
                     href={social.href}
                     aria-label={social.label}
-                    className="w-9 h-9 rounded-full bg-[#0a1560] flex items-center justify-center text-white hover:bg-[#0a1560]/80 transition-all"
+                    className="w-9 h-9 rounded-full bg-[#000073] flex items-center justify-center text-white hover:bg-[#000073]/80 transition-all"
                   >
                     <Icon className="w-4 h-4" />
                   </a>

@@ -3,9 +3,13 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { newsItems } from "@/data/newsItems";
+import { useNews } from "@/app/lib/hooks/useNews";
 
 export default function RecentNews() {
+  const { data, isLoading } = useNews(1, "published");
+  const posts = data?.results ?? [];
+
+  if (isLoading || posts.length === 0) return null;
 
   return (
     <section className="py-16 md:py-24 bg-gray-50">
@@ -20,14 +24,14 @@ export default function RecentNews() {
           transition={{ duration: 0.6 }}
         >
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-8 h-0.5 bg-[#0a1560]" />
-            <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#0a1560]">
+            <div className="w-8 h-0.5 bg-[#000073]" />
+            <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#000073]">
               Latest Updates
             </span>
-            <div className="w-8 h-0.5 bg-[#0a1560]" />
+            <div className="w-8 h-0.5 bg-[#000073]" />
           </div>
           <h2
-            className="font-playfair font-bold text-[#0a1560] mb-4"
+            className="font-playfair font-bold text-[#000073] mb-4"
             style={{ fontSize: "clamp(28px, 4vw, 44px)" }}
           >
             From the Campaign Trail
@@ -39,9 +43,9 @@ export default function RecentNews() {
 
         {/* Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {newsItems.slice(0, 3).map((item, i) => (
+          {posts.slice(0, 3).map((item, i) => (
             <motion.div
-              key={item.title}
+              key={item.id}
               className="bg-white rounded-2xl overflow-hidden shadow-md hover:-translate-y-1 transition-all duration-300"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -52,7 +56,7 @@ export default function RecentNews() {
               <Link href={`/news/${item.slug}`}>
                 <div className="relative h-48 cursor-pointer">
                   <Image
-                    src={item.image}
+                    src={item.hero_image_url}
                     alt={item.title}
                     fill
                     className="object-cover object-top"
@@ -61,7 +65,7 @@ export default function RecentNews() {
                   <div className="absolute top-3 left-3">
                     <span
                       className="px-3 py-1 rounded-full text-xs font-bold"
-                      style={{ background: "#0a1560", color: "#ffffff" }}
+                      style={{ background: "#000073", color: "#ffffff" }}
                     >
                       {item.category}
                     </span>
@@ -71,9 +75,9 @@ export default function RecentNews() {
 
               {/* Content */}
               <div className="p-6 flex flex-col gap-3">
-                <p className="text-gray-400 text-xs">{item.date}</p>
+                <p className="text-gray-400 text-xs">{new Date(item.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
                 <Link href={`/news/${item.slug}`}>
-                  <h3 className="font-playfair font-bold text-[#0a1560] text-lg leading-snug hover:text-[#0a1560]/70 transition-colors cursor-pointer">
+                  <h3 className="font-playfair font-bold text-[#000073] text-lg leading-snug hover:text-[#000073]/70 transition-colors cursor-pointer">
                     {item.title}
                   </h3>
                 </Link>
@@ -82,7 +86,7 @@ export default function RecentNews() {
                 </p>
                 <Link
                   href={`/news/${item.slug}`}
-                  className="text-[#0a1560] text-sm font-bold hover:underline mt-1"
+                  className="text-[#000073] text-sm font-bold hover:underline mt-1"
                 >
                   Read More →
                 </Link>
@@ -102,7 +106,7 @@ export default function RecentNews() {
           <Link
             href="/news"
             className="inline-block px-8 py-3.5 rounded-xl font-bold text-white transition-all hover:brightness-110"
-            style={{ background: "#0a1560" }}
+            style={{ background: "#000073" }}
           >
             View All News
           </Link>

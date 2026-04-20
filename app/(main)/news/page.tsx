@@ -3,11 +3,13 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { Calendar, ArrowRight } from "lucide-react";
-import { newsItems } from "@/data/newsItems";
+import { Calendar, ArrowRight, Newspaper } from "lucide-react";
+import { useNews } from "@/app/lib/hooks/useNews";
 
 export default function NewsPage() {
-  const [featured, ...rest] = newsItems;
+  const { data, isLoading } = useNews(1, "published");
+  const posts = data?.results ?? [];
+  const [featured, ...rest] = posts;
 
   return (
     <div className="bg-gray-50 min-h-screen">
@@ -57,116 +59,111 @@ export default function NewsPage() {
         </div>
       </section>
 
-      {/* Featured Article */}
-      <section className="max-w-7xl mx-auto px-8 md:px-16 py-16">
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-0 rounded-2xl overflow-hidden shadow-lg bg-white"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-        >
-          {/* Image */}
-          <div className="relative h-64 md:h-auto md:min-h-[400px] overflow-hidden">
-            <Image
-              src={featured.image}
-              alt={featured.title}
-              fill
-              className="object-cover object-top"
-            />
-            <div className="absolute top-4 left-4">
-              <span
-                className="px-3 py-1 rounded-full text-xs font-bold bg-[#000073] text-white"
-              >
-                {featured.category}
-              </span>
-            </div>
-            {/* Featured label */}
-            <div className="absolute bottom-4 left-4">
-              <span className="px-3 py-1 rounded-full text-xs font-bold bg-white text-[#0a1560]">
-                Featured
-              </span>
-            </div>
-          </div>
+      {/* Loading */}
+      {isLoading && (
+        <div className="flex items-center justify-center py-32">
+          <div className="animate-spin w-10 h-10 border-4 border-[#000073] border-t-transparent rounded-full" />
+        </div>
+      )}
 
-          {/* Content */}
-          <div className="p-8 md:p-10 flex flex-col justify-center gap-4">
-            <div className="flex items-center gap-2 text-gray-400 text-xs">
-              <Calendar className="w-3.5 h-3.5" />
-              <span>{featured.date}</span>
-            </div>
-            <h2
-              className="font-playfair font-bold text-[#0a1560] leading-tight"
-              style={{ fontSize: "clamp(22px, 3vw, 32px)" }}
-            >
-              {featured.title}
-            </h2>
-            <p className="text-gray-500 text-base leading-relaxed">
-              {featured.excerpt}
-            </p>
-            <div className="w-12 h-0.5 bg-[#0a1560]/20" />
-            <Link
-              href={`/news/${featured.slug}`}
-              className="inline-flex items-center gap-2 font-bold text-[#0a1560] hover:text-[#0a1560]/60 transition-colors text-sm"
-            >
-              Read Full Story <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-        </motion.div>
-      </section>
+      {/* Empty state */}
+      {!isLoading && posts.length === 0 && (
+        <div className="flex flex-col items-center justify-center py-32 gap-4 text-gray-400">
+          <Newspaper className="w-16 h-16 opacity-30" />
+          <p className="text-xl font-semibold text-gray-500">No articles yet</p>
+          <p className="text-base text-gray-400">Check back soon for updates from the campaign trail.</p>
+        </div>
+      )}
 
-      {/* News Grid */}
-      <section className="max-w-7xl mx-auto px-8 md:px-16 pb-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {rest.map((item, index) => (
+      {/* Content — only when posts exist */}
+      {!isLoading && posts.length > 0 && (
+        <>
+          {/* Featured Article */}
+          <section className="max-w-7xl mx-auto px-8 md:px-16 py-16">
             <motion.div
-              key={item.slug}
-              className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all group"
+              className="grid grid-cols-1 md:grid-cols-2 gap-0 rounded-2xl overflow-hidden shadow-lg bg-white"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.7 }}
             >
               {/* Image */}
-              <div className="relative w-full aspect-[4/3] overflow-hidden bg-gray-200">
+              <div className="relative h-64 md:h-auto md:min-h-[400px] overflow-hidden">
                 <Image
-                  src={item.image}
-                  alt={item.title}
+                  src={featured.hero_image_url}
+                  alt={featured.title}
                   fill
-                  className="object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                  className="object-cover object-top"
                 />
-                <div className="absolute top-3 left-3">
-                  <span
-                    className="px-2 py-1 rounded text-xs font-bold bg-[#0a1560] text-white"
-                  >
-                    {item.category}
+                <div className="absolute top-4 left-4">
+                  <span className="px-3 py-1 rounded-full text-xs font-bold bg-[#000073] text-white">
+                    {featured.category}
                   </span>
                 </div>
+                <div className="absolute bottom-4 left-4">
+                  <span className="px-3 py-1 rounded-full text-xs font-bold bg-white text-[#000073]">Featured</span>
+                </div>
               </div>
-
               {/* Content */}
-              <div className="p-6 flex flex-col gap-3">
+              <div className="p-8 md:p-10 flex flex-col justify-center gap-4">
                 <div className="flex items-center gap-2 text-gray-400 text-xs">
                   <Calendar className="w-3.5 h-3.5" />
-                  <span>{item.date}</span>
+                  <span>{new Date(featured.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
                 </div>
-                <h3 className="font-playfair font-bold text-[#0a1560] text-lg leading-snug hover:text-[#0a1560]/60 transition-colors cursor-pointer">
-                  <Link href={`/news/${item.slug}`}>{item.title}</Link>
-                </h3>
-                <p className="text-gray-500 text-sm leading-relaxed">
-                  {item.excerpt}
-                </p>
-                <Link
-                  href={`/news/${item.slug}`}
-                  className="text-[#0a1560] text-sm font-bold hover:underline mt-1"
-                >
-                  Read More →
+                <h2 className="font-playfair font-bold text-[#000073] leading-tight" style={{ fontSize: "clamp(22px, 3vw, 32px)" }}>
+                  {featured.title}
+                </h2>
+                <p className="text-gray-500 text-base leading-relaxed">{featured.excerpt}</p>
+                <div className="w-12 h-0.5 bg-[#000073]/20" />
+                <Link href={`/news/${featured.slug}`} className="inline-flex items-center gap-2 font-bold text-[#000073] hover:text-[#000073]/60 transition-colors text-sm">
+                  Read Full Story <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
             </motion.div>
-          ))}
-        </div>
-      </section>
+          </section>
+
+          {/* News Grid */}
+          {rest.length > 0 && (
+            <section className="max-w-7xl mx-auto px-8 md:px-16 pb-20">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {rest.map((item, index) => (
+                  <motion.div
+                    key={item.id}
+                    className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all group"
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                  >
+                    <div className="relative w-full aspect-[4/3] overflow-hidden bg-gray-200">
+                      <Image
+                        src={item.hero_image_url}
+                        alt={item.title}
+                        fill
+                        className="object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                      />
+                      <div className="absolute top-3 left-3">
+                        <span className="px-2 py-1 rounded text-xs font-bold bg-[#000073] text-white">{item.category}</span>
+                      </div>
+                    </div>
+                    <div className="p-6 flex flex-col gap-3">
+                      <div className="flex items-center gap-2 text-gray-400 text-xs">
+                        <Calendar className="w-3.5 h-3.5" />
+                        <span>{new Date(item.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                      </div>
+                      <h3 className="font-playfair font-bold text-[#000073] text-lg leading-snug hover:text-[#000073]/60 transition-colors cursor-pointer">
+                        <Link href={`/news/${item.slug}`}>{item.title}</Link>
+                      </h3>
+                      <p className="text-gray-500 text-sm leading-relaxed">{item.excerpt}</p>
+                      <Link href={`/news/${item.slug}`} className="text-[#000073] text-sm font-bold hover:underline mt-1">Read More →</Link>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </section>
+          )}
+        </>
+      )}
     </div>
   );
 }

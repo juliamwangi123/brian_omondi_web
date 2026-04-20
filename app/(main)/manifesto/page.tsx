@@ -8,7 +8,7 @@ export default function ManifestoPage() {
     <div className="bg-white min-h-screen">
 
       {/* Hero Banner */}
-      <section className="relative bg-[#0a1560] py-16 md:py-24 overflow-hidden">
+      <section className="relative bg-[#000073] py-16 md:py-24 overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.04] pointer-events-none"
           style={{
@@ -72,7 +72,7 @@ export default function ManifestoPage() {
             <motion.div
               key={pillar.title}
               id={pillar.title.toLowerCase().replace(" & ", "-")}
-              className="relative grid grid-cols-1 md:grid-cols-2 gap-0 border-t border-[#0a1560]/15 py-16 md:py-20"
+              className="relative grid grid-cols-1 md:grid-cols-2 gap-0 border-t border-[#000073]/15 py-16 md:py-20"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -80,7 +80,7 @@ export default function ManifestoPage() {
             >
               {/* Decorative pillar number */}
               <div
-                className="absolute top-8 right-0 font-playfair font-bold text-[#0a1560] pointer-events-none select-none hidden md:block"
+                className="absolute top-8 right-0 font-playfair font-bold text-[#000073] pointer-events-none select-none hidden md:block"
                 style={{ fontSize: "140px", opacity: 0.04, lineHeight: 1 }}
               >
                 {pillar.number}
@@ -89,15 +89,15 @@ export default function ManifestoPage() {
               {/* Left — identity */}
               <div className={`flex flex-col gap-5 pr-0 md:pr-16 ${isEven ? "" : "md:order-last md:pl-16 md:pr-0"}`}>
                 <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-xl bg-[#0a1560] flex items-center justify-center flex-shrink-0">
+                  <div className="w-14 h-14 rounded-xl bg-[#000073] flex items-center justify-center flex-shrink-0">
                     <Icon className="w-7 h-7 text-white" />
                   </div>
                   <div>
-                    <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#0a1560]/50">
+                    <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#000073]/50">
                       Pillar {pillar.number}
                     </p>
                     <h2
-                      className="font-playfair font-bold text-[#0a1560] leading-tight"
+                      className="font-playfair font-bold text-[#000073] leading-tight"
                       style={{ fontSize: "clamp(22px, 3vw, 34px)" }}
                     >
                       {pillar.title}
@@ -105,11 +105,11 @@ export default function ManifestoPage() {
                   </div>
                 </div>
 
-                <p className="font-playfair italic text-[#0a1560]/70 text-base">
+                <p className="font-playfair italic text-[#000073]/70 text-base">
                   {pillar.subtitle}
                 </p>
 
-                <div className="w-10 h-0.5 bg-[#0a1560]/20" />
+                <div className="w-10 h-0.5 bg-[#000073]/20" />
 
                 <p className="text-gray-500 text-base leading-relaxed">
                   {pillar.description}
@@ -117,7 +117,7 @@ export default function ManifestoPage() {
               </div>
 
               {/* Right — points + closing */}
-              <div className={`flex flex-col gap-0 ${isEven ? "md:border-l border-[#0a1560]/15 md:pl-16" : "md:border-r border-[#0a1560]/15 md:pr-16 md:order-first"}`}>
+              <div className={`flex flex-col gap-0 ${isEven ? "md:border-l border-[#000073]/15 md:pl-16" : "md:border-r border-[#000073]/15 md:pr-16 md:order-first"}`}>
                 {pillar.points.map((point, j) => (
                   <motion.div
                     key={j}
@@ -127,7 +127,7 @@ export default function ManifestoPage() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: j * 0.07 }}
                   >
-                    <span className="text-[#0a1560]/40 font-playfair font-bold text-lg flex-shrink-0 mt-0.5">
+                    <span className="text-[#000073]/40 font-playfair font-bold text-lg flex-shrink-0 mt-0.5">
                       —
                     </span>
                     <span className="text-gray-700 text-base leading-relaxed">
@@ -138,7 +138,7 @@ export default function ManifestoPage() {
 
                 {pillar.closing && (
                   <motion.p
-                    className="mt-6 font-playfair italic text-[#0a1560]/70 text-base leading-relaxed border-l-2 border-[#0a1560]/30 pl-4"
+                    className="mt-6 font-playfair italic text-[#000073]/70 text-base leading-relaxed border-l-2 border-[#000073]/30 pl-4"
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
@@ -154,7 +154,7 @@ export default function ManifestoPage() {
       </section>
 
       {/* Bottom CTA */}
-      <section className="relative bg-[#0a1560] py-16 md:py-20 overflow-hidden mt-8">
+      <section className="relative bg-[#000073] py-16 md:py-20 overflow-hidden mt-8">
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
