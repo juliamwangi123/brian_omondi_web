@@ -31,7 +31,7 @@ export default function RecentNews() {
             <div className="w-8 h-0.5 bg-[#000073]" />
           </div>
           <h2
-            className="font-playfair font-bold text-[#000073] mb-4"
+            className="font-bold text-[#000073] mb-4"
             style={{ fontSize: "clamp(28px, 4vw, 44px)" }}
           >
             From the Campaign Trail
@@ -77,7 +77,7 @@ export default function RecentNews() {
               <div className="p-6 flex flex-col gap-3">
                 <p className="text-gray-400 text-xs">{new Date(item.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
                 <Link href={`/news/${item.slug}`}>
-                  <h3 className="font-playfair font-bold text-[#000073] text-lg leading-snug hover:text-[#000073]/70 transition-colors cursor-pointer">
+                  <h3 className="font-bold text-[#000073] text-lg leading-snug hover:text-[#000073]/70 transition-colors cursor-pointer">
                     {item.title}
                   </h3>
                 </Link>

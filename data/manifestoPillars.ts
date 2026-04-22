@@ -55,20 +55,23 @@ export const manifestoPillars = [
     icon: Heart,
     number: "03",
     title: "Healthcare",
-    subtitle: "Better Healthcare Services",
+    subtitle: "Restoring Dignity, Access, and Trust in Our Health System",
+    preview:
+      "Too many people walk long distances to find care. Too many facilities have no doctors, no drugs, or no equipment. Too many mothers still risk their lives while giving life. The closure of key facilities such as the St. Mary's Hospital has only made things worse. This is not acceptable. Healthcare is a right — and under my leadership, we will restore dignity, access, and trust in our health system.",
     description:
-      "Many residents travel long distances to access quality health services.",
+      "In Mumias West today, falling sick is not just a health issue — it is a financial burden. Too many people walk long distances to find care. Too many facilities have no doctors, no drugs, or no equipment. Too many mothers still risk their lives while giving life. The closure of key facilities such as the St. Mary's Hospital has only made things worse. This is not acceptable. Healthcare is a right — and under my leadership, we will restore dignity, access, and trust in our health system.",
     points: [
-      "Lobby the national government to upgrade health centers in Mumias West",
-      "Ensure facilities have enough medicine",
-      "Improve maternal health services",
-      "Support ambulance services for emergencies",
-      "Work with partners to organize medical camps",
-      "Support programs for maternal and child health",
-      "Improve community health services",
+      "Reopen, upgrade, and equip health facilities across all wards so that care is accessible and reliable",
+      "Ensure constant availability of essential drugs in all public health centres — no more empty shelves",
+      "Lobby for more doctors, nurses, and medical staff to reduce long queues and improve service delivery",
+      "Strengthen maternal and child healthcare services to protect mothers and ensure safe deliveries",
+      "Promote affordable healthcare and reliable insurance access so that no patient is turned away",
+      "Introduce mobile clinics and community outreach programs to bring services closer to rural communities",
+      "Expand programs addressing mental health, drug abuse, and preventive care, especially among the youth",
+      "Support simple digital systems to reduce waiting time, improve records, and enhance efficiency in facilities",
     ],
     closing:
-      "Healthy people mean a strong and productive community.",
+      "A healthy people is a productive people — and a strong Mumias West begins with healthy families.",
   },
   {
     icon: Briefcase,

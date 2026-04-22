@@ -28,14 +28,14 @@ export default function Navbar({ className} : { className?: string  }) {
         scrolled ? "bg-[#000073] shadow-lg" : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-2 flex justify-between items-center py-4 min-h-[72px]">
+      <div className="max-w-7xl mx-auto px-6 md:px-2 flex justify-between items-center py-2 min-h-[72px]">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 flex-shrink-0">
           <Image
-            src="/images/brian_omondi_logo.png"
+            src="/images/brian_omondi_logo_transparent.png"
             alt="Brian Omondi Logo"
-            width={56}
-            height={52}
+            width={100}
+            height={80}
             className="object-contain"
           />
        

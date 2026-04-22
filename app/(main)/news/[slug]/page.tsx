@@ -130,7 +130,7 @@ export default function NewsDetailPage() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-center">
-          <h1 className="font-playfair font-bold text-[#000073] text-3xl mb-4">
+          <h1 className="font-bold text-[#000073] text-3xl mb-4">
             Article not found
           </h1>
           <Link
@@ -194,7 +194,7 @@ export default function NewsDetailPage() {
               </div>
             </div>
             <h1
-              className="font-playfair font-bold text-white leading-tight"
+              className="font-bold text-white leading-tight"
               style={{ fontSize: "clamp(32px, 5vw, 48px)" }}
             >
               {article.title}
@@ -263,7 +263,7 @@ export default function NewsDetailPage() {
           >
             {/* Left — Call to action */}
             <div className="flex flex-col gap-4 justify-center">
-              <h3 className="font-playfair font-bold text-white text-2xl">
+              <h3 className="font-bold text-white text-2xl">
                 Join the Movement
               </h3>
               <p className="text-gray-400 text-base">
@@ -281,7 +281,7 @@ export default function NewsDetailPage() {
 
             {/* Related articles */}
             <div className="flex flex-col gap-4">
-              <h4 className="font-playfair font-bold text-[#000073] text-lg">
+              <h4 className="font-bold text-[#000073] text-lg">
                 More Updates
               </h4>
               {related.map((item) => (

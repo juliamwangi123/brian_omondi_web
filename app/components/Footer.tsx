@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Phone, Mail, MapPin } from "lucide-react";
 import { getNavLinks } from "@/data/navLinks";
 import { socialLinks } from "@/data/socialLinks";
@@ -19,17 +20,21 @@ export default function Footer() {
           {/* Brand column */}
           <div className="md:col-span-2 flex flex-col gap-5">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-[#000073] rounded-full flex items-center justify-center flex-shrink-0">
-                <span className="text-white font-playfair font-bold text-lg">B</span>
-              </div>
-              <div>
-                <p className="font-playfair font-bold text-white text-lg leading-tight">
+              <Image
+                src="/images/brian_omondi_logo_transparent.png"
+                alt="Brian Omondi Logo"
+                width={100}
+                height={80}
+                className="object-contain"
+              />
+              {/* <div>
+                <p className="font-bold text-white text-lg leading-tight" style={{ fontFamily: 'Century_Gothic_Bold' }}>
                   Brian Omondi
                 </p>
-                <p className="text-gray-500 text-xs">
+                <p className="text-gray-500 text-xs" style={{ fontFamily: 'Century_Gothic_Regular' }}>
                   Mumias West MP Aspirant 2027
                 </p>
-              </div>
+              </div> */}
             </div>
             <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
               Son of the Soil, Servant of the People. Dedicated to transforming

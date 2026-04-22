@@ -43,7 +43,6 @@ export default function HomePage() {
             }}
           />
 
-          {/* Desktop gradient — #0d0d0d matches section bg exactly, seam is invisible */}
           <div
             className="absolute inset-0 hidden md:block"
             style={{

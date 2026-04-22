@@ -26,20 +26,21 @@ export default function ManifestoHighlights() {
             <div className="w-8 h-0.5 bg-[#000073]" />
           </div>
           <h2
-            className="font-playfair font-bold text-[#000073] mb-4"
-            style={{ fontSize: "clamp(28px, 4vw, 44px)" }}
+            className="font-bold text-black mb-4"
+            style={{ fontSize: "clamp(29px, 4vw, 44px)" }}
           >
             What Brian Stands For
           </h2>
-          <p className="text-gray-500 max-w-xl mx-auto text-base md:text-lg">
+          <p className="text-gray-600 font-medium max-w-xl mx-auto text-base md:text-lg">
             Eight pillars that will guide every decision made for Mumias West.
           </p>
         </motion.div>
 
         {/* Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {manifestoPillars.map((pillar, i) => {
+          {manifestoPillars.filter(p => p.title !== "Social Protection").map((pillar, i) => {
             const Icon = pillar.icon;
+            const rawText = ("preview" in pillar ? pillar.preview : pillar.description) as string;
             return (
               <motion.div
                 key={pillar.title}
@@ -52,25 +53,25 @@ export default function ManifestoHighlights() {
                 <div className="w-12 h-12 rounded-xl bg-[#000073] flex items-center justify-center mb-4">
                   <Icon className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="font-playfair font-bold text-[#000073] text-xl mb-2">
+                <h3 className="font-bold text-black text-xl mb-2">
                   {pillar.title}
                 </h3>
-                <p className="text-gray-500 text-sm leading-relaxed">
-                  {pillar.description}
+                <p className="text-gray-600 font-normal text-sm leading-relaxed line-clamp-6">
+                  {rawText}
                 </p>
               </motion.div>
             );
           })}
 
-          {/* Read Full Manifesto card — fills the 6th slot in the grid */}
+          {/* Read Full Manifesto card — last */}
           <motion.div
             className="rounded-2xl p-6 flex flex-col items-center justify-center text-center gap-4 border-2 border-dashed border-[#000073]/40 hover:-translate-y-1 transition-all duration-300"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.5 }}
+            transition={{ duration: 0.5 }}
           >
-            <p className="font-playfair font-bold text-[#000073] text-lg">
+            <p className="font-bold text-black text-lg" style={{ fontFamily: 'Century_Gothic_Bold' }}>
               There is more to the vision
             </p>
             <p className="text-gray-400 text-sm">

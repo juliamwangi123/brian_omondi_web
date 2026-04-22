@@ -36,11 +36,13 @@ html {
 }
 
 body {
-  @apply font-source-sans bg-white text-gray-900;
+  font-family: 'Century_Gothic_Regular', sans-serif;
+  @apply bg-white text-gray-900;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  @apply font-playfair font-bold;
+  font-family: 'Century_Gothic_Bold', sans-serif;
+  font-weight: 700;
 }
 
 .container {

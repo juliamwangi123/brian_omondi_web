@@ -74,7 +74,7 @@ const handleChange = (
             </div>
 
             <h2
-              className="font-playfair font-bold text-white leading-tight"
+              className="font-bold text-white leading-tight"
               style={{ fontSize: "clamp(28px, 4vw, 44px)" }}
             >
               Tell Brian What Matters to You
@@ -101,7 +101,7 @@ const handleChange = (
                     word === "·"
                       ? "text-white"
                       : i === 0
-                      ? "font-playfair font-bold text-white text-2xl"
+                      ? "font-bold text-white text-2xl"
                       : "text-white/70 text-sm font-semibold"
                   }
                 >
@@ -121,7 +121,7 @@ const handleChange = (
             {submitted ? (
               <div className="bg-white rounded-2xl p-10 flex flex-col items-center gap-5 text-center">
                 <CheckCircle className="w-14 h-14 text-[#000073]" />
-                <h3 className="font-playfair font-bold text-[#000073] text-2xl">
+                <h3 className="font-bold text-[#000073] text-2xl">
                   Thank You!
                 </h3>
                 <p className="text-gray-500 text-base leading-relaxed">
