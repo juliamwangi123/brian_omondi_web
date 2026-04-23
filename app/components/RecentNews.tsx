@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { Calendar } from "lucide-react";
 import { useNews } from "@/app/lib/hooks/useNews";
 
 export default function RecentNews() {
@@ -52,42 +53,34 @@ export default function RecentNews() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
             >
-              {/* Image — clicking it also goes to article */}
-              <Link href={`/news/${item.slug}`}>
-                <div className="relative h-48 cursor-pointer">
-                  <Image
-                    src={item.hero_image_url}
-                    alt={item.title}
-                    fill
-                    className="object-cover object-top"
-                  />
-                  {/* Category pill */}
-                  <div className="absolute top-3 left-3">
-                    <span
-                      className="px-3 py-1 rounded-full text-xs font-bold"
-                      style={{ background: "#000073", color: "#ffffff" }}
-                    >
-                      {item.category}
-                    </span>
-                  </div>
+              {/* Image */}
+              <div className="relative w-full aspect-[4/3] overflow-hidden bg-gray-200">
+                <Image
+                  src={item.hero_image_url}
+                  alt={item.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute top-3 left-3">
+                  <span className="px-2 py-1 rounded text-xs font-bold bg-[#000073] text-white">{item.category}</span>
                 </div>
-              </Link>
+              </div>
 
               {/* Content */}
               <div className="p-6 flex flex-col gap-3 flex-1 min-h-0">
-                <p className="text-gray-400 text-xs">
-                  {new Date(item.published_date ?? item.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-                </p>                <Link href={`/news/${item.slug}`}>
-                  <h3 className="font-bold text-black text-lg leading-snug hover:text-[#000073]/70 transition-colors cursor-pointer">
-                    {item.title}
-                  </h3>
-                </Link>
-                <p className="text-gray-500 text-sm font-medium leading-relaxed line-clamp-2">
-                  {item.excerpt}
-                </p>
+                <div className="flex items-center gap-2 text-gray-400 text-xs">
+                  <Calendar className="w-3.5 h-3.5" />
+                  <span>{new Date(item.published_date ?? item.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                </div>
+                <h3 className="font-bold text-[#000073] text-lg leading-snug hover:text-[#000073]/60 transition-colors cursor-pointer" style={{ fontFamily: 'Century_Gothic_Bold' }}>
+                  <Link href={`/news/${item.slug}`}>{item.title}</Link>
+                </h3>
+                <p className="text-gray-500 text-sm leading-relaxed line-clamp-6" style={{ fontFamily: 'Century_Gothic_Regular' }}>{item.excerpt}</p>
                 <Link
                   href={`/news/${item.slug}`}
                   className="text-[#000073] text-sm font-bold hover:underline mt-auto pt-1"
+                  style={{ fontFamily: 'Century_Gothic_Bold' }}
                 >
                   Read More →
                 </Link>

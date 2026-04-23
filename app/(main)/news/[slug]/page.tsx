@@ -111,14 +111,11 @@ export default function NewsDetailPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="relative w-full aspect-video rounded-xl overflow-hidden mb-8">
-            <Image
+          <div className="w-full rounded-xl overflow-hidden mb-8">
+            <img
               src={article.hero_image_url}
               alt={article.title}
-              fill
-              sizes="(max-width: 768px) 100vw, 768px"
-              className="object-cover object-top"
-              priority
+              className="w-full h-auto rounded-xl block"
             />
           </div>
 
@@ -180,12 +177,13 @@ export default function NewsDetailPage() {
                     href={`/news/${item.slug}`}
                     className="flex gap-3 group"
                   >
-                    <div className="relative w-20 h-16 rounded-lg overflow-hidden flex-shrink-0">
+                    <div className="relative w-28 aspect-video rounded-lg overflow-hidden flex-shrink-0 bg-gray-800">
                       <Image
                         src={item.hero_image_url}
                         alt={item.title}
                         fill
-                        className="object-cover group-hover:scale-110 transition-transform"
+                        sizes="112px"
+                        className="object-cover object-top group-hover:scale-110 transition-transform"
                       />
                     </div>
                     <div className="flex flex-col gap-1 justify-center">
