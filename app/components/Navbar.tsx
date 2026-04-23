@@ -32,7 +32,7 @@ export default function Navbar({ className} : { className?: string  }) {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 flex-shrink-0">
           <Image
-            src="/images/brian_omondi_logo_transparent.png"
+            src="/images/new_logo.png"
             alt="Brian Omondi Logo"
             width={100}
             height={80}

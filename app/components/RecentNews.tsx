@@ -6,10 +6,10 @@ import Link from "next/link";
 import { useNews } from "@/app/lib/hooks/useNews";
 
 export default function RecentNews() {
-  const { data, isLoading } = useNews(1, "published");
+  const { data, isLoading, isError } = useNews(1);
   const posts = data?.results ?? [];
 
-  if (isLoading || posts.length === 0) return null;
+  if (isLoading || isError || posts.length === 0) return null;
 
   return (
     <section className="py-16 md:py-24 bg-gray-50">
@@ -31,12 +31,12 @@ export default function RecentNews() {
             <div className="w-8 h-0.5 bg-[#000073]" />
           </div>
           <h2
-            className="font-bold text-[#000073] mb-4"
+            className="font-bold text-black mb-4"
             style={{ fontSize: "clamp(28px, 4vw, 44px)" }}
           >
             From the Campaign Trail
           </h2>
-          <p className="text-gray-500 max-w-xl mx-auto text-base md:text-lg">
+          <p className="text-gray-600 font-medium max-w-xl mx-auto text-base md:text-lg">
             Stay up to date with  Brian&apos;s journey across Mumias West.
           </p>
         </motion.div>
@@ -46,7 +46,7 @@ export default function RecentNews() {
           {posts.slice(0, 3).map((item, i) => (
             <motion.div
               key={item.id}
-              className="bg-white rounded-2xl overflow-hidden shadow-md hover:-translate-y-1 transition-all duration-300"
+              className="bg-white rounded-2xl overflow-hidden shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -74,19 +74,20 @@ export default function RecentNews() {
               </Link>
 
               {/* Content */}
-              <div className="p-6 flex flex-col gap-3">
-                <p className="text-gray-400 text-xs">{new Date(item.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
-                <Link href={`/news/${item.slug}`}>
-                  <h3 className="font-bold text-[#000073] text-lg leading-snug hover:text-[#000073]/70 transition-colors cursor-pointer">
+              <div className="p-6 flex flex-col gap-3 flex-1 min-h-0">
+                <p className="text-gray-400 text-xs">
+                  {new Date(item.published_date ?? item.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                </p>                <Link href={`/news/${item.slug}`}>
+                  <h3 className="font-bold text-black text-lg leading-snug hover:text-[#000073]/70 transition-colors cursor-pointer">
                     {item.title}
                   </h3>
                 </Link>
-                <p className="text-gray-500 text-sm leading-relaxed">
+                <p className="text-gray-500 text-sm font-medium leading-relaxed line-clamp-6">
                   {item.excerpt}
                 </p>
                 <Link
                   href={`/news/${item.slug}`}
-                  className="text-[#000073] text-sm font-bold hover:underline mt-1"
+                  className="text-[#000073] text-sm font-bold hover:underline mt-auto pt-1"
                 >
                   Read More →
                 </Link>

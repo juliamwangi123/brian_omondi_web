@@ -21,7 +21,7 @@ export default function Footer() {
           <div className="md:col-span-2 flex flex-col gap-5">
             <div className="flex items-center gap-3">
               <Image
-                src="/images/brian_omondi_logo_transparent.png"
+                src="/images/new_logo.png"
                 alt="Brian Omondi Logo"
                 width={100}
                 height={80}

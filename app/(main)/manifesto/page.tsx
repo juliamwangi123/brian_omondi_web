@@ -43,7 +43,7 @@ export default function ManifestoPage() {
             >
               Brian&apos;s Manifesto
             </h1>
-            <p className="text-blue-200/70 max-w-xl text-base md:text-lg" style={{ fontFamily: 'Century_Gothic_Regular' }}>
+            <p className="text-blue-200/70  text-base md:text-lg" style={{ fontFamily: 'Century_Gothic_Regular' }}>
               Eight pillars. Four wards. One vision for a transformed Mumias West.
             </p>
             {/* Quick links */}
@@ -178,7 +178,7 @@ export default function ManifestoPage() {
             >
               This is a Promise, Not a Poster
             </h2>
-            <p className="text-blue-200/60 max-w-xl text-base md:text-lg leading-relaxed" style={{ fontFamily: 'Century_Gothic_Regular' }}>
+            <p className="text-blue-200/60  text-base md:text-lg leading-relaxed" style={{ fontFamily: 'Century_Gothic_Regular' }}>
               Every point in this manifesto is a commitment Brian intends to keep.
             </p>
           </motion.div>

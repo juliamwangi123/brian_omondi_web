@@ -12,6 +12,7 @@ interface NewsPost {
   category: string;
   status: "published" | "draft";
   created_at: string;
+  published_date: string | null;
   excerpt: string;
   content: string;
   hero_image_url: string;
@@ -83,7 +84,7 @@ export default function NewsTable({ posts }: NewsTableProps) {
                   </span>
                 </td>
                 <td className="px-5 py-4 text-xs text-gray-400 whitespace-nowrap">
-                  {new Date(post.created_at).toLocaleDateString("en-US", {
+                  {new Date(post.published_date ?? post.created_at).toLocaleDateString("en-US", {
                     month: "short", day: "numeric", year: "numeric",
                   })}
                 </td>

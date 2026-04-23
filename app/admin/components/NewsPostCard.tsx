@@ -3,11 +3,12 @@ import { FileText } from "lucide-react";
 interface NewsPostCardProps {
   title: string;
   created_at: string;
+  published_date: string | null;
   status: "published" | "draft";
 }
 
-export default function NewsPostCard({ title, created_at, status }: NewsPostCardProps) {
-  const formattedDate = new Date(created_at).toLocaleDateString("en-US", {
+export default function NewsPostCard({ title, created_at, published_date, status }: NewsPostCardProps) {
+  const formattedDate = new Date(published_date ?? created_at).toLocaleDateString("en-US", {
     month: "short",
     day: "numeric",
     year: "numeric",

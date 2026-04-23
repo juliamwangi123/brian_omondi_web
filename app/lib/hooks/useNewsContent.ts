@@ -10,6 +10,7 @@ interface newsFormData {
   hero_image: File | null;
   content: string;
   status: "published" | "draft";
+  published_date?: string | null;
 }
 
 export const useNewsContent = () => {
@@ -26,19 +27,19 @@ export const useNewsContent = () => {
                 data.append('hero_image', formData.hero_image);
             }
             data.append('content', formData.content);
+            if (formData.published_date) {
+                data.append('published_date', formData.published_date);
+            }
 
-            return api.post('/news/', data, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                },
-            });
+            return api.post('/news/', data);
         },
         onSuccess: () => {
         queryClient.invalidateQueries({ queryKey: ["news"] });
         },
-        onError: (error) => {
-            console.error("Error submitting news content:", error);
-            throw error
+        onError: (error: unknown) => {
+            const axiosErr = error as { response?: { data?: unknown } };
+            console.error("Error submitting news content — validation errors:", axiosErr.response?.data);
+            throw error;
         }
 
     })

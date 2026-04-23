@@ -8,6 +8,7 @@ interface NewsPost {
   category: string;
   status: "published" | "draft";
   created_at: string;
+  published_date: string | '';
   excerpt: string;
   content: string;
   hero_image_url: string;

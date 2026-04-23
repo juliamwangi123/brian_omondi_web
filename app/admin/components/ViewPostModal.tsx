@@ -7,6 +7,7 @@ interface NewsPost {
   category: string;
   status: "published" | "draft";
   created_at: string;
+  published_date: string | null;
   excerpt: string;
   content: string;
   hero_image_url: string;
@@ -69,7 +70,7 @@ export default function ViewPostModal({ post, onClose }: ViewPostModalProps) {
               </span>
               <span className="text-xs text-gray-400 flex items-center gap-1">
                 <Calendar size={10} />
-                {new Date(post.created_at).toLocaleDateString("en-US", {
+                {new Date(post.published_date ?? post.created_at).toLocaleDateString("en-US", {
                   month: "long", day: "numeric", year: "numeric",
                 })}
               </span>

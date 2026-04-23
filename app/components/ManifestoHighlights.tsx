@@ -31,7 +31,7 @@ export default function ManifestoHighlights() {
           >
             What Brian Stands For
           </h2>
-          <p className="text-gray-600 font-medium max-w-xl mx-auto text-base md:text-lg">
+          <p className="text-gray-600 font-medium mx-auto text-base md:text-lg">
             Eight pillars that will guide every decision made for Mumias West.
           </p>
         </motion.div>

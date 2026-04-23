@@ -10,6 +10,7 @@ interface UpdateNewsPayload {
   hero_image: File | null;
   content: string;
   status: "published" | "draft";
+  published_date?: string | null;
 }
 
 export const useUpdateNews = () => {
@@ -24,6 +25,9 @@ export const useUpdateNews = () => {
       data.append("slug", formData.slug);
       data.append("content", formData.content);
       data.append("status", formData.status);
+      if (formData.published_date) {
+        data.append("published_date", formData.published_date);
+      }
       if (formData.hero_image) {
         data.append("hero_image", formData.hero_image);
       }

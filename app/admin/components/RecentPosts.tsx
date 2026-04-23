@@ -7,6 +7,7 @@ interface NewsPost {
   id: number;
   title: string;
   created_at: string;
+  published_date: string | null;
   status: "published" | "draft";
 }
 
@@ -40,6 +41,7 @@ export default function RecentPosts({ dashboard = false }: RecentPostsProps) {
             key={post.id}
             title={post.title}
             created_at={post.created_at}
+            published_date={post.published_date}
             status={post.status}
           />
         ))

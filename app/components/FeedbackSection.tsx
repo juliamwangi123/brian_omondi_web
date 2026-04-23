@@ -75,7 +75,7 @@ const handleChange = (
 
             <h2
               className="font-bold text-white leading-tight"
-              style={{ fontSize: "clamp(28px, 4vw, 44px)" }}
+              style={{ fontSize: "clamp(26px, 4vw, 37px)" }}
             >
               Tell Brian What Matters to You
             </h2>

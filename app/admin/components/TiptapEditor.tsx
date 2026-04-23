@@ -12,7 +12,8 @@ import { useRouter } from "next/navigation";
 import {
   Bold, Italic, Underline as UnderlineIcon, Heading2, Heading3,
   List, ListOrdered, Quote, AlignLeft, AlignCenter, AlignRight,
-  AlignJustify, Link as LinkIcon, Upload, Send, FileText, Minus, CheckCircle, AlertCircle, Loader2
+  AlignJustify, Link as LinkIcon, Upload, Send, FileText, Minus, CheckCircle, AlertCircle, Loader2,
+  CalendarDays
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
@@ -27,6 +28,7 @@ interface PostData {
   slug: string;
   hero_image: File | null;
   content: string;
+  published_date: string;
 }
 
 interface FormErrors {
@@ -45,6 +47,7 @@ interface NewsPost {
   category: string;
   status: "published" | "draft";
   created_at: string;
+  published_date: string | null;
   excerpt: string;
   content: string;
   hero_image_url: string;
@@ -61,7 +64,7 @@ const CATEGORIES = [
 
 export default function TiptapEditor() {
   const [postData, setPostData] = useState<PostData>({
-    title: "", excerpt: "", category: "", slug: "", hero_image: null, content: "",
+    title: "", excerpt: "", category: "", slug: "", hero_image: null, content: "", published_date: "",
   });
   const [errors, setErrors] = useState<FormErrors>({});
 
@@ -112,10 +115,12 @@ export default function TiptapEditor() {
         slug: cachedPost.slug,
         hero_image: null,
         content: cachedPost.content,
+        published_date: cachedPost.published_date ?? "",
       });
       editor.commands.setContent(cachedPost.content);
     }
   }, [cachedPost, isEditMode, editor]);
+
   const router = useRouter();
 
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -154,23 +159,27 @@ export default function TiptapEditor() {
   const handleSubmit = (status: "published" | "draft") => {
     if (!validate()) return;
 
+    const payload = {
+      ...postData,
+      published_date: postData.published_date || (status === "published" ? new Date().toISOString().split("T")[0] : null),
+      status,
+    };
+
     if (isEditMode && postId) {
-      updateNewsContent({ ...postData, id: postId, status }, {
+      updateNewsContent({ ...payload, id: postId }, {
         onSuccess: () => {
           setErrors({});
           router.push("/admin/news");
         },
       });
     } else {
-      submitNewsContent({ ...postData, status }, {
+      submitNewsContent(payload, {
         onSuccess: () => {
           setPostData({
-            title: "", excerpt: "", category: "", slug: "", hero_image: null, content: "",
+            title: "", excerpt: "", category: "", slug: "", hero_image: null, content: "", published_date: "",
           });
           setErrors({});
           editor?.commands.clearContent();
-
-          
         },
       });
     }
@@ -233,7 +242,6 @@ export default function TiptapEditor() {
           </div>
         )}
 
-        {/* Title + Excerpt */}
         <div className="bg-white rounded-2xl border border-gray-100 px-8 py-6 shadow-sm">
           <input
             type="text"
@@ -269,7 +277,6 @@ export default function TiptapEditor() {
           </div>
         </div>
 
-        {/* Editor */}
         <div className={`bg-white rounded-2xl border shadow-sm overflow-hidden flex-1 ${errors.content ? "border-red-300" : "border-gray-100"}`}>
           <div className="flex items-center flex-wrap gap-0.5 px-4 py-2.5 border-b border-gray-100 bg-gray-50/80">
             {toolbarGroups.map((group, groupIndex) => (
@@ -306,10 +313,8 @@ export default function TiptapEditor() {
         </div>
       </div>
 
-      {/* Right sidebar */}
       <div className="flex flex-col gap-4" style={{ width: 260, flexShrink: 0 }}>
 
-        {/* Cover Image */}
         <div className={`bg-white rounded-2xl border p-5 shadow-sm ${errors.hero_image ? "border-red-300" : "border-gray-100"}`}>
           <p className="text-xs font-bold tracking-widest uppercase text-gray-400 mb-3">Cover Image</p>
 
@@ -359,7 +364,28 @@ export default function TiptapEditor() {
           )}
         </div>
 
-        {/* Category */}
+        <div className="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm">
+          <p className="text-xs font-bold tracking-widest uppercase text-gray-400 mb-3">Published Date</p>
+          <div className="relative">
+            <CalendarDays size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
+            <input
+              type="date"
+              value={postData.published_date}
+              onChange={(e) =>
+                setPostData((prev) => ({ ...prev, published_date: e.target.value }))
+              }
+              className="w-full border border-gray-100 rounded-xl pl-8 pr-3 py-2.5 text-sm outline-none bg-gray-50 focus:border-[#d4a017] transition-colors"
+              style={{ color: postData.published_date ? "#0d2b14" : "#9ca3af" }}
+            />
+          </div>
+          <p className="text-xs text-gray-400 mt-2 leading-relaxed">
+            {postData.published_date
+              ? <>Displays as <span className="text-[#d4a017] font-medium">{new Date(postData.published_date + "T00:00:00").toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</span></>
+              : "Leave blank to use post creation date"
+            }
+          </p>
+        </div>
+
         <div className={`bg-white rounded-2xl border p-5 shadow-sm ${errors.category ? "border-red-300" : "border-gray-100"}`}>
           <p className="text-xs font-bold tracking-widest uppercase text-gray-400 mb-3">Category</p>
           <select
@@ -383,7 +409,6 @@ export default function TiptapEditor() {
           )}
         </div>
 
-        {/* Slug */}
         <div className={`bg-white rounded-2xl border p-5 shadow-sm ${errors.slug ? "border-red-300" : "border-gray-100"}`}>
           <p className="text-xs font-bold tracking-widest uppercase text-gray-400 mb-3">URL Slug</p>
           <input
@@ -406,7 +431,6 @@ export default function TiptapEditor() {
           )}
         </div>
 
-        {/* Actions */}
         <div className="mt-auto flex flex-col gap-2 pt-2">
           <button
             onClick={() => handleSubmit("published")}

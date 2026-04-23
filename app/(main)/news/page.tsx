@@ -7,7 +7,7 @@ import { Calendar, ArrowRight, Newspaper } from "lucide-react";
 import { useNews } from "@/app/lib/hooks/useNews";
 
 export default function NewsPage() {
-  const { data, isLoading } = useNews(1, "published");
+  const { data, isLoading, isError } = useNews(1);
   const posts = data?.results ?? [];
   const [featured, ...rest] = posts;
 
@@ -66,8 +66,17 @@ export default function NewsPage() {
         </div>
       )}
 
+      {/* Error state */}
+      {!isLoading && isError && (
+        <div className="flex flex-col items-center justify-center py-32 gap-4 text-gray-400">
+          <Newspaper className="w-16 h-16 opacity-30" />
+          <p className="text-xl font-semibold text-gray-500" style={{ fontFamily: 'Century_Gothic_Bold' }}>Could not load articles</p>
+          <p className="text-sm text-gray-400">Please check your connection or try again later.</p>
+        </div>
+      )}
+
       {/* Empty state */}
-      {!isLoading && posts.length === 0 && (
+      {!isLoading && !isError && posts.length === 0 && (
         <div className="flex flex-col items-center justify-center py-32 gap-4 text-gray-400">
           <Newspaper className="w-16 h-16 opacity-30" />
           <p className="text-xl font-semibold text-gray-500" style={{ fontFamily: 'Century_Gothic_Bold' }}>No articles yet</p>
@@ -107,7 +116,7 @@ export default function NewsPage() {
               <div className="p-8 md:p-10 flex flex-col justify-center gap-4">
                 <div className="flex items-center gap-2 text-gray-400 text-xs">
                   <Calendar className="w-3.5 h-3.5" />
-                  <span>{new Date(featured.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                  <span>{new Date(featured.published_date ?? featured.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
                 </div>
                 <h2 className="font-bold text-[#000073] leading-tight" style={{ fontFamily: 'Century_Gothic_Bold', fontSize: "clamp(22px, 3vw, 32px)" }}>
                   {featured.title}
@@ -128,7 +137,7 @@ export default function NewsPage() {
                 {rest.map((item, index) => (
                   <motion.div
                     key={item.id}
-                    className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all group"
+                    className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all group flex flex-col"
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -145,16 +154,16 @@ export default function NewsPage() {
                         <span className="px-2 py-1 rounded text-xs font-bold bg-[#000073] text-white">{item.category}</span>
                       </div>
                     </div>
-                    <div className="p-6 flex flex-col gap-3">
+                    <div className="p-6 flex flex-col gap-3 flex-1 min-h-0">
                       <div className="flex items-center gap-2 text-gray-400 text-xs">
                         <Calendar className="w-3.5 h-3.5" />
-                        <span>{new Date(item.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                        <span>{new Date(item.published_date ?? item.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
                       </div>
                       <h3 className="font-bold text-[#000073] text-lg leading-snug hover:text-[#000073]/60 transition-colors cursor-pointer" style={{ fontFamily: 'Century_Gothic_Bold' }}>
                         <Link href={`/news/${item.slug}`}>{item.title}</Link>
                       </h3>
-                      <p className="text-gray-500 text-sm leading-relaxed" style={{ fontFamily: 'Century_Gothic_Regular' }}>{item.excerpt}</p>
-                      <Link href={`/news/${item.slug}`} className="text-[#000073] text-sm font-bold hover:underline mt-1" style={{ fontFamily: 'Century_Gothic_Bold' }}>Read More →</Link>
+                      <p className="text-gray-500 text-sm leading-relaxed line-clamp-6" style={{ fontFamily: 'Century_Gothic_Regular' }}>{item.excerpt}</p>
+                      <Link href={`/news/${item.slug}`} className="text-[#000073] text-sm font-bold hover:underline mt-auto pt-1" style={{ fontFamily: 'Century_Gothic_Bold' }}>Read More →</Link>
                     </div>
                   </motion.div>
                 ))}
