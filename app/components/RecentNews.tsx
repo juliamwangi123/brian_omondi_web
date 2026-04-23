@@ -82,7 +82,7 @@ export default function RecentNews() {
                     {item.title}
                   </h3>
                 </Link>
-                <p className="text-gray-500 text-sm font-medium leading-relaxed line-clamp-6">
+                <p className="text-gray-500 text-sm font-medium leading-relaxed line-clamp-2">
                   {item.excerpt}
                 </p>
                 <Link
