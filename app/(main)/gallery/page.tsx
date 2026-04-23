@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
@@ -105,32 +104,28 @@ function Lightbox({ src, title, category, onClose }: {
   );
 }
 
-function PhotoCard({ item, onOpen, style = {} }: {
-  item: GalleryItem; onOpen: () => void; style?: React.CSSProperties;
+function PhotoCard({ item, onOpen }: {
+  item: GalleryItem; onOpen: () => void;
 }) {
   return (
     <div
-      className="relative overflow-hidden cursor-pointer group"
-      style={{ background: "#07102b", ...style }}
+      className="relative overflow-hidden cursor-pointer group rounded-sm mb-3 break-inside-avoid"
+      style={{ background: "#07102b" }}
       onClick={onOpen}
     >
-      <Image
+      <img
         src={item.image_url}
         alt={item.title}
-        fill
-        className="object-cover transition-all duration-700 group-hover:scale-[1.06]"
-        style={{ filter: "brightness(0.82) contrast(1.06) saturate(0.88)" }}
-      />
-      <div
-        className="absolute inset-0 transition-opacity duration-300 group-hover:opacity-0"
-        style={{ background: "linear-gradient(to top, rgba(3,7,35,0.65) 0%, transparent 60%)" }}
+        className="w-full h-auto block transition-all duration-700 group-hover:scale-[1.03]"
+        loading="lazy"
+        decoding="async"
       />
       <div
         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-        style={{ background: "linear-gradient(to top, rgba(3,7,35,0.92) 0%, rgba(3,7,35,0.2) 50%, transparent 100%)" }}
+        style={{ background: "linear-gradient(to top, rgba(3,7,35,0.88) 0%, rgba(3,7,35,0.15) 55%, transparent 100%)" }}
       />
       <div className="absolute bottom-0 left-0 h-[2px] w-0 group-hover:w-full transition-all duration-500 z-10" style={{ background: "#8fb3ff" }} />
-      <div className="absolute bottom-0 left-0 right-0 p-5 z-10 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+      <div className="absolute bottom-0 left-0 right-0 p-4 z-10 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
         <p className="text-xs font-bold tracking-[0.22em] uppercase mb-1" style={{ color: "#8fb3ff", fontFamily: "Century_Gothic_Regular" }}>
           {item.category}
         </p>
@@ -140,64 +135,24 @@ function PhotoCard({ item, onOpen, style = {} }: {
   );
 }
 
-function PhotoCardSkeleton({ style = {} }: { style?: React.CSSProperties }) {
+function PhotoCardSkeleton() {
   return (
     <div
-      className="relative overflow-hidden"
-      style={{ background: "#07102b", ...style }}
-    >
-      <div className="absolute inset-0 animate-pulse" style={{ background: "linear-gradient(90deg, #07102b 25%, #12204f 50%, #07102b 75%)", backgroundSize: "200% 100%", animation: "shimmer 1.5s infinite" }} />
-    </div>
+      className="rounded-sm mb-3 break-inside-avoid"
+      style={{ background: "#07102b", aspectRatio: "3/4", animation: "shimmer 1.5s infinite" }}
+    />
   );
 }
 
-function CinemaLayout({ items, onOpen, isLoading }: { items: GalleryItem[]; onOpen: (item: GalleryItem) => void; isLoading: boolean }) {
-  if (isLoading) return (
-    <div className="grid gap-1" style={{ gridTemplateColumns: "1.1fr 0.9fr" }}>
-      <PhotoCardSkeleton style={{ aspectRatio: "2/3" }} />
-      <div className="flex flex-col gap-1">
-        <PhotoCardSkeleton style={{ flex: 1, aspectRatio: "4/3", marginTop: "3rem" }} />
-        <PhotoCardSkeleton style={{ flex: 1, aspectRatio: "4/3" }} />
-      </div>
-    </div>
-  );
-
+function MasonryLayout({ items, onOpen, isLoading }: { items: GalleryItem[]; onOpen: (item: GalleryItem) => void; isLoading: boolean }) {
   return (
-    <div className="grid gap-1" style={{ gridTemplateColumns: "1.1fr 0.9fr" }}>
-      {items[0] && <PhotoCard item={items[0]} onOpen={() => onOpen(items[0])} style={{ aspectRatio: "2/3" }} />}
-      <div className="flex flex-col gap-1">
-        {items.slice(1, 3).map((item, i) => (
-          <PhotoCard key={item.id} item={item} onOpen={() => onOpen(item)} style={{ flex: 1, aspectRatio: "4/3", marginTop: i === 0 ? "3rem" : 0 }} />
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function MagazineLayout({ items, onOpen, isLoading }: { items: GalleryItem[]; onOpen: (item: GalleryItem) => void; isLoading: boolean }) {
-  if (isLoading) return (
-    <div className="grid gap-1" style={{ gridTemplateColumns: "55fr 45fr" }}>
-      <div className="flex flex-col gap-1">
-        <PhotoCardSkeleton style={{ aspectRatio: "4/3" }} />
-        <PhotoCardSkeleton style={{ aspectRatio: "16/7" }} />
-      </div>
-      <div className="flex flex-col gap-1">
-        <PhotoCardSkeleton style={{ aspectRatio: "3/4", marginTop: "4rem" }} />
-        <PhotoCardSkeleton style={{ aspectRatio: "4/3" }} />
-      </div>
-    </div>
-  );
-
-  return (
-    <div className="grid gap-1" style={{ gridTemplateColumns: "55fr 45fr" }}>
-      <div className="flex flex-col gap-1">
-        {items[0] && <PhotoCard item={items[0]} onOpen={() => onOpen(items[0])} style={{ aspectRatio: "4/3" }} />}
-        {items[1] && <PhotoCard item={items[1]} onOpen={() => onOpen(items[1])} style={{ aspectRatio: "16/7" }} />}
-      </div>
-      <div className="flex flex-col gap-1">
-        {items[2] && <PhotoCard item={items[2]} onOpen={() => onOpen(items[2])} style={{ aspectRatio: "3/4", marginTop: "4rem" }} />}
-        {items[3] && <PhotoCard item={items[3]} onOpen={() => onOpen(items[3])} style={{ aspectRatio: "4/3" }} />}
-      </div>
+    <div style={{ columns: "2 320px", columnGap: "12px" }}>
+      {isLoading
+        ? Array.from({ length: 6 }).map((_, i) => <PhotoCardSkeleton key={i} />)
+        : items.map((item) => (
+            <PhotoCard key={item.id} item={item} onOpen={() => onOpen(item)} />
+          ))
+      }
     </div>
   );
 }
@@ -376,11 +331,7 @@ export default function GalleryPage() {
         {/* Photo Layout */}
         {(isLoading || allItems.length > 0) && (
           <>
-            {currentSection.layout === "cinema" ? (
-              <CinemaLayout items={previewItems} onOpen={setLightbox} isLoading={isLoading} />
-            ) : (
-              <MagazineLayout items={previewItems} onOpen={setLightbox} isLoading={isLoading} />
-            )}
+            <MasonryLayout items={previewItems} onOpen={setLightbox} isLoading={isLoading} />
 
             <ViewAllButton
               category={currentSection.id}
