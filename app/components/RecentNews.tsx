@@ -10,7 +10,38 @@ export default function RecentNews() {
   const { data, isLoading, isError } = useNews(1);
   const posts = data?.results ?? [];
 
-  if (isLoading || isError || posts.length === 0) return null;
+  if (!isLoading && (isError || posts.length === 0)) return null;
+
+  if (isLoading) {
+    return (
+      <section className="py-16 md:py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-8 md:px-16">
+          <div className="text-center mb-14">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="w-8 h-0.5 bg-[#000073]" />
+              <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#000073]">Latest Updates</span>
+              <div className="w-8 h-0.5 bg-[#000073]" />
+            </div>
+            <h2 className="font-bold text-black mb-4" style={{ fontSize: 'clamp(28px, 4vw, 44px)' }}>From the Campaign Trail</h2>
+            <p className="text-gray-600 font-medium max-w-xl mx-auto text-base md:text-lg">Stay up to date with Brian&apos;s journey across Mumias West.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="bg-white rounded-2xl overflow-hidden shadow-md animate-pulse">
+                <div className="w-full aspect-[4/3] bg-gray-200" />
+                <div className="p-6 flex flex-col gap-3">
+                  <div className="h-3 bg-gray-200 rounded w-1/3" />
+                  <div className="h-5 bg-gray-200 rounded w-3/4" />
+                  <div className="h-3 bg-gray-200 rounded w-full" />
+                  <div className="h-3 bg-gray-200 rounded w-2/3" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="py-16 md:py-24 bg-gray-50">

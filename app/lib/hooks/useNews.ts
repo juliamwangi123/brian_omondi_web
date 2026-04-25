@@ -34,5 +34,6 @@ export const useNews = (page: number = 1, status?: string) => {
       return response.data;
     },
     staleTime: 1000 * 60 * 2,
+    retry: 3,
   });
 };
