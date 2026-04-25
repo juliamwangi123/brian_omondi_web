@@ -14,13 +14,40 @@ export default function NewsDetailPage() {
 
   const { data: article, isLoading, isError } = useNewsArticle(slug);
   const { data: allNews } = useNews(1);
-  debugger
   const related = (allNews?.results ?? []).filter((item) => item.slug !== slug).slice(0, 3);
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="animate-spin w-10 h-10 border-4 border-[#000073] border-t-transparent rounded-full" />
+      <div className="bg-gray-50 min-h-screen">
+        {/* Hero skeleton */}
+        <section className="relative bg-[#000073] py-16 md:pb-20 md:pt-36 overflow-hidden">
+          <div className="relative z-10 max-w-7xl mx-auto px-8 md:px-16">
+            <div className="h-4 w-28 bg-white/10 rounded mb-8 animate-pulse" />
+            <div className="max-w-3xl">
+              <div className="h-4 w-24 bg-white/10 rounded mb-4 animate-pulse" />
+              <div className="h-4 w-32 bg-white/10 rounded mb-6 animate-pulse" />
+              <div className="h-10 w-3/4 bg-white/10 rounded mb-3 animate-pulse" />
+              <div className="h-10 w-1/2 bg-white/10 rounded animate-pulse" />
+            </div>
+          </div>
+        </section>
+
+        {/* Article skeleton */}
+        <section className="max-w-3xl mx-auto px-8 md:px-16 py-16 md:py-20">
+          <div className="bg-white rounded-xl p-8 md:p-12 shadow-sm animate-pulse">
+            <div className="w-full aspect-video rounded-xl bg-gray-200 mb-8" />
+            <div className="space-y-4">
+              <div className="h-4 bg-gray-200 rounded w-full" />
+              <div className="h-4 bg-gray-200 rounded w-5/6" />
+              <div className="h-4 bg-gray-200 rounded w-full" />
+              <div className="h-4 bg-gray-200 rounded w-4/6" />
+              <div className="h-4 bg-gray-200 rounded w-full" />
+              <div className="h-4 bg-gray-200 rounded w-3/4" />
+              <div className="h-4 bg-gray-200 rounded w-5/6" />
+              <div className="h-4 bg-gray-200 rounded w-2/3" />
+            </div>
+          </div>
+        </section>
       </div>
     );
   }
