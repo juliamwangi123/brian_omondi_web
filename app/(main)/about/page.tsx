@@ -31,7 +31,7 @@ export default function AboutPage() {
     <div>
       {/* Hero Section */}
       <section className="bg-[#000073] text-white py-20">
-        <div className="container">
+        <div className="container pt-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

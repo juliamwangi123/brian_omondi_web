@@ -59,11 +59,43 @@ export default function NewsPage() {
         </div>
       </section>
 
-      {/* Loading */}
+      {/* Loading skeleton */}
       {isLoading && (
-        <div className="flex items-center justify-center py-32">
-          <div className="animate-spin w-10 h-10 border-4 border-[#000073] border-t-transparent rounded-full" />
-        </div>
+        <>
+          {/* Featured skeleton */}
+          <section className="max-w-7xl mx-auto px-8 md:px-16 py-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-0 rounded-2xl overflow-hidden shadow-lg bg-white animate-pulse">
+              <div className="h-64 md:min-h-[400px] bg-gray-200" />
+              <div className="p-8 md:p-10 flex flex-col justify-center gap-4">
+                <div className="h-3 w-32 bg-gray-200 rounded" />
+                <div className="h-8 w-3/4 bg-gray-200 rounded" />
+                <div className="h-8 w-1/2 bg-gray-200 rounded" />
+                <div className="h-4 w-full bg-gray-200 rounded" />
+                <div className="h-4 w-5/6 bg-gray-200 rounded" />
+                <div className="h-4 w-28 bg-gray-200 rounded" />
+              </div>
+            </div>
+          </section>
+
+          {/* Grid skeleton */}
+          <section className="max-w-7xl mx-auto px-8 md:px-16 pb-20">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="bg-white rounded-xl overflow-hidden shadow-md animate-pulse">
+                  <div className="w-full aspect-[4/3] bg-gray-200" />
+                  <div className="p-6 flex flex-col gap-3">
+                    <div className="h-3 w-1/3 bg-gray-200 rounded" />
+                    <div className="h-5 w-3/4 bg-gray-200 rounded" />
+                    <div className="h-3 w-full bg-gray-200 rounded" />
+                    <div className="h-3 w-5/6 bg-gray-200 rounded" />
+                    <div className="h-3 w-2/3 bg-gray-200 rounded" />
+                    <div className="h-3 w-20 bg-gray-200 rounded mt-2" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        </>
       )}
 
       {/* Error state */}
