@@ -198,7 +198,7 @@ export default function NewsPage() {
                       <h3 className="font-bold text-[#000073] text-lg leading-snug line-clamp-2 hover:text-[#000073]/60 transition-colors cursor-pointer" style={{ fontFamily: 'Century_Gothic_Bold' }}>
                         <Link href={`/news/${item.slug}`}>{item.title}</Link>
                       </h3>
-                      <p className="text-gray-500 text-sm leading-relaxed line-clamp-3" style={{ fontFamily: 'Century_Gothic_Regular' }}>{item.excerpt}</p>
+                      <p className="text-gray-500 text-sm leading-relaxed line-clamp-5" style={{ fontFamily: 'Century_Gothic_Regular' }}>{item.excerpt}</p>
                       <Link href={`/news/${item.slug}`} className="text-[#000073] text-sm font-bold hover:underline mt-auto pt-1" style={{ fontFamily: 'Century_Gothic_Bold' }}>Read More →</Link>
                     </div>
                   </motion.div>
