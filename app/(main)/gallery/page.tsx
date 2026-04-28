@@ -221,7 +221,7 @@ export default function GalleryPage() {
               Gallery
             </h1>
             <p className="text-blue-200/70 max-w-xl text-base md:text-lg" style={{ fontFamily: "Century_Gothic_Regular" }}>
-              Moments from the campaign trail across Mumias West — every handshake, every gathering, every step of the journey.
+              Moments from the campaign trail across Mumias West, very handshake, every gathering, every step of the journey.
             </p>
           </motion.div>
         </div>
