@@ -8,7 +8,11 @@ import { useNews } from "@/app/lib/hooks/useNews";
 
 export default function RecentNews() {
   const { data, isLoading, isError } = useNews(1);
-  const posts = data?.results ?? [];
+  const posts = [...(data?.results ?? [])].sort((a, b) => {
+    const dateA = new Date(a.published_date ?? a.created_at).getTime();
+    const dateB = new Date(b.published_date ?? b.created_at).getTime();
+    return dateB - dateA;
+  });
 
   if (!isLoading && (isError || posts.length === 0)) return null;
 

@@ -1,411 +1,458 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useState, useEffect, useRef } from "react";
-import { useRouter } from "next/navigation";
-import { useGallery } from "@/app/lib/hooks/useGallery";
-import { socialLinks } from "@/data/socialLinks";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useCallback, useRef } from "react";
+import { useGallery, type GalleryImage } from "@/app/lib/hooks/useGallery";
+import { ChevronLeft, ChevronRight, X, Play, Image as ImageIcon, Film } from "lucide-react";
 
-const SECTIONS = [
-  {
-    id: "community",
-    number: "01 / 03",
-    label: "Community",
-    title: "On the",
-    titleEm: "Ground",
-    desc: "Politics lives in the handshake, the shared cup of chai, the early morning baraza. These are the moments that matter — not the speeches, but the listening.",
-    quote: "This constituency does not need promises. It needs presence ",
-    quoteAttr: "Brian Omondi — Mumias West Town Hall, 2026",
-    layout: "cinema",
-  },
-  {
-    id: "campaign",
-    number: "02 / 03",
-    label: "Campaign",
-    title: "On the",
-    titleEm: "Trail",
-    desc: "From ward to ward across Mumias West — every handshake, every promise, every dawn on the campaign road. This is not a politician's gallery. It is a community's story.",
-    quote: "A campaign is not won on stages. It is won on the red soil roads, in the early mornings, in the trust of a stranger who becomes a neighbour.",
-    quoteAttr: "Brian Omondi — Campaign Diary, 2026",
-    layout: "magazine",
-  },
-  {
-    id: "events",
-    number: "03 / 03",
-    label: "Events",
-    title: "Defining",
-    titleEm: "Moments",
-    desc: "From barazas to youth forums — every event brings Mumias West closer together under one vision. The unscripted hours. The laughter between speeches.",
-    quote: "Every gathering is a reminder of why we fight — not for a seat in Parliament, but for the people who sent us there.",
-    quoteAttr: "Brian Omondi — Youth Forum, Mumias West, 2026",
-    layout: "cinema",
-  },
-];
+/* ─── Filter Tabs ─── */
+const MEDIA_TABS = [
+  { id: "all", label: "All" },
+  { id: "photos", label: "Photos" },
+  { id: "videos", label: "Videos" },
+] as const;
 
-const TICKER_ITEMS = [
-  "Community Meetings", "Ward Outreach", "Youth Engagement",
-  "Women's Forums", "School Visits", "Healthcare Outreach",
-  "Infrastructure", "Campaign Trail", "Grassroots Drive",
-];
+const CATEGORY_TABS = [
+  { id: "", label: "All" },
+  { id: "community", label: "Community" },
+  { id: "campaign", label: "Campaign" },
+  { id: "events", label: "Events" },
+] as const;
 
-const PREVIEW_COUNT = 6;
-
-interface GalleryItem {
-  id: number;
-  title: string;
-  category: string;
-  image_url: string;
-}
-
-function Lightbox({ src, title, category, onClose }: {
-  src: string; title: string; category: string; onClose: () => void;
+/* ─── Lightbox ─── */
+function Lightbox({
+  items, currentIndex, onClose, onPrev, onNext,
+}: {
+  items: GalleryImage[]; currentIndex: number;
+  onClose: () => void; onPrev: () => void; onNext: () => void;
 }) {
+  const item = items[currentIndex];
+  const isVideo = item?.media_type === "video";
+
+  const handleKey = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowLeft") onPrev();
+      if (e.key === "ArrowRight") onNext();
+    },
+    [onClose, onPrev, onNext]
+  );
+
   useEffect(() => {
-    const handler = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
-    window.addEventListener("keydown", handler);
+    window.addEventListener("keydown", handleKey);
     document.body.style.overflow = "hidden";
     return () => {
-      window.removeEventListener("keydown", handler);
+      window.removeEventListener("keydown", handleKey);
       document.body.style.overflow = "";
     };
-  }, []);
+  }, [handleKey]);
+
+  if (!item) return null;
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex flex-col items-center justify-center"
-      style={{ background: "rgba(5,12,6,0.98)" }}
+    <motion.div
+      className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-black/95"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
       onClick={onClose}
     >
+      {/* Close */}
       <button
         onClick={onClose}
-        className="absolute top-8 right-10 text-xs font-bold tracking-[0.2em] uppercase border px-4 py-2 transition-all hover:border-[#8fb3ff] hover:text-[#8fb3ff]"
-        style={{ borderColor: "rgba(143,179,255,0.3)", color: "rgba(248,250,252,0.75)", fontFamily: "Century_Gothic_Regular" }}
+        className="absolute top-5 right-5 md:top-8 md:right-8 z-20 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
+        aria-label="Close"
       >
-        ✕ Close
+        <X className="w-5 h-5 text-white" />
       </button>
-      <div
-        className="relative"
-        style={{ maxWidth: "88vw", maxHeight: "78vh" }}
-        onClick={e => e.stopPropagation()}
-      >
-        <img
-          src={src}
-          alt={title}
-          style={{ maxWidth: "88vw", maxHeight: "78vh", objectFit: "contain", display: "block" }}
-        />
-      </div>
-      <div className="mt-6 text-center">
-        <p className="text-xs font-bold tracking-[0.25em] uppercase mb-1" style={{ color: "#8fb3ff", fontFamily: "Century_Gothic_Regular" }}>
-          {category}
-        </p>
-        <p className="text-sm font-light" style={{ color: "rgba(248,250,252,0.75)" }}>{title}</p>
-      </div>
-    </div>
-  );
-}
 
-function PhotoCard({ item, onOpen }: {
-  item: GalleryItem; onOpen: () => void;
-}) {
-  return (
-    <div
-      className="relative overflow-hidden cursor-pointer group rounded-sm mb-3 break-inside-avoid"
-      style={{ background: "#07102b" }}
-      onClick={onOpen}
-    >
-      <img
-        src={item.image_url}
-        alt={item.title}
-        className="w-full h-auto block transition-all duration-700 group-hover:scale-[1.03]"
-        loading="lazy"
-        decoding="async"
-      />
-      <div
-        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-        style={{ background: "linear-gradient(to top, rgba(3,7,35,0.88) 0%, rgba(3,7,35,0.15) 55%, transparent 100%)" }}
-      />
-      <div className="absolute bottom-0 left-0 h-[2px] w-0 group-hover:w-full transition-all duration-500 z-10" style={{ background: "#8fb3ff" }} />
-      <div className="absolute bottom-0 left-0 right-0 p-4 z-10 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-        <p className="text-xs font-bold tracking-[0.22em] uppercase mb-1" style={{ color: "#8fb3ff", fontFamily: "Century_Gothic_Regular" }}>
+      {/* Counter */}
+      <div className="absolute top-6 left-6 md:top-8 md:left-8 z-20 text-white/50 text-sm" style={{ fontFamily: "Century_Gothic_Regular" }}>
+        {currentIndex + 1} / {items.length}
+      </div>
+
+      {/* Prev */}
+      {items.length > 1 && (
+        <button
+          onClick={(e) => { e.stopPropagation(); onPrev(); }}
+          className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
+          aria-label="Previous"
+        >
+          <ChevronLeft className="w-6 h-6 text-white" />
+        </button>
+      )}
+
+      {/* Next */}
+      {items.length > 1 && (
+        <button
+          onClick={(e) => { e.stopPropagation(); onNext(); }}
+          className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
+          aria-label="Next"
+        >
+          <ChevronRight className="w-6 h-6 text-white" />
+        </button>
+      )}
+
+      {/* Media */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={item.id}
+          className="relative"
+          style={{ maxWidth: "90vw", maxHeight: "80vh" }}
+          onClick={(e) => e.stopPropagation()}
+          initial={{ opacity: 0, scale: 0.96 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.96 }}
+          transition={{ duration: 0.2 }}
+        >
+          {isVideo && item.video_url ? (
+            <video
+              src={item.video_url}
+              controls
+              autoPlay
+              className="block rounded-xl shadow-2xl"
+              style={{ maxWidth: "90vw", maxHeight: "80vh" }}
+            />
+          ) : (
+            <img
+              src={item.image_url}
+              alt={item.title}
+              className="block rounded-xl shadow-2xl"
+              style={{ maxWidth: "90vw", maxHeight: "80vh", objectFit: "contain" }}
+            />
+          )}
+        </motion.div>
+      </AnimatePresence>
+
+      {/* Caption */}
+      <div className="mt-4 text-center px-4">
+        <span className="inline-block px-3 py-1 rounded-full text-xs font-bold bg-[#000073] text-white mb-2 uppercase tracking-wider">
           {item.category}
-        </p>
-        <p className="text-sm font-light leading-snug" style={{ color: "#f8fafc" }}>{item.title}</p>
+        </span>
+        <p className="text-white/70 text-sm" style={{ fontFamily: "Century_Gothic_Regular" }}>{item.title}</p>
+      </div>
+    </motion.div>
+  );
+}
+
+/* ─── Featured Card (first item — large hero) ─── */
+function FeaturedCard({ item, onOpen }: {
+  item: GalleryImage; onOpen: () => void;
+}) {
+  const isVideo = item.media_type === "video";
+
+  return (
+    <motion.div
+      className="grid grid-cols-1 md:grid-cols-2 gap-0 rounded-2xl overflow-hidden shadow-lg bg-white cursor-pointer group"
+      onClick={onOpen}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.7 }}
+    >
+      <div className="relative h-64 md:h-auto md:min-h-[400px] overflow-hidden bg-gray-100">
+        <img
+          src={item.image_url}
+          alt={item.title}
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+        {isVideo && (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-16 h-16 rounded-full bg-[#000073]/80 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+              <Play className="w-7 h-7 text-white ml-0.5" fill="white" />
+            </div>
+          </div>
+        )}
+        <div className="absolute top-4 left-4">
+          <span className="px-3 py-1 rounded-full text-xs font-bold bg-[#000073] text-white uppercase tracking-wider">
+            {item.category}
+          </span>
+        </div>
+      </div>
+      <div className="p-8 md:p-10 flex flex-col justify-center gap-4">
+        <div className="flex items-center gap-2 text-gray-400 text-xs">
+          {isVideo ? <Film className="w-3.5 h-3.5" /> : <ImageIcon className="w-3.5 h-3.5" />}
+          <span className="uppercase tracking-wider font-bold" style={{ fontFamily: "Century_Gothic_Regular" }}>
+            {isVideo ? "Video" : "Photo"} · {item.category}
+          </span>
+        </div>
+        <h2 className="font-bold text-[#000073] leading-tight" style={{ fontFamily: "Century_Gothic_Bold", fontSize: "clamp(22px, 3vw, 32px)" }}>
+          {item.title}
+        </h2>
+        <div className="w-12 h-0.5 bg-[#000073]/20" />
+        <span className="inline-flex items-center gap-2 font-bold text-[#000073] text-sm" style={{ fontFamily: "Century_Gothic_Bold" }}>
+          {isVideo ? "Watch Video" : "View Full Image"}
+        </span>
+      </div>
+    </motion.div>
+  );
+}
+
+/* ─── Gallery Card ─── */
+function GalleryCard({ item, onOpen, index }: {
+  item: GalleryImage; onOpen: () => void; index: number;
+}) {
+  const isVideo = item.media_type === "video";
+
+  return (
+    <motion.div
+      className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all group flex flex-col cursor-pointer"
+      onClick={onOpen}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.08 }}
+    >
+      <div className="relative w-full aspect-[4/3] overflow-hidden bg-gray-100">
+        <img
+          src={item.image_url}
+          alt={item.title}
+          className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          loading="lazy"
+          decoding="async"
+        />
+        {isVideo && (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-12 h-12 rounded-full bg-[#000073]/70 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+              <Play className="w-5 h-5 text-white ml-0.5" fill="white" />
+            </div>
+          </div>
+        )}
+        <div className="absolute top-3 left-3">
+          <span className="px-2 py-1 rounded text-xs font-bold bg-[#000073] text-white uppercase tracking-wider">
+            {item.category}
+          </span>
+        </div>
+      </div>
+      <div className="p-5 flex flex-col gap-2 flex-1">
+        <div className="flex items-center gap-2 text-gray-400 text-xs">
+          {isVideo ? <Film className="w-3.5 h-3.5" /> : <ImageIcon className="w-3.5 h-3.5" />}
+          <span className="uppercase tracking-wider font-bold" style={{ fontFamily: "Century_Gothic_Regular" }}>
+            {isVideo ? "Video" : "Photo"}
+          </span>
+        </div>
+        <h3
+          className="font-bold text-[#000073] text-base leading-snug line-clamp-2 group-hover:text-[#000073]/70 transition-colors"
+          style={{ fontFamily: "Century_Gothic_Bold" }}
+        >
+          {item.title}
+        </h3>
+      </div>
+    </motion.div>
+  );
+}
+
+/* ─── Skeleton ─── */
+function FeaturedSkeleton() {
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-0 rounded-2xl overflow-hidden shadow-lg bg-white animate-pulse">
+      <div className="h-64 md:min-h-[400px] bg-gray-200" />
+      <div className="p-8 md:p-10 flex flex-col justify-center gap-4">
+        <div className="h-3 w-32 bg-gray-200 rounded" />
+        <div className="h-8 w-3/4 bg-gray-200 rounded" />
+        <div className="h-8 w-1/2 bg-gray-200 rounded" />
+        <div className="w-12 h-0.5 bg-gray-200 rounded" />
+        <div className="h-4 w-36 bg-gray-200 rounded" />
       </div>
     </div>
   );
 }
 
-function PhotoCardSkeleton() {
+function CardSkeleton() {
   return (
-    <div
-      className="rounded-sm mb-3 break-inside-avoid"
-      style={{ background: "#07102b", aspectRatio: "3/4", animation: "shimmer 1.5s infinite" }}
-    />
-  );
-}
-
-function MasonryLayout({ items, onOpen, isLoading }: { items: GalleryItem[]; onOpen: (item: GalleryItem) => void; isLoading: boolean }) {
-  return (
-    <div style={{ columns: "2 320px", columnGap: "12px" }}>
-      {isLoading
-        ? Array.from({ length: 6 }).map((_, i) => <PhotoCardSkeleton key={i} />)
-        : items.map((item) => (
-            <PhotoCard key={item.id} item={item} onOpen={() => onOpen(item)} />
-          ))
-      }
+    <div className="bg-white rounded-xl overflow-hidden shadow-md animate-pulse">
+      <div className="w-full aspect-[4/3] bg-gray-200" />
+      <div className="p-5 flex flex-col gap-3">
+        <div className="h-3 w-16 bg-gray-200 rounded" />
+        <div className="h-5 w-3/4 bg-gray-200 rounded" />
+      </div>
     </div>
   );
 }
 
-function ViewAllButton({ total, onNavigate }: {
-  category: string; total: number; onNavigate: () => void;
-}) {
-  if (total <= PREVIEW_COUNT) return null;
-
-  return (
-    <div className="flex items-center justify-between mt-8 pt-8" style={{ borderTop: "1px solid rgba(143,179,255,0.12)" }}>
-      <p style={{ fontFamily: "Century_Gothic_Regular", fontSize: "0.72rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(143,179,255,0.45)" }}>
-        Showing 6 of {total} photographs
-      </p>
-      <button
-        onClick={onNavigate}
-        className="flex items-center gap-3 px-6 py-3 transition-all group"
-        style={{ border: "1px solid rgba(143,179,255,0.22)", background: "transparent", color: "#8fb3ff" }}
-      >
-        <span style={{ fontFamily: "Century_Gothic_Regular", fontSize: "0.75rem", fontWeight: 500, letterSpacing: "0.18em", textTransform: "uppercase" }}>
-          View all {total} photos
-        </span>
-        <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-      </button>
-    </div>
-  );
-}
-
+/* ─── Main Page ─── */
 export default function GalleryPage() {
-  const [activeSection, setActiveSection] = useState("community");
-  const [lightbox, setLightbox] = useState<GalleryItem | null>(null);
-  const railRef = useRef<HTMLDivElement>(null);
-  const router = useRouter();
+  const [activeFilter, setActiveFilter] = useState<string>("all");
+  const [activeCategory, setActiveCategory] = useState<string>("");
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
 
-  const { data, isLoading } = useGallery(activeSection);
-  const allItems: GalleryItem[] = data?.results ?? [];
-  const previewItems = allItems.slice(0, PREVIEW_COUNT);
-  const totalCount = data?.count ?? 0;
+  const mediaType = activeFilter === "photos" ? "photo" : activeFilter === "videos" ? "video" : undefined;
+  const category = activeCategory || undefined;
 
-  const currentSection = SECTIONS.find(s => s.id === activeSection)!;
+  const { data, isLoading } = useGallery(category, 1, mediaType);
+  const items: GalleryImage[] = data?.results ?? [];
 
-  const switchSection = (id: string) => {
-    setActiveSection(id);
+  const openLightbox = (index: number) => setLightboxIndex(index);
+  const closeLightbox = () => setLightboxIndex(null);
+  const prevItem = () => setLightboxIndex((i) => (i !== null && i > 0 ? i - 1 : items.length - 1));
+  const nextItem = () => setLightboxIndex((i) => (i !== null && i < items.length - 1 ? i + 1 : 0));
+
+  const scrollToGrid = () => {
     setTimeout(() => {
-      railRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      gridRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
     }, 50);
   };
 
   return (
-    <div
-      style={{ background: "#050923", color: "#f8fafc", fontFamily: "Century_Gothic_Regular", fontWeight: 300 }}
-      className="min-h-screen overflow-x-hidden"
-    >
-      {/* Grain overlay */}
-      <div
-        className="fixed inset-0 pointer-events-none z-[9999] opacity-[0.035]"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")`,
-        }}
-      />
+    <div className="bg-gray-50 min-h-screen">
 
-      {/* Hero */}
-      <section
-        className="relative flex flex-col justify-end overflow-hidden"
-        style={{ minHeight: "72vh", background: "#000073", paddingTop: "8rem", paddingBottom: "5rem" }}
-      >
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 30% 60%, rgba(143,179,255,0.08) 0%, transparent 65%)" }} />
+      {/* Hero Banner — matches News & About */}
+      <section className="relative bg-[#000073] py-20 md:py-28 overflow-hidden">
         <div
-          className="absolute right-12 top-1/2 -translate-y-1/2 select-none hidden md:block"
-          style={{ fontFamily: "Century_Gothic_Bold", fontSize: "clamp(200px, 28vw, 340px)", fontWeight: 900, color: "rgba(143,179,255,0.04)", lineHeight: 1, letterSpacing: "-0.05em" }}
-        >
-          MV
-        </div>
-        <div
-          className="absolute left-12 top-0 bottom-0 w-px hidden md:block"
-          style={{ background: "linear-gradient(to bottom, transparent, rgba(143,179,255,0.2) 40%, rgba(143,179,255,0.2) 60%, transparent)" }}
+          className="absolute inset-0 opacity-[0.04] pointer-events-none"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' seed='2' /%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+            backgroundSize: "200px 200px",
+          }}
         />
-        <div className="absolute top-8 left-0 right-0 flex items-center justify-between px-8 md:px-16" style={{ paddingTop: "1rem" }}>
-          {/* <div style={{ fontFamily: "Century_Gothic_Regular", fontSize: "0.68rem", fontWeight: 500, letterSpacing: "0.35em", textTransform: "uppercase", color: "rgba(143,179,255,0.45)" }}>
-            Mumias West · 2027
-          </div> */}
-          <div className="flex items-center gap-3">
-            <div style={{ width: 40, height: 1, background: "rgba(143,179,255,0.25)" }} />
-            {/* <span style={{ fontFamily: "Century_Gothic_Regular", fontSize: "0.68rem", fontWeight: 500, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(143,179,255,0.45)" }}>
-              Visual Record
-            </span> */}
-          </div>
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{ background: "radial-gradient(ellipse at center, rgba(255,255,255,0.05) 0%, transparent 70%)" }}
+        />
+        <div className="relative z-10 max-w-7xl mx-auto px-8 md:px-16 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="flex flex-col items-center gap-4"
+          >
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-0.5 bg-white/40" />
+              <span className="text-xs font-bold tracking-[0.2em] uppercase text-white/60">
+                Visual Record
+              </span>
+              <div className="w-8 h-0.5 bg-white/40" />
+            </div>
+            <h1
+              className="font-bold text-white"
+              style={{ fontFamily: "Century_Gothic_Bold", fontSize: "clamp(36px, 5vw, 60px)" }}
+            >
+              Gallery
+            </h1>
+            <p className="text-blue-200/70 max-w-xl text-base md:text-lg" style={{ fontFamily: "Century_Gothic_Regular" }}>
+              Moments from the campaign trail across Mumias West — every handshake, every gathering, every step of the journey.
+            </p>
+          </motion.div>
         </div>
-        <motion.div
-          className="relative z-10 px-8 md:px-16"
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <div className="flex items-center gap-4 mb-6" style={{ fontFamily: "Century_Gothic_Regular", fontSize: "0.72rem", fontWeight: 500, letterSpacing: "0.32em", textTransform: "uppercase", color: "#8fb3ff" }}>
-            <span style={{ display: "inline-block", width: "2.5rem", height: 1, background: "#8fb3ff" }} />
-            Gallery · On the Ground
-          </div>
-          <h1 className="font-bold leading-[0.9] mb-8" style={{ fontFamily: "Century_Gothic_Bold", fontSize: "clamp(3.5rem, 8vw, 7rem)", color: "#f8fafc", maxWidth: "16ch" }}>
-            A People&apos;s<br />
-            <em style={{ fontStyle: "italic", color: "#bfceff" }}>Journey</em>
-          </h1>
-          <p className="leading-relaxed" style={{ fontSize: "0.95rem", color: "#dbeafe", maxWidth: "38rem", borderLeft: "1px solid rgba(143,179,255,0.25)", paddingLeft: "1.2rem" }}>
-            Every photograph is a promise. Every face, a reason to fight for this constituency. From the wards of Musanda to the markets of Mumias Central, this is Brian Omondi&apos;s campaign, told in pictures.
-          </p>
-        </motion.div>
       </section>
 
-      {/* Ticker */}
-      <div style={{ overflow: "hidden", borderTop: "1px solid rgba(143,179,255,0.12)", borderBottom: "1px solid rgba(143,179,255,0.12)", padding: "0.85rem 0", background: "rgba(143,179,255,0.03)" }}>
-        <div className="flex" style={{ animation: "ticker 40s linear infinite", whiteSpace: "nowrap" }}>
-          {[...TICKER_ITEMS, ...TICKER_ITEMS].map((item, i) => (
-            <span key={i} style={{ flexShrink: 0, fontFamily: "Century_Gothic_Regular", fontSize: "0.7rem", fontWeight: 500, letterSpacing: "0.25em", textTransform: "uppercase", color: "rgba(143,179,255,0.45)", padding: "0 3rem" }}>
-              ◆&nbsp;&nbsp;{item}
-            </span>
-          ))}
-        </div>
-      </div>
-
-      {/* Category Rail */}
+      {/* Filter Section */}
       <div
-        ref={railRef}
-        className="sticky top-0 z-50 flex items-stretch overflow-x-auto"
-        style={{ background: "rgba(2,10,34,0.97)", backdropFilter: "blur(16px)", borderBottom: "1px solid rgba(143,179,255,0.12)", scrollbarWidth: "none" }}
+        ref={gridRef}
+        className="sticky top-0 z-40 bg-white border-b border-gray-200 shadow-sm"
       >
-        {SECTIONS.map((s, i) => (
-          <div key={s.id} className="flex items-stretch">
-            {i > 0 && <div style={{ width: 1, background: "rgba(143,179,255,0.1)", margin: "0.5rem 0" }} />}
-            <button
-              onClick={() => switchSection(s.id)}
-              className="relative flex-shrink-0 px-8 py-4 border-none cursor-pointer transition-colors duration-200"
-              style={{ fontFamily: "Century_Gothic_Regular", fontSize: "0.78rem", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", background: "none", color: activeSection === s.id ? "#8fb3ff" : "rgba(203,220,255,0.55)", whiteSpace: "nowrap" }}
-            >
-              {s.label}
-              {activeSection === s.id && (
-                <motion.span layoutId="rail-indicator" className="absolute bottom-0 left-4 right-4 h-[2px]" style={{ background: "#8fb3ff" }} />
-              )}
-            </button>
-          </div>
-        ))}
-      </div>
+        <div className="max-w-7xl mx-auto px-8 md:px-16 py-4">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            {/* Media type pills */}
+            <div className="flex items-center gap-2">
+              {MEDIA_TABS.map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => { setActiveFilter(tab.id); scrollToGrid(); }}
+                  className={`px-4 py-2 rounded-full text-xs font-bold tracking-wider uppercase transition-all duration-200 ${
+                    activeFilter === tab.id
+                      ? "bg-[#000073] text-white shadow-md"
+                      : "bg-gray-100 text-gray-500 hover:bg-gray-200"
+                  }`}
+                  style={{ fontFamily: "Century_Gothic_Bold" }}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
 
-      {/* Section Content */}
-      <motion.div
-        key={activeSection}
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-        className="py-20 px-8 md:px-12"
-      >
-        {/* Section Header */}
-        <div className="grid gap-8 pb-14" style={{ gridTemplateColumns: "1fr 1fr", alignItems: "end" }}>
-          <div>
-            <p className="mb-3" style={{ fontFamily: "Century_Gothic_Regular", fontSize: "0.68rem", fontWeight: 500, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(143,179,255,0.5)" }}>
-              {currentSection.number}
-            </p>
-            <h2 className="font-bold leading-[1.0]" style={{ fontFamily: "Century_Gothic_Bold", fontSize: "clamp(2.5rem, 4vw, 4rem)", color: "#f8fafc" }}>
-              {currentSection.title}<br />
-              <em style={{ fontStyle: "italic", color: "#bfceff" }}>{currentSection.titleEm}</em>
-            </h2>
-          </div>
-          <p className="leading-relaxed self-end" style={{ fontSize: "0.9rem", color: "#dbeafe", lineHeight: 1.85, borderLeft: "1px solid rgba(143,179,255,0.2)", paddingLeft: "1.5rem" }}>
-            {currentSection.desc}
-          </p>
-        </div>
-
-        {/* Empty state */}
-        {!isLoading && allItems.length === 0 && (
-          <div className="flex items-center justify-center py-20">
-            <p style={{ fontFamily: "Century_Gothic_Regular", fontSize: "0.78rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(143,179,255,0.3)" }}>
-              No photographs yet in this category
-            </p>
-          </div>
-        )}
-
-        {/* Photo Layout */}
-        {(isLoading || allItems.length > 0) && (
-          <>
-            <MasonryLayout items={previewItems} onOpen={setLightbox} isLoading={isLoading} />
-
-            <ViewAllButton
-              category={currentSection.id}
-              total={totalCount}
-              onNavigate={() => router.push(`/gallery/${currentSection.id}`)}
-            />
-          </>
-        )}
-
-        {/* Quote */}
-        <div
-          className="grid gap-12 items-center py-20 mt-16"
-          style={{ gridTemplateColumns: "auto 1fr", borderTop: "1px solid rgba(143,179,255,0.08)", borderBottom: "1px solid rgba(143,179,255,0.08)" }}
-        >
-          <div className="hidden md:block select-none leading-[0.7]" style={{ fontFamily: "Century_Gothic_Bold", fontSize: "8rem", fontWeight: 900, color: "rgba(143,179,255,0.15)" }}>
-            &ldquo;
-          </div>
-          <div>
-            <p className="leading-relaxed" style={{ fontFamily: "Century_Gothic_Italic", fontSize: "clamp(1.3rem, 2.5vw, 2rem)", fontWeight: 400, fontStyle: "italic", color: "#f8fafc" }}>
-              {currentSection.quote}
-            </p>
-            <div className="flex items-center gap-4 mt-6" style={{ fontFamily: "Century_Gothic_Regular", fontSize: "0.68rem", letterSpacing: "0.25em", textTransform: "uppercase", color: "rgba(143,179,255,0.5)" }}>
-              <span style={{ display: "block", width: "2rem", height: 1, background: "rgba(143,179,255,0.3)" }} />
-              {currentSection.quoteAttr}
+            {/* Category tabs */}
+            <div className="flex items-center gap-1 overflow-x-auto" style={{ scrollbarWidth: "none" }}>
+              {CATEGORY_TABS.map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => { setActiveCategory(tab.id); scrollToGrid(); }}
+                  className={`relative px-4 py-2 text-xs font-bold tracking-wider uppercase whitespace-nowrap transition-colors duration-200 rounded-md ${
+                    activeCategory === tab.id
+                      ? "text-[#000073] bg-blue-50"
+                      : "text-gray-400 hover:text-gray-600"
+                  }`}
+                  style={{ fontFamily: "Century_Gothic_Regular" }}
+                >
+                  {tab.label}
+                </button>
+              ))}
             </div>
           </div>
         </div>
-      </motion.div>
+      </div>
 
-      {/* CTA */}
-      <section className="relative py-28 text-center overflow-hidden" style={{ background: "#000073", borderTop: "1px solid rgba(143,179,255,0.08)" }}>
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at center, rgba(143,179,255,0.05) 0%, transparent 65%)" }} />
-        <motion.div
-          className="relative z-10 max-w-xl mx-auto px-8"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="flex items-center justify-center gap-4 mb-6" style={{ fontFamily: "Century_Gothic_Regular", fontSize: "0.68rem", fontWeight: 500, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(143,179,255,0.45)" }}>
-            <span style={{ width: 32, height: 1, background: "rgba(143,179,255,0.3)", display: "block" }} />
-            Social Media
-            <span style={{ width: 32, height: 1, background: "rgba(143,179,255,0.3)", display: "block" }} />
-          </div>
-          <h2 className="font-bold mb-4" style={{ fontFamily: "Century_Gothic_Bold", fontSize: "clamp(2rem, 4vw, 3.2rem)", color: "#f8fafc" }}>
-            Follow the <em style={{ fontStyle: "italic", color: "#bfceff" }}>Journey</em>
-          </h2>
-          <p className="mb-10 leading-relaxed" style={{ fontSize: "0.9rem", color: "#dbeafe" }}>
-            More moments from Mumias West on social media.
-          </p>
-          <div className="flex items-center justify-center gap-3 flex-wrap">
-            {socialLinks.map((social) => (
-              <a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer" className="px-7 py-3 transition-all hover:bg-[rgba(143,179,255,0.1)]" style={{ fontFamily: "Century_Gothic_Regular", fontSize: "0.75rem", fontWeight: 500, letterSpacing: "0.18em", textTransform: "uppercase", border: "1px solid rgba(143,179,255,0.2)", background: "transparent", color: "#8fb3ff", borderRadius: 2 }}>
-                {social.label}
-              </a>
-            ))}
-          </div>
-        </motion.div>
-      </section>
-
-      {/* Lightbox */}
-      {lightbox && (
-        <Lightbox
-          src={lightbox.image_url}
-          title={lightbox.title}
-          category={lightbox.category}
-          onClose={() => setLightbox(null)}
-        />
+      {/* Loading Skeleton */}
+      {isLoading && (
+        <>
+          <section className="max-w-7xl mx-auto px-8 md:px-16 py-16">
+            <FeaturedSkeleton />
+          </section>
+          <section className="max-w-7xl mx-auto px-8 md:px-16 pb-20">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[1, 2, 3, 4, 5, 6].map((i) => (
+                <CardSkeleton key={i} />
+              ))}
+            </div>
+          </section>
+        </>
       )}
 
-      <style jsx global>{`
-        @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-        @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
-      `}</style>
+      {/* Empty state */}
+      {!isLoading && items.length === 0 && (
+        <div className="flex flex-col items-center justify-center py-32 gap-4">
+          <div className="w-20 h-20 rounded-full bg-gray-100 flex items-center justify-center">
+            <ImageIcon className="w-8 h-8 text-gray-300" />
+          </div>
+          <p className="text-gray-400 text-lg font-semibold" style={{ fontFamily: "Century_Gothic_Bold" }}>
+            No media found
+          </p>
+          <p className="text-gray-400 text-sm">Try adjusting your filters</p>
+        </div>
+      )}
+
+      {/* Gallery Content */}
+      {!isLoading && items.length > 0 && (
+        <>
+          {/* Featured Item */}
+          <section className="max-w-7xl mx-auto px-8 md:px-16 py-16">
+            <FeaturedCard
+              item={items[0]}
+              onOpen={() => openLightbox(0)}
+            />
+          </section>
+
+          {/* Grid */}
+          {items.length > 1 && (
+            <section className="max-w-7xl mx-auto px-8 md:px-16 pb-20">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {items.slice(1).map((item, i) => (
+                  <GalleryCard
+                    key={item.id}
+                    item={item}
+                    index={i}
+                    onOpen={() => openLightbox(i + 1)}
+                  />
+                ))}
+              </div>
+            </section>
+          )}
+        </>
+      )}
+
+      {/* Lightbox */}
+      <AnimatePresence>
+        {lightboxIndex !== null && (
+          <Lightbox
+            items={items}
+            currentIndex={lightboxIndex}
+            onClose={closeLightbox}
+            onPrev={prevItem}
+            onNext={nextItem}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 }

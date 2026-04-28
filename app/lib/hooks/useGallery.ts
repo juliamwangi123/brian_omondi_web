@@ -1,10 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import api from "../axios";
 
-interface GalleryImage {
+export interface GalleryImage {
   id: number;
   title: string;
   image_url: string;
+  video_url?: string;
+  media_type?: "photo" | "video";
   category: string;
   uploaded_at: string;
 }
@@ -16,18 +18,20 @@ interface GalleryResponse {
   results: GalleryImage[];
 }
 
-export const useGallery = (category?: string, page: number = 1) => {
+export const useGallery = (category?: string, page: number = 1, mediaType?: string) => {
   return useQuery<GalleryResponse>({
-    queryKey: ["gallery", category, page],
+    queryKey: ["gallery", category, page, mediaType],
     queryFn: async () => {
       const response = await api.get("/gallery/", {
         params: {
           ...(category && { category }),
+          ...(mediaType && { media_type: mediaType }),
           page,
         },
       });
       return response.data;
     },
     staleTime: 1000 * 60 * 2,
+    retry: 3,
   });
 };
