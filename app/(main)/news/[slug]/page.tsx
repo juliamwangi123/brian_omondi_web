@@ -143,7 +143,6 @@ export default function NewsDetailPage() {
               src={article.hero_image_url}
               alt={article.title}
               className="w-full h-auto rounded-xl"
-              style={{ maxHeight: '520px', objectFit: 'cover', objectPosition: 'center' }}
             />
           </div>
 

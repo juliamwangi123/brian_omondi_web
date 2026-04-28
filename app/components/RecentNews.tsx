@@ -108,10 +108,10 @@ export default function RecentNews() {
                   <Calendar className="w-3.5 h-3.5" />
                   <span>{new Date(item.published_date ?? item.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
                 </div>
-                <h3 className="font-bold text-[#000073] text-lg leading-snug hover:text-[#000073]/60 transition-colors cursor-pointer" style={{ fontFamily: 'Century_Gothic_Bold' }}>
+                <h3 className="font-bold text-[#000073] text-lg leading-snug line-clamp-2 hover:text-[#000073]/60 transition-colors cursor-pointer" style={{ fontFamily: 'Century_Gothic_Bold' }}>
                   <Link href={`/news/${item.slug}`}>{item.title}</Link>
                 </h3>
-                <p className="text-gray-500 text-sm leading-relaxed line-clamp-6" style={{ fontFamily: 'Century_Gothic_Regular' }}>{item.excerpt}</p>
+                <p className="text-gray-500 text-sm leading-relaxed line-clamp-3" style={{ fontFamily: 'Century_Gothic_Regular' }}>{item.excerpt}</p>
                 <Link
                   href={`/news/${item.slug}`}
                   className="text-[#000073] text-sm font-bold hover:underline mt-auto pt-1"
