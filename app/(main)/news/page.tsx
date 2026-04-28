@@ -8,8 +8,12 @@ import { useNews } from "@/app/lib/hooks/useNews";
 
 export default function NewsPage() {
   const { data, isLoading, isError } = useNews(1);
-  const posts = data?.results ?? [];
-  const [featured, ...rest] = posts;
+  const sorted = [...(data?.results ?? [])].sort((a, b) => {
+    const dateA = new Date(a.published_date ?? a.created_at).getTime();
+    const dateB = new Date(b.published_date ?? b.created_at).getTime();
+    return dateB - dateA;
+  });
+  const [featured, ...rest] = sorted;
 
   return (
     <div className="bg-gray-50 min-h-screen">
@@ -108,7 +112,7 @@ export default function NewsPage() {
       )}
 
       {/* Empty state */}
-      {!isLoading && !isError && posts.length === 0 && (
+      {!isLoading && !isError && sorted.length === 0 && (
         <div className="flex flex-col items-center justify-center py-32 gap-4 text-gray-400">
           <Newspaper className="w-16 h-16 opacity-30" />
           <p className="text-xl font-semibold text-gray-500" style={{ fontFamily: 'Century_Gothic_Bold' }}>No articles yet</p>
@@ -116,7 +120,7 @@ export default function NewsPage() {
       )}
 
       {/* Content — only when posts exist */}
-      {!isLoading && posts.length > 0 && (
+      {!isLoading && sorted.length > 0 && (
         <>
           {/* Featured Article */}
           <section className="max-w-7xl mx-auto px-8 md:px-16 py-16">
