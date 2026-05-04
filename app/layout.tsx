@@ -34,8 +34,8 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: "Brian Omondi - Mumias West MP 2027 | Son of the Soil",
-    description: "Son of the Soil, Servant of the People. Join the movement for integrity, action, and results in Mumias West.",
+    title: "Brian Omondi for Mumias West MP 2027",
+    description: "Official campaign website for Brian Omondi, dedicated to serving Mumias West with integrity, action, and results. Learn about our vision for development and progress.",
     url: "/",
     siteName: "Brian Omondi Campaign",
     locale: "en_KE",
@@ -43,8 +43,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "Brian Omondi - Mumias West MP 2027 | Son of the Soil",
-    description: "Son of the Soil, Servant of the People. Join the movement for integrity, action, and results in Mumias West.",
+    title: "Brian Omondi for Mumias West MP 2027",
+    description: "Official campaign website for Brian Omondi, dedicated to serving Mumias West with integrity, action, and results.",
     creator: "@brianomondi",
     site: "@brianomondi",
   },
