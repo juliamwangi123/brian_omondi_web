@@ -119,7 +119,7 @@ export default function HomePage() {
               }}
             >
               Mumias West deserves better. <br />
-              I will deliver it
+              I will deliver it.
             </motion.p>
           </motion.div>
         </div>
