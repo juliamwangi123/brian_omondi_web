@@ -19,6 +19,14 @@ const sourceSans = Source_Sans_3({
 
 export const metadata: Metadata = {
   title: "Brian Omondi - Mumias West MP 2027 | Son of the Soil",
+  icons: {
+    icon: [
+      { url: '/images/new_logo.png', sizes: 'any' },
+      { url: '/images/new_logo.png', sizes: '32x32', type: 'image/png' },
+      { url: '/images/new_logo.png', sizes: '16x16', type: 'image/png' },
+    ],
+    apple: { url: '/images/new_logo.png', sizes: '180x180' },
+  },
   description: "Son of the Soil, Servant of the People. Campaign website for Hon. Brian Omondi, Mumias West MP Aspirant 2027. Vote for integrity, action, and results.",
   keywords: ["Brian Omondi", "Mumias West MP 2027", "Mumias West aspirant 2027", "Kenya elections", "MP candidate", "politics", "leadership"],
   authors: [{ name: "Brian Omondi Campaign Team" }],
@@ -76,9 +84,9 @@ export default function RootLayout({
     "@type": "Person",
     name: "Hon. Brian Omondi",
     jobTitle: "Mumias West MP Aspirant",
-    image: "https://brianomondi.ke/brian-omondi.jpg",
+    // image: "https://brianomondi.ke/brian-omondi.jpg",
     description: "Son of Mumias West, aspiring MP, committed to serving the people with integrity, action, and results.",
-    url: "https://brianomondi.ke",
+    url: "https://www.brian-omondi.com/",
     sameAs: [
       "https://www.facebook.com/brianomondi",
       "https://www.twitter.com/brianomondi",
