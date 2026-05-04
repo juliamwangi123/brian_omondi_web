@@ -102,10 +102,10 @@ export default function Footer() {
               <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-gray-400 flex-shrink-0" />
                 <a
-                  href="mailto:info@brianomondi.co.ke"
+                  href="mailto:hello@brian-omondi.com"
                   className="text-gray-400 text-sm hover:text-white transition-colors"
                 >
-                  info@brianomondi.co.ke
+                 hello@brian-omondi.com
                 </a>
               </li>
             </ul>
