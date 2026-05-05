@@ -20,7 +20,7 @@ export default function MissionStatement() {
               Join the Movement
             </h2>
             <p className="text-white/80 leading-relaxed max-w-xs" style={{ fontFamily: 'Century_Gothic_Regular', fontSize: '24px' }}>
-              A Leader Shaped by<br />the People of Mumias West
+              A Leader Shaped by<br />the People of Mumias West.
             </p>
           </div>
           <Link
