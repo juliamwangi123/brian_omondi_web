@@ -1,5 +1,6 @@
-import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
-import AdminSidebar from "./components/AdminSidebar";
+"use client";
+
+import { AuthProvider } from "@/app/lib/auth";
 
 export default function AdminLayout({
   children,
@@ -7,13 +8,8 @@ export default function AdminLayout({
   children: React.ReactNode;
 }) {
   return (
-    <SidebarProvider>
-       <AdminSidebar />
-        <SidebarInset>
-          <main className="flex-1 flex flex-col bg-gray-50">
-            {children}
-          </main>
-        </SidebarInset>
-   </SidebarProvider>
+    <AuthProvider>
+      {children}
+    </AuthProvider>
   );
 }

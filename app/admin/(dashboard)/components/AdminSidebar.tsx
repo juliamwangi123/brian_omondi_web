@@ -17,6 +17,7 @@ import {
   BarChart2,
   LogOut,
 } from "lucide-react";
+import { useAuth } from "@/app/lib/auth";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -30,6 +31,7 @@ const navItems = [
 
 export default function AdminSidebar() {
   const pathname = usePathname();
+  const { logout } = useAuth();
 
   return (
     <Sidebar className="!sticky border-r border-[#d4a017]/20 w-60" style={{ background: "#0d2b14" }}>
@@ -100,11 +102,12 @@ export default function AdminSidebar() {
 
       <div className="p-4 border-t border-[#d4a017]/20 mt-auto">
         <button
-          className="flex items-center gap-3 text-sm w-full"  
+          onClick={logout}
+          className="flex items-center gap-3 text-sm w-full"
           style={{
             color: "rgba(255,255,255,0.4)",
-            padding: "10px 14px",          
-            borderRadius: 10,              
+            padding: "10px 14px",
+            borderRadius: 10,
             background: "transparent",
             border: "none",
             cursor: "pointer",
