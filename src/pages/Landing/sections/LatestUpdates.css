@@ -1,0 +1,59 @@
+/* =============================================
+   LATEST UPDATES HEADER
+   ============================================= */
+.latest-updates {
+  width: 100%;
+  background: #EEEEEE;
+  padding: 80px 0 50px;
+}
+
+.latest-updates__inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 67px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.latest-updates__title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 45px;
+  line-height: 120.81%;
+  text-align: center;
+  text-transform: uppercase;
+  color: #1E49E3;
+}
+
+.latest-updates__subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 120.81%;
+  text-align: center;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+@media (max-width: 768px) {
+  .latest-updates {
+    padding: 50px 0 30px;
+  }
+
+  .latest-updates__title {
+    font-size: 30px;
+  }
+
+  .latest-updates__subtitle {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .latest-updates__title {
+    font-size: 24px;
+  }
+}

@@ -1,0 +1,222 @@
+/* =============================================
+   CAMPAIGN TRAIL
+   ============================================= */
+.campaign-trail {
+  width: 100%;
+  background: #EEEEEE;
+  padding: 0 0 80px;
+}
+
+.campaign-trail__inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 99px;
+}
+
+.campaign-trail__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 36px;
+}
+
+/* ---- Card ---- */
+.trail-card {
+  position: relative;
+  width: 100%;
+  max-width: 402px;
+  border-radius: 20px;
+  overflow: hidden;
+  filter: drop-shadow(3px 4px 11px rgba(0, 0, 0, 0.25));
+  background: #F0F0F0;
+  transition: transform 0.3s ease;
+}
+
+.trail-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Tag */
+.trail-card__tag-wrapper {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  z-index: 2;
+}
+
+.trail-card__tag {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 7px 10px;
+  background: #D3E9FE;
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 120.81%;
+  text-align: center;
+  color: #1E49E3;
+  white-space: nowrap;
+}
+
+/* Image */
+.trail-card__image {
+  width: 100%;
+  height: 262px;
+  overflow: hidden;
+}
+
+.trail-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.trail-card:hover .trail-card__image img {
+  transform: scale(1.05);
+}
+
+/* Body */
+.trail-card__body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 305px;
+}
+
+/* Date Row */
+.trail-card__date-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.trail-card__cal-icon {
+  flex-shrink: 0;
+}
+
+.trail-card__date {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #AAAAAA;
+}
+
+/* Text */
+.trail-card__text {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 26px;
+  color: #1E49E3;
+  flex: 1;
+}
+
+/* Button */
+.trail-card__btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  width: 153px;
+  height: 49px;
+  background: #1E49E3;
+  box-shadow: 2px 4px 5.7px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 120.81%;
+  text-align: center;
+  color: #FFFFFF;
+  align-self: center;
+  transition: all 0.3s ease;
+}
+
+.trail-card__btn:hover {
+  background: #FFFFFF;
+  color: #1E49E3;
+  border: 1px solid #86A1FF;
+  font-weight: 700;
+}
+
+/* View All */
+.campaign-trail__all {
+  display: flex;
+  justify-content: center;
+  margin-top: 56px;
+}
+
+.campaign-trail__all-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 30px;
+  min-width: 268px;
+  height: 53px;
+  background: #011955;
+  border-radius: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 120.81%;
+  text-align: center;
+  color: #FFFFFF;
+  transition: all 0.3s ease;
+}
+
+.campaign-trail__all-btn:hover {
+  background: #1E49E3;
+  border: 1px solid #011955;
+  font-weight: 700;
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 1100px) {
+  .campaign-trail__inner {
+    padding: 0 40px;
+  }
+
+  .campaign-trail__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+
+  .trail-card {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 700px) {
+  .campaign-trail__grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .campaign-trail__inner {
+    padding: 0 24px;
+  }
+
+  .trail-card {
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .trail-card__btn {
+    font-size: 20px;
+    width: 130px;
+    height: 44px;
+  }
+
+  .campaign-trail__all-btn {
+    font-size: 22px;
+    min-width: 220px;
+    height: 48px;
+  }
+}

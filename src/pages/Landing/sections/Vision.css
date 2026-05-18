@@ -1,0 +1,86 @@
+/* =============================================
+   VISION
+   ============================================= */
+.vision {
+  position: relative;
+  width: 100%;
+  padding: 80px 0 60px;
+  background: #011955;
+}
+
+.vision__overlay {
+  position: absolute;
+  inset: 0;
+  background: #011955;
+  opacity: 0.75;
+}
+
+.vision__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 67px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.vision__title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 45px;
+  line-height: 120.81%;
+  text-align: center;
+  text-transform: uppercase;
+  color: #1E49E3;
+}
+
+.vision__subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 120.81%;
+  text-align: center;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  max-width: 692px;
+}
+
+/* Override SectionLabel colors for this section */
+.vision .section-label__line {
+  border-top-color: #1E49E3;
+}
+
+.vision .section-label__text {
+  color: #1E49E3;
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 768px) {
+  .vision {
+    padding: 50px 0 40px;
+  }
+
+  .vision__title {
+    font-size: 30px;
+  }
+
+  .vision__subtitle {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .vision__title {
+    font-size: 24px;
+  }
+
+  .vision__subtitle {
+    font-size: 14px;
+  }
+}

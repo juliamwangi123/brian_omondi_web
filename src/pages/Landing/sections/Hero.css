@@ -1,0 +1,203 @@
+/* =============================================
+   HERO
+   ============================================= */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 958px;
+  overflow: hidden;
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  background: url('/images/hero-bg.jpg') center center / cover no-repeat;
+  z-index: 0;
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.55) 0%,
+    rgba(0, 0, 0, 0.25) 50%,
+    transparent 100%
+  );
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 297px 67px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Name */
+.hero__name {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 900;
+  font-size: 67px;
+  line-height: 81px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+/* Position + Line */
+.hero__sub {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.hero__position {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 30px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+.hero__line {
+  display: block;
+  width: 242px;
+  height: 0;
+  border-top: 1px solid #FFFFFF;
+}
+
+/* Script Quote */
+.hero__script {
+  margin-top: 15px;
+}
+
+.hero__script p {
+  font-family: 'Bad Script', cursive;
+  font-weight: 400;
+  font-size: 33px;
+  line-height: 120.81%;
+  color: #FFFFFF;
+}
+
+/* Quote */
+.hero__quote {
+  margin-top: 25px;
+}
+
+.hero__quote p {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 29px;
+  line-height: 120.81%;
+  color: #FFFFFF;
+  max-width: 439px;
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 1024px) {
+  .hero {
+    height: 750px;
+  }
+
+  .hero__content {
+    padding: 220px 40px 0;
+  }
+
+  .hero__name {
+    font-size: 52px;
+    line-height: 64px;
+  }
+
+  .hero__position {
+    font-size: 20px;
+  }
+
+  .hero__line {
+    width: 160px;
+  }
+
+  .hero__script p {
+    font-size: 26px;
+  }
+
+  .hero__quote p {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    height: 620px;
+  }
+
+  .hero__content {
+    padding: 160px 24px 0;
+  }
+
+  .hero__name {
+    font-size: 38px;
+    line-height: 48px;
+  }
+
+  .hero__position {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .hero__line {
+    width: 100px;
+  }
+
+  .hero__script p {
+    font-size: 20px;
+  }
+
+  .hero__quote p {
+    font-size: 20px;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    height: 540px;
+  }
+
+  .hero__content {
+    padding: 130px 16px 0;
+  }
+
+  .hero__name {
+    font-size: 30px;
+    line-height: 38px;
+  }
+
+  .hero__sub {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .hero__position {
+    font-size: 14px;
+  }
+
+  .hero__line {
+    width: 80px;
+  }
+
+  .hero__script p {
+    font-size: 16px;
+  }
+
+  .hero__quote p {
+    font-size: 16px;
+  }
+}

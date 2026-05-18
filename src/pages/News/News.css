@@ -1,0 +1,10 @@
+.news-page {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.news-page__content {
+  width: 100%;
+  background: #FFFFFF;
+  padding-bottom: 80px;
+}

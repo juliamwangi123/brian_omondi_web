@@ -1,0 +1,165 @@
+/* =============================================
+   GLOBAL RESET & BASE
+   ============================================= */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #ffffff;
+  color: #000000;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s ease;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  font-family: 'Poppins', sans-serif;
+  background: none;
+}
+
+input, textarea, select {
+  font-family: 'Poppins', sans-serif;
+  outline: none;
+  border: none;
+  background: none;
+}
+
+/* =============================================
+   SCROLL TO TOP BUTTON
+   ============================================= */
+.scroll-top-btn {
+  position: fixed;
+  right: 30px;
+  bottom: 40px;
+  width: 64px;
+  height: 64px;
+  background: rgba(211, 212, 213, 0.36);
+  border: 1px solid #728FF8;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 9999;
+  transition: all 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+}
+
+.scroll-top-btn.visible {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0);
+}
+
+.scroll-top-btn:hover {
+  background: rgba(211, 212, 213, 0.65);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.scroll-top-btn svg {
+  width: 24px;
+  height: 24px;
+  stroke: #011955;
+  stroke-width: 3;
+  fill: none;
+}
+
+/* =============================================
+   SCROLL ANIMATIONS
+   ============================================= */
+.anim {
+  opacity: 0;
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.anim.anim--visible {
+  opacity: 1;
+  transform: translate(0, 0) !important;
+}
+
+.anim--slide-left {
+  transform: translateX(-80px);
+}
+
+.anim--slide-right {
+  transform: translateX(80px);
+}
+
+.anim--slide-up {
+  transform: translateY(60px);
+}
+
+.anim--fade {
+  transform: translateY(0);
+}
+
+/* Stagger children */
+.anim--delay-1 { transition-delay: 0.1s; }
+.anim--delay-2 { transition-delay: 0.2s; }
+.anim--delay-3 { transition-delay: 0.3s; }
+.anim--delay-4 { transition-delay: 0.4s; }
+.anim--delay-5 { transition-delay: 0.5s; }
+.anim--delay-6 { transition-delay: 0.6s; }
+.anim--delay-7 { transition-delay: 0.7s; }
+.anim--delay-8 { transition-delay: 0.8s; }
+
+/* =============================================
+   SECTION LABEL COMPONENT
+   ============================================= */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
+}
+
+.section-label__line {
+  display: block;
+  width: 113px;
+  height: 0;
+  border-top: 6px solid #1E49E3;
+}
+
+.section-label__text {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 120.81%;
+  text-transform: uppercase;
+  color: #1E49E3;
+  white-space: nowrap;
+}

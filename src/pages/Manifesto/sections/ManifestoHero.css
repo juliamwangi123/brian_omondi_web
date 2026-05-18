@@ -1,0 +1,154 @@
+/* =============================================
+   MANIFESTO HERO
+   ============================================= */
+.mhero {
+  position: relative;
+  width: 100%;
+  min-height: 727px;
+  overflow: hidden;
+}
+
+.mhero__bg {
+  position: absolute;
+  inset: 0;
+  background: url('/images/farm-bg.jpg') center center / cover no-repeat;
+  mix-blend-mode: plus-darker;
+  transform: scaleX(-1);
+  z-index: 0;
+}
+
+.mhero__bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.92) 0%,
+    rgba(255, 255, 255, 0.8) 45%,
+    rgba(255, 255, 255, 0.3) 70%,
+    transparent 100%
+  );
+}
+
+.mhero__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 66px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  min-height: 727px;
+}
+
+/* Text */
+.mhero__text {
+  padding-bottom: 220px;
+  max-width: 600px;
+}
+
+.mhero__title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 900;
+  font-size: 97px;
+  line-height: 92px;
+  text-transform: uppercase;
+  color: #042C92;
+}
+
+.mhero__subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 29px;
+  line-height: 120.81%;
+  color: #464646;
+  margin-top: 28px;
+  max-width: 546px;
+}
+
+/* Image */
+.mhero__image {
+  flex-shrink: 0;
+  width: 609px;
+  height: 706px;
+  margin-bottom: 0;
+  align-self: flex-end;
+}
+
+.mhero__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 1200px) {
+  .mhero__inner {
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 40px 0;
+    min-height: auto;
+  }
+
+  .mhero__text {
+    padding-bottom: 40px;
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .mhero__title {
+    font-size: 64px;
+    line-height: 68px;
+  }
+
+  .mhero__subtitle {
+    font-size: 24px;
+    max-width: 100%;
+  }
+
+  .mhero__image {
+    width: 100%;
+    max-width: 500px;
+    height: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .mhero__title {
+    font-size: 44px;
+    line-height: 48px;
+  }
+
+  .mhero__subtitle {
+    font-size: 20px;
+  }
+
+  .mhero__image {
+    max-width: 380px;
+    height: 400px;
+  }
+
+  .mhero__inner {
+    padding: 40px 24px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .mhero__title {
+    font-size: 34px;
+    line-height: 38px;
+  }
+
+  .mhero__subtitle {
+    font-size: 16px;
+  }
+
+  .mhero__image {
+    max-width: 300px;
+    height: 320px;
+  }
+}

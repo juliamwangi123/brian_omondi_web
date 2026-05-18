@@ -1,0 +1,182 @@
+/* =============================================
+   MANIFESTO CTA
+   ============================================= */
+.manifesto-cta {
+  position: relative;
+  width: 100%;
+  min-height: 655px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.manifesto-cta__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    89.4deg,
+    rgba(1, 25, 85, 0.75) 0.52%,
+    rgba(5, 32, 105, 0.725) 25.27%,
+    rgba(14, 47, 149, 0.4725) 49.55%,
+    rgba(30, 73, 227, 0) 67.64%
+  ),
+  rgba(1, 25, 85, 0.17);
+  background-blend-mode: plus-darker, normal;
+  z-index: 0;
+}
+
+/* If you have a background image for this section, add it here: */
+.manifesto-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #011955;
+  z-index: -1;
+}
+
+.manifesto-cta__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 53px 139px;
+  width: 100%;
+}
+
+.manifesto-cta__content {
+  max-width: 712px;
+  display: flex;
+  flex-direction: column;
+  gap: 37px;
+}
+
+.manifesto-cta__title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 900;
+  font-size: 74px;
+  line-height: 70px;
+  text-transform: uppercase;
+  color: #D3E9FE;
+}
+
+.manifesto-cta__subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 29px;
+  line-height: 120.81%;
+  color: #FFFFFF;
+  max-width: 546px;
+}
+
+.manifesto-cta__buttons {
+  display: flex;
+  gap: 20px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.manifesto-cta__btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 120.81%;
+  text-align: center;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.manifesto-cta__btn--home {
+  background: #D3E9FE;
+  color: #011955;
+}
+
+.manifesto-cta__btn--home:hover {
+  background: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+}
+
+.manifesto-cta__btn--news {
+  background: #1E49E3;
+  color: #FFFFFF;
+  border: 1px solid #D3E9FE;
+}
+
+.manifesto-cta__btn--news:hover {
+  background: #FFFFFF;
+  color: #1E49E3;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 1100px) {
+  .manifesto-cta__inner {
+    padding: 50px 40px;
+  }
+
+  .manifesto-cta__title {
+    font-size: 54px;
+    line-height: 56px;
+  }
+
+  .manifesto-cta__subtitle {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .manifesto-cta {
+    min-height: 500px;
+  }
+
+  .manifesto-cta__inner {
+    padding: 40px 24px;
+  }
+
+  .manifesto-cta__title {
+    font-size: 38px;
+    line-height: 42px;
+  }
+
+  .manifesto-cta__subtitle {
+    font-size: 20px;
+  }
+
+  .manifesto-cta__btn {
+    font-size: 18px;
+    padding: 12px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .manifesto-cta {
+    min-height: 420px;
+  }
+
+  .manifesto-cta__title {
+    font-size: 28px;
+    line-height: 32px;
+  }
+
+  .manifesto-cta__subtitle {
+    font-size: 16px;
+  }
+
+  .manifesto-cta__btn {
+    font-size: 15px;
+    padding: 10px 16px;
+    width: 100%;
+  }
+
+  .manifesto-cta__buttons {
+    flex-direction: column;
+  }
+}

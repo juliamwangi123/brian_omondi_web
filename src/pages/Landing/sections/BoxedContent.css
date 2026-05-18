@@ -1,0 +1,135 @@
+/* =============================================
+   BOXED CONTENT
+   ============================================= */
+.boxed {
+  position: relative;
+  width: 100%;
+  margin-top: -85px;
+  z-index: 10;
+}
+
+.boxed__inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 67px;
+  display: flex;
+  gap: 50px;
+  justify-content: space-between;
+}
+
+.boxed__card {
+  flex: 1;
+  max-width: 643px;
+  min-height: 162px;
+  background: #B0D7FC;
+  box-shadow: 5px 6px 27.3px rgba(80, 111, 140, 0.74);
+  border-radius: 20px;
+  padding: 24px 30px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.boxed__card:hover {
+  transform: translateY(-4px);
+  box-shadow: 5px 10px 35px rgba(80, 111, 140, 0.85);
+}
+
+.boxed__card-title {
+  flex: 1;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: 33px;
+  line-height: 120.81%;
+  text-align: center;
+  color: #011955;
+}
+
+.boxed__btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  min-width: 153px;
+  height: 49px;
+  background: #1E49E3;
+  box-shadow: 2px 4px 5.7px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 120.81%;
+  text-align: center;
+  color: #FFFFFF;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.boxed__btn:hover {
+  background: #FFFFFF;
+  color: #1E49E3;
+  border: 1px solid #86A1FF;
+  font-weight: 700;
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 1100px) {
+  .boxed__inner {
+    flex-direction: column;
+    padding: 0 40px;
+    gap: 24px;
+    align-items: center;
+  }
+
+  .boxed__card {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .boxed__card-title {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 768px) {
+  .boxed {
+    margin-top: -50px;
+  }
+
+  .boxed__inner {
+    padding: 0 24px;
+  }
+
+  .boxed__card {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+    min-height: auto;
+  }
+
+  .boxed__card-title {
+    font-size: 22px;
+  }
+
+  .boxed__btn {
+    font-size: 20px;
+    min-width: 130px;
+    height: 44px;
+  }
+}
+
+@media (max-width: 480px) {
+  .boxed__card-title {
+    font-size: 18px;
+  }
+
+  .boxed__btn {
+    font-size: 16px;
+    min-width: 110px;
+    height: 40px;
+  }
+}
