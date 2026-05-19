@@ -33,7 +33,7 @@ export default function YourVoice() {
           {/* Candidate Image */}
           <div className="your-voice__image-wrap anim anim--slide-right">
             <img
-              src="/images/candidate-side.jpg"
+              src="/images/candidate-side.svg"
               alt="Brian Omondi"
               className="your-voice__candidate-img"
               loading="lazy"

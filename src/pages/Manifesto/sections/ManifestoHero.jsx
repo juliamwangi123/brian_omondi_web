@@ -19,7 +19,7 @@ export default function ManifestoHero() {
         {/* Right Image */}
         <div className="mhero__image anim anim--fade anim--delay-3">
           <img
-            src="/images/candidate-specs.jpg"
+            src="/images/candidate-specs.svg"
             alt="Brian Omondi"
             loading="eager"
           />

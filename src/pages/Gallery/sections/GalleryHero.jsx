@@ -28,7 +28,7 @@ export default function GalleryHero() {
         {/* Right Image */}
         <div className="gallery-hero__image anim anim--fade anim--delay-3">
           <img
-            src="/images/candidate-side.jpg"
+            src="/images/candidate-side.svg"
             alt="Brian Omondi"
             loading="eager"
           />

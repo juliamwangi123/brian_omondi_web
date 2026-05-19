@@ -11,7 +11,7 @@
 .mhero__bg {
   position: absolute;
   inset: 0;
-  background: url('/images/farm-bg.jpg') center center / cover no-repeat;
+  background: url('/images/farm-bg.svg') center center / cover no-repeat;
   mix-blend-mode: plus-darker;
   transform: scaleX(-1);
   z-index: 0;

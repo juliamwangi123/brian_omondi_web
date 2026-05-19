@@ -23,7 +23,7 @@ export default function NewsHero() {
         {/* Right Image */}
         <div className="news-hero__image anim anim--fade anim--delay-3">
           <img
-            src="/images/gallery-dsc.jpg"
+            src="/images/gallery-dsc.svg"
             alt="Brian Omondi on the campaign trail"
             loading="eager"
           />

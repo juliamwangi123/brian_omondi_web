@@ -4,7 +4,7 @@ const pillarsData = [
     title: 'Education, Skills & Talent Development',
     subtitle: '"Empowering Minds, Unlocking Futures"',
     tagline: 'Education is the greatest equalizer. Every child deserves an opportunity to learn, grow, and succeed.',
-    image: '/images/education.jpg',
+    image: '/images/education.svg',
     cardText: 'Education Education is the greatest equaliser, yet many families in Mumias West struggle to keep their children in school due to lack of school fees. As your MP, I will ensure that NG-CDF resources are managed fairly, transparently and reach the students who need them.',
     priorities: [
       'Abolish the ineffective and politicized bursary system.',
@@ -28,7 +28,7 @@ const pillarsData = [
     title: 'Agriculture & Food Security',
     subtitle: '"Empowering Farmers, Restoring Prosperity"',
     tagline: 'Mumias West was built on agriculture. Farmers must earn more, produce more, and live better.',
-    image: '/images/agri-field.jpg',
+    image: '/images/agriculture.svg',
     cardText: 'Agriculture Agriculture is the backbone of Mumias West. Our farmers work hard but continue to struggle with delayed payments, expensive farm inputs and unreliable markets. As your Member of Parliament, restoring dignity and income to our farmers will be my top priority.',
     priorities: [
       'Advocate for fair and timely payment to sugarcane farmers.',
@@ -48,7 +48,7 @@ const pillarsData = [
     title: 'Healthcare & Human Dignity',
     subtitle: '"Quality Healthcare Close to the People"',
     tagline: 'No family should sell land, livestock, or go into debt to access treatment. Healthcare must be affordable, accessible, and reliable.',
-    image: '/images/healthcare.jpg',
+    image: '/images/healthcare.svg',
     cardText: 'Healthcare Too many people walk long distances to find care. Too many facilities have no doctors, no drugs, or no equipment. Too many mothers still risk their lives while giving life. The closure of key facilities such as the St. Mary\'s Hospital has only made things worse.',
     priorities: [
       'Upgrade all dispensaries and health centres across Mumias West.',
@@ -69,7 +69,7 @@ const pillarsData = [
     title: 'Youth & Women Empowerment',
     subtitle: '"Creating Opportunity, Restoring Hope"',
     tagline: 'The youth and women are the engine of economic growth and social transformation.',
-    image: '/images/youth.jpg',
+    image: '/images/youth.svg',
     cardText: 'Youth & Jobs Youth unemployment is one of the biggest challenges facing Mumias West today. Many young people have energy, talent and ambition but lack opportunities. I will focus on creating real economic opportunities for our youth.',
     priorities: [
       'Establish youth and women enterprise funds.',
@@ -90,7 +90,7 @@ const pillarsData = [
     title: 'Security, Good Governance & Social Justice',
     subtitle: '"Leadership That Serves the People"',
     tagline: 'Leadership must be transparent, accountable, and people-centered.',
-    image: '/images/security.jpg',
+    image: '/images/security.svg',
     cardText: 'Security Security is a growing concern in many parts of Mumias West, with cases of theft, livestock rustling and insecurity in markets and trading centres. A safe community allows businesses to grow and families to live with dignity.',
     priorities: [
       'Strengthen community policing and village security initiatives.',
@@ -110,7 +110,7 @@ const pillarsData = [
     title: 'Roads, Electricity & Digital Infrastructure',
     subtitle: '"Connecting Every Village to Opportunity"',
     tagline: 'Development begins with infrastructure. Good roads, electricity, and internet access create jobs, improve security, and attract investment.',
-    image: '/images/infrastructure.jpg',
+    image: '/images/infrastructure.svg',
     cardText: 'Infrastructure Poor roads remain a major challenge in Mumias West, especially during rainy seasons when many roads become impassable and farmers cannot transport their produce to markets. Improving infrastructure will unlock economic growth and improve everyday life.....',
     priorities: [
       'Improve rural road networks and bridges.',
@@ -130,7 +130,7 @@ const pillarsData = [
     title: 'Local Economy, Trade & Industrial Growth',
     subtitle: '"Building Wealth Within Our Communities"',
     tagline: 'Economic growth must benefit ordinary people, traders, farmers, youth, and local businesses.',
-    image: '/images/local-economy.jpg',
+    image: '/images/local-economy.svg',
     cardText: 'Local Economy Small businesses, traders and informal sector workers are the backbone of the Mumias West economy. From market traders to boda boda operators, many hardworking residents struggle with limited capital, poor market facilities and unfair business conditions.',
     priorities: [
       'Support local traders, SMEs, and market development.',
@@ -150,7 +150,7 @@ const pillarsData = [
     title: 'Water, Sanitation & Clean Environment',
     subtitle: '"Water to Every Homestead"',
     tagline: 'Access to clean water is not a privilege — it is a basic right.',
-    image: '/images/water.jpg',
+    image: '/images/environment.svg',
     cardText: 'Environment A clean and healthy environment is essential for the wellbeing of our communities. Many areas of Mumias West face challenges such as poor waste management, environmental degradation and the impact of changing weather patterns on farming.',
     priorities: [
       'Deliver clean and safe water to every homestead.',
