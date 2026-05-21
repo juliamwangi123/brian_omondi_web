@@ -1,5 +1,9 @@
 /* =============================================
-   MANIFESTO CTA
+   MANIFESTO CTA — Layered backgrounds like manifesto hero
+   Layer 1 (back): farm/truck image
+   Layer 2: manifesto hero bg image
+   Layer 3: gradient overlay
+   Layer 4: text content
    ============================================= */
 .manifesto-cta {
   position: relative;
@@ -10,6 +14,26 @@
   overflow: hidden;
 }
 
+/* Layer 1 — Farm/truck background image (furthest back) */
+.manifesto-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('/images/farm-bg.svg') center center / cover no-repeat;
+  z-index: 0;
+}
+
+/* Layer 2 — Manifesto hero background image on top of truck */
+.manifesto-cta::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('/images/hero-bg.jpg') center center / cover no-repeat;
+  opacity: 0.4;
+  z-index: 1;
+}
+
+/* Layer 3 — Gradient overlay per Figma */
 .manifesto-cta__overlay {
   position: absolute;
   inset: 0;
@@ -22,21 +46,13 @@
   ),
   rgba(1, 25, 85, 0.17);
   background-blend-mode: plus-darker, normal;
-  z-index: 0;
+  z-index: 2;
 }
 
-/* If you have a background image for this section, add it here: */
-.manifesto-cta::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: #011955;
-  z-index: -1;
-}
-
+/* Layer 4 — Content on top */
 .manifesto-cta__inner {
   position: relative;
-  z-index: 1;
+  z-index: 3;
   max-width: 1440px;
   margin: 0 auto;
   padding: 53px 139px;
@@ -86,6 +102,7 @@
   font-size: 22px;
   line-height: 120.81%;
   text-align: center;
+  text-decoration: none;
   transition: all 0.3s ease;
   white-space: nowrap;
 }

@@ -20,8 +20,15 @@ export default function Landing() {
       <Hero />
       <BoxedContent />
       <About />
-      <Vision />
-      <Pillars />
+
+      {/* Vision + Pillars wrapped together for shared background */}
+      <div className="vision-pillars-wrapper">
+        <div className="vision-pillars-wrapper__bg" />
+        <div className="vision-pillars-wrapper__overlay" />
+        <Vision />
+        <Pillars />
+      </div>
+
       <LatestUpdates />
       <CampaignTrail />
       <YourVoice />

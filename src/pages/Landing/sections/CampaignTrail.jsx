@@ -21,7 +21,11 @@ export default function CampaignTrail() {
 
               {/* Image */}
               <div className="trail-card__image">
-                <img src={article.image} alt={article.title} loading="lazy" />
+                <img
+                  src={article.image || article.heroImage}
+                  alt={article.title}
+                  loading="lazy"
+                />
               </div>
 
               {/* Body */}
@@ -51,13 +55,15 @@ export default function CampaignTrail() {
                   <span className="trail-card__date">{article.date}</span>
                 </div>
 
-                {/* Title + Excerpt */}
-                <p className="trail-card__text">
-                  <strong>{article.title}</strong>{' '}
+                {/* Title — blue, bold */}
+                <h3 className="trail-card__title">{article.title}</h3>
+
+                {/* Excerpt — black, smaller, normal weight */}
+                <p className="trail-card__excerpt">
                   {article.shortExcerpt || article.excerpt}
                 </p>
 
-                {/* Read More */}
+                {/* Read More — pushed to bottom */}
                 <Link to="/news" className="trail-card__btn">
                   Read more
                 </Link>

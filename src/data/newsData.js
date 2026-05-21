@@ -7,8 +7,10 @@ const newsData = [
     excerpt: 'Our schools are full of capable, curious, and hardworking children. Our teachers show up every day committed to a system that has not shown up for them. Education in Mumias West deserves better than what it is currently getting, and it starts with being honest about where we are.',
     shortExcerpt: 'Our schools are full of capable, curious, and hardworking children. Our teachers show up every day committed to a system that has not shown up for them. Education in Mumias West deserves better than what it is currently',
     heroImage: '/images/news-main.svg',
+    image: '/images/news-education.svg',
     featured: true,
   },
+
   {
     id: 2,
     tag: 'Community',

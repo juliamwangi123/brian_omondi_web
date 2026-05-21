@@ -16,6 +16,7 @@ export default function Pillars() {
                 <img src={pillar.image} alt={pillar.navLabel} loading="lazy" />
               </div>
               <div className="pillars__card-body">
+                <h3 className="pillars__card-title">{pillar.cardTitle}</h3>
                 <p className="pillars__card-text">{pillar.cardText}</p>
               </div>
             </div>
@@ -24,8 +25,10 @@ export default function Pillars() {
           {/* CTA Card */}
           <div className="pillars__card pillars__card--cta anim anim--slide-up anim--delay-3">
             <div className="pillars__cta-content">
-              <p className="pillars__cta-text">
-                There is more to the vision<br />
+              <p className="pillars__cta-heading">
+                There is more to the vision
+              </p>
+              <p className="pillars__cta-sub">
                 Read the full manifesto to see every commitment in detail.
               </p>
               <Link to="/manifesto" className="pillars__cta-btn">

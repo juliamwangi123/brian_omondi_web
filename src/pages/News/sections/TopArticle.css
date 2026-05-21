@@ -1,5 +1,6 @@
 /* =============================================
-   TOP ARTICLE
+   TOP ARTICLE — Featured article card
+   Figma: image left 585px, content right in white card
    ============================================= */
 .top-article {
   width: 100%;
@@ -16,15 +17,16 @@
   display: flex;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 4px 16.6px rgba(0, 0, 0, 0.25);
   min-height: 449px;
 }
 
-/* Image */
+/* Image — left side, rounded left corners */
 .top-article__image {
   flex-shrink: 0;
   width: 585px;
   overflow: hidden;
+  border-radius: 20px 0 0 20px;
+  filter: drop-shadow(0px 4px 16.6px rgba(0, 0, 0, 0.25));
 }
 
 .top-article__image img {
@@ -38,17 +40,19 @@
   transform: scale(1.03);
 }
 
-/* Content */
+/* Content — right side, white bg */
 .top-article__content {
   flex: 1;
   background: #FFFFFF;
   padding: 32px 36px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
+  border-radius: 0 20px 20px 0;
+  box-shadow: -1px 7px 16.8px rgba(0, 0, 0, 0.25);
 }
 
-/* Date */
+/* Date row */
 .top-article__date-row {
   display: flex;
   align-items: center;
@@ -67,7 +71,7 @@
   color: #AAAAAA;
 }
 
-/* Title */
+/* Title — Figma: blue, bold, 31px, capitalize */
 .top-article__title {
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
@@ -78,17 +82,17 @@
   max-width: 636px;
 }
 
-/* Excerpt */
+/* Excerpt — Figma: black, normal weight, 16px */
 .top-article__excerpt {
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  color: #555555;
-  display: none; /* Hidden in compact layout, shown in expanded */
+  color: #333333;
+  max-width: 636px;
 }
 
-/* Divider */
+/* Divider — gray line before read more */
 .top-article__line {
   width: 82px;
   height: 0;
@@ -96,7 +100,7 @@
   margin-top: auto;
 }
 
-/* Read More */
+/* Read Full Story — gray, bold, with arrow */
 .top-article__read-more {
   display: flex;
   align-items: center;
@@ -105,6 +109,7 @@
   cursor: pointer;
   background: none;
   border: none;
+  margin-top: 8px;
   transition: gap 0.2s ease;
 }
 
@@ -149,6 +154,11 @@
   .top-article__image {
     width: 100%;
     height: 350px;
+    border-radius: 20px 20px 0 0;
+  }
+
+  .top-article__content {
+    border-radius: 0 0 20px 20px;
   }
 
   .top-article__title {
@@ -181,6 +191,11 @@
   .top-article__title {
     font-size: 22px;
     line-height: 32px;
+  }
+
+  .top-article__excerpt {
+    font-size: 14px;
+    line-height: 22px;
   }
 }
 

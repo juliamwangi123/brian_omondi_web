@@ -7,7 +7,7 @@ export default function TopArticle({ article }) {
     <section className="top-article">
       <div className="top-article__inner">
         <div className="top-article__card anim anim--slide-up">
-          {/* Image */}
+          {/* Image — left side */}
           <div className="top-article__image">
             <img
               src={article.heroImage || article.image}
@@ -16,7 +16,7 @@ export default function TopArticle({ article }) {
             />
           </div>
 
-          {/* Content */}
+          {/* Content — right side */}
           <div className="top-article__content">
             {/* Date */}
             <div className="top-article__date-row">
@@ -35,13 +35,11 @@ export default function TopArticle({ article }) {
               <span className="top-article__date">{article.date}</span>
             </div>
 
-            {/* Title + Excerpt */}
-            <h2 className="top-article__title">
-              {article.title}
-            </h2>
-            <p className="top-article__excerpt">
-              {article.excerpt}
-            </p>
+            {/* Title — blue, bold, 31px */}
+            <h2 className="top-article__title">{article.title}</h2>
+
+            {/* Excerpt — black, normal weight, smaller */}
+            <p className="top-article__excerpt">{article.excerpt}</p>
 
             {/* Divider */}
             <div className="top-article__line" />
@@ -50,7 +48,13 @@ export default function TopArticle({ article }) {
             <button className="top-article__read-more" type="button">
               <span>Read Full Story</span>
               <svg width="18" height="14" viewBox="0 0 18 14" fill="none">
-                <path d="M1 7H17M17 7L11 1M17 7L11 13" stroke="#6A6A6A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path
+                  d="M1 7H17M17 7L11 1M17 7L11 13"
+                  stroke="#6A6A6A"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
               </svg>
             </button>
           </div>

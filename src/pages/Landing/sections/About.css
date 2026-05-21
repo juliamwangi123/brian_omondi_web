@@ -5,6 +5,8 @@
   width: 100%;
   background: #EEEEEE;
   padding: 100px 0 130px;
+  position: relative;
+  z-index: 1;
 }
 
 .about__inner {
@@ -31,12 +33,29 @@
   object-fit: cover;
 }
 
-/* Text */
+/* Text Column */
 .about__text {
   flex: 1;
   padding-top: 30px;
 }
 
+/* Label Row — line and label on same line */
+.about__label-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Accent line — BEFORE the label, on same row */
+.about__accent-line {
+  display: block;
+  width: 113px;
+  height: 0;
+  border-top: 6px solid #1E49E3;
+  flex-shrink: 0;
+}
+
+/* Label */
 .about__label {
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
@@ -44,16 +63,10 @@
   line-height: 120.81%;
   text-transform: uppercase;
   color: #1E49E3;
-  display: block;
+  white-space: nowrap;
 }
 
-.about__accent-line {
-  width: 113px;
-  height: 0;
-  border-top: 6px solid #1E49E3;
-  margin-top: 12px;
-}
-
+/* Title */
 .about__title {
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
@@ -64,13 +77,7 @@
   max-width: 623px;
 }
 
-.about__divider {
-  width: 328px;
-  height: 0;
-  border-top: 2px solid #1E49E3;
-  margin-top: 28px;
-}
-
+/* Body */
 .about__body {
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
@@ -81,6 +88,15 @@
   max-width: 637px;
 }
 
+/* Thin divider — after body, before italic */
+.about__divider {
+  width: 328px;
+  height: 0;
+  border-top: 2px solid #1E49E3;
+  margin-top: 28px;
+}
+
+/* Italic quote */
 .about__italic {
   font-family: 'Poppins', sans-serif;
   font-style: italic;
@@ -88,8 +104,13 @@
   font-size: 25px;
   line-height: 138%;
   color: #1E49E3;
-  margin-top: 36px;
+  margin-top: 28px;
   max-width: 645px;
+}
+
+/* Bold highlights within italic */
+.about__italic strong {
+  font-weight: 600;
 }
 
 /* =============================================
@@ -154,6 +175,10 @@
   .about__divider {
     width: 200px;
   }
+
+  .about__accent-line {
+    width: 60px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -171,5 +196,13 @@
 
   .about__label {
     font-size: 18px;
+  }
+
+  .about__label-row {
+    gap: 10px;
+  }
+
+  .about__accent-line {
+    width: 40px;
   }
 }

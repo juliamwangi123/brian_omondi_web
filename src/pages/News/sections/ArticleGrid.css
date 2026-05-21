@@ -1,5 +1,9 @@
 /* =============================================
-   ARTICLE GRID
+   ARTICLE GRID — News page card grid
+   Figma: 417px cards, image top, white body below
+   Title: blue semi-bold 18px
+   Excerpt: black normal 16px
+   Read More: gray bold 18px with arrow, left-aligned
    ============================================= */
 .article-grid {
   width: 100%;
@@ -23,41 +27,45 @@
   width: 100%;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: -1px 7px 16.8px rgba(0, 0, 0, 0.25);
   background: #FFFFFF;
   transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .ag-card:hover {
   transform: translateY(-5px);
 }
 
-/* Image */
+/* Image — Figma: 417 x 364, rounded top */
 .ag-card__image {
   width: 100%;
   height: 364px;
   overflow: hidden;
+  border-radius: 20px 20px 0 0;
 }
 
 .ag-card__image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transform: scaleX(-1);
   transition: transform 0.4s ease;
 }
 
 .ag-card:hover .ag-card__image img {
-  transform: scaleX(-1) scale(1.04);
+  transform: scale(1.04);
 }
 
-/* Body */
+/* Body — white card below image */
 .ag-card__body {
   padding: 28px 37px 36px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  min-height: 395px;
+  gap: 12px;
+  flex: 1;
+  background: #FFFFFF;
+  box-shadow: -1px 7px 16.8px rgba(0, 0, 0, 0.25);
+  border-radius: 0 0 20px 20px;
 }
 
 /* Date */
@@ -79,22 +87,28 @@
   color: #AAAAAA;
 }
 
-/* Text */
-.ag-card__text {
+/* Title — Figma: blue, semi-bold (600), 18px */
+.ag-card__title {
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
   font-size: 18px;
   line-height: 27px;
   color: #1E49E3;
+  margin: 0;
+}
+
+/* Excerpt — Figma: black, normal weight, 16px */
+.ag-card__excerpt {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #333333;
+  margin: 0;
   flex: 1;
 }
 
-.ag-card__text strong {
-  display: block;
-  margin-bottom: 4px;
-}
-
-/* Read More */
+/* Read More — left-aligned, gray, bold, with arrow */
 .ag-card__read-more {
   display: flex;
   align-items: center;
@@ -104,6 +118,7 @@
   background: none;
   border: none;
   margin-top: auto;
+  align-self: flex-start;
   transition: gap 0.2s ease;
 }
 
@@ -171,12 +186,16 @@
 
   .ag-card__body {
     padding: 24px;
-    min-height: auto;
   }
 
-  .ag-card__text {
+  .ag-card__title {
     font-size: 16px;
     line-height: 24px;
+  }
+
+  .ag-card__excerpt {
+    font-size: 14px;
+    line-height: 22px;
   }
 }
 
@@ -185,9 +204,14 @@
     height: 220px;
   }
 
-  .ag-card__text {
+  .ag-card__title {
     font-size: 15px;
     line-height: 22px;
+  }
+
+  .ag-card__excerpt {
+    font-size: 13px;
+    line-height: 20px;
   }
 
   .ag-card__read-more span {

@@ -36,17 +36,23 @@ export default function ArticleGrid({ articles, sectionClass = '' }) {
                   <span className="ag-card__date">{article.date}</span>
                 </div>
 
-                {/* Text */}
-                <p className="ag-card__text">
-                  <strong>{article.title}</strong>{' '}
-                  {article.excerpt}
-                </p>
+                {/* Title — blue, semi-bold */}
+                <h3 className="ag-card__title">{article.title}</h3>
 
-                {/* Read More */}
+                {/* Excerpt — black, normal weight */}
+                <p className="ag-card__excerpt">{article.excerpt}</p>
+
+                {/* Read More — left aligned, gray */}
                 <button className="ag-card__read-more" type="button">
                   <span>Read More</span>
                   <svg width="14" height="12" viewBox="0 0 14 12" fill="none">
-                    <path d="M1 6H13M13 6L8 1M13 6L8 11" stroke="#6A6A6A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path
+                      d="M1 6H13M13 6L8 1M13 6L8 11"
+                      stroke="#6A6A6A"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
                   </svg>
                 </button>
               </div>

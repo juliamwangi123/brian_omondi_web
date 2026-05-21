@@ -2,3 +2,122 @@
   width: 100%;
   overflow-x: hidden;
 }
+
+/* =============================================
+   SCROLL ANIMATIONS
+   ============================================= */
+.anim {
+  opacity: 0;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  will-change: opacity, transform;
+}
+
+.anim--slide-left {
+  transform: translateX(-60px);
+}
+
+.anim--slide-right {
+  transform: translateX(60px);
+}
+
+.anim--slide-up {
+  transform: translateY(40px);
+}
+
+.anim--visible {
+  opacity: 1;
+  transform: translateX(0) translateY(0);
+}
+
+.anim--delay-1 {
+  transition-delay: 0.15s;
+}
+
+.anim--delay-2 {
+  transition-delay: 0.3s;
+}
+
+.anim--delay-3 {
+  transition-delay: 0.45s;
+}
+
+.anim--delay-4 {
+  transition-delay: 0.6s;
+}
+
+/* =============================================
+   LAYER STACKING — Content scrolls over fixed hero
+   ============================================= */
+.boxed {
+  position: relative;
+  z-index: 1;
+}
+
+.about {
+  position: relative;
+  z-index: 2;
+  background: #EEEEEE;
+}
+
+.latest-updates {
+  position: relative;
+  z-index: 2;
+}
+
+.campaign-trail {
+  position: relative;
+  z-index: 2;
+}
+
+.your-voice {
+  position: relative;
+  z-index: 2;
+}
+
+.footer {
+  position: relative;
+  z-index: 2;
+}
+
+/* =============================================
+   VISION + PILLARS WRAPPER
+   Background image spans both sections, stays fixed
+   while user scrolls through vision header + all 8 pillars
+   ============================================= */
+.vision-pillars-wrapper {
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+}
+
+/* Background image — absolute within wrapper, covers full height */
+.vision-pillars-wrapper__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('/images/hero-bg.jpg') center center / cover no-repeat;
+  background-attachment: fixed;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Dark navy overlay at 75% opacity per Figma */
+.vision-pillars-wrapper__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #011955;
+  opacity: 0.75;
+  z-index: 1;
+  pointer-events: none;
+}
+
+@media (max-width: 1024px) {
+  .vision-pillars-wrapper__bg {
+    background-attachment: scroll;
+  }
+}

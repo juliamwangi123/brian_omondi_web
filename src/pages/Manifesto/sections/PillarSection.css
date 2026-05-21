@@ -1,5 +1,5 @@
 /* =============================================
-   PILLAR SECTION
+   PILLAR SECTION — Manifesto Page
    ============================================= */
 .pillar-section {
   width: 100%;
@@ -16,7 +16,6 @@
   position: relative;
 }
 
-/* Border outline */
 .pillar-section__border {
   position: absolute;
   inset: 0;
@@ -25,12 +24,10 @@
   pointer-events: none;
 }
 
-/* ---- LEFT LAYOUT (even index) ---- */
 .pillar-section--left .pillar-section__inner {
   flex-direction: row;
 }
 
-/* ---- RIGHT LAYOUT (odd index) ---- */
 .pillar-section--right .pillar-section__inner {
   flex-direction: row-reverse;
 }
@@ -53,7 +50,6 @@
   z-index: 0;
 }
 
-/* Position gray block based on layout */
 .pillar-section--left .pillar-section__gray-block {
   left: -66px;
 }
@@ -62,7 +58,6 @@
   right: -66px;
 }
 
-/* Image */
 .pillar-section__image {
   position: relative;
   z-index: 1;
@@ -86,6 +81,7 @@
   margin-top: 28px;
 }
 
+/* Main title — blue, bold, 31px */
 .pillar-section__title {
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
@@ -96,6 +92,19 @@
   max-width: 538px;
 }
 
+/* Subtitle (quoted tagline) — blue, bold, italic style */
+.pillar-section__subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 21px;
+  line-height: 46px;
+  text-transform: capitalize;
+  color: #000000;
+  margin-top: 4px;
+  max-width: 538px;
+}
+
+/* Dark line under subtitle */
 .pillar-section__title-line {
   width: 55px;
   height: 0;
@@ -103,25 +112,14 @@
   margin-top: 10px;
 }
 
-.pillar-section__subtitle {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 700;
-  font-size: 31px;
-  line-height: 46px;
-  text-transform: capitalize;
-  color: #1E49E3;
-  margin-top: 6px;
-  max-width: 538px;
-}
-
+/* Tagline — black, normal weight, smaller */
 .pillar-section__tagline {
   font-family: 'Poppins', sans-serif;
-  font-weight: 700;
-  font-size: 31px;
-  line-height: 46px;
-  text-transform: capitalize;
-  color: #1E49E3;
-  margin-top: 4px;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  color: #000000;
+  margin-top: 12px;
   max-width: 538px;
 }
 
@@ -134,13 +132,10 @@
   flex-direction: column;
   gap: 30px;
   padding-top: 14px;
+  max-width: 609px;
 }
 
-/* Priorities */
-.pillar-section__priorities {
-  /* wrapper */
-}
-
+/* "Key Priorities" heading — bold, black, 20px */
 .pillar-section__priorities-heading {
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
@@ -150,57 +145,72 @@
   margin-bottom: 8px;
 }
 
+/* Priority List — bullet points, NOT bold */
 .pillar-section__priorities-list {
-  list-style: none;
-  padding: 0;
+  list-style: disc;
+  padding-left: 22px;
+  margin: 0;
 }
 
+/* Each priority — normal weight, black, 20px */
 .pillar-section__priority-item {
   font-family: 'Poppins', sans-serif;
-  font-weight: 700;
+  font-weight: 400;
   font-size: 20px;
   line-height: 30px;
   color: #000000;
-  position: relative;
-  padding-left: 0;
+  padding-left: 4px;
 }
 
 .pillar-section__priority-item::before {
   content: none;
+  display: none;
 }
 
-/* Each priority is a full line as per design: "Key Priorities\n item1\n item2..." */
-
-/* Quote */
+/* =============================================
+   QUOTE — "Our Goal" section
+   Italic font, blue background tint
+   ============================================= */
 .pillar-section__quote {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   padding: 10px;
   gap: 10px;
   background: rgba(30, 73, 227, 0.13);
   border-radius: 4px;
 }
 
+/* Vertical blue line */
 .pillar-section__quote-line {
   width: 0;
-  height: 57px;
+  min-height: 100%;
   border-left: 3px solid #1E49E3;
   flex-shrink: 0;
-  transform: rotate(0deg);
 }
 
-.pillar-section__quote-text {
+.pillar-section__quote-content {
+  flex: 1;
+}
+
+/* "Our Goal" label — bold, italic, blue */
+.pillar-section__quote-label {
   font-family: 'Poppins', sans-serif;
   font-style: italic;
   font-weight: 700;
   font-size: 18px;
   line-height: 27px;
   color: #1E49E3;
-  flex: 1;
+  margin: 0 0 4px 0;
 }
 
-.pillar-section__quote-text strong {
-  display: block;
+/* Goal text — italic, blue, normal weight */
+.pillar-section__quote-text {
+  font-family: 'Bad Script', cursive;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+  color: #1E49E3;
+  margin: 0;
 }
 
 /* =============================================
@@ -249,10 +259,14 @@
     line-height: 38px;
   }
 
-  .pillar-section__subtitle,
-  .pillar-section__tagline {
+  .pillar-section__subtitle {
     font-size: 22px;
     line-height: 34px;
+  }
+
+  .pillar-section__tagline {
+    font-size: 17px;
+    line-height: 26px;
   }
 
   .pillar-section__priority-item {
@@ -283,10 +297,14 @@
     line-height: 32px;
   }
 
-  .pillar-section__subtitle,
-  .pillar-section__tagline {
+  .pillar-section__subtitle {
     font-size: 18px;
     line-height: 28px;
+  }
+
+  .pillar-section__tagline {
+    font-size: 15px;
+    line-height: 24px;
   }
 
   .pillar-section__priority-item {
@@ -294,6 +312,7 @@
     line-height: 24px;
   }
 
+  .pillar-section__quote-label,
   .pillar-section__quote-text {
     font-size: 15px;
     line-height: 23px;
@@ -310,8 +329,7 @@
     line-height: 28px;
   }
 
-  .pillar-section__subtitle,
-  .pillar-section__tagline {
+  .pillar-section__subtitle {
     font-size: 16px;
     line-height: 24px;
   }

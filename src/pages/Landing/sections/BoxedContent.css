@@ -1,5 +1,5 @@
 /* =============================================
-   BOXED CONTENT
+   BOXED CONTENT — Two rectangular cards
    ============================================= */
 .boxed {
   position: relative;
@@ -17,10 +17,11 @@
   justify-content: space-between;
 }
 
+/* Card — rectangular per Figma: 643 x 162 */
 .boxed__card {
   flex: 1;
   max-width: 643px;
-  min-height: 162px;
+  height: 162px;
   background: #B0D7FC;
   box-shadow: 5px 6px 27.3px rgba(80, 111, 140, 0.74);
   border-radius: 20px;
@@ -36,16 +37,33 @@
   box-shadow: 5px 10px 35px rgba(80, 111, 140, 0.85);
 }
 
-.boxed__card-title {
+/* Text wrapper */
+.boxed__card-text {
   flex: 1;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 800;
-  font-size: 33px;
-  line-height: 120.81%;
   text-align: center;
-  color: #011955;
 }
 
+/* Heading — bigger, bolder, dark navy */
+.boxed__card-heading {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: 27px;
+  line-height: 120.81%;
+  color: #011955;
+  margin: 0;
+}
+
+/* Subtitle — smaller, lighter weight */
+.boxed__card-sub {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 120.81%;
+  color: #011955;
+  margin: 8px 0 0;
+}
+
+/* Button */
 .boxed__btn {
   display: inline-flex;
   justify-content: center;
@@ -64,6 +82,7 @@
   color: #FFFFFF;
   white-space: nowrap;
   flex-shrink: 0;
+  text-decoration: none;
   transition: all 0.3s ease;
 }
 
@@ -88,10 +107,16 @@
   .boxed__card {
     max-width: 100%;
     width: 100%;
+    height: auto;
+    min-height: 140px;
   }
 
-  .boxed__card-title {
+  .boxed__card-heading {
     font-size: 26px;
+  }
+
+  .boxed__card-sub {
+    font-size: 16px;
   }
 }
 
@@ -108,11 +133,14 @@
     flex-direction: column;
     text-align: center;
     padding: 20px;
-    min-height: auto;
   }
 
-  .boxed__card-title {
+  .boxed__card-heading {
     font-size: 22px;
+  }
+
+  .boxed__card-sub {
+    font-size: 14px;
   }
 
   .boxed__btn {
@@ -123,8 +151,12 @@
 }
 
 @media (max-width: 480px) {
-  .boxed__card-title {
+  .boxed__card-heading {
     font-size: 18px;
+  }
+
+  .boxed__card-sub {
+    font-size: 13px;
   }
 
   .boxed__btn {

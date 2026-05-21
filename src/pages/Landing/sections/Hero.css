@@ -1,5 +1,5 @@
 /* =============================================
-   HERO
+   HERO — Background stays fixed, content scrolls over it
    ============================================= */
 .hero {
   position: relative;
@@ -8,9 +8,13 @@
   overflow: hidden;
 }
 
+/* Fixed background that stays as user scrolls */
 .hero__bg {
-  position: absolute;
-  inset: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 958px;
   background: url('/images/hero-bg.jpg') center center / cover no-repeat;
   z-index: 0;
 }
@@ -106,6 +110,11 @@
     height: 750px;
   }
 
+  .hero__bg {
+    height: 750px;
+    position: absolute;
+  }
+
   .hero__content {
     padding: 220px 40px 0;
   }
@@ -135,6 +144,11 @@
 @media (max-width: 768px) {
   .hero {
     height: 620px;
+  }
+
+  .hero__bg {
+    height: 620px;
+    position: absolute;
   }
 
   .hero__content {
@@ -168,6 +182,11 @@
 @media (max-width: 480px) {
   .hero {
     height: 540px;
+  }
+
+  .hero__bg {
+    height: 540px;
+    position: absolute;
   }
 
   .hero__content {
