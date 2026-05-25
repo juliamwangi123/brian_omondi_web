@@ -10,7 +10,7 @@ export default function Hero() {
       <div className="hero__content">
         <div className="hero__text anim anim--slide-left">
           <h1 className="hero__name">
-            Hon. Brian<br />Omondi
+            Hon.<br /> Brian Omondi
           </h1>
         </div>
 
@@ -20,6 +20,7 @@ export default function Hero() {
         </div>
 
         <div className="hero__script anim anim--slide-left anim--delay-3">
+          
           <p>&ldquo;Son of the Soil, Servant of the People&rdquo;</p>
         </div>
 

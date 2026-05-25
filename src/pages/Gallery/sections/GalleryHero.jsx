@@ -4,12 +4,21 @@ import './GalleryHero.css'
 export default function GalleryHero() {
   return (
     <section className="gallery-hero">
-      {/* Background layers */}
-      <div className="gallery-hero__bg" />
-      <div className="gallery-hero__gradient" />
+      {/* Fixed layers — persist as user scrolls */}
+      <div className="gallery-hero__fixed">
+        <div className="gallery-hero__bg" />
+        <div className="gallery-hero__candidate">
+          <img
+            src="/images/Brayo side pose.svg"
+            alt=""
+            loading="eager"
+          />
+        </div>
+        <div className="gallery-hero__gradient" />
+      </div>
 
+      {/* Text content */}
       <div className="gallery-hero__inner">
-        {/* Left Text */}
         <div className="gallery-hero__text">
           <div className="gallery-hero__label anim anim--slide-left">
             <SectionLabel text="Photo Gallery" variant="white" />
@@ -23,15 +32,6 @@ export default function GalleryHero() {
             &ldquo;Moments from the campaign trail across Mumias West, every
             handshake, every gathering, every step of the journey&rdquo;
           </p>
-        </div>
-
-        {/* Right Image */}
-        <div className="gallery-hero__image anim anim--fade anim--delay-3">
-          <img
-            src="/images/candidate-side.svg"
-            alt="Brian Omondi"
-            loading="eager"
-          />
         </div>
       </div>
     </section>

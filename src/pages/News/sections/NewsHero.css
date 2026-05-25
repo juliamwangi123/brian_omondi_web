@@ -1,6 +1,4 @@
-/* =============================================
-   NEWS HERO
-   ============================================= */
+
 .news-hero {
   width: 100%;
   background: #F6F5F8;
@@ -34,7 +32,7 @@
 .news-hero__title {
   font-family: 'Poppins', sans-serif;
   font-weight: 900;
-  font-size: 87px;
+  font-size: 54px;
   line-height: 89px;
   text-transform: uppercase;
   color: #1E49E3;

@@ -1,15 +1,9 @@
-/* =============================================
-   GALLERY GRID
-   ============================================= */
 .gallery-grid {
   width: 100%;
-  background: linear-gradient(
-    180deg,
-    #1E49E3 0%,
-    #0A0A78 40%,
-    #0A0A78 100%
-  );
+  background: transparent;
   padding: 60px 0 100px;
+  position: relative;
+  z-index: 2;
 }
 
 .gallery-grid__inner {

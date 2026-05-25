@@ -12,7 +12,7 @@ export default function NewsHero() {
           </div>
 
           <h1 className="news-hero__title anim anim--slide-left anim--delay-1">
-            From the<br />Campaign<br />Trail
+            From the<br />Campaign Trail
           </h1>
 
           <p className="news-hero__script anim anim--slide-left anim--delay-2">

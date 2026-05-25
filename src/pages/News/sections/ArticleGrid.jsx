@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import './ArticleGrid.css'
 
 export default function ArticleGrid({ articles, sectionClass = '' }) {
@@ -14,7 +15,12 @@ export default function ArticleGrid({ articles, sectionClass = '' }) {
             >
               {/* Image */}
               <div className="ag-card__image">
-                <img src={article.image} alt={article.title} loading="lazy" />
+                <img
+                  src={article.image}
+                  alt={article.title}
+                  loading="lazy"
+                  style={article.flipped ? { transform: 'scaleX(-1)' } : {}}
+                />
               </div>
 
               {/* Body */}
@@ -36,14 +42,14 @@ export default function ArticleGrid({ articles, sectionClass = '' }) {
                   <span className="ag-card__date">{article.date}</span>
                 </div>
 
-                {/* Title — blue, semi-bold */}
+                {/* Title */}
                 <h3 className="ag-card__title">{article.title}</h3>
 
-                {/* Excerpt — black, normal weight */}
+                {/* Excerpt */}
                 <p className="ag-card__excerpt">{article.excerpt}</p>
 
-                {/* Read More — left aligned, gray */}
-                <button className="ag-card__read-more" type="button">
+                {/* Read More — Link wraps both text and arrow */}
+                <Link to={`/news/${article.id}`} className="ag-card__read-more">
                   <span>Read More</span>
                   <svg width="14" height="12" viewBox="0 0 14 12" fill="none">
                     <path
@@ -54,7 +60,7 @@ export default function ArticleGrid({ articles, sectionClass = '' }) {
                       strokeLinejoin="round"
                     />
                   </svg>
-                </button>
+                </Link>
               </div>
             </div>
           ))}

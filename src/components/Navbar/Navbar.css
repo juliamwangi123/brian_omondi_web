@@ -26,23 +26,33 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 67px;
-  min-height: 150px;
+  min-height: 100px;
 }
 
 .navbar--solid .navbar__inner {
-  min-height: 181px;
-}
-
-/* Logo */
-.navbar__logo {
-  display: block;
-  flex-shrink: 0;
+  min-height: 120px;
 }
 
 .navbar__logo img {
-  width: 144px;
-  height: 118px;
+  width: 100px;
+  height: 82px;
   object-fit: contain;
+}
+
+.navbar__link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-radius: 5px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 120.81%;
+  text-align: center;
+  color: #FFFFFF;
+  transition: all 0.25s ease;
+  white-space: nowrap;
 }
 
 /* Links */

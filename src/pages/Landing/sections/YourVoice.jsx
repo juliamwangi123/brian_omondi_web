@@ -5,15 +5,15 @@ import './YourVoice.css'
 export default function YourVoice() {
   return (
     <section className="your-voice">
-      <div className="your-voice__inner">
-        {/* Left Side — Text with candidate image as background behind it */}
-        <div className="your-voice__left">
-          {/* Background image layer */}
-          <div
-            className="your-voice__left-bg"
-            style={{ backgroundImage: "url('/images/candidate-side.svg')" }}
-          />
+      {/* Background image on left side */}
+      <div
+        className="your-voice__left-bg"
+        style={{ backgroundImage: "url('/images/candidate-side.svg')" }}
+      />
 
+      <div className="your-voice__inner">
+        {/* Left Side — Text content */}
+        <div className="your-voice__left">
           <div className="your-voice__left-content">
             <div className="your-voice__header anim anim--slide-left">
               <SectionLabel text="Your Voice Matters" variant="white" />

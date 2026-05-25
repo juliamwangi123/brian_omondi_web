@@ -1,4 +1,16 @@
 .gallery-page {
   width: 100%;
   overflow-x: hidden;
+  position: relative;
+}
+
+/* Gallery grid scrolls over the fixed hero */
+.gallery-grid {
+  position: relative;
+  z-index: 2;
+}
+
+.gallery-page .footer {
+  position: relative;
+  z-index: 2;
 }

@@ -2,24 +2,30 @@ import { useState, useEffect, useRef } from 'react'
 import './PillarsNav.css'
 
 export default function PillarsNav({ pillars }) {
-  const [isSticky, setIsSticky] = useState(false)
+  const [isVisible, setIsVisible] = useState(false)
   const [navHeight, setNavHeight] = useState(91)
   const navRef = useRef(null)
   const sentinelRef = useRef(null)
 
   useEffect(() => {
-    const sentinel = sentinelRef.current
-    if (!sentinel) return
+    const handleScroll = () => {
+      const content = document.querySelector('.manifesto-page__content')
+      const cta = document.querySelector('.manifesto-cta')
+      if (!content || !cta) return
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsSticky(!entry.isIntersecting)
-      },
-      { threshold: 0, rootMargin: '0px' }
-    )
+      const contentTop = content.getBoundingClientRect().top
+      const ctaTop = cta.getBoundingClientRect().top
 
-    observer.observe(sentinel)
-    return () => observer.unobserve(sentinel)
+      // Show when content is scrolled to top AND cta is not yet visible
+      if (contentTop <= 0 && ctaTop > 100) {
+        setIsVisible(true)
+      } else {
+        setIsVisible(false)
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   useEffect(() => {
@@ -36,14 +42,14 @@ export default function PillarsNav({ pillars }) {
     window.scrollTo({ top: y, behavior: 'smooth' })
   }
 
+  if (!isVisible) return <div ref={sentinelRef} className="pillars-nav__sentinel" />
+
   return (
     <>
       <div ref={sentinelRef} className="pillars-nav__sentinel" />
-      {/* Placeholder to prevent content jump */}
-      {isSticky && <div style={{ height: navHeight }} />}
       <nav
         ref={navRef}
-        className={`pillars-nav${isSticky ? ' pillars-nav--sticky' : ''}`}
+        className="pillars-nav pillars-nav--sticky"
       >
         <div className="pillars-nav__inner">
           {pillars.map((pillar) => (

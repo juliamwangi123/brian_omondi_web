@@ -1,0 +1,343 @@
+/* =============================================
+   ARTICLE PAGE
+   Figma: blue bg, truck image, centered content
+   ============================================= */
+.article-page {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* ---- Blue header ---- */
+.article-page__header {
+  width: 100%;
+  background: #1E49E3;
+  padding: 30px 67px 40px;
+}
+
+/* Back button */
+.article-page__back {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.article-page__back span {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #FFFFFF;
+}
+
+.article-page__back svg {
+  width: 14px;
+  height: 14px;
+}
+
+.article-page__back:hover span {
+  color: #D3E9FE;
+}
+
+/* Date */
+.article-page__date-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.article-page__date {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #AAAAAA;
+}
+
+/* Title — Figma: weight 600, size 43px, 152% line-height, white */
+.article-page__title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 43px;
+  line-height: 152%;
+  text-transform: capitalize;
+  color: #FFFFFF;
+  max-width: 900px;
+}
+
+/* Title animation */
+.article-page__title.anim {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.article-page__title.anim--visible,
+.article-page__title.anim.anim--visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+/* Title — Figma: weight 600, size 43px, white */
+.article-page__title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 38px;
+  line-height: 152%;
+  text-transform: capitalize;
+  color: #FFFFFF;
+  max-width: 900px;
+}
+
+/* Subtitle — lighter weight, smaller, next line */
+.article-page__subtitle {
+  display: block;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: 29px;
+  line-height: 152%;
+  color: #FFFFFF;
+}
+
+/* ---- Body — blue bg with truck image ---- */
+.article-page__body {
+  position: relative;
+  width: 100%;
+  min-height: 600px;
+  background: #1E49E3;
+}
+
+/* Truck background — flipped */
+.article-page__bg {
+  position: absolute;
+  inset: 0;
+  background: url('/images/farm-bg.svg') center center / cover no-repeat;
+  mix-blend-mode: multiply;
+  transform: scaleX(-1);
+  z-index: 0;
+}
+
+/* Content centered */
+.article-page__content-wrapper {
+  position: relative;
+  z-index: 1;
+  max-width: 830px;
+  margin: 0 auto;
+  padding: 60px 20px 80px;
+}
+
+/* Article image — rounded top */
+.article-page__image {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.article-page__image img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* Article text card — white bg */
+.article-page__text {
+  background: #FFFFFF;
+  padding: 40px;
+  box-shadow: 7px 7px 16.3px rgba(0, 0, 0, 0.25);
+}
+
+/* Base paragraph — Figma: Poppins 400, 19px, 152%, #4F4F4F */
+.article-page__text p {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 152%;
+  color: #4F4F4F;
+  margin: 0 0 20px 0;
+}
+
+.article-page__text p:last-child {
+  margin-bottom: 0;
+}
+
+/* Numbered items — bold, slightly more spacing above */
+.article-page__text p.article-page__numbered {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 152%;
+  color: #4F4F4F;
+  margin: 28px 0 8px 0;
+}
+
+/* Signature — "Brian Omondi, Mumias West, 2027." in blue */
+.article-page__text p.article-page__signature {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 152%;
+  color: #1E49E3;
+  margin: 30px 0 0 0;
+}
+
+/* Not found */
+.article-page__not-found {
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 80px 40px;
+}
+
+.article-page__not-found h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 32px;
+  color: #1E49E3;
+}
+
+.article-page__not-found a {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  color: #1E49E3;
+  text-decoration: underline;
+}
+
+/* Fully bold paragraph */
+.article-page__text p.article-page__bold {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 152%;
+  color: #4F4F4F;
+  margin: 24px 0 12px 0;
+}
+
+/* Numbered heading — bold with more top spacing */
+.article-page__text p.article-page__numbered {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 152%;
+  color: #4F4F4F;
+  margin: 28px 0 8px 0;
+}
+
+/* Signature — blue bold */
+.article-page__text p.article-page__signature {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 152%;
+  color: #1E49E3;
+  margin: 30px 0 0 0;
+}
+
+/* Inline bold within paragraphs */
+.article-page__text p strong {
+  font-weight: 700;
+}
+
+.article-page__card {
+  border-radius: 20px 20px 0 0;
+  overflow: hidden;
+  box-shadow: 7px 7px 16.3px rgba(0, 0, 0, 0.25);
+  background: #FFFFFF;
+}
+
+.article-page__image {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.article-page__image img {
+  width: 100%;
+  height: auto;
+  max-height: 600px;
+  object-fit: cover;
+  display: block;
+  border-radius: 0;
+  box-shadow: none;
+}
+.article-page__image img.article-page__image--flipped {
+  width: 90%;
+  height: 987px;
+  object-fit: cover;
+  object-position: center top;
+  transform: scaleX(-1);
+}
+
+.article-page__text {
+  background: #FFFFFF;
+  padding: 40px;
+  box-shadow: none;
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 1000px) {
+  .article-page__header {
+    padding: 24px 40px 32px;
+  }
+
+  .article-page__title {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .article-page__header {
+    padding: 20px 24px 28px;
+  }
+
+  .article-page__title {
+    font-size: 26px;
+  }
+
+  .article-page__content-wrapper {
+    padding: 40px 16px 60px;
+  }
+
+  .article-page__text {
+    padding: 28px 20px;
+  }
+
+  .article-page__text p {
+    font-size: 16px;
+  }
+
+  .article-page__text p.article-page__numbered {
+    font-size: 16px;
+  }
+
+  .article-page__text p.article-page__signature {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .article-page__title {
+    font-size: 22px;
+  }
+
+  .article-page__text {
+    padding: 20px 16px;
+  }
+
+  .article-page__text p {
+    font-size: 15px;
+  }
+}

@@ -23,8 +23,13 @@ export default function ContactForm() {
   const handleSubmit = (e) => {
     e.preventDefault()
     if (!name.trim() || !ward || !message.trim()) return
-    // In production, send to an API
-    console.log({ name, ward, message })
+
+    const email = 'hello@brian-omondi.com'
+    const subject = `Message from ${name} - ${ward} Ward`
+    const body = `Name: ${name}%0D%0AWard: ${ward}%0D%0A%0D%0A${message}`
+
+    window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${body}`
+
     setSubmitted(true)
     setTimeout(() => {
       setName('')
@@ -33,7 +38,6 @@ export default function ContactForm() {
       setSubmitted(false)
     }, 3000)
   }
-
   return (
     <form className="contact-form" onSubmit={handleSubmit}>
       {/* Name */}

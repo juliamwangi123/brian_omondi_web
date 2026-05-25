@@ -8,14 +8,13 @@
   overflow: hidden;
 }
 
-/* Fixed background that stays as user scrolls */
 .hero__bg {
   position: fixed;
-  top: 0;
+  top: -50px;
   left: 0;
   width: 100%;
-  height: 958px;
-  background: url('/images/hero-bg.jpg') center center / cover no-repeat;
+  height: 1008px;
+  background: url('/images/hero-bg.jpg') center top / cover no-repeat;
   z-index: 0;
 }
 
@@ -24,8 +23,9 @@
   inset: 0;
   background: linear-gradient(
     to right,
-    rgba(0, 0, 0, 0.55) 0%,
-    rgba(0, 0, 0, 0.25) 50%,
+    rgba(1, 25, 85, 0.35) 0%,
+    rgba(1, 25, 85, 0.15) 40%,
+    rgba(1, 25, 85, 0.05) 65%,
     transparent 100%
   );
 }
@@ -35,7 +35,7 @@
   z-index: 1;
   max-width: 1440px;
   margin: 0 auto;
-  padding: 297px 67px 0;
+  padding: 250px 67px 0;
   display: flex;
   flex-direction: column;
   gap: 0;
@@ -51,12 +51,12 @@
   color: #FFFFFF;
 }
 
-/* Position + Line */
+/* Position + Line — larger gap from name */
 .hero__sub {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-top: 25px;
+  margin-top: 40px;
 }
 
 .hero__position {
@@ -75,9 +75,9 @@
   border-top: 1px solid #FFFFFF;
 }
 
-/* Script Quote */
+/* Script Quote — larger gap from position */
 .hero__script {
-  margin-top: 15px;
+  margin-top: 40px;
 }
 
 .hero__script p {
@@ -88,9 +88,9 @@
   color: #FFFFFF;
 }
 
-/* Quote */
+/* Quote — larger gap from script */
 .hero__quote {
-  margin-top: 25px;
+  margin-top: 40px;
 }
 
 .hero__quote p {
@@ -100,45 +100,6 @@
   line-height: 120.81%;
   color: #FFFFFF;
   max-width: 439px;
-}
-
-/* =============================================
-   RESPONSIVE
-   ============================================= */
-@media (max-width: 1024px) {
-  .hero {
-    height: 750px;
-  }
-
-  .hero__bg {
-    height: 750px;
-    position: absolute;
-  }
-
-  .hero__content {
-    padding: 220px 40px 0;
-  }
-
-  .hero__name {
-    font-size: 52px;
-    line-height: 64px;
-  }
-
-  .hero__position {
-    font-size: 20px;
-  }
-
-  .hero__line {
-    width: 160px;
-  }
-
-  .hero__script p {
-    font-size: 26px;
-  }
-
-  .hero__quote p {
-    font-size: 24px;
-  }
 }
 
 @media (max-width: 768px) {

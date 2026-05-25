@@ -1,29 +1,26 @@
-/* =============================================
-   ABOUT
-   ============================================= */
+
 .about {
   width: 100%;
   background: #EEEEEE;
-  padding: 100px 0 130px;
+  padding: 180px 0 0 0;
   position: relative;
   z-index: 1;
+  overflow: hidden;
 }
 
 .about__inner {
   max-width: 1440px;
   margin: 0 auto;
-  padding: 0 69px;
+  padding: 0;
   display: flex;
-  gap: 60px;
-  align-items: flex-start;
+  align-items: stretch;
+  min-height: 761px;
 }
 
-/* Image */
+/* Image — full height, flush left, no stretch */
 .about__image {
   flex-shrink: 0;
-  width: 501px;
-  height: 761px;
-  border-radius: 4px;
+  width: 502px;
   overflow: hidden;
 }
 
@@ -31,19 +28,23 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: top center;
 }
 
 /* Text Column */
+
 .about__text {
   flex: 1;
-  padding-top: 30px;
+  padding: 30px 69px 80px 60px;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Label Row — line and label on same line */
 .about__label-row {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 18px;
 }
 
 /* Accent line — BEFORE the label, on same row */
@@ -55,36 +56,36 @@
   flex-shrink: 0;
 }
 
-/* Label */
+/* Label — Figma: weight 700, size 22px, uppercase, blue */
 .about__label {
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
-  font-size: 22px;
+  font-size: 19px;
   line-height: 120.81%;
   text-transform: uppercase;
   color: #1E49E3;
   white-space: nowrap;
 }
 
-/* Title */
+/* Title — Figma: weight 700, size 45px, blue */
 .about__title {
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
-  font-size: 45px;
+  font-size: 42px;
   line-height: 120.81%;
   color: #1E49E3;
-  margin-top: 35px;
+  margin-top: 40px;
   max-width: 623px;
 }
 
-/* Body */
+/* Body — Figma: weight 300, size 30px, black */
 .about__body {
   font-family: 'Poppins', sans-serif;
-  font-weight: 300;
-  font-size: 30px;
+  font-weight: 100;
+  font-size: 26px;
   line-height: 138%;
   color: #000000;
-  margin-top: 28px;
+  margin-top: 36px;
   max-width: 637px;
 }
 
@@ -93,10 +94,10 @@
   width: 328px;
   height: 0;
   border-top: 2px solid #1E49E3;
-  margin-top: 28px;
+  margin-top: 60px;
 }
 
-/* Italic quote */
+/* Italic quote — Figma: weight 300, size 25px, italic, blue */
 .about__italic {
   font-family: 'Poppins', sans-serif;
   font-style: italic;
@@ -104,13 +105,13 @@
   font-size: 25px;
   line-height: 138%;
   color: #1E49E3;
-  margin-top: 28px;
+  margin-top: 32px;
   max-width: 645px;
 }
 
-/* Bold highlights within italic */
+/* Bold highlights within italic — semi-bold */
 .about__italic strong {
-  font-weight: 600;
+  font-weight: 700;
 }
 
 /* =============================================
@@ -120,44 +121,46 @@
   .about__inner {
     flex-direction: column;
     align-items: center;
-    padding: 0 40px;
-    gap: 40px;
+    min-height: auto;
   }
 
   .about__image {
     width: 100%;
-    max-width: 501px;
-    height: 550px;
+    max-width: 100%;
+    height: 500px;
   }
 
   .about__text {
-    padding-top: 0;
+    padding: 50px 40px;
   }
 
   .about__title {
     font-size: 36px;
+    margin-top: 30px;
   }
 
   .about__body {
     font-size: 24px;
+    margin-top: 28px;
   }
 
   .about__italic {
     font-size: 20px;
+    margin-top: 24px;
+  }
+
+  .about__divider {
+    margin-top: 28px;
   }
 }
 
 @media (max-width: 768px) {
-  .about {
-    padding: 60px 0 80px;
-  }
-
-  .about__inner {
-    padding: 0 24px;
-  }
-
   .about__image {
     height: 400px;
+  }
+
+  .about__text {
+    padding: 40px 24px;
   }
 
   .about__title {
@@ -182,6 +185,10 @@
 }
 
 @media (max-width: 480px) {
+  .about__image {
+    height: 320px;
+  }
+
   .about__title {
     font-size: 24px;
   }

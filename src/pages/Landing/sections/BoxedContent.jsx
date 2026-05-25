@@ -12,7 +12,7 @@ export default function BoxedContent() {
               A Leader Shaped by the People of Mumias West.
             </p>
           </div>
-          <Link to="/manifesto" className="boxed__btn">
+          <Link to="/join" className="boxed__btn">
             Read more
           </Link>
         </div>

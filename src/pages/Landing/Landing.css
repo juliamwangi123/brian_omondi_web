@@ -3,9 +3,6 @@
   overflow-x: hidden;
 }
 
-/* =============================================
-   SCROLL ANIMATIONS
-   ============================================= */
 .anim {
   opacity: 0;
   transition: opacity 0.8s ease, transform 0.8s ease;
@@ -45,9 +42,7 @@
   transition-delay: 0.6s;
 }
 
-/* =============================================
-   LAYER STACKING — Content scrolls over fixed hero
-   ============================================= */
+
 .boxed {
   position: relative;
   z-index: 1;
@@ -79,17 +74,18 @@
   z-index: 2;
 }
 
-/* =============================================
-   VISION + PILLARS WRAPPER
-   Background image spans both sections, stays fixed
-   while user scrolls through vision header + all 8 pillars
-   ============================================= */
+
 .vision-pillars-wrapper {
   position: relative;
   z-index: 2;
   overflow: hidden;
 }
-
+/* Boxed content hangs between hero and about */
+.boxed-wrapper {
+  position: relative;
+  z-index: 10;
+  height: 0;
+}
 /* Background image — absolute within wrapper, covers full height */
 .vision-pillars-wrapper__bg {
   position: absolute;

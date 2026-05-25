@@ -18,10 +18,14 @@ export default function Landing() {
     <div className="landing" ref={pageRef}>
       <Navbar variant="transparent" />
       <Hero />
-      <BoxedContent />
+
+      {/* Boxed content wrapper — zero height so it hangs between sections */}
+      <div className="boxed-wrapper">
+        <BoxedContent />
+      </div>
+
       <About />
 
-      {/* Vision + Pillars wrapped together for shared background */}
       <div className="vision-pillars-wrapper">
         <div className="vision-pillars-wrapper__bg" />
         <div className="vision-pillars-wrapper__overlay" />

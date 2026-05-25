@@ -1,9 +1,4 @@
-/* =============================================
-   YOUR VOICE
-   Figma: bg #0A0A78
-   Image at left:5px as BACKGROUND behind text
-   Form card at left:808px on the right
-   ============================================= */
+
 .your-voice {
   width: 100%;
   background: #0A0A78;
@@ -12,6 +7,19 @@
   z-index: 1;
   overflow: hidden;
   min-height: 704px;
+}
+
+/* Background candidate image — left side, full height */
+.your-voice__left-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 454px;
+  height: 704px;
+  z-index: 0;
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
 }
 
 .your-voice__inner {
@@ -25,36 +33,34 @@
   position: relative;
 }
 
-/* ---- LEFT — Text with background image behind it ---- */
+/* LEFT — Text content over the background image */
 .your-voice__left {
   position: relative;
   flex: 1;
   min-height: 704px;
-  overflow: hidden;
+  z-index: 1;
 }
 
-/* Background image — sits behind the text content */
-.your-voice__left-bg {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: top center;
-  background-repeat: no-repeat;
-  z-index: 0;
-  opacity: 0.6;
-}
-
-/* Text content — on top of the background image */
+/* Text content */
 .your-voice__left-content {
   position: relative;
   z-index: 1;
-  padding: 60px 40px 60px 63px;
+  padding: 200px 40px 60px 63px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  min-height: 704px;
 }
 
+/* Section label — no extra bottom margin */
+.your-voice__header {
+  margin-bottom: 54px;
+}
+
+/* Override section label lines to align with text */
+.your-voice .section-label {
+  justify-content: flex-start;
+}
+
+/* Title — Figma: weight 700, size 45px, white, uppercase */
 .your-voice__title {
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
@@ -62,52 +68,61 @@
   line-height: 120.81%;
   text-transform: uppercase;
   color: #FFFFFF;
-  margin-top: 20px;
+  margin-top: 0;
 }
 
+/* Body — Figma: weight 300, size 20px */
 .your-voice__body {
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
   font-size: 20px;
   line-height: 120.81%;
   color: #CECECE;
-  margin-top: 20px;
+  margin-top: 40px;
   max-width: 641px;
 }
 
+/* Script quote */
 .your-voice__script {
   font-family: 'Bad Script', cursive;
   font-weight: 400;
   font-size: 18px;
   line-height: 120.81%;
   color: #CECECE;
-  margin-top: 24px;
+  margin-top: 42px;
   max-width: 690px;
 }
 
-/* ---- RIGHT — Form card ---- */
+/* RIGHT — Form card */
 .your-voice__right {
   flex-shrink: 0;
   width: 565px;
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   justify-content: flex-end;
   position: relative;
   z-index: 2;
-  margin-left: auto;
+  padding-top: 60px;
+  padding-right: 60px;
 }
 
+/* Form card — white, rounded top */
 .your-voice__form-card {
   width: 565px;
   background: #FFFFFF;
   border-radius: 30px 30px 0 0;
   padding: 40px 28px 30px;
+  min-height: 645px;
 }
 
 /* =============================================
    RESPONSIVE
    ============================================= */
 @media (max-width: 1200px) {
+  .your-voice__left-bg {
+    display: none;
+  }
+
   .your-voice__inner {
     flex-direction: column;
     align-items: center;
@@ -120,17 +135,12 @@
     min-height: auto;
   }
 
-  .your-voice__left-bg {
-    display: none;
-  }
-
   .your-voice__left-content {
     text-align: center;
     padding: 50px 0 30px;
-    min-height: auto;
   }
 
-  .your-voice__left-content .section-label {
+  .your-voice .section-label {
     justify-content: center;
   }
 
@@ -142,7 +152,7 @@
   .your-voice__right {
     width: 100%;
     justify-content: center;
-    margin-left: 0;
+    padding-top: 0;
   }
 
   .your-voice__form-card {
@@ -150,6 +160,7 @@
     max-width: 560px;
     border-radius: 20px;
     margin-bottom: 60px;
+    min-height: auto;
   }
 }
 

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import './TopArticle.css'
 
 export default function TopArticle({ article }) {
@@ -7,7 +8,7 @@ export default function TopArticle({ article }) {
     <section className="top-article">
       <div className="top-article__inner">
         <div className="top-article__card anim anim--slide-up">
-          {/* Image — left side */}
+          {/* Image */}
           <div className="top-article__image">
             <img
               src={article.heroImage || article.image}
@@ -15,8 +16,7 @@ export default function TopArticle({ article }) {
               loading="lazy"
             />
           </div>
-
-          {/* Content — right side */}
+          {/* Content */}
           <div className="top-article__content">
             {/* Date */}
             <div className="top-article__date-row">
@@ -35,17 +35,17 @@ export default function TopArticle({ article }) {
               <span className="top-article__date">{article.date}</span>
             </div>
 
-            {/* Title — blue, bold, 31px */}
+            {/* Title */}
             <h2 className="top-article__title">{article.title}</h2>
 
-            {/* Excerpt — black, normal weight, smaller */}
+            {/* Excerpt */}
             <p className="top-article__excerpt">{article.excerpt}</p>
 
             {/* Divider */}
             <div className="top-article__line" />
 
-            {/* Read Full Story */}
-            <button className="top-article__read-more" type="button">
+            {/* Read Full Story — Link */}
+            <Link to={`/news/${article.id}`} className="top-article__read-more">
               <span>Read Full Story</span>
               <svg width="18" height="14" viewBox="0 0 18 14" fill="none">
                 <path
@@ -56,7 +56,7 @@ export default function TopArticle({ article }) {
                   strokeLinejoin="round"
                 />
               </svg>
-            </button>
+            </Link>
           </div>
         </div>
       </div>

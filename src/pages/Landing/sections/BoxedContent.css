@@ -1,11 +1,9 @@
-/* =============================================
-   BOXED CONTENT — Two rectangular cards
-   ============================================= */
+
 .boxed {
   position: relative;
   width: 100%;
-  margin-top: -85px;
   z-index: 10;
+  transform: translateY(-50%);
 }
 
 .boxed__inner {
@@ -47,7 +45,7 @@
 .boxed__card-heading {
   font-family: 'Poppins', sans-serif;
   font-weight: 800;
-  font-size: 27px;
+  font-size: 28px;
   line-height: 120.81%;
   color: #011955;
   margin: 0;
@@ -57,7 +55,7 @@
 .boxed__card-sub {
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 120.81%;
   color: #011955;
   margin: 8px 0 0;
@@ -93,9 +91,7 @@
   font-weight: 700;
 }
 
-/* =============================================
-   RESPONSIVE
-   ============================================= */
+
 @media (max-width: 1100px) {
   .boxed__inner {
     flex-direction: column;
@@ -121,10 +117,6 @@
 }
 
 @media (max-width: 768px) {
-  .boxed {
-    margin-top: -50px;
-  }
-
   .boxed__inner {
     padding: 0 24px;
   }

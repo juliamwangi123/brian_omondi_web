@@ -1,102 +1,145 @@
-/* =============================================
-   GALLERY HERO
-   ============================================= */
+
 .gallery-hero {
   position: relative;
   width: 100%;
-  min-height: 700px;
-  background: #1E49E3;
+  height: 700px;
+}
+
+/* Fixed container — persists on scroll */
+.gallery-hero__fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 0;
   overflow: hidden;
 }
 
+/* Layer 1 — Blue background */
 .gallery-hero__bg {
   position: absolute;
   inset: 0;
-  background: url('/images/blue-bg.jpg') center center / cover no-repeat;
-  opacity: 0.3;
+  background: url('/images/blue.svg') center center / cover no-repeat;
   z-index: 0;
 }
 
-.gallery-hero__gradient {
+/* Layer 2 — Candidate image, far right, fully visible, NO flip */
+.gallery-hero__candidate {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(30, 73, 227, 0.2) 0%,
-    rgba(10, 10, 120, 0.7) 100%
-  );
+  right: 0;
+  top: 99px;
+  width: 434px;
+  height: calc(100% - 80px);
   z-index: 1;
 }
 
+.gallery-hero__candidate img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+/* Layer 3 — Gradient that fades to dark as you scroll */
+.gallery-hero__gradient {
+  position: absolute;
+  left: 0;
+  top: 60%;
+  width: 100%;
+  height: 40%;
+  background: linear-gradient(
+    180deg,
+    rgba(30, 73, 227, 0.04) 0%,
+    rgba(20, 41, 173, 0.52) 28%,
+    #0A0A78 100%
+  );
+  opacity: 0.73;
+  z-index: 2;
+}
+
+/* Text content — scrolls with page */
 .gallery-hero__inner {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 67px;
+  height: 700px;
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  min-height: 700px;
+  align-items: flex-start;
 }
 
-/* Text */
+/* Text — Figma: left:67px, top:283px */
 .gallery-hero__text {
   max-width: 763px;
-  padding-bottom: 120px;
+  padding-top: 100px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 45px;
 }
 
+/* Section label — left aligned */
+.gallery-hero__label {
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* Title — Figma: weight 900, size 108px */
 .gallery-hero__title {
   font-family: 'Poppins', sans-serif;
   font-weight: 900;
-  font-size: 108px;
+  font-size: 99px;
   line-height: 111px;
   text-transform: uppercase;
   color: #FFFFFF;
 }
 
+/* Script — Figma: Bad Script, 33px */
 .gallery-hero__script {
   font-family: 'Bad Script', cursive;
   font-weight: 400;
-  font-size: 33px;
+  font-size: 30px;
   line-height: 120.81%;
   color: #FFFFFF;
   max-width: 763px;
-}
-
-/* Image */
-.gallery-hero__image {
-  flex-shrink: 0;
-  width: 434px;
-  align-self: flex-end;
-}
-
-.gallery-hero__image img {
-  width: 100%;
-  height: 660px;
-  object-fit: cover;
-  object-position: top center;
 }
 
 /* =============================================
    RESPONSIVE
    ============================================= */
 @media (max-width: 1200px) {
+  .gallery-hero {
+    height: auto;
+    min-height: 600px;
+  }
+
+  .gallery-hero__fixed {
+    position: absolute;
+    height: 100%;
+  }
+
+  .gallery-hero__candidate {
+    width: 350px;
+    opacity: 0.4;
+  }
+
   .gallery-hero__inner {
-    flex-direction: column;
-    align-items: center;
-    padding: 60px 40px 0;
-    min-height: auto;
+    height: auto;
+    min-height: 600px;
+    padding: 0 40px;
   }
 
   .gallery-hero__text {
-    padding-bottom: 40px;
+    padding-top: 80px;
+    padding-bottom: 60px;
     text-align: center;
     align-items: center;
     max-width: 100%;
+  }
+
+  .gallery-hero__label {
+    justify-content: center;
   }
 
   .gallery-hero__title {
@@ -107,24 +150,15 @@
   .gallery-hero__script {
     font-size: 26px;
   }
-
-  .gallery-hero__image {
-    width: 100%;
-    max-width: 380px;
-  }
-
-  .gallery-hero__image img {
-    height: 480px;
-  }
 }
 
 @media (max-width: 768px) {
-  .gallery-hero {
-    min-height: auto;
+  .gallery-hero__inner {
+    padding: 0 24px;
   }
 
-  .gallery-hero__inner {
-    padding: 40px 24px 0;
+  .gallery-hero__candidate {
+    display: none;
   }
 
   .gallery-hero__title {
@@ -134,14 +168,6 @@
 
   .gallery-hero__script {
     font-size: 20px;
-  }
-
-  .gallery-hero__image {
-    max-width: 300px;
-  }
-
-  .gallery-hero__image img {
-    height: 380px;
   }
 }
 
@@ -153,13 +179,5 @@
 
   .gallery-hero__script {
     font-size: 16px;
-  }
-
-  .gallery-hero__image {
-    max-width: 250px;
-  }
-
-  .gallery-hero__image img {
-    height: 300px;
   }
 }

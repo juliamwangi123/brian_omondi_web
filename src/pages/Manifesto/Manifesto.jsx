@@ -15,9 +15,8 @@ export default function Manifesto() {
     <div className="manifesto-page" ref={pageRef}>
       <Navbar variant="solid" />
       <ManifestoHero />
-      <div className="manifesto-page__blue-line" />
-      <PillarsNav pillars={pillarsData} />
       <div className="manifesto-page__content">
+        <PillarsNav pillars={pillarsData} />
         {pillarsData.map((pillar, index) => (
           <PillarSection
             key={pillar.id}

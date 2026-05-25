@@ -5,15 +5,27 @@
   position: relative;
   width: 100%;
   min-height: 727px;
-  overflow: hidden;
+  overflow: visible;
+}
+.mhero__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 66px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  min-height: 727px;
 }
 
-/* Background — remove scaleX(-1) to flip to opposite direction */
 .mhero__bg {
-  position: absolute;
-  inset: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
   background: url('/images/farm-bg.svg') center center / cover no-repeat;
-  mix-blend-mode: plus-darker;
   z-index: 0;
 }
 
@@ -23,13 +35,12 @@
   inset: 0;
   background: linear-gradient(
     to right,
-    rgba(255, 255, 255, 0.7) 0%,
-    rgba(255, 255, 255, 0.5) 35%,
-    rgba(255, 255, 255, 0.1) 60%,
+    rgba(255, 255, 255, 0.4) 0%,
+    rgba(255, 255, 255, 0.2) 30%,
+    rgba(255, 255, 255, 0.05) 50%,
     transparent 100%
   );
 }
-
 .mhero__inner {
   position: relative;
   z-index: 1;
@@ -44,7 +55,7 @@
 
 /* Text */
 .mhero__text {
-  padding-bottom: 220px;
+  padding-bottom: 280px;
   max-width: 600px;
 }
 
@@ -150,5 +161,11 @@
   .mhero__image {
     max-width: 300px;
     height: 320px;
+  }
+}
+@media (max-width: 1024px) {
+  .mhero__bg {
+    position: absolute;
+    height: 100%;
   }
 }
