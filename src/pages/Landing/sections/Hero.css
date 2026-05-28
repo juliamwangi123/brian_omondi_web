@@ -107,10 +107,12 @@
     height: 620px;
   }
 
-  .hero__bg {
-    height: 620px;
-    position: absolute;
-  }
+  .hero__bg {  
+    position: fixed;  
+    height: 100vh;  
+    top: 0;  
+    background-position: center center;  
+  } 
 
   .hero__content {
     padding: 160px 24px 0;
@@ -145,10 +147,12 @@
     height: 540px;
   }
 
-  .hero__bg {
-    height: 540px;
-    position: absolute;
-  }
+  .hero__bg {  
+    position: fixed;  
+    height: 100vh;  
+    top: 0;  
+    background-position: 60% center;  
+  } 
 
   .hero__content {
     padding: 130px 16px 0;
@@ -181,3 +185,8 @@
     font-size: 16px;
   }
 }
+@media (max-width: 360px) {  
+  .hero__bg {  
+    background-position: 65% center;  
+  }  
+} 

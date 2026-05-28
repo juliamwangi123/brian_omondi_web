@@ -117,3 +117,16 @@
     background-attachment: scroll;
   }
 }
+@media (max-width: 768px) {  
+  .vision-pillars-wrapper__bg {  
+    display: none;  
+  }  
+    
+  .vision-pillars-wrapper__overlay {  
+    background: rgba(1, 25, 85, 0.75);  
+  }  
+    
+  .vision-pillars-wrapper {  
+    background: transparent;  
+  }  
+}  

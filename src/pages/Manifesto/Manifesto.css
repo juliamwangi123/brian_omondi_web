@@ -1,20 +1,37 @@
-.manifesto-page {
-  width: 100%;
-  overflow-x: hidden;
-}
-
-.manifesto-page__blue-line {
-  display: none;
-}
-
-.manifesto-page__content {
-  width: 100%;
-  background: #FFFFFF;
-  position: relative;
-  z-index: 1;
-}
-
-.manifesto-page .footer {
-  position: relative;
-  z-index: 2;
-}
+/* Manifesto.css */  
+  
+.manifesto-page {  
+  width: 100%;  
+  max-width: 100vw;  
+  overflow-x: hidden;  
+  background-color: #FFFFFF;  
+  position: relative;  
+}  
+  
+/*   BLUE SEPARATOR LINE - Between hero and pillars   */  
+  
+/* .manifesto-page__separator {  
+  width: 100%;  
+  height: 9px;  
+  background-color: #1E49E3;  
+  position: relative;  
+  z-index: 10;  
+  flex-shrink: 0;  
+}   */
+  
+/*   PILLARS CONTENT AREA   */  
+  
+.manifesto-page__content {  
+  width: 100%;  
+  background-color: #FFFFFF;  
+  position: relative;  
+  z-index: 1;  
+}  
+  
+/*    FOOTER   */  
+  
+.manifesto-page .footer {  
+  position: relative;  
+  z-index: 2;  
+}  
+  

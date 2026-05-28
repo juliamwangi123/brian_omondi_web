@@ -92,98 +92,221 @@
   object-fit: contain;
   object-position: bottom center;
 }
-
-/* =============================================
-   RESPONSIVE
-   ============================================= */
-@media (max-width: 1200px) {
-  .manifesto-cta__inner {
-    padding: 50px 60px;
-  }
-
-  .manifesto-cta__image {
-    right: 40px;
-    width: 400px;
-    height: 500px;
-  }
-
-  .manifesto-cta__title {
-    font-size: 58px;
-    line-height: 60px;
-  }
-}
-
-@media (max-width: 1000px) {
-  .manifesto-cta__image {
-    right: 20px;
-    width: 320px;
-    height: 420px;
-    opacity: 0.4;
-  }
-
-  .manifesto-cta__inner {
-    padding: 50px 40px;
-  }
-
-  .manifesto-cta__title {
-    font-size: 48px;
-    line-height: 50px;
-  }
-
-  .manifesto-cta__subtitle {
-    font-size: 22px;
-  }
-}
-
-@media (max-width: 768px) {
-  .manifesto-cta {
-    min-height: 500px;
-  }
-
-  .manifesto-cta__image {
-    display: none;
-  }
-
-  .manifesto-cta__inner {
-    padding: 40px 24px;
-  }
-
-  .manifesto-cta__title {
-    font-size: 38px;
-    line-height: 42px;
-  }
-
-  .manifesto-cta__subtitle {
-    font-size: 20px;
-  }
-
-  .manifesto-cta__btn {
-    font-size: 18px;
-    padding: 12px 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .manifesto-cta {
-    min-height: 420px;
-  }
-
-  .manifesto-cta__title {
-    font-size: 28px;
-    line-height: 32px;
-  }
-
-  .manifesto-cta__subtitle {
-    font-size: 16px;
-  }
-
-  .manifesto-cta__btn {
-    font-size: 15px;
-    padding: 10px 16px;
-    width: 100%;
-  }
-
-  .manifesto-cta__buttons {
-    flex-direction: column;
-  }
-}
+/* =============================================  
+   MANIFESTO CTA — RESPONSIVE STYLES  
+   ============================================= */  
+  
+@media (max-width: 1200px) {  
+  .manifesto-cta__inner {  
+    padding: 50px 60px;  
+  }  
+  
+  .manifesto-cta__image {  
+    right: 40px;  
+    width: 400px;  
+    height: 500px;  
+  }  
+  
+  .manifesto-cta__title {  
+    font-size: 58px;  
+    line-height: 60px;  
+  }  
+}  
+  
+@media (max-width: 1000px) {  
+  .manifesto-cta__inner {  
+    padding: 50px 40px;  
+  }  
+  
+  .manifesto-cta__image {  
+    right: 20px;  
+    width: 320px;  
+    height: 420px;  
+  }  
+  
+  .manifesto-cta__title {  
+    font-size: 48px;  
+    line-height: 50px;  
+  }  
+  
+  .manifesto-cta__subtitle {  
+    font-size: 22px;  
+  }  
+}  
+  
+@media (max-width: 900px) {  
+  .manifesto-cta {  
+    min-height: auto;  
+  }  
+  
+  .manifesto-cta__inner {  
+    flex-direction: column;  
+    align-items: center;  
+    justify-content: flex-start;  
+    padding: 60px 32px 0 32px;  
+    min-height: auto;  
+  }  
+  
+  .manifesto-cta__content {  
+    max-width: 100%;  
+    text-align: center;  
+    gap: 32px;  
+    order: 1;  
+  }  
+  
+  .manifesto-cta__title {  
+    font-size: 42px;  
+    line-height: 46px;  
+  }  
+  
+  .manifesto-cta__subtitle {  
+    font-size: 20px;  
+    max-width: 500px;  
+    margin: 0 auto;  
+  }  
+  
+  .manifesto-cta__buttons {  
+    justify-content: center;  
+  }  
+  
+  .manifesto-cta__image {  
+    position: relative;  
+    right: auto;  
+    bottom: auto;  
+    width: 100%;  
+    max-width: 400px;  
+    height: auto;  
+    aspect-ratio: 500 / 660;  
+    order: 2;  
+    margin-top: 40px;  
+    filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.25));  
+  }  
+  
+  .manifesto-cta__image img {  
+    object-fit: contain;  
+    object-position: bottom center;  
+  }  
+}  
+  
+@media (max-width: 768px) {  
+  .manifesto-cta__inner {  
+    padding: 48px 24px 0 24px;  
+  }  
+  
+  .manifesto-cta__content {  
+    gap: 28px;  
+  }  
+  
+  .manifesto-cta__title {  
+    font-size: 36px;  
+    line-height: 40px;  
+  }  
+  
+  .manifesto-cta__subtitle {  
+    font-size: 18px;  
+    max-width: 420px;  
+  }  
+  
+  .manifesto-cta__image {  
+    max-width: 340px;  
+    margin-top: 32px;  
+  }  
+  
+  .manifesto-cta__btn {  
+    font-size: 16px;  
+    padding: 12px 20px;  
+  }  
+}  
+  
+@media (max-width: 600px) {  
+  .manifesto-cta__inner {  
+    padding: 40px 20px 0 20px;  
+  }  
+  
+  .manifesto-cta__content {  
+    gap: 24px;  
+  }  
+  
+  .manifesto-cta__title {  
+    font-size: 30px;  
+    line-height: 34px;  
+  }  
+  
+  .manifesto-cta__subtitle {  
+    font-size: 16px;  
+    max-width: 360px;  
+  }  
+  
+  .manifesto-cta__image {  
+    max-width: 300px;  
+    margin-top: 28px;  
+  }  
+  
+  .manifesto-cta__btn {  
+    font-size: 15px;  
+    padding: 11px 18px;  
+  }  
+}  
+  
+@media (max-width: 480px) {  
+  .manifesto-cta__inner {  
+    padding: 32px 16px 0 16px;  
+  }  
+  
+  .manifesto-cta__content {  
+    gap: 20px;  
+  }  
+  
+  .manifesto-cta__title {  
+    font-size: 26px;  
+    line-height: 30px;  
+  }  
+  
+  .manifesto-cta__subtitle {  
+    font-size: 14px;  
+    max-width: 300px;  
+  }  
+  
+  .manifesto-cta__image {  
+    max-width: 260px;  
+    margin-top: 24px;  
+  }  
+  
+  .manifesto-cta__btn {  
+    font-size: 14px;  
+    padding: 10px 16px;  
+    width: 100%;  
+  }  
+  
+  .manifesto-cta__buttons {  
+    flex-direction: column;  
+    width: 100%;  
+    max-width: 280px;  
+  }  
+}  
+  
+@media (max-width: 360px) {  
+  .manifesto-cta__inner {  
+    padding: 28px 12px 0 12px;  
+  }  
+  
+  .manifesto-cta__title {  
+    font-size: 22px;  
+    line-height: 26px;  
+  }  
+  
+  .manifesto-cta__subtitle {  
+    font-size: 13px;  
+    max-width: 260px;  
+  }  
+  
+  .manifesto-cta__image {  
+    max-width: 220px;  
+    margin-top: 20px;  
+  }  
+  
+  .manifesto-cta__btn {  
+    font-size: 13px;  
+    padding: 9px 14px;  
+  }  
+}  

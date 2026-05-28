@@ -136,6 +136,144 @@
     }
   }
 
+  /* Global overflow protection */  
+  
+html,  
+body {  
+  overflow-x: hidden;  
+  max-width: 100vw;  
+}  
+  
+#root {  
+  overflow-x: hidden;  
+  max-width: 100vw;  
+}  
+
+/* Global animation styles — add to your main CSS file */  
+  
+/* =============================================  
+   SLOW ANIMATIONS — Figma timing  
+   ============================================= */  
+  
+/* Base animation — 1.8s duration for smooth feel */  
+.anim {  
+  opacity: 0;  
+  transform: translateY(40px);  
+  transition:   
+    opacity 1.8s cubic-bezier(0.25, 0.1, 0.25, 1),  
+    transform 1.8s cubic-bezier(0.25, 0.1, 0.25, 1);  
+}  
+  
+.anim--visible {  
+  opacity: 1;  
+  transform: translateY(0);  
+}  
+  
+/* Fade left variant */  
+.anim--fade-left {  
+  opacity: 0;  
+  transform: translateX(-60px);  
+}  
+  
+.anim--fade-left.anim--visible {  
+  opacity: 1;  
+  transform: translateX(0);  
+}  
+  
+/* Fade right variant */  
+.anim--fade-right {  
+  opacity: 0;  
+  transform: translateX(60px);  
+}  
+  
+.anim--fade-right.anim--visible {  
+  opacity: 1;  
+  transform: translateX(0);  
+}  
+  
+/* Fade up variant */  
+.anim--fade-up {  
+  opacity: 0;  
+  transform: translateY(60px);  
+}  
+  
+.anim--fade-up.anim--visible {  
+  opacity: 1;  
+  transform: translateY(0);  
+}  
+  
+/* Scale variant */  
+.anim--scale {  
+  opacity: 0;  
+  transform: scale(0.9);  
+}  
+  
+.anim--scale.anim--visible {  
+  opacity: 1;  
+  transform: scale(1);  
+}  
+  
+/* =============================================  
+   STAGGERED DELAYS — Slow cascade (600ms intervals)  
+   ============================================= */  
+  
+.anim--delay-200 {  
+  transition-delay: 600ms;  
+}  
+  
+.anim--delay-400 {  
+  transition-delay: 1200ms;  
+}  
+  
+.anim--delay-600 {  
+  transition-delay: 1800ms;  
+}  
+  
+.anim--delay-800 {  
+  transition-delay: 2400ms;  
+}  
+  
+.anim--delay-1000 {  
+  transition-delay: 3000ms;  
+}  
+  
+/* =============================================  
+   DURATION VARIANTS  
+   ============================================= */  
+  
+.anim--slow {  
+  transition-duration: 2.4s;  
+}  
+  
+.anim--very-slow {  
+  transition-duration: 3s;  
+}  
+  
+.anim--normal {  
+  transition-duration: 1.8s;  
+}  
+  
+.anim--fast {  
+  transition-duration: 1.2s;  
+}  
+  
+/* =============================================  
+   REDUCED MOTION  
+   ============================================= */  
+  
+@media (prefers-reduced-motion: reduce) {  
+  .anim {  
+    opacity: 1;  
+    transform: none;  
+    transition: none;  
+  }  
+    
+  .anim--visible {  
+    opacity: 1;  
+    transform: none;  
+  }  
+}  
+
   @media (max-width: 1024px) {
     margin-top: 20px;
     flex-wrap: wrap;

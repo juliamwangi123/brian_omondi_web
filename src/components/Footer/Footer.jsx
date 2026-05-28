@@ -29,7 +29,7 @@ export default function Footer() {
           <div className="footer__socials">
             {/* Facebook */}
             <a
-              href="https://facebook.com"
+              href="https://www.facebook.com/brian.omondi0"
               target="_blank"
               rel="noopener noreferrer"
               className="footer__social-icon"
@@ -41,7 +41,7 @@ export default function Footer() {
             </a>
             {/* X (Twitter) */}
             <a
-              href="https://x.com"
+              href="https://x.com/O_BrianOmondi"
               target="_blank"
               rel="noopener noreferrer"
               className="footer__social-icon"
@@ -53,7 +53,7 @@ export default function Footer() {
             </a>
             {/* Instagram */}
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/hon.brianomondi/"
               target="_blank"
               rel="noopener noreferrer"
               className="footer__social-icon"
@@ -65,7 +65,7 @@ export default function Footer() {
             </a>
             {/* TikTok */}
             <a
-              href="https://tiktok.com"
+              href="tps://www.tiktok.com/@hon.brian.omondi"
               target="_blank"
               rel="noopener noreferrer"
               className="footer__social-icon"
