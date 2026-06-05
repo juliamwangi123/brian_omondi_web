@@ -31,9 +31,14 @@ export default function Pillars() {
               <p className="pillars__cta-sub">
                 Read the full manifesto to see every commitment in detail.
               </p>
-              <Link to="/manifesto" className="pillars__cta-btn">
-                Read full Manifesto
-              </Link>
+              <a   
+                href="/manifesto.pdf"   
+                className="pillars__cta-btn"  
+                target="_blank"  
+                rel="noopener noreferrer"  
+              >  
+                Read full Manifesto  
+              </a>  
             </div>
           </div>
         </div>
