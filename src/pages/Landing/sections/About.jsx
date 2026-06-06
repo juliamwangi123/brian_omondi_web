@@ -6,7 +6,7 @@ export default function About() {
       <div className="about__inner">
         <div className="about__image anim anim--slide-left">
           <img
-            src="/images/candidate-portrait.svg"
+            src="/images/candidate-portrait.webp"
             alt="Hon. Brian Omondi"
             loading="lazy"
           />
