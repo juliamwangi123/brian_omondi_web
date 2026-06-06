@@ -12,11 +12,7 @@
   margin: 0 auto;  
   height: 695px;  
 }  
-  
-/* =============================================  
-   TEXT BLOCK - Matches Figma positioning  
-   ============================================= */  
-  
+    
 .news-hero__text {  
   position: absolute;  
   left: 67px;  
@@ -24,10 +20,6 @@
   width: 900px;  
   z-index: 2;  
 }  
-  
-/* =============================================  
-   LABEL - Figma specs  
-   ============================================= */  
   
 .news-hero__label {  
   display: flex;  
@@ -68,11 +60,7 @@
   flex: none;  
   flex-grow: 0;  
 }  
-  
-/* =============================================  
-   TITLE - Figma specs with line breaks  
-   ============================================= */  
-  
+ 
 .news-hero__title {  
   width: 900px;  
   font-family: 'Poppins', sans-serif;  
@@ -99,10 +87,6 @@
   white-space: nowrap;  
 }  
   
-/* =============================================  
-   SCRIPT TEXT - Figma specs  
-   ============================================= */  
-  
 .news-hero__script {  
   width: 100%;  
   font-family: 'Bad Script', cursive;  
@@ -121,10 +105,6 @@
   animation: slideInFromLeft 0.6s ease-out forwards;  
   animation-delay: 0.7s;  
 }  
-  
-/* =============================================  
-   IMAGE - Figma specs  
-   ============================================= */  
   
 .news-hero__image {  
   position: absolute;  
@@ -147,11 +127,7 @@
   object-fit: cover;  
   object-position: top center;  
 }  
-  
-/* =============================================  
-   ANIMATIONS  
-   ============================================= */  
-  
+
 @keyframes slideInFromLeft {  
   0% {  
     opacity: 0;  
