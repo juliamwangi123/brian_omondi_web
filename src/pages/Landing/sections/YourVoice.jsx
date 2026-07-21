@@ -179,9 +179,9 @@ export default function YourVoice() {
                     )}
                   </button>
 
-                  <p className="text-gray-400 text-[10px] text-center">
+                  <p style={{ color: '#9ca3af', fontSize: '12px', textAlign: 'center' }}>
                     Your message goes directly to the campaign team.
-                  </p>
+                   </p>
                 </div>
               )}
             </motion.div>
