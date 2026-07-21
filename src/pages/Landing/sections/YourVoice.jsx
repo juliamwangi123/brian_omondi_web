@@ -75,23 +75,25 @@ export default function YourVoice() {
             >
               {submitted ? (
                 <div className="bg-white rounded-2xl p-10 flex flex-col items-center gap-5 text-center">
-                  <CheckCircle className="w-14 h-14 text-[#000073]" />
-                  <h3 className="font-bold text-[#000073] text-2xl">
-                    Thank You!
-                  </h3>
-                  <p className="text-gray-500 text-base leading-relaxed">
-                    Your message has been received. Brian and his team appreciate
-                    you taking the time to share what matters to you.
-                  </p>
-                  <button
-                    onClick={() => {
-                      setSubmitted(false);
-                      setFormState({ name: "", ward: "", message: "" });
-                    }}
-                    className="text-[#000073] text-sm font-bold hover:underline mt-2"
-                  >
-                    Send another message
-                  </button>
+                  <div className="bg-white rounded-2xl p-10 flex flex-col items-center gap-5 text-center">
+                <CheckCircle className="w-14 h-14 text-[#000073]" />
+                <h3 className="font-bold text-[#000073] text-2xl">
+                  Thank You!
+                </h3>
+                <p className="text-gray-500 text-base leading-relaxed">
+                  Your message has been received. Brian and his team appreciate
+                  you taking the time to share what matters to you.
+                </p>
+                <button
+                  onClick={() => {
+                    setSubmitted(false);
+                    setFormState({ name: "", ward: "", message: "" });
+                  }}
+                  className="text-[#000073] text-sm font-bold hover:underline mt-2"
+                >
+                  Send another message
+                </button>
+              </div>
                 </div>
               ) : (
                 <div className="bg-white rounded-2xl p-8 flex flex-col gap-5">
