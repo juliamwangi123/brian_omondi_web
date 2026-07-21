@@ -1,4 +1,3 @@
-
 .your-voice {
   width: 100%;
   background: #0A0A78;
@@ -13,9 +12,8 @@
 .your-voice__left-bg {
   position: absolute;
   left: 0;
-  bottom: 0;  
-  top: auto; 
   bottom: 0;
+  top: auto;
   width: 454px;
   height: 704px;
   z-index: 0;
@@ -30,7 +28,7 @@
   padding: 0;
   display: flex;
   flex-direction: row;
-  align-items: stretch;
+  align-items: stretch; /* both columns share the same 704px height */
   min-height: 704px;
   position: relative;
 }
@@ -41,13 +39,16 @@
   flex: 1;
   min-height: 704px;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertically center text block instead of fixed top padding */
 }
 
 /* Text content */
 .your-voice__left-content {
   position: relative;
   z-index: 1;
-  padding: 280px 40px 60px 39px;
+  padding: 40px 40px 40px 39px;
   display: flex;
   flex-direction: column;
 }
@@ -95,28 +96,130 @@
   max-width: 690px;
 }
 
-
-.your-voice__right {  
-  flex-shrink: 0;  
-  width: 565px;  
-  display: flex;  
-  align-items: flex-end;  
-  justify-content: flex-end;  
-  position: relative;  
-  z-index: 2;  
-  padding-top: 0;  
-  padding-right: 40px;  
-  padding-bottom: 0; 
-  bottom: -36px; 
-} 
+/* Form wrapper — vertically centered to match the left column's center */
+.your-voice__right {
+  flex-shrink: 0;
+  width: 565px;
+  display: flex;
+  align-items: center; /* was flex-end + bottom:-36px, which pinned the card to the bottom */
+  justify-content: flex-end;
+  position: relative;
+  z-index: 2;
+  padding-right: 40px;
+}
 
 /* Form card — white, rounded top */
 .your-voice__form-card {
-  width: 565px;
+  width: 100%;
+  max-width: 565px;
   background: #FFFFFF;
-  border-radius: 30px 30px 0 0;
-  padding: 40px 28px 30px;
+  border-radius: 30px;
+  padding: 30px 28px 30px;
   min-height: 645px;
+  margin: 0; /* removed asymmetric margin-top:30px / margin-bottom:60px that pushed the card down */
+}
+
+/* =============================================
+   FORM CARD FIELDS — fallback styling
+   (Tailwind classes are kept in JSX but aren't
+   being processed for this file; these rules
+   guarantee the same look either way)
+   ============================================= */
+.your-voice__form-card label {
+  color: #000073;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  display: block;
+}
+.your-voice__form-card input[type="text"],
+.your-voice__form-card select,
+.your-voice__form-card textarea {
+  width: 100%;
+  background: #f3f4f6;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 14px;
+  color: #1f2937;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+.your-voice__form-card input[type="text"]::placeholder,
+.your-voice__form-card textarea::placeholder {
+  color: #9ca3af;
+}
+.your-voice__form-card input[type="text"]:focus,
+.your-voice__form-card select:focus,
+.your-voice__form-card textarea:focus {
+  outline: none;
+  border-color: #000073;
+  background: #ffffff;
+}
+.your-voice__form-card textarea {
+  resize: none;
+}
+.your-voice__form-card .flex.flex-col.gap-2 {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+.your-voice__form-card .flex.flex-col.gap-6 {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+/* Submit button */
+.your-voice__form-card button[type="button"],
+.your-voice__form-card button:not(.hover\:underline) {
+  width: 100%;
+  padding: 12px 0;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.your-voice__form-card button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.your-voice__form-card button:not(:disabled):hover {
+  box-shadow: 0 4px 14px rgba(0, 0, 115, 0.35);
+}
+.your-voice__form-card button:not(:disabled):active {
+  transform: scale(0.97);
+}
+/* Helper / error text */
+.your-voice__form-card p.text-gray-500 {
+  color: #6b7280;
+  font-size: 12px;
+  text-align: center;
+}
+.your-voice__form-card p.text-red-500 {
+  color: #ef4444;
+  font-weight: 600;
+  font-size: 14px;
+  text-align: center;
+  background: #fef2f2;
+  padding: 12px;
+  border-radius: 8px;
+}
+/* Thank-you state */
+.your-voice__form-card .flex.flex-col.items-center.gap-5 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+  padding: 40px 0;
 }
 
 /* =============================================
@@ -137,6 +240,7 @@
   .your-voice__left {
     width: 100%;
     min-height: auto;
+    justify-content: flex-start;
   }
 
   .your-voice__left-content {
@@ -156,7 +260,8 @@
   .your-voice__right {
     width: 100%;
     justify-content: center;
-    padding-top: 0;
+    align-items: center;
+    padding-right: 0;
   }
 
   .your-voice__form-card {

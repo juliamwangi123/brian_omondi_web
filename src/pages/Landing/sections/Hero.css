@@ -14,7 +14,7 @@
   left: 0;
   width: 100%;
   height: 1008px;
-  background: url('/images/hero-bg.jpg') center top / cover no-repeat;
+  background: url('/images/hero-bg.jpg') 40% top / cover no-repeat;
   z-index: 0;
 }
 
