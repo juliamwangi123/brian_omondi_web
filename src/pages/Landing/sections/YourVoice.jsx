@@ -179,7 +179,7 @@ export default function YourVoice() {
                     )}
                   </button>
 
-                  <p className="text-gray-400 text-xs text-center">
+                  <p className="text-gray-400 text-[10px] text-center">
                     Your message goes directly to the campaign team.
                   </p>
                 </div>
