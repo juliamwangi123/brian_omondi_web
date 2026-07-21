@@ -74,26 +74,56 @@ export default function YourVoice() {
               transition={{ duration: 0.7, delay: 0.2 }}
             >
               {submitted ? (
-                <div className="bg-white rounded-2xl p-10 flex flex-col items-center gap-5 text-center">
-                  <div className="bg-white rounded-2xl p-10 flex flex-col items-center gap-5 text-center">
-                <CheckCircle className="w-14 h-14 text-[#000073]" />
-                <h3 className="font-bold text-[#000073] text-2xl">
-                  Thank You!
-                </h3>
-                <p className="text-gray-500 text-base leading-relaxed">
-                  Your message has been received. Brian and his team appreciate
-                  you taking the time to share what matters to you.
-                </p>
-                <button
-                  onClick={() => {
-                    setSubmitted(false);
-                    setFormState({ name: "", ward: "", message: "" });
-                  }}
-                  className="text-[#000073] text-sm font-bold hover:underline mt-2"
-                >
-                  Send another message
-                </button>
-              </div>
+                <div
+  style={{
+    backgroundColor: '#ffffff',
+    borderRadius: '16px',
+    padding: '40px',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: '20px',
+    textAlign: 'center',
+  }}
+>
+  <CheckCircle style={{ width: '56px', height: '56px', color: '#000073' }} />
+  <h3
+    style={{
+      fontWeight: 'bold',
+      color: '#000073',
+      fontSize: '24px',
+    }}
+  >
+    Thank You!
+  </h3>
+  <p
+    style={{
+      color: '#6b7280',
+      fontSize: '16px',
+      lineHeight: '1.625',
+    }}
+  >
+    Your message has been received. Brian and his team appreciate
+    you taking the time to share what matters to you.
+  </p>
+  <button
+    onClick={() => {
+      setSubmitted(false);
+      setFormState({ name: "", ward: "", message: "" });
+    }}
+    style={{
+      color: '#000073',
+      fontSize: '14px',
+      fontWeight: 'bold',
+      marginTop: '8px',
+      background: 'none',
+      border: 'none',
+      cursor: 'pointer',
+    }}
+  >
+    Send another message
+  </button>
+
                 </div>
               ) : (
                 <div className="bg-white rounded-2xl p-8 flex flex-col gap-5">
