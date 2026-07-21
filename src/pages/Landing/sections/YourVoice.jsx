@@ -179,7 +179,7 @@ export default function YourVoice() {
                     )}
                   </button>
 
-                  <p style={{ color: '#9ca3af', fontSize: '12px', textAlign: 'center' }}>
+                  <p style={{ color: '#9ca3af', fontSize: '12px', textAlign: 'center', paddingTop: '8px'  }}>
                     Your message goes directly to the campaign team.
                    </p>
                 </div>
