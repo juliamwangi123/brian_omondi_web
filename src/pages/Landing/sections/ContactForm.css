@@ -251,7 +251,136 @@
 .contact-form__submit--sent:hover {  
   background: #28a745;  
 }  
-  
+
+/* =============================================
+   PROGRESSIVE REVEAL ANIMATION
+   ============================================= */
+.contact-form__reveal {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  animation: contactFormSlideDown 0.35s ease-out;
+}
+
+@keyframes contactFormSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-form__reveal {
+    animation: none;
+  }
+}
+
+/* =============================================
+   ERROR STATES
+   ============================================= */
+.contact-form__input-wrap--error,
+.contact-form__textarea-wrap--error {
+  border-color: #e74c3c !important;
+  box-shadow: 0px 2px 2px rgba(255, 255, 255, 0.15),
+    inset 0px 2px 2px rgba(231, 76, 60, 0.1);
+}
+
+.contact-form__dropdown-trigger--error {
+  border-color: #e74c3c !important;
+}
+
+.contact-form__error {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  color: #e74c3c;
+  margin-top: 6px;
+  display: block;
+  animation: errorFadeIn 0.2s ease-out;
+}
+
+@keyframes errorFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =============================================
+   LOADING SPINNER
+   ============================================= */
+.contact-form__spinner {
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid rgba(1, 25, 85, 0.2);
+  border-top-color: #011955;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =============================================
+   SUBMIT BUTTON ERROR STATE
+   ============================================= */
+.contact-form__submit--error {
+  background: #e74c3c;
+  cursor: default;
+}
+
+.contact-form__submit--error span {
+  color: #ffffff;
+}
+
+.contact-form__submit--error svg path {
+  stroke: #ffffff;
+  fill: none;
+}
+
+/* Fix success checkmark (uses stroke, not fill) */
+.contact-form__submit--sent svg path {
+  stroke: #ffffff;
+  fill: none;
+}
+
+.contact-form__submit:disabled {
+  cursor: not-allowed;
+  opacity: 0.95;
+}
+
+/* =============================================
+   SCROLLABLE DROPDOWN LIST
+   ============================================= */
+.contact-form__dropdown-list {
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.contact-form__dropdown-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.contact-form__dropdown-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.contact-form__dropdown-list::-webkit-scrollbar-thumb {
+  background: #B0D7FC;
+  border-radius: 10px;
+}
+
 /* =============================================  
    RESPONSIVE  
    ============================================= */  
