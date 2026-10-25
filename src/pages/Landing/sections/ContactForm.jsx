@@ -1,12 +1,9 @@
 import { useState, useRef, useEffect } from 'react'
-import emailjs from '@emailjs/browser'
 import { wards as wardsData } from "../../../data/wards";
 import './ContactForm.css'
 
-// EmailJS config
-const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID
-const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
-const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+// Google Sheets endpoint
+const SHEETS_URL = import.meta.env.VITE_SHEETS_URL
 
 export default function ContactForm() {
   const [name, setName] = useState('')
@@ -96,24 +93,24 @@ export default function ContactForm() {
 
     setStatus('sending')
 
-    // These keys must match {{variables}} in your EmailJS template
-    const templateParams = {
-      from_name: name,
-      phone: phone,
-      ward: ward,
-      sublocation: sublocation,
-      polling_station: pollingStation,
-      message: message,
+    const payload = {
+      name,
+      phone,
+      ward,
+      sublocation,
+      pollingStation,
+      message,
     }
 
     try {
-      await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        templateParams,
-        EMAILJS_PUBLIC_KEY
-      )
+      await fetch(SHEETS_URL, {
+        method: 'POST',
+        mode: 'no-cors', // Required for Google Apps Script
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
 
+      // no-cors can't read the response, but no error means success
       setStatus('success')
 
       // Reset after 4 seconds
@@ -127,7 +124,7 @@ export default function ContactForm() {
         setStatus('idle')
       }, 4000)
     } catch (err) {
-      console.error('EmailJS error:', err)
+      console.error('Sheets submission error:', err)
       setStatus('error')
       setTimeout(() => setStatus('idle'), 4000)
     }
@@ -336,7 +333,7 @@ export default function ContactForm() {
                 strokeLinejoin="round"
               />
             </svg>
-            <span>Message Sent! Thank you.</span>
+            <span>Message Received! Thank you.</span>
           </>
         ) : status === 'error' ? (
           <>
