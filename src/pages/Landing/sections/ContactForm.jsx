@@ -24,6 +24,19 @@ export default function ContactForm() {
 
   const formRef = useRef(null)
 
+  // Field refs for scroll/focus navigation on error
+  const fieldRefs = {
+    name: useRef(null),
+    phone: useRef(null),
+    ward: useRef(null),
+    sublocation: useRef(null),
+    pollingStation: useRef(null),
+    message: useRef(null),
+  }
+
+  // Validation order (used to find the first erroring field)
+  const FIELD_ORDER = ['name', 'phone', 'ward', 'sublocation', 'pollingStation', 'message']
+
   // Close dropdowns on outside click
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -60,7 +73,7 @@ export default function ContactForm() {
     setErrors((prev) => ({ ...prev, pollingStation: null }))
   }
 
-  // Validation
+  // Validation (message is now optional)
   const validate = () => {
     const newErrors = {}
 
@@ -78,18 +91,42 @@ export default function ContactForm() {
     if (sublocation && !pollingStation)
       newErrors.pollingStation = 'Please select your polling station'
 
-    if (!message.trim()) newErrors.message = 'Please share your message'
-    else if (message.trim().length < 10)
+    // Message is OPTIONAL — only validate length if the user typed something
+    if (message.trim() && message.trim().length < 10) {
       newErrors.message = 'Message is too short (min 10 characters)'
+    }
 
     setErrors(newErrors)
-    return Object.keys(newErrors).length === 0
+    return newErrors
+  }
+
+  // Scroll to & focus the first field with an error
+  const focusFirstError = (errorObj) => {
+    const firstErrorKey = FIELD_ORDER.find((key) => errorObj[key])
+    if (!firstErrorKey) return
+
+    const node = fieldRefs[firstErrorKey]?.current
+    if (!node) return
+
+    // Smooth scroll into view (centered when possible)
+    node.scrollIntoView({ behavior: 'smooth', block: 'center' })
+
+    // Focus after scroll begins — small delay so scroll feels natural
+    setTimeout(() => {
+      if (typeof node.focus === 'function') {
+        node.focus({ preventScroll: true })
+      }
+    }, 350)
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    if (!validate()) return
+    const validationErrors = validate()
+    if (Object.keys(validationErrors).length > 0) {
+      focusFirstError(validationErrors)
+      return
+    }
 
     setStatus('sending')
 
@@ -110,10 +147,8 @@ export default function ContactForm() {
         body: JSON.stringify(payload),
       })
 
-      // no-cors can't read the response, but no error means success
       setStatus('success')
 
-      // Reset after 4 seconds
       setTimeout(() => {
         setName('')
         setPhone('')
@@ -130,7 +165,7 @@ export default function ContactForm() {
     }
   }
 
-  // Reusable dropdown
+  // Reusable dropdown — now accepts a triggerRef
   const renderDropdown = ({
     label,
     value,
@@ -139,11 +174,13 @@ export default function ContactForm() {
     onSelect,
     dropdownKey,
     error,
+    triggerRef,
   }) => (
     <div className="contact-form__group">
       <label className="contact-form__label">{label}</label>
       <div className="contact-form__dropdown">
         <button
+          ref={triggerRef}
           type="button"
           className={`contact-form__dropdown-trigger${
             value ? ' contact-form__dropdown-trigger--selected' : ''
@@ -206,6 +243,7 @@ export default function ContactForm() {
           }${errors.name ? ' contact-form__input-wrap--error' : ''}`}
         >
           <input
+            ref={fieldRefs.name}
             type="text"
             placeholder="e.g. John Baraza..."
             value={name}
@@ -230,6 +268,7 @@ export default function ContactForm() {
           }${errors.phone ? ' contact-form__input-wrap--error' : ''}`}
         >
           <input
+            ref={fieldRefs.phone}
             type="tel"
             placeholder="e.g. 0712 345 678"
             value={phone}
@@ -254,6 +293,7 @@ export default function ContactForm() {
         onSelect: handleWardSelect,
         dropdownKey: 'ward',
         error: errors.ward,
+        triggerRef: fieldRefs.ward,
       })}
 
       {/* Sublocation — appears after ward */}
@@ -267,6 +307,7 @@ export default function ContactForm() {
             onSelect: handleSublocationSelect,
             dropdownKey: 'sublocation',
             error: errors.sublocation,
+            triggerRef: fieldRefs.sublocation,
           })}
         </div>
       )}
@@ -282,19 +323,23 @@ export default function ContactForm() {
             onSelect: handlePollingStationSelect,
             dropdownKey: 'pollingStation',
             error: errors.pollingStation,
+            triggerRef: fieldRefs.pollingStation,
           })}
         </div>
       )}
 
-      {/* Message */}
+      {/* Message (OPTIONAL) */}
       <div className="contact-form__group">
-        <label className="contact-form__label">Message</label>
+        <label className="contact-form__label">
+          Message <span className="contact-form__optional">(optional)</span>
+        </label>
         <div
           className={`contact-form__textarea-wrap${
             message ? ' contact-form__textarea-wrap--active' : ''
           }${errors.message ? ' contact-form__textarea-wrap--error' : ''}`}
         >
           <textarea
+            ref={fieldRefs.message}
             placeholder="Share your thoughts, concerns or hopes for our constituency. Type here..."
             value={message}
             onChange={(e) => {
