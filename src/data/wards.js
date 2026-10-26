@@ -21,8 +21,8 @@ export const wards = {
       'Buchirinya',
     ],
     'Eshikalame': ['Bubala', 'Ingusi', 'Eshikalame', 'St. Cyrila'],
-    'Bungasi': ['Bumala', 'Buyundo', 'Butende', 'Bungasi Health Center'],
-    'Ugana': ['Ugana'],
+    'Bungasi': ['Bumala', 'Buyundo', 'Butende', 'Bungasi Health Center','Ugana'],
+   
   },
   'Mumias North': {
     'Nuclear': [
